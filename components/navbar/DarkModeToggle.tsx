@@ -32,7 +32,7 @@ export default function DarkModeToggle() {
           </svg>
         ) : (
           <svg
-            className="h-full -rotate-45 fill-sky-700 p-3 active:rotate-0"
+            className="h-full -rotate-45 fill-sky-400 p-3 active:rotate-0"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
           >
