@@ -37,9 +37,9 @@ export default function Navbar() {
       className="fixed top-0 left-0 z-20 h-16 w-full bg-white/75 backdrop-blur dark:border-slate-50/[0.06] dark:bg-slate-900/75 lg:z-50 lg:border-b lg:border-slate-900/10"
     >
       <div className="container mx-auto flex h-full flex-wrap items-center justify-between">
-        <Link href="/" className="flex h-full w-fit py-4 items-center">
+        <Link href="/" className="group flex h-full w-fit items-center py-4">
           <svg
-            className="fill-none stroke-black dark:stroke-white h-full"
+            className="h-full fill-none stroke-black dark:stroke-white overflow-visible"
             viewBox="0 0 320 144"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -50,6 +50,7 @@ export default function Navbar() {
               height="128"
               rx="32"
               strokeWidth="16"
+              className="group-hover:-translate-y-3 group-hover:duration-200 group-hover:ease-in"
             />
             <rect
               x="72"
@@ -58,8 +59,15 @@ export default function Navbar() {
               height="128"
               rx="32"
               strokeWidth="16"
+              className="group-hover:-translate-y-3 group-hover:delay-100 group-hover:duration-200 group-hover:ease-in"
             />
-            <circle cx="248" cy="72" r="64" stroke-width="16" />
+            <circle
+              cx="248"
+              cy="72"
+              r="64"
+              strokeWidth="16"
+              className="group-hover:-translate-y-3 group-hover:delay-200 group-hover:duration-200 group-hover:ease-in"
+            />
           </svg>
         </Link>
         <DarkModeToggle />
