@@ -1,35 +1,7 @@
-import Image from "next/image";
-import { useTheme } from "next-themes";
-import React, { useEffect } from "react";
-
 import DarkModeToggle from "./DarkModeToggle";
 import Link from "next/link";
 
 export default function Navbar() {
-  const { theme, setTheme } = useTheme();
-
-  const navbar = React.useRef<HTMLDivElement>(null);
-
-  // Keep track of the last scroll position
-  let lastScrollPos = 0;
-
-  useEffect(() => {
-    // Listen for scroll events on the page
-    window.addEventListener("scroll", () => {
-      // Get the current scroll position
-      const scrollPos = window.scrollY;
-
-      // If the user is scrolling up, add the "hidden" class to the navbar
-      if (navbar.current && scrollPos < lastScrollPos) {
-        navbar.current.classList.add("hidden");
-      } else if (navbar.current) {
-        navbar.current.classList.remove("hidden");
-      }
-
-      // Update the last scroll position
-      lastScrollPos = scrollPos;
-    });
-  }, []);
 
   return (
     <nav

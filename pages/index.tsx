@@ -1,10 +1,8 @@
 import Head from "next/head";
 
-import { useTheme } from "next-themes";
 import Hero from "../components/Hero";
 
 export default function Home() {
-  const { theme, setTheme } = useTheme();
 
   return (
     <div className="bg-white dark:bg-slate-900">

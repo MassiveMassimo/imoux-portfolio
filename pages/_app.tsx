@@ -31,7 +31,7 @@ export default function App({ Component, pageProps }: AppProps) {
           media="(prefers-color-scheme: dark)"
         />
       </Head>
-      <ThemeProvider attribute="class">
+      <ThemeProvider attribute="class" >
         <Suspense fallback={<Loader />}>
           <Navbar />
           <Component {...pageProps} className=""/>
