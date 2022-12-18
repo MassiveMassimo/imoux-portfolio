@@ -2,22 +2,22 @@ import { memo, useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 
 export default memo(function DarkModeToggle() {
-  const [mounted, setMounted] = useState(false)
-  const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   // useEffect only runs on the client, so now we can safely show the UI
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   if (!mounted) {
-    return null
+    return null;
   }
 
   return (
     <div className="flex h-full items-center py-2">
       <button
-        className="dark:highlight-white/5 relative h-full items-center rounded-lg shadow-sm ring-1 ring-slate-900/10 hover:ring-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 lg:flex"
+        className="highlight relative h-full items-center rounded-lg shadow-sm ring-1 ring-slate-900/10 hover:ring-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 lg:flex"
         onClick={() => {
           setTheme(theme === "dark" ? "light" : "dark");
         }}

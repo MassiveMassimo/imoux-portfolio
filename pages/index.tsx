@@ -3,7 +3,6 @@ import Head from "next/head";
 import Hero from "../components/Hero";
 
 export default function Home() {
-
   return (
     <div className="bg-white dark:bg-slate-900">
       <Head>
@@ -14,7 +13,7 @@ export default function Home() {
         />
       </Head>
 
-      <main className="container space-y-40 mx-auto">
+      <main className="mx-auto space-y-40 px-8">
         <Hero />
         <h1 className="text-center text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
           Rapidly build modern websites without ever leaving your HTML.

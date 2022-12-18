@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 * {
+  box-sizing: border-box;
   @apply transition duration-500 ease-in-out;
 }
 
@@ -28,16 +29,9 @@ body {
   @apply bg-slate-400 dark:bg-slate-600 border-solid border-4 border-white rounded-full dark:border-slate-900 w-1 hover:w-3 hover:border-2;
 }
 
-// @mixin hidden {
-//   transition: height 0.3s ease-out, overflow 0.3s ease-out;
-
-//   height: 0;
-//   overflow: hidden;
-// }
-
-// #navbar {
-//   @apply hidden;
-// }
+.highlight {
+  box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 5%);
+}
 
 @layer components {
   .btn-primary {
