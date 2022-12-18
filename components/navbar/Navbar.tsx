@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <nav
       id="navbar"
-      className="fixed top-0 left-0 z-20 h-16 w-full bg-white/75 backdrop-blur dark:border-slate-50/[0.0625] dark:bg-slate-900/75 lg:z-50 lg:border-b lg:border-slate-900/10"
+      className="fixed top-0 left-0 z-20 h-16 w-full bg-white/75 backdrop-blur dark:border-slate-50/5 dark:bg-slate-900/75 border-b border-slate-900/10"
     >
       <div className="mx-auto flex h-full flex-wrap items-center justify-between px-8">
         <Link href="/" className="group flex h-full w-fit items-center py-4">
