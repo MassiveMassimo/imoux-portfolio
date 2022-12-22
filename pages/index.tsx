@@ -1,10 +1,11 @@
 import Head from "next/head";
 
 import Hero from "../components/Hero";
+import loader from "/public/loader.svg";
 
 export default function Home() {
   return (
-    <div className="bg-white dark:bg-slate-900">
+    <div>
       <Head>
         <title>Imo UX</title>
         <meta
@@ -13,7 +14,7 @@ export default function Home() {
         />
       </Head>
 
-      <main className="mx-auto space-y-40 px-8">
+      <div className="mx-auto space-y-40 px-8">
         <Hero />
         <h1 className="text-center text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
           Rapidly build modern websites without ever leaving your HTML.
@@ -24,7 +25,7 @@ export default function Home() {
         </p>
 
         <button className="btn-primary">Save changes</button>
-      </main>
+      </div>
     </div>
   );
 }
