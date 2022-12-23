@@ -17,7 +17,7 @@ export default memo(function DarkModeToggle() {
   return (
     <div className="flex h-full items-center py-2">
       <button
-        className="highlight relative h-full items-center rounded-lg shadow-sm ring-1 ring-slate-900/10 hover:ring-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 lg:flex"
+        className="highlight relative h-full items-center rounded-lg shadow-sm ring-1 ring-slate-900/10 hover:ring-slate-300 hover:shadow-xl dark:bg-slate-800 dark:hover:bg-slate-700 lg:flex"
         onClick={() => {
           setTheme(theme === "dark" ? "light" : "dark");
         }}
