@@ -15,9 +15,8 @@ export default function Hero() {
       <div className="col-span-6 col-start-1 row-span-6 row-start-2 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-400 to-blue-500 shadow-xl lg:col-span-4 lg:col-start-3 lg:row-span-4 lg:row-start-1">
         <Suspense fallback={<Loading />}>
           <iframe
+            className="w-full h-full"
             src="https://my.spline.design/imouxhero-54a7f0c990e8c35b53953d0ec38e9f23/"
-            width="100%"
-            height="100%"
           ></iframe>
         </Suspense>
       </div>
