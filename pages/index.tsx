@@ -1,7 +1,6 @@
 import Head from "next/head";
 
-import Hero from "../components/Hero";
-import loader from "/public/loader.svg";
+import Hero from "../components/landing/Hero";
 
 export default function Home() {
   return (
