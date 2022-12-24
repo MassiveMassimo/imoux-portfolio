@@ -2,10 +2,26 @@ import DarkModeToggle from "./DarkModeToggle";
 import Link from "next/link";
 
 export default function Navbar() {
+  let previousScroll = 0;
+
+  if (typeof window !== "undefined") {
+    window.addEventListener("scroll", () => {
+      const currentScroll = window.scrollY;
+      if (currentScroll > previousScroll) {
+        // User is scrolling down, hide the navbar
+        document.querySelector("nav")!.classList.add("-translate-y-full");
+      } else {
+        // User is scrolling up, show the navbar
+        document.querySelector("nav")!.classList.remove("-translate-y-full");
+      }
+      previousScroll = currentScroll;
+    });
+  }
+
   return (
     <nav
       id="navbar"
-      className="fixed top-0 left-0 z-20 h-16 w-full bg-white/75 backdrop-blur dark:border-slate-50/5 dark:bg-slate-900/75 border-b border-slate-900/10"
+      className="fixed top-0 left-0 z-20 h-16 w-full border-b border-slate-900/10 bg-white/75 backdrop-blur-2xl dark:border-slate-50/5 dark:bg-slate-900/75"
     >
       <div className="mx-auto flex h-full flex-wrap items-center justify-between px-8">
         <Link href="/" className="group flex h-full w-fit items-center py-4">

@@ -3,7 +3,7 @@ import Loading from "./loading";
 
 export default function Hero() {
   return (
-    <section className="grid h-screen grid-flow-col grid-cols-6 pb-4 pt-20">
+    <section className="grid h-screen grid-flow-col grid-cols-6 pb-4 pt-20" id="hero">
       <div className="highlight drop-shadow-3xl pointer-events-none z-10 col-span-4 col-start-2 row-span-2 row-start-1 flex flex-col justify-center gap-2 rounded-3xl bg-slate-200/30 px-10 backdrop-blur-2xl dark:bg-slate-800/60 lg:col-span-3 lg:col-start-1 lg:row-span-2 lg:row-start-2">
         <h3 className="text-center text-lg font-medium text-slate-600 dark:text-slate-400 md:text-xl lg:text-right lg:text-2xl">
           Hi I&apos;m Imo!
