@@ -13,6 +13,9 @@ module.exports = {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
+      backgroundImage: {
+        'hero-pattern': "url('/hero-dark.png')",
+      },
     },
   },
   plugins: [

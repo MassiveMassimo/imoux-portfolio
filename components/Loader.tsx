@@ -4,7 +4,7 @@ export default function Loader() {
     <div className="fixed top-0 left-0 z-20 mx-auto h-screen w-screen bg-white dark:bg-gray-900">
       <svg
           id="eOM4nes23vc1"
-          className="stroke-black dark:stroke-white w-full h-full"
+          className="stroke-slate-900 dark:stroke-white w-full h-full"
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
           viewBox="0 0 300 300"

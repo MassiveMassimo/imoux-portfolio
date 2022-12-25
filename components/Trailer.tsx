@@ -73,7 +73,7 @@ export default function Trailer() {
     >
       <svg
         id="trailer-icon"
-        className="h-full overflow-visible fill-black dark:fill-white"
+        className="h-full overflow-visible fill-slate-900 dark:fill-white"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
       >

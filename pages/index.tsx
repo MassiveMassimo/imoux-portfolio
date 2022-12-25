@@ -13,7 +13,7 @@ export default function Home() {
         />
       </Head>
 
-      <div className="mx-auto space-y-40 px-8">
+      <div className="mx-auto space-y-40">
         <Hero />
         <h1 className="text-center text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
           Rapidly build modern websites without ever leaving your HTML.
