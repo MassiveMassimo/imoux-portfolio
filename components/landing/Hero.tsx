@@ -18,7 +18,7 @@ export default function Hero() {
             className="h-full w-full"
             src="https://my.spline.design/imouxhero-54a7f0c990e8c35b53953d0ec38e9f23/"
           ></iframe>
-          <div className="absolute w-1/4 h-1/4 bg-[#7ABCDF] bottom-0 right-0"/>
+          <div className="absolute w-40 h-14 bg-[#7ABCDF] bottom-0 right-0"/>
         </Suspense>
       </div>
     </section>
