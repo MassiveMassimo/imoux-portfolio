@@ -14,7 +14,7 @@ module.exports = {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
       backgroundImage: {
-        'hero-pattern': "url('/hero-dark.png')",
+        'gradient': "url('/gradient.png')",
       },
     },
   },
