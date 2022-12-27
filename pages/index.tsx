@@ -1,6 +1,7 @@
 import Head from "next/head";
 
 import Hero from "../components/landing/Hero";
+import PixelPerfect from "../components/landing/PixelPerfect";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
 
       <div className="mx-auto space-y-40">
         <Hero />
+        <PixelPerfect />
         <h1 className="text-center text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
           Rapidly build modern websites without ever leaving your HTML.
         </h1>

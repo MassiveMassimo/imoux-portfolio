@@ -4,7 +4,7 @@ import Loading from "./loading";
 export default function Hero() {
   return (
     <section className="grid h-screen grid-flow-col grid-cols-6 px-8 pb-4 pt-20">
-      <div className="highlight drop-shadow-2xl pointer-events-none z-10 col-span-4 col-start-2 row-span-2 row-start-1 flex flex-col justify-center gap-2 rounded-3xl bg-slate-200/30 px-10 backdrop-blur-2xl dark:bg-slate-800/60 lg:col-span-3 lg:col-start-1 lg:row-span-2 lg:row-start-2">
+      <div className="highlight pointer-events-none z-10 col-span-4 col-start-2 row-span-2 row-start-1 flex flex-col justify-center gap-2 rounded-3xl bg-slate-200/30 px-10 drop-shadow-2xl backdrop-blur-2xl dark:bg-slate-800/60 lg:col-span-3 lg:col-start-1 lg:row-span-2 lg:row-start-2">
         <h3 className="text-center text-lg font-medium text-slate-600 dark:text-slate-400 md:text-xl lg:text-right lg:text-2xl">
           Hi I&apos;m Imo!
         </h3>
@@ -18,7 +18,7 @@ export default function Hero() {
             className="h-full w-full"
             src="https://my.spline.design/imouxhero-54a7f0c990e8c35b53953d0ec38e9f23/"
           ></iframe>
-          <div className="absolute w-40 h-14 bg-[#7ABCDF] bottom-0 right-0"/>
+          <div className="absolute bottom-0 right-0 h-14 w-40 bg-[#7ABCDF]" />
         </Suspense>
       </div>
     </section>
