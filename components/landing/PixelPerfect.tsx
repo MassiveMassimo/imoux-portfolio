@@ -2,18 +2,11 @@ import Image from "next/image";
 
 export default function PixelPerfect() {
   return (
-    <section className=" px-8">
+    <section className="px-8 lg:px-16">
       <div className="relative h-24">
         <Image
-          className="block dark:hidden"
-          src="/illustration-pixelperfect-light.svg"
-          width={400}
-          height={0}
-          alt=""
-        />
-        <Image
-          className="hidden dark:block"
-          src="/illustration-pixelperfect-dark.svg"
+          className=""
+          src="/illustration-pixelperfect.svg"
           width={400}
           height={0}
           alt=""
