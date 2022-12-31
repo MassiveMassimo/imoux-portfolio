@@ -15,6 +15,7 @@ module.exports = {
       },
       backgroundImage: {
         'gradient': "url('/gradient.png')",
+        'pixelperfect': "url('/pixelperfect.png')",
       },
     },
   },
