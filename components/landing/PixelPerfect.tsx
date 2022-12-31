@@ -1,13 +1,16 @@
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useMotionValue } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export default function PixelPerfect() {
-  let x = Math.random() < 0.5 ? -40 : 40;
-  let y = Math.random() < 0.5 ? -40 : 40;
+  let initialX = Math.random() < 0.5 ? -40 : 40;
+  let initialY = Math.random() < 0.5 ? -40 : 40;
 
-  const [stateX, setX] = useState(x);
-  const [stateY, setY] = useState(y);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const [stateX, setX] = useState(x.get());
+  const [stateY, setY] = useState(y.get());
 
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
@@ -23,7 +26,8 @@ export default function PixelPerfect() {
       <motion.div
         className="z-10 w-full cursor-grab rounded-md bg-white p-8 dark:bg-slate-900"
         whileTap={{ cursor: "grabbing" }}
-        initial={{ x: x, y: y }}
+        initial={{ x: initialX, y: initialY }}
+        style={{ x, y }}
         drag
         dragConstraints={{ left: -40, right: 40, top: -40, bottom: 40 }}
         dragTransition={{
@@ -32,19 +36,19 @@ export default function PixelPerfect() {
           bounceDamping: 20,
           modifyTarget: (target) => Math.round(target / 1) * 1,
         }}
-        onDrag={(event, info) => {
-          setX(stateX + info.delta.x);
-          setY(stateY + info.delta.y);
+        onDrag={() => {
+          setX(x.get());
+          setY(y.get());
         }}
-        onDragEnd={(event, info) => {
-          if (stateX > 40) {
+        onDragEnd={() => {
+          if (x.get() > 40) {
             setX(40);
-          } else if (stateX < -40) {
+          } else if (x.get() < -40) {
             setX(-40);
           }
-          if (stateY > 40) {
+          if (y.get() > 40) {
             setY(40);
-          } else if (stateY < -40) {
+          } else if (y.get() < -40) {
             setY(-40);
           }
         }}
