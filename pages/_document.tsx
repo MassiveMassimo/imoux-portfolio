@@ -22,7 +22,7 @@ export default function Document() {
           media="(prefers-color-scheme: dark)"
         />
       </Head>
-      <body className="bg-white dark:bg-slate-900 bg-gradient bg-contain bg-no-repeat">
+      <body className="bg-white dark:bg-slate-900 bg-gradient bg-contain bg-no-repeat overflow-x-hidden">
         <Main />
         <NextScript />
       </body>

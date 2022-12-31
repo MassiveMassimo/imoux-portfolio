@@ -12,7 +12,7 @@ export default function Hero() {
           Your Next
         </h1>
       </div>
-      <div className="relative col-span-6 col-start-1 row-span-6 row-start-2 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-400 to-blue-500 shadow-2xl lg:col-span-4 lg:col-start-3 lg:row-span-4 lg:row-start-1">
+      <div className="relative col-span-6 col-start-1 row-span-6 row-start-2 overflow-hidden rounded-3xl bg-[#7ABCDF] shadow-2xl lg:col-span-4 lg:col-start-3 lg:row-span-4 lg:row-start-1">
         <Suspense fallback={<Loading />}>
           <iframe
             className="h-full w-full"

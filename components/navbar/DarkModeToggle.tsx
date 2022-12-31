@@ -25,7 +25,7 @@ export default memo(function DarkModeToggle() {
     >
       {theme === "light" ? (
         <svg
-          className="h-full -rotate-45 fill-amber-500 p-3 active:rotate-0"
+          className="transition-all h-full -rotate-45 fill-amber-500 p-3 active:rotate-0"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -35,7 +35,7 @@ export default memo(function DarkModeToggle() {
           />
           <path
             fill-rule="evenodd"
-            clip-rule="evenodd"
+            clipRule="evenodd"
             d="M12 17C14.7614 17 17 14.7614 17 12C17 9.23858 14.7614 7 12 7C9.23858 7 7 9.23858 7 12C7 14.7614 9.23858 17 12 17Z"
           />
         </svg>
@@ -45,7 +45,7 @@ export default memo(function DarkModeToggle() {
         //   src="/sun.svg"
         // ></img>
         <svg
-          className="h-full fill-indigo-400 p-3 active:-rotate-45"
+          className="transition-all h-full fill-indigo-400 p-3 active:-rotate-45"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
