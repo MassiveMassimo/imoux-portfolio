@@ -74,8 +74,8 @@ export default function PixelPerfect() {
                 </div>
                 <p className="text-white">
                   {stateX < 0
-                    ? `${Math.abs(stateX)} px too left`
-                    : `${stateX} px too right`}
+                    ? `${Math.abs(Math.round(stateX))} px too left`
+                    : `${Math.round(stateX)} px too right`}
                 </p>
               </div>
             )}
@@ -93,8 +93,8 @@ export default function PixelPerfect() {
                 </div>
                 <p className="text-white">
                   {stateY < 0
-                    ? `${Math.abs(stateY)} px too high`
-                    : `${stateY} px too low`}
+                    ? `${Math.abs(Math.round(stateY))} px too high`
+                    : `${Math.round(stateY)} px too low`}
                 </p>
               </div>
             )}
