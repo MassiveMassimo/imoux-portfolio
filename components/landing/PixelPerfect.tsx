@@ -62,7 +62,7 @@ export default function PixelPerfect() {
               <div className="highlight inline-flex flex-row items-center gap-2 rounded-full bg-rose-500 p-2 pr-4">
                 <div className="inline-block rounded-full bg-rose-400 p-2">
                   <svg
-                    className="h-6 w-6 fill-white"
+                    className="h-5 w-5 lg:h-6 lg:w-6 fill-white"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -81,7 +81,7 @@ export default function PixelPerfect() {
               <div className="highlight inline-flex flex-row items-center gap-2 rounded-full bg-rose-500 p-2 pr-4">
                 <div className="inline-block rounded-full bg-rose-400 p-2">
                   <svg
-                    className="h-6 w-6 fill-white"
+                    className="h-5 w-5 lg:h-6 lg:w-6 fill-white"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -100,7 +100,7 @@ export default function PixelPerfect() {
           <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-5xl">
             A True Pixel Perfectionist
           </h2>
-          <p className="my-5 max-w-3xl text-lg text-slate-600 dark:text-slate-400">
+          <p className="my-5 max-w-3xl text-base lg:text-lg text-slate-600 dark:text-slate-400">
             A single pixel can be the difference between a great design and a
             perfect one. That&apos;s why high-quality products rely on people
             who care about the most minute of details and can ensure you with

@@ -15,19 +15,10 @@ export default function Home() {
         />
       </Head>
 
-      <div className="mx-auto space-y-40 overflow-hidden">
+      <div className="mx-auto space-y-40 pb-40 overflow-hidden">
         <Hero />
         <Logos />
         <PixelPerfect />
-        <h1 className="text-center text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
-          Rapidly build modern websites without ever leaving your HTML.
-        </h1>
-
-        <p className="my-6 mx-auto max-w-3xl text-center text-lg text-slate-600 dark:text-slate-400">
-          The quick brown fox jumps over the lazy dog.
-        </p>
-
-        <button className="btn-primary">Save changes</button>
       </div>
     </div>
   );
