@@ -9,13 +9,10 @@ export default function PixelPerfect() {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const [state, setState] = useState({ x: initialX, y: initialY });
+  const [stateX, setX] = useState(initialX);
+  const [stateY, setY] = useState(initialY);
 
-  useEffect(() => {
-    setState({ x: x.get(), y: y.get() });
-  }, [x, y]);
-
-  console.log(state.x, state.y);
+  // console.log(stateX, stateY);
 
 
   return (
@@ -34,18 +31,19 @@ export default function PixelPerfect() {
           modifyTarget: (target) => Math.round(target / 1) * 1,
         }}
         onDrag={() => {
-          setState({ x: x.get(), y: y.get() });
+          setX(x.get());
+          setY(y.get());
         }}
         onDragEnd={() => {
           if (x.get() > 40) {
-            setState({ x: 40, y: y.get() });
+            setX(40);
           } else if (x.get() < -40) {
-            setState({ x: -40, y: y.get() });
+            setX(-40);
           }
           if (y.get() > 40) {
-            setState({ x: x.get(), y: 40 });
+            setY(40);
           } else if (y.get() < -40) {
-            setState({ x: x.get(), y: -40 });
+            setY(-40);
           }
         }}
       >
@@ -60,7 +58,7 @@ export default function PixelPerfect() {
         </div>
         <div className="z-10">
           <div className="mb-4 inline-flex flex-row items-center gap-2">
-            {state.x === 0 ? null : (
+            {stateX === 0 ? null : (
               <div className="highlight inline-flex flex-row items-center gap-2 rounded-full bg-rose-500 p-2 pr-4">
                 <div className="inline-block rounded-full bg-rose-400 p-2">
                   <svg
@@ -73,13 +71,13 @@ export default function PixelPerfect() {
                   </svg>
                 </div>
                 <p className="text-white">
-                  {state.x < 0
-                    ? `${Math.abs(Math.round(state.x))} px too left`
-                    : `${Math.round(state.x)} px too right`}
+                  {stateX < 0
+                    ? `${Math.abs(Math.round(stateX))} px too left`
+                    : `${Math.round(stateX)} px too right`}
                 </p>
               </div>
             )}
-            {state.y === 0 ? null : (
+            {stateY === 0 ? null : (
               <div className="highlight inline-flex flex-row items-center gap-2 rounded-full bg-rose-500 p-2 pr-4">
                 <div className="inline-block rounded-full bg-rose-400 p-2">
                   <svg
@@ -92,9 +90,9 @@ export default function PixelPerfect() {
                   </svg>
                 </div>
                 <p className="text-white">
-                  {state.y < 0
-                    ? `${Math.abs(Math.round(state.y))} px too high`
-                    : `${Math.round(state.y)} px too low`}
+                  {stateY < 0
+                    ? `${Math.abs(Math.round(stateY))} px too high`
+                    : `${Math.round(stateY)} px too low`}
                 </p>
               </div>
             )}
