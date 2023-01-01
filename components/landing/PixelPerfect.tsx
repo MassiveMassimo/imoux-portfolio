@@ -58,7 +58,7 @@ export default function PixelPerfect() {
         </div>
         <div className="z-10">
           <div className="mb-4 inline-flex flex-row items-center gap-2">
-            {stateX === 0 ? null : (
+            {Math.round(stateX) === 0 ? null : (
               <div className="highlight inline-flex flex-row items-center gap-2 rounded-full bg-rose-500 p-2 pr-4">
                 <div className="inline-block rounded-full bg-rose-400 p-2">
                   <svg
@@ -77,7 +77,7 @@ export default function PixelPerfect() {
                 </p>
               </div>
             )}
-            {stateY === 0 ? null : (
+            {Math.round(stateY) === 0 ? null : (
               <div className="highlight inline-flex flex-row items-center gap-2 rounded-full bg-rose-500 p-2 pr-4">
                 <div className="inline-block rounded-full bg-rose-400 p-2">
                   <svg
