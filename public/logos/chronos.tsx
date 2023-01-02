@@ -1,6 +1,7 @@
 export default function Chronos() {
   return (
     <svg
+      className="group h-20 flex-none"
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
     >
