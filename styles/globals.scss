@@ -40,6 +40,21 @@ body {
 
 // ===================================================================== //
 
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.scroll-infinite {
+  animation: scroll 10s linear infinite;
+}
+
+// ===================================================================== //
+
 #eOM4nes23vc2_to {
   animation: eOM4nes23vc2_to__to 1500ms linear infinite normal forwards;
 }

@@ -20,7 +20,7 @@ export default function Loader() {
               ry="16"
               transform="translate(-16,-32)"
               fill="none"
-              stroke-width="8"
+              strokeWidth="8"
             />
           </g>
           <g id="eOM4nes23vc3_to" transform="translate(134,150)">
@@ -31,7 +31,7 @@ export default function Loader() {
               ry="16"
               transform="translate(-27,-32)"
               fill="none"
-              stroke-width="8"
+              strokeWidth="8"
             />
           </g>
           <g id="eOM4nes23vc4_to" transform="translate(193,150)">
@@ -42,7 +42,7 @@ export default function Loader() {
               ry="32"
               transform="translate(-32,-32)"
               fill="none"
-              stroke-width="8"
+              strokeWidth="8"
             />
           </g>
         </svg>

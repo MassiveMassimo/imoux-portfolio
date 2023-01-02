@@ -12,9 +12,6 @@ export default function PixelPerfect() {
   const [stateX, setX] = useState(initialX);
   const [stateY, setY] = useState(initialY);
 
-  // console.log(stateX, stateY);
-
-
   return (
     <section className="relative w-full rounded-md bg-slate-200 bg-pixelperfect bg-cover dark:bg-slate-800/40">
       <motion.div
