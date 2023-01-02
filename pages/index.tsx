@@ -18,7 +18,7 @@ export default function Home() {
       <div className="mx-auto space-y-40 pb-40 overflow-hidden">
         <Hero />
         <Logos />
-        {/* <PixelPerfect /> */}
+        <PixelPerfect />
       </div>
     </div>
   );
