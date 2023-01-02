@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { motion, useMotionValue } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function PixelPerfect() {
   let initialX = Math.random() < 0.5 ? -40 : 40;
