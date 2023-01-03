@@ -45,12 +45,12 @@ body {
     transform: translateX(0);
   }
   to {
-    transform: translateX(-100%);
+    transform: translateX(-105rem);
   }
 }
 
 .scroll-infinite {
-  animation: scroll 10s linear infinite;
+  animation: scroll 30s linear infinite;
 }
 
 // ===================================================================== //

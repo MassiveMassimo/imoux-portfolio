@@ -57,7 +57,7 @@ export default function Navbar() {
             />
           </svg>
         </Link>
-        <div className="flex h-full items-center gap-2 py-2">
+        <div className="flex h-full items-center space-x-2 py-2">
           <button
             className="h-full items-center rounded-lg hover:shadow-xl hover:ring-slate-300 dark:hover:bg-slate-700"
             onClick={() => {

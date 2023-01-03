@@ -1,8 +1,11 @@
 import Image from "next/image";
 import { motion, useMotionValue } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import confetti from "canvas-confetti";
 
 export default function PixelPerfect() {
+  const [hydrated, setHydrated] = useState(false);
+
   let initialX = Math.random() < 0.5 ? -40 : 40;
   let initialY = Math.random() < 0.5 ? -40 : 40;
 
@@ -11,6 +14,14 @@ export default function PixelPerfect() {
 
   const [stateX, setX] = useState(initialX);
   const [stateY, setY] = useState(initialY);
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
+
+  if (!hydrated) {
+    return null;
+  }
 
   return (
     <section className="relative w-full rounded-md bg-slate-200 bg-pixelperfect bg-cover dark:bg-slate-800/40">
@@ -42,6 +53,21 @@ export default function PixelPerfect() {
           } else if (y.get() < -40) {
             setY(-40);
           }
+
+          if (stateX === 0 && stateY === 0) {
+            confetti({
+              particleCount: 200,
+              angle: 60,
+              spread: 60,
+              origin: { x: 0, y: 1 },
+            });
+            confetti({
+              particleCount: 200,
+              angle: 120,
+              spread: 60,
+              origin: { x: 1, y: 1 },
+            });
+          }
         }}
       >
         <div className="h-20">
@@ -54,12 +80,12 @@ export default function PixelPerfect() {
           />
         </div>
         <div className="z-10">
-          <div className="mb-4 inline-flex flex-row items-center gap-2">
+          <div className="mb-4 inline-flex flex-row items-center space-x-2">
             {Math.round(stateX) === 0 ? null : (
-              <div className="highlight inline-flex flex-row items-center gap-2 rounded-full bg-rose-500 p-2 pr-4">
+              <div className="highlight inline-flex flex-row items-center space-x-2 rounded-full bg-rose-500 p-2 pr-4">
                 <div className="inline-block rounded-full bg-rose-400 p-2">
                   <svg
-                    className="h-5 w-5 lg:h-6 lg:w-6 fill-white"
+                    className="h-5 w-5 fill-white lg:h-6 lg:w-6"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -75,10 +101,10 @@ export default function PixelPerfect() {
               </div>
             )}
             {Math.round(stateY) === 0 ? null : (
-              <div className="highlight inline-flex flex-row items-center gap-2 rounded-full bg-rose-500 p-2 pr-4">
+              <div className="highlight inline-flex flex-row items-center space-x-2 rounded-full bg-rose-500 p-2 pr-4">
                 <div className="inline-block rounded-full bg-rose-400 p-2">
                   <svg
-                    className="h-5 w-5 lg:h-6 lg:w-6 fill-white"
+                    className="h-5 w-5 fill-white lg:h-6 lg:w-6"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -97,7 +123,7 @@ export default function PixelPerfect() {
           <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-5xl">
             A True Pixel Perfectionist
           </h2>
-          <p className="my-5 max-w-3xl text-base lg:text-lg text-slate-600 dark:text-slate-400">
+          <p className="my-5 max-w-3xl text-base text-slate-600 dark:text-slate-400 lg:text-lg">
             A single pixel can be the difference between a great design and a
             perfect one. That&apos;s why high-quality products rely on people
             who care about the most minute of details and can ensure you with
