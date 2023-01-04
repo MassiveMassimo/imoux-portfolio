@@ -13,13 +13,14 @@ export default function Hero() {
         </h1>
       </div>
       <div className="relative col-span-6 col-start-1 row-span-6 row-start-2 overflow-hidden rounded-3xl bg-[#7ABCDF] shadow-2xl lg:col-span-4 lg:col-start-3 lg:row-span-4 lg:row-start-1">
-        <Suspense fallback={<Loading />}>
+        {/* <Loading /> */}
+        {/* <Suspense fallback={<Loading />}> */}
           <iframe
             className="h-full w-full"
             src="https://my.spline.design/imouxhero-54a7f0c990e8c35b53953d0ec38e9f23/"
           ></iframe>
           <div className="absolute bottom-0 right-0 h-14 w-40 bg-[#7ABCDF]" />
-        </Suspense>
+        {/* </Suspense> */}
       </div>
     </section>
   );
