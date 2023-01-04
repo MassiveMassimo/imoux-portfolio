@@ -45,12 +45,57 @@ body {
     transform: translateX(0);
   }
   to {
+    transform: translateX(-70rem);
+  }
+}
+
+@keyframes scroll-md {
+  from {
+    transform: translateX(0);
+  }
+  to {
     transform: translateX(-105rem);
   }
 }
 
-.scroll-infinite {
+@keyframes scroll-3 {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-83.375rem);
+  }
+}
+
+@keyframes scroll-3-md {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-103.375rem);
+  }
+}
+
+.scroll-infinite-1 {
+  animation: scroll 40s linear infinite;
+}
+.scroll-infinite-2 {
   animation: scroll 30s linear infinite;
+}
+.scroll-infinite-3 {
+  animation: scroll-3 40s linear infinite;
+}
+
+@media (min-width: 1024px) {
+  .scroll-infinite-1 {
+    animation: scroll-md 40s linear infinite;
+  }
+  .scroll-infinite-2 {
+    animation: scroll-md 30s linear infinite;
+  }
+  .scroll-infinite-3 {
+    animation: scroll-3-md 40s linear infinite;
+  }
 }
 
 // ===================================================================== //
