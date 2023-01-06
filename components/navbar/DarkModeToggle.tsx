@@ -5,6 +5,7 @@ import moon from "/moon.svg";
 
 export default memo(function DarkModeToggle() {
   const [hydrated, setHydrated] = useState(false);
+  const { theme, setTheme } = useTheme();
   
   // useEffect only runs on the client, so now we can safely show the UI
   useEffect(() => {
@@ -15,7 +16,6 @@ export default memo(function DarkModeToggle() {
     return null;
   }
   
-  const { theme, setTheme } = useTheme();
   
   return (
     <button

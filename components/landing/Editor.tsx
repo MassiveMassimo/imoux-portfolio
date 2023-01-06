@@ -6,6 +6,7 @@ import { useTheme } from "next-themes";
 
 export default function Editor() {
   const [hydrated, setHydrated] = useState(false);
+  const { theme } = useTheme();
   
   const onChange = useCallback((value: string, viewUpdate: any) => {
     console.log("value:", value);
@@ -18,7 +19,6 @@ export default function Editor() {
   if (!hydrated) {
     return null;
   }
-  const { theme } = useTheme();
   
   return (
     <section className="relative flex h-4/5 w-full flex-col space-y-5 px-8">
