@@ -5,7 +5,7 @@ import moon from "/moon.svg";
 
 export default memo(function DarkModeToggle() {
   const [hydrated, setHydrated] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   
   // useEffect only runs on the client, so now we can safely show the UI
   useEffect(() => {
@@ -17,14 +17,15 @@ export default memo(function DarkModeToggle() {
   }
   
   
+  
   return (
     <button
       className="highlight h-full items-center rounded-lg shadow-sm ring-1 ring-slate-900/10 hover:shadow-xl hover:ring-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700"
       onClick={() => {
-        setTheme(theme === "dark" ? "light" : "dark");
+        setTheme(resolvedTheme === "dark" ? "light" : "dark");
       }}
     >
-      {theme === "light" ? (
+      {resolvedTheme === "light" ? (
         <svg
           className="transition-all h-full -rotate-45 fill-amber-500 p-3 active:rotate-0"
           viewBox="0 0 24 24"

@@ -6,7 +6,7 @@ import { useTheme } from "next-themes";
 
 export default function Editor() {
   const [hydrated, setHydrated] = useState(false);
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
   
   const onChange = useCallback((value: string, viewUpdate: any) => {
     console.log("value:", value);
@@ -29,7 +29,7 @@ export default function Editor() {
         <CodeMirror
           value="console.log('hello world!');"
           height="400px"
-          theme={theme === "dark" ? githubDark : githubLight}
+          theme={resolvedTheme === "dark" ? githubDark : githubLight}
           extensions={[javascript({ typescript: true })]}
           onChange={onChange}
         />
