@@ -5,17 +5,18 @@ import moon from "/moon.svg";
 
 export default memo(function DarkModeToggle() {
   const [hydrated, setHydrated] = useState(false);
-  const { theme, setTheme } = useTheme();
-
+  
   // useEffect only runs on the client, so now we can safely show the UI
   useEffect(() => {
     setHydrated(true);
   }, []);
-
+  
   if (!hydrated) {
     return null;
   }
-
+  
+  const { theme, setTheme } = useTheme();
+  
   return (
     <button
       className="highlight h-full items-center rounded-lg shadow-sm ring-1 ring-slate-900/10 hover:shadow-xl hover:ring-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700"

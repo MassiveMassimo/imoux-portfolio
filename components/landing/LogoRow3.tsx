@@ -65,11 +65,11 @@ export default function LogoRow3() {
             y2="22.8226"
             gradientUnits="userSpaceOnUse"
           >
-            <stop offset="0.0729167" stop-color="#A293FF" />
-            <stop offset="0.255208" stop-color="#51CFEB" />
-            <stop offset="0.494792" stop-color="#58FAB6" />
-            <stop offset="0.65625" stop-color="#F2E09E" />
-            <stop offset="0.807292" stop-color="#FC8888" />
+            <stop offset="0.0729167" stopColor="#A293FF" />
+            <stop offset="0.255208" stopColor="#51CFEB" />
+            <stop offset="0.494792" stopColor="#58FAB6" />
+            <stop offset="0.65625" stopColor="#F2E09E" />
+            <stop offset="0.807292" stopColor="#FC8888" />
           </linearGradient>
         </defs>
       </svg>
@@ -178,11 +178,11 @@ export default function LogoRow3() {
             y2="22.8226"
             gradientUnits="userSpaceOnUse"
           >
-            <stop offset="0.0729167" stop-color="#A293FF" />
-            <stop offset="0.255208" stop-color="#51CFEB" />
-            <stop offset="0.494792" stop-color="#58FAB6" />
-            <stop offset="0.65625" stop-color="#F2E09E" />
-            <stop offset="0.807292" stop-color="#FC8888" />
+            <stop offset="0.0729167" stopColor="#A293FF" />
+            <stop offset="0.255208" stopColor="#51CFEB" />
+            <stop offset="0.494792" stopColor="#58FAB6" />
+            <stop offset="0.65625" stopColor="#F2E09E" />
+            <stop offset="0.807292" stopColor="#FC8888" />
           </linearGradient>
         </defs>
       </svg>

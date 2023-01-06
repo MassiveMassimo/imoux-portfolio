@@ -38,7 +38,7 @@ export default function LogoRow2() {
           width="4.92825"
           height="4.92825"
           transform="rotate(45 12 3.06066)"
-          stroke-width="1.5"
+          strokeWidth="1.5"
           className="fill-none stroke-slate-400 transition-colors group-hover:stroke-[#7B61FF]"
         />
         <rect
@@ -267,7 +267,7 @@ export default function LogoRow2() {
           width="4.92825"
           height="4.92825"
           transform="rotate(45 12 3.06066)"
-          stroke-width="1.5"
+          strokeWidth="1.5"
           className="fill-none stroke-slate-400 transition-colors group-hover:stroke-[#7B61FF]"
         />
         <rect

@@ -3,6 +3,7 @@ import Head from "next/head";
 import Hero from "../components/landing/Hero";
 import Logos from "../components/landing/Logos";
 import PixelPerfect from "../components/landing/PixelPerfect";
+import Editor from "../components/landing/Editor";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <Hero />
         <Logos />
         <PixelPerfect />
+        <Editor />
       </div>
     </div>
   );

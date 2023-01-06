@@ -21,6 +21,10 @@ export default function Document() {
           type="image/svg+xml"
           media="(prefers-color-scheme: dark)"
         />
+        <script
+          defer
+          src="https://unpkg.com/tailwindcss-intersect@1.x.x/dist/observer.min.js"
+        ></script>
       </Head>
       <body className="bg-white dark:bg-slate-900 bg-gradient bg-contain bg-no-repeat">
         <Main />

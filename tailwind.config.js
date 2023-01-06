@@ -20,7 +20,7 @@ module.exports = {
     },
   },
   plugins: [
-    // require("flowbite/plugin")
+    require('tailwindcss-intersect'),
   ],
   darkMode: 'class',
 }
