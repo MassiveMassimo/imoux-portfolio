@@ -21,14 +21,18 @@ export default function Editor() {
   }
   
   return (
-    <section className="relative flex h-4/5 w-full flex-col space-y-5 px-8">
+    <section className="relative flex h-screen w-full flex-col space-y-5 px-8">
       <h2 className="mx-auto text-center text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-5xl">
         Editor Section
       </h2>
-      <div className="transition duration-500 rotate-90 intersect:transform-none delay-500">
+      <div className="">
         <CodeMirror
+          className="text-base"
           value="console.log('hello world!');"
-          height="400px"
+          height="500px"
+          basicSetup={{
+            foldGutter: false,
+          }}
           theme={resolvedTheme === "dark" ? githubDark : githubLight}
           extensions={[javascript({ typescript: true })]}
           onChange={onChange}
