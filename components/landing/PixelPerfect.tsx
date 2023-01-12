@@ -54,7 +54,7 @@ export default function PixelPerfect() {
             setY(-40);
           }
 
-          if (stateX === 0 && stateY === 0) {
+          if (Math.round(stateX) === 0 && Math.round(stateY) === 0) {
             confetti({
               particleCount: 200,
               angle: 60,
