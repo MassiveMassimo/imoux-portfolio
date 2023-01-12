@@ -8,7 +8,7 @@ export default function Hero() {
         <h3 className="text-center text-lg font-medium text-slate-600 dark:text-slate-400 md:text-xl lg:text-right lg:text-2xl">
           Hi I&apos;m Imo!
         </h3>
-        <h1 className="text-center text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-right lg:text-6xl">
+        <h1 className="text-center text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-5xl lg:text-right lg:text-6xl">
           Your Next
         </h1>
       </div>

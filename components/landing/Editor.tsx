@@ -22,7 +22,7 @@ export default function Editor() {
   
   return (
     <section className="relative flex h-screen w-full flex-col space-y-5 px-8">
-      <h2 className="mx-auto text-center text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-5xl">
+      <h2 className="mx-auto text-center text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-4xl lg:text-5xl">
         Editor Section
       </h2>
       <div className="">

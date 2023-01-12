@@ -82,7 +82,7 @@ export default function PixelPerfect() {
         <div className="z-10">
           <div className="mb-4 inline-flex flex-row items-center space-x-2">
             {Math.round(stateX) === 0 ? null : (
-              <div className="highlight inline-flex flex-row items-center space-x-2 rounded-full bg-rose-500 p-2 pr-4">
+              <div className="highlight inline-flex flex-row items-center space-x-2 rounded-full bg-rose-500 p-1 lg:p-2 pr-4 lg:pr-5">
                 <div className="inline-block rounded-full bg-rose-400 p-2">
                   <svg
                     className="h-5 w-5 fill-white lg:h-6 lg:w-6"
@@ -93,7 +93,7 @@ export default function PixelPerfect() {
                     <path d="M12 8C11.4477 8 11 8.448 11 9V13C11 13.552 11.4477 14 12 14C12.5523 14 13 13.552 13 13V9C13 8.448 12.5523 8 12 8ZM12 15C11.4477 15 11 15.448 11 16C11 16.552 11.4477 17 12 17C12.5523 17 13 16.552 13 16C13 15.448 12.5523 15 12 15Z" />
                   </svg>
                 </div>
-                <p className="text-white">
+                <p className="text-sm text-white lg:text-base">
                   {stateX < 0
                     ? `${Math.abs(Math.round(stateX))} px too left`
                     : `${Math.round(stateX)} px too right`}
@@ -101,7 +101,7 @@ export default function PixelPerfect() {
               </div>
             )}
             {Math.round(stateY) === 0 ? null : (
-              <div className="highlight inline-flex flex-row items-center space-x-2 rounded-full bg-rose-500 p-2 pr-4">
+              <div className="highlight inline-flex flex-row items-center space-x-2 rounded-full bg-rose-500 p-1 lg:p-2 pr-4 lg:pr-5">
                 <div className="inline-block rounded-full bg-rose-400 p-2">
                   <svg
                     className="h-5 w-5 fill-white lg:h-6 lg:w-6"
@@ -112,7 +112,7 @@ export default function PixelPerfect() {
                     <path d="M12 8C11.4477 8 11 8.448 11 9V13C11 13.552 11.4477 14 12 14C12.5523 14 13 13.552 13 13V9C13 8.448 12.5523 8 12 8ZM12 15C11.4477 15 11 15.448 11 16C11 16.552 11.4477 17 12 17C12.5523 17 13 16.552 13 16C13 15.448 12.5523 15 12 15Z" />
                   </svg>
                 </div>
-                <p className="text-white">
+                <p className="text-sm text-white lg:text-base">
                   {stateY < 0
                     ? `${Math.abs(Math.round(stateY))} px too high`
                     : `${Math.round(stateY)} px too low`}
@@ -120,7 +120,7 @@ export default function PixelPerfect() {
               </div>
             )}
           </div>
-          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-5xl">
+          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-4xl lg:text-5xl">
             A True Pixel Perfectionist
           </h2>
           <p className="my-5 max-w-3xl text-base text-slate-600 dark:text-slate-400 lg:text-lg">

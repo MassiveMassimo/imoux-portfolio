@@ -5,7 +5,7 @@ import LogoRow3 from "./LogoRow3";
 export default function Logos() {
   return (
     <section className="relative flex w-full flex-col overflow-hidden px-8">
-      <h2 className="mx-auto text-center text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-5xl">
+      <h2 className="mx-auto text-center text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-4xl lg:text-5xl">
         Here&apos;s a cool logo section
       </h2>
       <p className="my-5 mx-auto max-w-3xl text-center text-lg text-slate-600 dark:text-slate-400">
