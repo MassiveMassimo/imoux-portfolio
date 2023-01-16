@@ -1,10 +1,21 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 
 export default function Silicon() {
   let h2 =
     "text-xl font-bold tracking-tight text-slate-900 dark:text-white md:text-2xl lg:text-3xl";
+
+  const main = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ref = main.current;
+    if (!ref || !ref.textContent) return;
+    const text = ref.textContent.split(" ").length;
+    const time = text / 238;
+    console.log(Math.round(time));
+  }, [])
 
   return (
     <div>
@@ -40,13 +51,16 @@ export default function Silicon() {
                 More by me
               </h4>
               <Link href="/" className="group">
-                <div className="aspect-[18/9] w-full rounded-lg mb-2 bg-cyan-400 origin-bottom group-hover:scale-105 transition-transform duration-300"></div>
+                <div className="mb-2 aspect-[18/9] w-full origin-bottom rounded-lg bg-cyan-400 transition-transform duration-300 group-hover:scale-105"></div>
                 <h5>Something</h5>
               </Link>
             </div>
           </div>
-          <div className="highlight w-4/5 rounded-3xl bg-white/30 px-12 pt-16 backdrop-blur-3xl dark:bg-slate-900/20 md:px-14 lg:px-16">
-            <h1 className="bgb text-3xl font-extrabold tracking-[0.2em] text-slate-900/80 dark:text-white md:text-4xl lg:text-5xl">
+          <div
+            ref={main}
+            className="highlight w-4/5 rounded-3xl bg-white/30 px-12 pt-16 backdrop-blur-3xl dark:bg-slate-900/20 md:px-14 lg:px-16"
+          >
+            <h1 className="font-sans2 text-3xl font-extrabold tracking-[0.2em] text-slate-900/80 dark:text-white md:text-4xl lg:text-5xl">
               SILICON DESIGN SYSTEM
             </h1>
             <div className="mt-4 mb-10 h-1 w-full rounded-full bg-black/10" />
@@ -74,9 +88,9 @@ export default function Silicon() {
               developing the design system in Figma. This includes creating a
               master file, which serves as the foundation for the system, and
               creating individual components such as buttons, forms, and
-              typography. It&apos;s important to maintain consistency throughout the
-              development process by using a naming convention, style guide and
-              a design library.
+              typography. It&apos;s important to maintain consistency throughout
+              the development process by using a naming convention, style guide
+              and a design library.
             </p>
             <h2 className={h2}>Problems</h2>
             <p className="p max-w-none">
@@ -101,12 +115,13 @@ export default function Silicon() {
             </p>
             <h2 className={h2}>Areas of Improvement</h2>
             <p className="p max-w-none">
-              As the design system is being used, it&apos;s important to continue to
-              evaluate and improve it. This includes gathering feedback from
-              users and stakeholders, as well as monitoring the performance of
-              the system in terms of usability, accessibility and performance.
-              Additionally, it&apos;s also important to keep the design system up to
-              date with current design trends and best practices.
+              As the design system is being used, it&apos;s important to
+              continue to evaluate and improve it. This includes gathering
+              feedback from users and stakeholders, as well as monitoring the
+              performance of the system in terms of usability, accessibility and
+              performance. Additionally, it&apos;s also important to keep the
+              design system up to date with current design trends and best
+              practices.
             </p>
           </div>
         </article>
