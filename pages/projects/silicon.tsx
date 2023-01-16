@@ -74,7 +74,7 @@ export default function Silicon() {
               developing the design system in Figma. This includes creating a
               master file, which serves as the foundation for the system, and
               creating individual components such as buttons, forms, and
-              typography. It's important to maintain consistency throughout the
+              typography. It&apos;s important to maintain consistency throughout the
               development process by using a naming convention, style guide and
               a design library.
             </p>
@@ -101,11 +101,11 @@ export default function Silicon() {
             </p>
             <h2 className={h2}>Areas of Improvement</h2>
             <p className="p max-w-none">
-              As the design system is being used, it's important to continue to
+              As the design system is being used, it&apos;s important to continue to
               evaluate and improve it. This includes gathering feedback from
               users and stakeholders, as well as monitoring the performance of
               the system in terms of usability, accessibility and performance.
-              Additionally, it's also important to keep the design system up to
+              Additionally, it&apos;s also important to keep the design system up to
               date with current design trends and best practices.
             </p>
           </div>
