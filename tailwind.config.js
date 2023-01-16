@@ -12,6 +12,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sans2: ['Brandon Grotesque Black', 'sans-serif'],
       },
       backgroundImage: {
         'gradient': "url('/gradient.png')",

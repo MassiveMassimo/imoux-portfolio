@@ -26,7 +26,7 @@ export default function PixelPerfect() {
   return (
     <section className="relative w-full rounded-md bg-slate-200 bg-pixelperfect bg-cover dark:bg-slate-800/40">
       <motion.div
-        className="z-10 w-full cursor-grab rounded-md bg-white p-8 dark:bg-slate-900"
+        className="z-10 w-full cursor-grab rounded-md bg-white px-8 py-8 dark:bg-slate-900 lg:px-16"
         whileTap={{ cursor: "grabbing" }}
         initial={{ x: initialX, y: initialY }}
         style={{ x, y }}
@@ -82,7 +82,7 @@ export default function PixelPerfect() {
         <div className="z-10">
           <div className="mb-4 inline-flex flex-row items-center space-x-2">
             {Math.round(stateX) === 0 ? null : (
-              <div className="highlight inline-flex flex-row items-center space-x-2 rounded-full bg-rose-500 p-1 lg:p-2 pr-4 lg:pr-5">
+              <div className="highlight inline-flex flex-row items-center space-x-2 rounded-full bg-rose-500 p-1 pr-4 lg:p-2 lg:pr-5">
                 <div className="inline-block rounded-full bg-rose-400 p-2">
                   <svg
                     className="h-5 w-5 fill-white lg:h-6 lg:w-6"
@@ -101,7 +101,7 @@ export default function PixelPerfect() {
               </div>
             )}
             {Math.round(stateY) === 0 ? null : (
-              <div className="highlight inline-flex flex-row items-center space-x-2 rounded-full bg-rose-500 p-1 lg:p-2 pr-4 lg:pr-5">
+              <div className="highlight inline-flex flex-row items-center space-x-2 rounded-full bg-rose-500 p-1 pr-4 lg:p-2 lg:pr-5">
                 <div className="inline-block rounded-full bg-rose-400 p-2">
                   <svg
                     className="h-5 w-5 fill-white lg:h-6 lg:w-6"
@@ -123,7 +123,7 @@ export default function PixelPerfect() {
           <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-4xl lg:text-5xl">
             A True Pixel Perfectionist
           </h2>
-          <p className="my-5 max-w-3xl text-base text-slate-600 dark:text-slate-400 lg:text-lg">
+          <p className="p">
             A single pixel can be the difference between a great design and a
             perfect one. That&apos;s why high-quality products rely on people
             who care about the most minute of details and can ensure you with

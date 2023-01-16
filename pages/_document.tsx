@@ -4,7 +4,15 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" as="style"></link>
+        <link
+          rel="stylesheet"
+          href="https://rsms.me/inter/inter.css"
+          as="style"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.cdnfonts.com/css/brandon-grotesque-regular"
+        />
         <meta
           name="author"
           content="Imo, Imo Madjid, Muhammad Hannan Massimo Madjid"
@@ -26,7 +34,7 @@ export default function Document() {
           src="https://unpkg.com/tailwindcss-intersect@1.x.x/dist/observer.min.js"
         ></script>
       </Head>
-      <body className="bg-white dark:bg-slate-900 bg-gradient bg-contain bg-no-repeat">
+      <body className="bg-white bg-gradient bg-contain bg-no-repeat dark:bg-slate-900">
         <Main />
         <NextScript />
       </body>

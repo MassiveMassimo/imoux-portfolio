@@ -23,7 +23,7 @@ export default function Navbar() {
       id="navbar"
       className="transition-all fixed top-0 left-0 z-20 h-16 w-full border-b border-slate-900/10 bg-white/30 backdrop-blur-2xl dark:border-slate-50/5 dark:bg-slate-900/75"
     >
-      <div className="mx-auto flex h-full flex-wrap items-center justify-between px-8">
+      <div className="mx-auto flex h-full flex-wrap items-center justify-between px-8 lg:px-16">
         <Link href="/" className="group flex h-full w-fit items-center py-4">
           <svg
             className="h-full overflow-visible fill-none stroke-slate-900 dark:stroke-white"

@@ -20,7 +20,7 @@ export default function Home() {
         <Hero />
         <Logos />
         <PixelPerfect />
-        <Editor />
+        {/* <Editor /> */}
       </div>
     </div>
   );

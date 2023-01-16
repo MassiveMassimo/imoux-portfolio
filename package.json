@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@codemirror/lang-javascript": "^6.1.2",
+    "@codemirror/lang-html": "^6.4.1",
     "@types/canvas-confetti": "^1.6.0",
     "@types/node": "18.11.15",
     "@types/react": "18.0.26",
