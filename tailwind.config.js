@@ -11,7 +11,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sans: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
+        serif: ['var(--font-josefin-slab)', ...defaultTheme.fontFamily.serif],
         sans2: ['Brandon Grotesque Black', 'sans-serif'],
       },
       backgroundImage: {

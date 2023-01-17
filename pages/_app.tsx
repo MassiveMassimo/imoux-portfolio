@@ -1,16 +1,31 @@
 import "../styles/globals.scss";
 import type { AppProps } from "next/app";
-
 import { ThemeProvider } from "next-themes";
-
 import Navbar from "../components/navbar/Navbar";
+import { Josefin_Slab } from "@next/font/google";
+import localFont from '@next/font/local';
+
+
+const inter = localFont({
+  src: './Inter.ttf',
+  variable: "--font-inter",
+  display: "optional",
+});
+
+const josefin_slab = Josefin_Slab({
+  subsets: ["latin"],
+  variable: "--font-josefin-slab",
+  display: "optional",
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <ThemeProvider attribute="class">
         <Navbar />
-        <Component {...pageProps} />
+        <main className={`${inter.variable} ${josefin_slab.variable} font-sans`}>
+          <Component {...pageProps} />
+        </main>
       </ThemeProvider>
     </>
   );

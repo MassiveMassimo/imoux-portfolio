@@ -6,11 +6,6 @@ export default function Document() {
       <Head>
         <link
           rel="stylesheet"
-          href="https://rsms.me/inter/inter.css"
-          as="style"
-        />
-        <link
-          rel="stylesheet"
           href="https://fonts.cdnfonts.com/css/brandon-grotesque-regular"
         />
         <meta
