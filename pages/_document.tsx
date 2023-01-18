@@ -29,7 +29,7 @@ export default function Document() {
           src="https://unpkg.com/tailwindcss-intersect@1.x.x/dist/observer.min.js"
         ></script>
       </Head>
-      <body className="bg-white bg-gradient bg-contain bg-no-repeat dark:bg-slate-900">
+      <body className="bg-slate-100 bg-gradient bg-contain bg-no-repeat dark:bg-slate-900">
         <Main />
         <NextScript />
       </body>

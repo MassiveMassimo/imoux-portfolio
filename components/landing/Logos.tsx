@@ -12,8 +12,8 @@ export default function Logos() {
         The organizations and products I helped to create the branding of.
       </p>
       <div className="relative mt-14 overflow-x-hidden px-20">
-        <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-20 bg-gradient-to-r from-white to-transparent dark:from-slate-900 dark:to-transparent lg:w-40"></div>
-        <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-20 bg-gradient-to-l from-white to-transparent dark:from-slate-900 dark:to-transparent lg:w-40"></div>
+        <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-20 bg-gradient-to-r from-slate-100 to-transparent dark:from-slate-900 dark:to-transparent lg:w-40"></div>
+        <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-20 bg-gradient-to-l from-slate-100 to-transparent dark:from-slate-900 dark:to-transparent lg:w-40"></div>
         <LogoRow1 />
         <LogoRow2 />
         <LogoRow3 />

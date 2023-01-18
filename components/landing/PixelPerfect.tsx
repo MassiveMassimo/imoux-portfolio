@@ -26,7 +26,7 @@ export default function PixelPerfect() {
   return (
     <section className="relative w-full rounded-md bg-slate-200 bg-pixelperfect bg-cover dark:bg-slate-800/40">
       <motion.div
-        className="z-10 w-full cursor-grab rounded-md bg-white px-8 py-8 dark:bg-slate-900 lg:px-16"
+        className="z-10 w-full cursor-grab rounded-md bg-slate-100 px-8 py-8 dark:bg-slate-900 lg:px-16"
         whileTap={{ cursor: "grabbing" }}
         initial={{ x: initialX, y: initialY }}
         style={{ x, y }}
