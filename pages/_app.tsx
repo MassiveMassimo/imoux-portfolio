@@ -2,7 +2,7 @@ import "../styles/globals.scss";
 import type { AppProps } from "next/app";
 import { ThemeProvider } from "next-themes";
 import Navbar from "../components/navbar/Navbar";
-import { Josefin_Slab } from "@next/font/google";
+import { Josefin_Slab, Reem_Kufi } from "@next/font/google";
 import localFont from '@next/font/local';
 
 
@@ -18,12 +18,18 @@ const josefin_slab = Josefin_Slab({
   display: "optional",
 });
 
+const reem_kufi = Reem_Kufi({
+  subsets: ["latin"],
+  variable: "--font-reem-kufi",
+  display: "optional",
+});
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <ThemeProvider attribute="class">
         <Navbar />
-        <main className={`${inter.variable} ${josefin_slab.variable} font-sans`}>
+        <main className={`${inter.variable} ${josefin_slab.variable} ${reem_kufi.variable} font-sans`}>
           <Component {...pageProps} />
         </main>
       </ThemeProvider>

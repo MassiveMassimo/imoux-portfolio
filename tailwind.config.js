@@ -13,7 +13,7 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
         serif: ['var(--font-josefin-slab)', ...defaultTheme.fontFamily.serif],
-        sans2: ['Brandon Grotesque Black', 'sans-serif'],
+        heading: ['var(--font-reem-kufi)', defaultTheme.fontFamily.sans],
       },
       backgroundImage: {
         'gradient': "url('/gradient.png')",
