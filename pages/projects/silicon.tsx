@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { Waypoint } from 'react-waypoint';
 
 export default function Silicon() {
   let h2 =
@@ -146,44 +146,129 @@ export default function Silicon() {
                   Team
                 </p>
               </div>
-              <div className="flex flex-wrap gap-1 pt-4">
-                <div className="flex w-fit flex-row items-center space-x-1 rounded-lg bg-gradient-to-r from-red-400 via-green-400 to-purple-500 py-1 px-4">
-                  <p className="grow truncate text-base font-semibold tracking-tight text-black/40 lg:text-lg">
+              <div className="flex flex-wrap gap-3 pt-4">
+                <div className="flex w-fit flex-row items-center space-x-1 rounded-lg stroke-slate-800 py-1 transition-all hover:bg-slate-300 hover:px-4 hover:dark:bg-slate-700">
+                  <p className="grow truncate text-base font-semibold tracking-tight text-slate-800 dark:text-slate-400 lg:text-lg">
                     #figma
                   </p>
                 </div>
-                <div className="flex w-fit flex-row items-center space-x-1 rounded-lg bg-slate-400 dark:bg-slate-700 py-1 px-4">
-                  <p className="grow truncate text-base font-semibold tracking-tight text-slate-100 dark:text-slate-400 lg:text-lg">
+                <div className="flex w-fit flex-row items-center space-x-1 rounded-lg stroke-slate-800 py-1 transition-all hover:bg-slate-300 hover:px-4 hover:dark:bg-slate-700">
+                  <p className="grow truncate text-base font-semibold tracking-tight text-slate-800 dark:text-slate-400 lg:text-lg">
                     #compfest
                   </p>
                 </div>
               </div>
             </aside>
             <div className="mt-10 h-1 w-full rounded-full bg-black/5 dark:bg-white/5" />
-            <div className="w-full grow">
-              <nav className="sticky top-0 w-full pt-20">
-                <p>nav</p>
+            <aside className="w-full grow">
+              <nav className="sticky top-0 flex w-full flex-col space-y-2 pt-20">
+                <h4 className="mb-3 text-xl font-semibold text-slate-700 dark:text-slate-200">
+                  On this page
+                </h4>
+                <Waypoint >
+                  <a
+                    href="#introduction"
+                    className="transition-color group flex items-center text-slate-500 hover:text-black dark:hover:text-white"
+                  >
+                    Introduction
+                    <svg
+                      className="h-4 flex-shrink-0 origin-left scale-0 fill-black pl-1 transition-transform group-hover:scale-100 dark:fill-white"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M10.1662 5.02188C9.91618 4.97088 9.64718 4.99288 9.41818 5.14688C8.96119 5.45288 8.83319 6.09288 9.13819 6.55288L12.7502 11.9899L9.13819 17.4279C8.83319 17.8869 8.96119 18.5279 9.41818 18.8339C9.87618 19.1399 10.5142 19.0118 10.8192 18.5528L14.8052 12.5529C15.0282 12.2169 15.0282 11.7639 14.8052 11.4279L10.8192 5.42788C10.6672 5.19789 10.4162 5.07188 10.1662 5.02188Z" />
+                    </svg>
+                  </a>
+                </Waypoint>
+                <a
+                  href="#ideation"
+                  className="transition-color group flex items-center text-slate-500 hover:text-black dark:hover:text-white"
+                >
+                  Ideation
+                  <svg
+                    className="h-4 flex-shrink-0 origin-left scale-0 fill-black pl-1 transition-transform group-hover:scale-100 dark:fill-white"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M10.1662 5.02188C9.91618 4.97088 9.64718 4.99288 9.41818 5.14688C8.96119 5.45288 8.83319 6.09288 9.13819 6.55288L12.7502 11.9899L9.13819 17.4279C8.83319 17.8869 8.96119 18.5279 9.41818 18.8339C9.87618 19.1399 10.5142 19.0118 10.8192 18.5528L14.8052 12.5529C15.0282 12.2169 15.0282 11.7639 14.8052 11.4279L10.8192 5.42788C10.6672 5.19789 10.4162 5.07188 10.1662 5.02188Z" />
+                  </svg>
+                </a>
+                <a
+                  href="#development"
+                  className="transition-color group flex items-center text-slate-500 hover:text-black dark:hover:text-white"
+                >
+                  Development
+                  <svg
+                    className="h-4 flex-shrink-0 origin-left scale-0 fill-black pl-1 transition-transform group-hover:scale-100 dark:fill-white"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M10.1662 5.02188C9.91618 4.97088 9.64718 4.99288 9.41818 5.14688C8.96119 5.45288 8.83319 6.09288 9.13819 6.55288L12.7502 11.9899L9.13819 17.4279C8.83319 17.8869 8.96119 18.5279 9.41818 18.8339C9.87618 19.1399 10.5142 19.0118 10.8192 18.5528L14.8052 12.5529C15.0282 12.2169 15.0282 11.7639 14.8052 11.4279L10.8192 5.42788C10.6672 5.19789 10.4162 5.07188 10.1662 5.02188Z" />
+                  </svg>
+                </a>
+                <a
+                  href="#problems"
+                  className="transition-color group flex items-center text-slate-500 hover:text-black dark:hover:text-white"
+                >
+                  Problems
+                  <svg
+                    className="h-4 flex-shrink-0 origin-left scale-0 fill-black pl-1 transition-transform group-hover:scale-100 dark:fill-white"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M10.1662 5.02188C9.91618 4.97088 9.64718 4.99288 9.41818 5.14688C8.96119 5.45288 8.83319 6.09288 9.13819 6.55288L12.7502 11.9899L9.13819 17.4279C8.83319 17.8869 8.96119 18.5279 9.41818 18.8339C9.87618 19.1399 10.5142 19.0118 10.8192 18.5528L14.8052 12.5529C15.0282 12.2169 15.0282 11.7639 14.8052 11.4279L10.8192 5.42788C10.6672 5.19789 10.4162 5.07188 10.1662 5.02188Z" />
+                  </svg>
+                </a>
+                <a
+                  href="#results"
+                  className="transition-color group flex items-center text-slate-500 hover:text-black dark:hover:text-white"
+                >
+                  Results
+                  <svg
+                    className="h-4 flex-shrink-0 origin-left scale-0 fill-black pl-1 transition-transform group-hover:scale-100 dark:fill-white"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M10.1662 5.02188C9.91618 4.97088 9.64718 4.99288 9.41818 5.14688C8.96119 5.45288 8.83319 6.09288 9.13819 6.55288L12.7502 11.9899L9.13819 17.4279C8.83319 17.8869 8.96119 18.5279 9.41818 18.8339C9.87618 19.1399 10.5142 19.0118 10.8192 18.5528L14.8052 12.5529C15.0282 12.2169 15.0282 11.7639 14.8052 11.4279L10.8192 5.42788C10.6672 5.19789 10.4162 5.07188 10.1662 5.02188Z" />
+                  </svg>
+                </a>
+                <a
+                  href="#improvements"
+                  className="transition-color group flex items-center text-slate-500 hover:text-black dark:hover:text-white"
+                >
+                  Areas of Improvement
+                  <svg
+                    className="h-4 flex-shrink-0 origin-left scale-0 fill-black pl-1 transition-transform group-hover:scale-100 dark:fill-white"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M10.1662 5.02188C9.91618 4.97088 9.64718 4.99288 9.41818 5.14688C8.96119 5.45288 8.83319 6.09288 9.13819 6.55288L12.7502 11.9899L9.13819 17.4279C8.83319 17.8869 8.96119 18.5279 9.41818 18.8339C9.87618 19.1399 10.5142 19.0118 10.8192 18.5528L14.8052 12.5529C15.0282 12.2169 15.0282 11.7639 14.8052 11.4279L10.8192 5.42788C10.6672 5.19789 10.4162 5.07188 10.1662 5.02188Z" />
+                  </svg>
+                </a>
               </nav>
-            </div>
+            </aside>
+            <div className="my-10 h-1 w-full rounded-full bg-black/5 dark:bg-white/5" />
             <div>
-              <h4 className="mb-5 text-lg font-semibold text-slate-600 dark:text-slate-400">
+              <h4 className="mb-5 text-xl font-semibold text-slate-700 dark:text-slate-200">
                 More by me
               </h4>
-              <Link href="/" className="group">
+              <a href="/" className="group">
                 <div className="mb-2 aspect-[18/9] w-full origin-bottom rounded-lg bg-cyan-400 transition-transform duration-500 group-hover:scale-105"></div>
                 <h5>Something</h5>
-              </Link>
+              </a>
             </div>
           </div>
           <div
             ref={main}
             className="highlight w-4/5 rounded-3xl bg-white/50 px-12 py-16 backdrop-blur-3xl dark:bg-slate-800/20 md:px-14 lg:px-16"
           >
-            <h1 className="font-heading leading-relaxed text-3xl font-extrabold text-slate-900 dark:text-white md:text-4xl lg:text-5xl">
-              An Extensive and Feature-Rich Design System for Figma
+            <h1 className="font-heading text-3xl font-extrabold leading-relaxed text-slate-900 dark:text-white md:text-4xl lg:text-5xl">
+              Developing a Sustainable and Feature-Rich Design System for Figma
             </h1>
             <div className="my-10 h-1 w-full rounded-full bg-black/5 dark:bg-white/5" />
-            <h2 className={h2}>Introduction</h2>
+            <h2 id="introduction" className={h2}>
+              Introduction
+            </h2>
             <p className="p mt-2 max-w-none">
               Design systems are becoming increasingly important in the design
               industry, as they provide a consistent way to design and develop
@@ -192,7 +277,9 @@ export default function Silicon() {
               process of creating a design system using Figma, including the
               ideation, development, and results.
             </p>
-            <h2 className={h2}>Ideation</h2>
+            <h2 id="ideation" className={h2}>
+              Ideation
+            </h2>
             <p className="p mt-2 max-w-none">
               The first step in creating a design system using Figma is to
               gather ideas and determine the overall goals of the system. This
@@ -201,7 +288,9 @@ export default function Silicon() {
               system. This phase is crucial for ensuring that the design system
               is user-centered and meets the needs of the business.
             </p>
-            <h2 className={h2}>Development</h2>
+            <h2 id="development" className={h2}>
+              Development
+            </h2>
             <p className="p mt-2 max-w-none">
               Once the ideation phase is complete, the next step is to begin
               developing the design system in Figma. This includes creating a
@@ -211,7 +300,9 @@ export default function Silicon() {
               the development process by using a naming convention, style guide
               and a design library.
             </p>
-            <h2 className={h2}>Problems</h2>
+            <h2 id="problems" className={h2}>
+              Problems
+            </h2>
             <p className="p mt-2 max-w-none">
               As with any design project, there will be challenges and problems
               to overcome. One common issue that can arise during the
@@ -221,7 +312,9 @@ export default function Silicon() {
               changes. Additionally, maintaining the system can also be
               challenging as design trends change over time.
             </p>
-            <h2 className={h2}>Results</h2>
+            <h2 id="results" className={h2}>
+              Results
+            </h2>
             <p className="p mt-2 max-w-none">
               Despite these challenges, the end result of a design system
               created using Figma can be extremely beneficial. It can help to
@@ -232,7 +325,9 @@ export default function Silicon() {
               language between designers and developers, improving communication
               and collaboration.
             </p>
-            <h2 className={h2}>Areas of Improvement</h2>
+            <h2 id="improvements" className={h2}>
+              Areas of Improvement
+            </h2>
             <p className="p mt-2 max-w-none">
               As the design system is being used, it&apos;s important to
               continue to evaluate and improve it. This includes gathering
