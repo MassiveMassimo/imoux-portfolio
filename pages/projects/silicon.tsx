@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Waypoint } from 'react-waypoint';
 
@@ -166,7 +167,7 @@ export default function Silicon() {
                   On this page
                 </h4>
                 <Waypoint >
-                  <a
+                  <Link
                     href="#introduction"
                     className="transition-color group flex items-center text-slate-500 hover:text-black dark:hover:text-white"
                   >
@@ -178,9 +179,9 @@ export default function Silicon() {
                     >
                       <path d="M10.1662 5.02188C9.91618 4.97088 9.64718 4.99288 9.41818 5.14688C8.96119 5.45288 8.83319 6.09288 9.13819 6.55288L12.7502 11.9899L9.13819 17.4279C8.83319 17.8869 8.96119 18.5279 9.41818 18.8339C9.87618 19.1399 10.5142 19.0118 10.8192 18.5528L14.8052 12.5529C15.0282 12.2169 15.0282 11.7639 14.8052 11.4279L10.8192 5.42788C10.6672 5.19789 10.4162 5.07188 10.1662 5.02188Z" />
                     </svg>
-                  </a>
+                  </Link>
                 </Waypoint>
-                <a
+                <Link
                   href="#ideation"
                   className="transition-color group flex items-center text-slate-500 hover:text-black dark:hover:text-white"
                 >
@@ -192,8 +193,8 @@ export default function Silicon() {
                   >
                     <path d="M10.1662 5.02188C9.91618 4.97088 9.64718 4.99288 9.41818 5.14688C8.96119 5.45288 8.83319 6.09288 9.13819 6.55288L12.7502 11.9899L9.13819 17.4279C8.83319 17.8869 8.96119 18.5279 9.41818 18.8339C9.87618 19.1399 10.5142 19.0118 10.8192 18.5528L14.8052 12.5529C15.0282 12.2169 15.0282 11.7639 14.8052 11.4279L10.8192 5.42788C10.6672 5.19789 10.4162 5.07188 10.1662 5.02188Z" />
                   </svg>
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#development"
                   className="transition-color group flex items-center text-slate-500 hover:text-black dark:hover:text-white"
                 >
@@ -205,8 +206,8 @@ export default function Silicon() {
                   >
                     <path d="M10.1662 5.02188C9.91618 4.97088 9.64718 4.99288 9.41818 5.14688C8.96119 5.45288 8.83319 6.09288 9.13819 6.55288L12.7502 11.9899L9.13819 17.4279C8.83319 17.8869 8.96119 18.5279 9.41818 18.8339C9.87618 19.1399 10.5142 19.0118 10.8192 18.5528L14.8052 12.5529C15.0282 12.2169 15.0282 11.7639 14.8052 11.4279L10.8192 5.42788C10.6672 5.19789 10.4162 5.07188 10.1662 5.02188Z" />
                   </svg>
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#problems"
                   className="transition-color group flex items-center text-slate-500 hover:text-black dark:hover:text-white"
                 >
@@ -218,8 +219,8 @@ export default function Silicon() {
                   >
                     <path d="M10.1662 5.02188C9.91618 4.97088 9.64718 4.99288 9.41818 5.14688C8.96119 5.45288 8.83319 6.09288 9.13819 6.55288L12.7502 11.9899L9.13819 17.4279C8.83319 17.8869 8.96119 18.5279 9.41818 18.8339C9.87618 19.1399 10.5142 19.0118 10.8192 18.5528L14.8052 12.5529C15.0282 12.2169 15.0282 11.7639 14.8052 11.4279L10.8192 5.42788C10.6672 5.19789 10.4162 5.07188 10.1662 5.02188Z" />
                   </svg>
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#results"
                   className="transition-color group flex items-center text-slate-500 hover:text-black dark:hover:text-white"
                 >
@@ -231,8 +232,8 @@ export default function Silicon() {
                   >
                     <path d="M10.1662 5.02188C9.91618 4.97088 9.64718 4.99288 9.41818 5.14688C8.96119 5.45288 8.83319 6.09288 9.13819 6.55288L12.7502 11.9899L9.13819 17.4279C8.83319 17.8869 8.96119 18.5279 9.41818 18.8339C9.87618 19.1399 10.5142 19.0118 10.8192 18.5528L14.8052 12.5529C15.0282 12.2169 15.0282 11.7639 14.8052 11.4279L10.8192 5.42788C10.6672 5.19789 10.4162 5.07188 10.1662 5.02188Z" />
                   </svg>
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#improvements"
                   className="transition-color group flex items-center text-slate-500 hover:text-black dark:hover:text-white"
                 >
@@ -244,7 +245,7 @@ export default function Silicon() {
                   >
                     <path d="M10.1662 5.02188C9.91618 4.97088 9.64718 4.99288 9.41818 5.14688C8.96119 5.45288 8.83319 6.09288 9.13819 6.55288L12.7502 11.9899L9.13819 17.4279C8.83319 17.8869 8.96119 18.5279 9.41818 18.8339C9.87618 19.1399 10.5142 19.0118 10.8192 18.5528L14.8052 12.5529C15.0282 12.2169 15.0282 11.7639 14.8052 11.4279L10.8192 5.42788C10.6672 5.19789 10.4162 5.07188 10.1662 5.02188Z" />
                   </svg>
-                </a>
+                </Link>
               </nav>
             </aside>
             <div className="my-10 h-1 w-full rounded-full bg-black/5 dark:bg-white/5" />
@@ -252,10 +253,10 @@ export default function Silicon() {
               <h4 className="mb-5 text-xl font-semibold text-slate-700 dark:text-slate-200">
                 More by me
               </h4>
-              <a href="/" className="group">
+              <Link href="/" className="group">
                 <div className="mb-2 aspect-[18/9] w-full origin-bottom rounded-lg bg-cyan-400 transition-transform duration-500 group-hover:scale-105"></div>
                 <h5>Something</h5>
-              </a>
+              </Link>
             </div>
           </div>
           <div
