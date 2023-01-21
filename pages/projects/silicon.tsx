@@ -1,15 +1,29 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import { Waypoint } from 'react-waypoint';
+import { RefObject, useEffect, useRef, useState } from "react";
+import { Waypoint } from "react-waypoint";
 
 export default function Silicon() {
   let h2 =
-    "mt-10 text-xl font-bold tracking-tight text-slate-800 dark:text-slate-200 md:text-2xl lg:text-3xl";
+    "text-xl font-bold tracking-tight text-slate-800 dark:text-slate-200 md:text-2xl lg:text-3xl";
 
-  const main = useRef<HTMLDivElement>(null);
   const [time, setTime] = useState(0);
+  const main = useRef<HTMLDivElement>(null);
+
+  const introductionLink = useRef<HTMLDivElement>(null);
+  const ideationLink = useRef<HTMLDivElement>(null);
+  const developmentLink = useRef<HTMLDivElement>(null);
+  const problemsLink = useRef<HTMLDivElement>(null);
+  const resultsLink = useRef<HTMLDivElement>(null);
+  const improvementsLink = useRef<HTMLDivElement>(null);
+
+  const introductionSection = useRef<HTMLDivElement>(null);
+  const ideationSection = useRef<HTMLDivElement>(null);
+  const developmentSection = useRef<HTMLDivElement>(null);
+  const problemsSection = useRef<HTMLDivElement>(null);
+  const resultsSection = useRef<HTMLDivElement>(null);
+  const improvementsSection = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ref = main.current;
@@ -18,6 +32,15 @@ export default function Silicon() {
     const time = text / 238;
     setTime(Math.round(time));
   }, []);
+
+  function handleEnter(section: RefObject<HTMLDivElement>) {
+    section.current?.focus();
+    console.log(section.current);
+  }
+
+  function handleLeave(section: RefObject<HTMLDivElement>) {
+    section.current?.blur();
+  }
 
   return (
     <div>
@@ -166,24 +189,32 @@ export default function Silicon() {
                 <h4 className="mb-3 text-xl font-semibold text-slate-700 dark:text-slate-200">
                   On this page
                 </h4>
-                <Waypoint >
-                  <Link
-                    href="#introduction"
-                    className="transition-color group flex items-center text-slate-500 hover:text-black dark:hover:text-white"
+                <div
+                  // href="#introduction"
+                  ref={introductionLink}
+                  tabIndex={0}
+                  onClick={() => {
+                    introductionSection.current?.scrollIntoView();
+                  }}
+                  className="group flex cursor-pointer items-center text-slate-500 outline-none transition-all hover:text-black focus:pl-2 focus:text-black dark:hover:text-white dark:focus:text-white"
+                >
+                  Introduction
+                  <svg
+                    className="h-4 flex-shrink-0 origin-left scale-0 fill-black pl-1 transition-transform group-hover:scale-100 dark:fill-white"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    Introduction
-                    <svg
-                      className="h-4 flex-shrink-0 origin-left scale-0 fill-black pl-1 transition-transform group-hover:scale-100 dark:fill-white"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M10.1662 5.02188C9.91618 4.97088 9.64718 4.99288 9.41818 5.14688C8.96119 5.45288 8.83319 6.09288 9.13819 6.55288L12.7502 11.9899L9.13819 17.4279C8.83319 17.8869 8.96119 18.5279 9.41818 18.8339C9.87618 19.1399 10.5142 19.0118 10.8192 18.5528L14.8052 12.5529C15.0282 12.2169 15.0282 11.7639 14.8052 11.4279L10.8192 5.42788C10.6672 5.19789 10.4162 5.07188 10.1662 5.02188Z" />
-                    </svg>
-                  </Link>
-                </Waypoint>
-                <Link
-                  href="#ideation"
-                  className="transition-color group flex items-center text-slate-500 hover:text-black dark:hover:text-white"
+                    <path d="M10.1662 5.02188C9.91618 4.97088 9.64718 4.99288 9.41818 5.14688C8.96119 5.45288 8.83319 6.09288 9.13819 6.55288L12.7502 11.9899L9.13819 17.4279C8.83319 17.8869 8.96119 18.5279 9.41818 18.8339C9.87618 19.1399 10.5142 19.0118 10.8192 18.5528L14.8052 12.5529C15.0282 12.2169 15.0282 11.7639 14.8052 11.4279L10.8192 5.42788C10.6672 5.19789 10.4162 5.07188 10.1662 5.02188Z" />
+                  </svg>
+                </div>
+                <div
+                  // href="#ideation"
+                  ref={ideationLink}
+                  tabIndex={1}
+                  onClick={() => {
+                    ideationSection.current?.scrollIntoView();
+                  }}
+                  className="group flex cursor-pointer items-center text-slate-500 outline-none transition-all hover:text-black focus:pl-2 focus:text-black dark:hover:text-white dark:focus:text-white"
                 >
                   Ideation
                   <svg
@@ -193,10 +224,15 @@ export default function Silicon() {
                   >
                     <path d="M10.1662 5.02188C9.91618 4.97088 9.64718 4.99288 9.41818 5.14688C8.96119 5.45288 8.83319 6.09288 9.13819 6.55288L12.7502 11.9899L9.13819 17.4279C8.83319 17.8869 8.96119 18.5279 9.41818 18.8339C9.87618 19.1399 10.5142 19.0118 10.8192 18.5528L14.8052 12.5529C15.0282 12.2169 15.0282 11.7639 14.8052 11.4279L10.8192 5.42788C10.6672 5.19789 10.4162 5.07188 10.1662 5.02188Z" />
                   </svg>
-                </Link>
-                <Link
-                  href="#development"
-                  className="transition-color group flex items-center text-slate-500 hover:text-black dark:hover:text-white"
+                </div>
+                <div
+                  // href="#development"
+                  ref={developmentLink}
+                  tabIndex={2}
+                  onClick={() => {
+                    developmentSection.current?.scrollIntoView();
+                  }}
+                  className="group flex cursor-pointer items-center text-slate-500 outline-none transition-all hover:text-black focus:pl-2 focus:text-black dark:hover:text-white dark:focus:text-white"
                 >
                   Development
                   <svg
@@ -206,10 +242,15 @@ export default function Silicon() {
                   >
                     <path d="M10.1662 5.02188C9.91618 4.97088 9.64718 4.99288 9.41818 5.14688C8.96119 5.45288 8.83319 6.09288 9.13819 6.55288L12.7502 11.9899L9.13819 17.4279C8.83319 17.8869 8.96119 18.5279 9.41818 18.8339C9.87618 19.1399 10.5142 19.0118 10.8192 18.5528L14.8052 12.5529C15.0282 12.2169 15.0282 11.7639 14.8052 11.4279L10.8192 5.42788C10.6672 5.19789 10.4162 5.07188 10.1662 5.02188Z" />
                   </svg>
-                </Link>
-                <Link
-                  href="#problems"
-                  className="transition-color group flex items-center text-slate-500 hover:text-black dark:hover:text-white"
+                </div>
+                <div
+                  // href="#problems"
+                  ref={problemsLink}
+                  tabIndex={3}
+                  onClick={() => {
+                    problemsSection.current?.scrollIntoView();
+                  }}
+                  className="group flex cursor-pointer items-center text-slate-500 outline-none transition-all hover:text-black focus:pl-2 focus:text-black dark:hover:text-white dark:focus:text-white"
                 >
                   Problems
                   <svg
@@ -219,10 +260,15 @@ export default function Silicon() {
                   >
                     <path d="M10.1662 5.02188C9.91618 4.97088 9.64718 4.99288 9.41818 5.14688C8.96119 5.45288 8.83319 6.09288 9.13819 6.55288L12.7502 11.9899L9.13819 17.4279C8.83319 17.8869 8.96119 18.5279 9.41818 18.8339C9.87618 19.1399 10.5142 19.0118 10.8192 18.5528L14.8052 12.5529C15.0282 12.2169 15.0282 11.7639 14.8052 11.4279L10.8192 5.42788C10.6672 5.19789 10.4162 5.07188 10.1662 5.02188Z" />
                   </svg>
-                </Link>
-                <Link
-                  href="#results"
-                  className="transition-color group flex items-center text-slate-500 hover:text-black dark:hover:text-white"
+                </div>
+                <div
+                  // href="#results"
+                  ref={resultsLink}
+                  tabIndex={4}
+                  onClick={() => {
+                    resultsSection.current?.scrollIntoView();
+                  }}
+                  className="group flex cursor-pointer items-center text-slate-500 outline-none transition-all hover:text-black focus:pl-2 focus:text-black dark:hover:text-white dark:focus:text-white"
                 >
                   Results
                   <svg
@@ -232,10 +278,15 @@ export default function Silicon() {
                   >
                     <path d="M10.1662 5.02188C9.91618 4.97088 9.64718 4.99288 9.41818 5.14688C8.96119 5.45288 8.83319 6.09288 9.13819 6.55288L12.7502 11.9899L9.13819 17.4279C8.83319 17.8869 8.96119 18.5279 9.41818 18.8339C9.87618 19.1399 10.5142 19.0118 10.8192 18.5528L14.8052 12.5529C15.0282 12.2169 15.0282 11.7639 14.8052 11.4279L10.8192 5.42788C10.6672 5.19789 10.4162 5.07188 10.1662 5.02188Z" />
                   </svg>
-                </Link>
-                <Link
-                  href="#improvements"
-                  className="transition-color group flex items-center text-slate-500 hover:text-black dark:hover:text-white"
+                </div>
+                <div
+                  // href="#improvements"
+                  ref={improvementsLink}
+                  tabIndex={5}
+                  onClick={() => {
+                    improvementsSection.current?.scrollIntoView();
+                  }}
+                  className="group flex cursor-pointer items-center text-slate-500 outline-none transition-all hover:text-black focus:pl-2 focus:text-black dark:hover:text-white dark:focus:text-white"
                 >
                   Areas of Improvement
                   <svg
@@ -245,7 +296,7 @@ export default function Silicon() {
                   >
                     <path d="M10.1662 5.02188C9.91618 4.97088 9.64718 4.99288 9.41818 5.14688C8.96119 5.45288 8.83319 6.09288 9.13819 6.55288L12.7502 11.9899L9.13819 17.4279C8.83319 17.8869 8.96119 18.5279 9.41818 18.8339C9.87618 19.1399 10.5142 19.0118 10.8192 18.5528L14.8052 12.5529C15.0282 12.2169 15.0282 11.7639 14.8052 11.4279L10.8192 5.42788C10.6672 5.19789 10.4162 5.07188 10.1662 5.02188Z" />
                   </svg>
-                </Link>
+                </div>
               </nav>
             </aside>
             <div className="my-10 h-1 w-full rounded-full bg-black/5 dark:bg-white/5" />
@@ -261,83 +312,166 @@ export default function Silicon() {
           </div>
           <div
             ref={main}
-            className="highlight w-4/5 rounded-3xl bg-white/50 px-12 py-16 backdrop-blur-3xl dark:bg-slate-800/20 md:px-14 lg:px-16"
+            className="highlight w-4/5 rounded-3xl bg-white/70 px-12 py-16 backdrop-blur-3xl dark:bg-slate-800/20 md:px-14 lg:px-16"
           >
             <h1 className="font-heading text-3xl font-extrabold leading-relaxed text-slate-900 dark:text-white md:text-4xl lg:text-5xl">
               Developing a Sustainable and Feature-Rich Design System for Figma
             </h1>
             <div className="my-10 h-1 w-full rounded-full bg-black/5 dark:bg-white/5" />
-            <h2 id="introduction" className={h2}>
-              Introduction
-            </h2>
-            <p className="p mt-2 max-w-none">
-              Design systems are becoming increasingly important in the design
-              industry, as they provide a consistent way to design and develop
-              products. One popular tool for creating and maintaining design
-              systems is Figma. In this article, we will take a look at the
-              process of creating a design system using Figma, including the
-              ideation, development, and results.
-            </p>
-            <h2 id="ideation" className={h2}>
-              Ideation
-            </h2>
-            <p className="p mt-2 max-w-none">
-              The first step in creating a design system using Figma is to
-              gather ideas and determine the overall goals of the system. This
-              includes researching the needs of the users and stakeholders, as
-              well as identifying the key components that will make up the
-              system. This phase is crucial for ensuring that the design system
-              is user-centered and meets the needs of the business.
-            </p>
-            <h2 id="development" className={h2}>
-              Development
-            </h2>
-            <p className="p mt-2 max-w-none">
-              Once the ideation phase is complete, the next step is to begin
-              developing the design system in Figma. This includes creating a
-              master file, which serves as the foundation for the system, and
-              creating individual components such as buttons, forms, and
-              typography. It&apos;s important to maintain consistency throughout
-              the development process by using a naming convention, style guide
-              and a design library.
-            </p>
-            <h2 id="problems" className={h2}>
-              Problems
-            </h2>
-            <p className="p mt-2 max-w-none">
-              As with any design project, there will be challenges and problems
-              to overcome. One common issue that can arise during the
-              development of a design system using Figma is maintaining
-              consistency. This can be difficult when multiple designers are
-              working on the system, and it can be easy to lose track of
-              changes. Additionally, maintaining the system can also be
-              challenging as design trends change over time.
-            </p>
-            <h2 id="results" className={h2}>
-              Results
-            </h2>
-            <p className="p mt-2 max-w-none">
-              Despite these challenges, the end result of a design system
-              created using Figma can be extremely beneficial. It can help to
-              improve the user experience by providing a consistent look and
-              feel across all products, and it can also save time and resources
-              by streamlining the design and development process. Additionally,
-              a design system can also be used as a way to create a common
-              language between designers and developers, improving communication
-              and collaboration.
-            </p>
-            <h2 id="improvements" className={h2}>
-              Areas of Improvement
-            </h2>
-            <p className="p mt-2 max-w-none">
-              As the design system is being used, it&apos;s important to
-              continue to evaluate and improve it. This includes gathering
-              feedback from users and stakeholders, as well as monitoring the
-              performance of the system in terms of usability, accessibility and
-              performance. Additionally, it&apos;s also important to keep the
-              design system up to date with current design trends and best
-              practices.
-            </p>
+            <Waypoint
+              onEnter={() => {
+                introductionLink.current?.focus();
+              }}
+              onLeave={() => {
+                introductionLink.current?.blur();
+              }}
+            >
+              <section className="mt-16" id="introduction" ref={introductionSection}>
+                <h2 className={h2}>Introduction</h2>
+                <p className="p my-5 max-w-none">
+                  The growing rise of web app services has reached the design
+                  sphere; Figma has taken the design community by storm through
+                  its robust features, team collaboration capabilities, and
+                  generous plans for students. In the wake of its popularity, it
+                  has left a universe of possibilities for designers to explore
+                  new workflows, engage in teamwork, and integrate powerful
+                  tools. Figma combines the best features of its competitors
+                  through extensive plugin support and a vast community library
+                  without the bloat of Adobe XD or the ecosystem restrictions of
+                  Sketch.
+                </p>
+                <p className="p my-5 max-w-none">
+                  In the realm of UI/UX design, Figma offers a wide range of
+                  tools that allow designers to streamline the product design
+                  development process. Features such as components and variants
+                  enable designers to create consistent, effective interfaces by
+                  implementing common UI elements and corresponding states
+                  across team projects. These, among other notable Figma
+                  features, have empowered aspiring product designers like
+                  myself to develop better and more easily understandable design
+                  systems, such as Silicon Design System.
+                </p>
+                <p className="p my-5 max-w-none">
+                  In late 2021, I became the lead product designer for COMPFEST,
+                  a year-long computer science event organized by computer
+                  science students such as myself. This annual computer science
+                  event is the largest of its kind in Indonesia, providing
+                  everything from competitions to seminars for the general
+                  public. Alongside a physical event, COMPFEST also possesses a
+                  substantial digital presense whose design was under my
+                  responsibility. Considering the scope of this event and how
+                  its appearance and usability could very well impact its
+                  success, a functional and effective design system
+                  representative of the project scope was in order.
+                </p>
+              </section>
+            </Waypoint>
+            <Waypoint
+              onEnter={() => {
+                handleEnter(ideationLink);
+              }}
+              onLeave={() => {
+                handleLeave(ideationLink);
+              }}
+            >
+              <section className="mt-16" id="ideation" ref={ideationSection}>
+                <h2 className={h2}>Ideation</h2>
+                <p className="p my-5 max-w-none">
+                  The first step in creating a design system using Figma is to
+                  gather ideas and determine the overall goals of the system.
+                  This includes researching the needs of the users and
+                  stakeholders, as well as identifying the key components that
+                  will make up the system. This phase is crucial for ensuring
+                  that the design system is user-centered and meets the needs of
+                  the business.
+                </p>
+              </section>
+            </Waypoint>
+            <Waypoint
+              onEnter={() => {
+                handleEnter(developmentLink);
+              }}
+              onLeave={() => {
+                handleLeave(developmentLink);
+              }}
+            >
+              <section className="mt-16" id="development" ref={developmentSection}>
+                <h2 className={h2}>Development</h2>
+                <p className="p my-5 max-w-none">
+                  Once the ideation phase is complete, the next step is to begin
+                  developing the design system in Figma. This includes creating
+                  a master file, which serves as the foundation for the system,
+                  and creating individual components such as buttons, forms, and
+                  typography. It&apos;s important to maintain consistency
+                  throughout the development process by using a naming
+                  convention, style guide and a design library.
+                </p>
+              </section>
+            </Waypoint>
+            <Waypoint
+              onEnter={() => {
+                handleEnter(problemsLink);
+              }}
+              onLeave={() => {
+                handleLeave(problemsLink);
+              }}
+            >
+              <section className="mt-16" id="problems" ref={problemsSection}>
+                <h2 className={h2}>Problems</h2>
+                <p className="p my-5 max-w-none">
+                  As with any design project, there will be challenges and
+                  problems to overcome. One common issue that can arise during
+                  the development of a design system using Figma is maintaining
+                  consistency. This can be difficult when multiple designers are
+                  working on the system, and it can be easy to lose track of
+                  changes. Additionally, maintaining the system can also be
+                  challenging as design trends change over time.
+                </p>
+              </section>
+            </Waypoint>
+            <Waypoint
+              onEnter={() => {
+                handleEnter(resultsLink);
+              }}
+              onLeave={() => {
+                handleLeave(resultsLink);
+              }}
+            >
+              <section className="mt-16" id="results" ref={resultsSection}>
+                <h2 className={h2}>Results</h2>
+                <p className="p my-5 max-w-none">
+                  Despite these challenges, the end result of a design system
+                  created using Figma can be extremely beneficial. It can help
+                  to improve the user experience by providing a consistent look
+                  and feel across all products, and it can also save time and
+                  resources by streamlining the design and development process.
+                  Additionally, a design system can also be used as a way to
+                  create a common language between designers and developers,
+                  improving communication and collaboration.
+                </p>
+              </section>
+            </Waypoint>
+            <Waypoint
+              onEnter={() => {
+                handleEnter(improvementsLink);
+              }}
+              onLeave={() => {
+                handleLeave(improvementsLink);
+              }}
+            >
+              <section className="mt-16" id="improvements" ref={improvementsSection}>
+                <h2 className={h2}>Areas of Improvement</h2>
+                <p className="p my-5 max-w-none">
+                  As the design system is being used, it&apos;s important to
+                  continue to evaluate and improve it. This includes gathering
+                  feedback from users and stakeholders, as well as monitoring
+                  the performance of the system in terms of usability,
+                  accessibility and performance. Additionally, it&apos;s also
+                  important to keep the design system up to date with current
+                  design trends and best practices.
+                </p>
+              </section>
+            </Waypoint>
           </div>
         </article>
       </div>
