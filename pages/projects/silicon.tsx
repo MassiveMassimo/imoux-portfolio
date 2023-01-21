@@ -1,12 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  RefObject,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { RefObject, useEffect, useRef, useState } from "react";
 import { Waypoint } from "react-waypoint";
 
 export default function Silicon() {
@@ -44,10 +39,6 @@ export default function Silicon() {
 
   function handleEnter(link: RefObject<HTMLButtonElement>) {
     link.current?.focus({ preventScroll: true });
-  }
-
-  function handleLeave(link: RefObject<HTMLButtonElement>) {
-    link.current?.blur();
   }
 
   return (
@@ -324,9 +315,6 @@ export default function Silicon() {
               onEnter={() => {
                 handleEnter(introductionLink);
               }}
-              onLeave={() => {
-                handleLeave(introductionLink);
-              }}
             >
               <section
                 className="mt-16"
@@ -376,9 +364,6 @@ export default function Silicon() {
               onEnter={() => {
                 handleEnter(ideationLink);
               }}
-              onLeave={() => {
-                handleLeave(ideationLink);
-              }}
             >
               <section className="mt-16" id="ideation" ref={ideationSection}>
                 <h2 className={h2}>Ideation</h2>
@@ -396,9 +381,6 @@ export default function Silicon() {
             <Waypoint
               onEnter={() => {
                 handleEnter(developmentLink);
-              }}
-              onLeave={() => {
-                handleLeave(developmentLink);
               }}
             >
               <section
@@ -422,9 +404,6 @@ export default function Silicon() {
               onEnter={() => {
                 handleEnter(problemsLink);
               }}
-              onLeave={() => {
-                handleLeave(problemsLink);
-              }}
             >
               <section className="mt-16" id="problems" ref={problemsSection}>
                 <h2 className={h2}>Problems</h2>
@@ -442,9 +421,6 @@ export default function Silicon() {
             <Waypoint
               onEnter={() => {
                 handleEnter(resultsLink);
-              }}
-              onLeave={() => {
-                handleLeave(resultsLink);
               }}
             >
               <section className="mt-16" id="results" ref={resultsSection}>
@@ -464,9 +440,6 @@ export default function Silicon() {
             <Waypoint
               onEnter={() => {
                 handleEnter(improvementsLink);
-              }}
-              onLeave={() => {
-                handleLeave(improvementsLink);
               }}
             >
               <section
