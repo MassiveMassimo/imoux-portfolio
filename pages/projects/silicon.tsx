@@ -41,6 +41,10 @@ export default function Silicon() {
     link.current?.focus({ preventScroll: true });
   }
 
+  function handleLeave(link: RefObject<HTMLButtonElement>) {
+    link.current?.blur();
+  }
+
   return (
     <div>
       <Head>
@@ -60,8 +64,8 @@ export default function Silicon() {
             alt=""
           />
         </header>
-        <article className="flex space-x-10 px-8 lg:px-16">
-          <div className="mt-32 flex w-1/5 flex-col">
+        <article className="flex px-8 md:space-x-10 lg:px-16">
+          <div className="mt-32 hidden w-1/5 flex-col md:flex">
             <aside className="mt-10 flex w-full flex-col space-y-2">
               <div className="flex flex-row items-center space-x-3">
                 <svg
@@ -194,7 +198,7 @@ export default function Silicon() {
                   onClick={() => {
                     handleClick(introductionSection);
                   }}
-                  className="group flex cursor-pointer items-center text-slate-500 outline-none transition-all hover:text-black focus:pl-2 focus:text-black dark:hover:text-white dark:focus:text-white"
+                  className="group flex cursor-pointer items-center text-left text-slate-500 outline-none transition-all hover:text-black focus:pl-2 focus:text-black dark:hover:text-white dark:focus:text-white"
                 >
                   Introduction
                   <svg
@@ -211,7 +215,7 @@ export default function Silicon() {
                   onClick={() => {
                     handleClick(ideationSection);
                   }}
-                  className="group flex cursor-pointer items-center text-slate-500 outline-none transition-all hover:text-black focus:pl-2 focus:text-black dark:hover:text-white dark:focus:text-white"
+                  className="group flex cursor-pointer items-center text-left text-slate-500 outline-none transition-all hover:text-black focus:pl-2 focus:text-black dark:hover:text-white dark:focus:text-white"
                 >
                   Ideation
                   <svg
@@ -228,7 +232,7 @@ export default function Silicon() {
                   onClick={() => {
                     handleClick(developmentSection);
                   }}
-                  className="group flex cursor-pointer items-center text-slate-500 outline-none transition-all hover:text-black focus:pl-2 focus:text-black dark:hover:text-white dark:focus:text-white"
+                  className="group flex cursor-pointer items-center text-left text-slate-500 outline-none transition-all hover:text-black focus:pl-2 focus:text-black dark:hover:text-white dark:focus:text-white"
                 >
                   Development
                   <svg
@@ -245,7 +249,7 @@ export default function Silicon() {
                   onClick={() => {
                     handleClick(problemsSection);
                   }}
-                  className="group flex cursor-pointer items-center text-slate-500 outline-none transition-all hover:text-black focus:pl-2 focus:text-black dark:hover:text-white dark:focus:text-white"
+                  className="group flex cursor-pointer items-center text-left text-slate-500 outline-none transition-all hover:text-black focus:pl-2 focus:text-black dark:hover:text-white dark:focus:text-white"
                 >
                   Problems
                   <svg
@@ -262,7 +266,7 @@ export default function Silicon() {
                   onClick={() => {
                     handleClick(resultsSection);
                   }}
-                  className="group flex cursor-pointer items-center text-slate-500 outline-none transition-all hover:text-black focus:pl-2 focus:text-black dark:hover:text-white dark:focus:text-white"
+                  className="group flex cursor-pointer items-center text-left text-slate-500 outline-none transition-all hover:text-black focus:pl-2 focus:text-black dark:hover:text-white dark:focus:text-white"
                 >
                   Results
                   <svg
@@ -279,7 +283,7 @@ export default function Silicon() {
                   onClick={() => {
                     handleClick(improvementsSection);
                   }}
-                  className="group flex cursor-pointer items-center text-slate-500 outline-none transition-all hover:text-black focus:pl-2 focus:text-black dark:hover:text-white dark:focus:text-white"
+                  className="group flex cursor-pointer items-center text-left text-slate-500 outline-none transition-all hover:text-black focus:pl-2 focus:text-black dark:hover:text-white dark:focus:text-white"
                 >
                   Areas of Improvement
                   <svg
@@ -305,22 +309,27 @@ export default function Silicon() {
           </div>
           <div
             ref={main}
-            className="highlight w-4/5 rounded-3xl bg-white/70 px-12 py-16 backdrop-blur-3xl dark:bg-slate-800/20 md:px-14 lg:px-16"
+            className="highlight rounded-3xl bg-white/70 px-10 py-12 backdrop-blur-3xl dark:bg-slate-800/20 md:w-4/5 md:py-16 md:px-14 lg:px-16"
           >
-            <h1 className="font-heading text-3xl font-extrabold leading-relaxed text-slate-900 dark:text-white md:text-4xl lg:text-5xl">
-              Developing a Sustainable and Comprehensive Design System for Figma
+            <h1 className="font-heading text-3xl font-extrabold leading-normal md:leading-snug text-slate-900 dark:text-white md:text-4xl lg:text-5xl lg:leading-tight">
+              Developing a Sustainable and Comprehensive Design System for
+              COMPFEST
             </h1>
-            <div className="my-10 h-1 w-full rounded-full bg-black/5 dark:bg-white/5" />
+            <aside className="mt-8">
+              <p className="grow truncate font-serif text-base font-bold italic lg:text-lg">
+                {time} minute read
+              </p>
+            </aside>
+            <div className="my-8 h-1 w-full rounded-full bg-black/5 dark:bg-white/5 md:my-10" />
             <Waypoint
               onEnter={() => {
                 handleEnter(introductionLink);
               }}
+              onLeave={() => {
+                handleLeave(introductionLink);
+              }}
             >
-              <section
-                className="mt-16"
-                id="introduction"
-                ref={introductionSection}
-              >
+              <section className="mt-12 md:mt-16" ref={introductionSection}>
                 <h2 className={h2}>Introduction</h2>
                 <p className="p my-5 max-w-none">
                   The growing rise of web app services has reached the design
@@ -364,8 +373,11 @@ export default function Silicon() {
               onEnter={() => {
                 handleEnter(ideationLink);
               }}
+              onLeave={() => {
+                handleLeave(ideationLink);
+              }}
             >
-              <section className="mt-16" id="ideation" ref={ideationSection}>
+              <section className="mt-12 md:mt-16" ref={ideationSection}>
                 <h2 className={h2}>Ideation</h2>
                 <p className="p my-5 max-w-none">
                   The first step in creating a design system using Figma is to
@@ -382,12 +394,11 @@ export default function Silicon() {
               onEnter={() => {
                 handleEnter(developmentLink);
               }}
+              onLeave={() => {
+                handleLeave(developmentLink);
+              }}
             >
-              <section
-                className="mt-16"
-                id="development"
-                ref={developmentSection}
-              >
+              <section className="mt-12 md:mt-16" ref={developmentSection}>
                 <h2 className={h2}>Development</h2>
                 <p className="p my-5 max-w-none">
                   Once the ideation phase is complete, the next step is to begin
@@ -404,8 +415,11 @@ export default function Silicon() {
               onEnter={() => {
                 handleEnter(problemsLink);
               }}
+              onLeave={() => {
+                handleLeave(problemsLink);
+              }}
             >
-              <section className="mt-16" id="problems" ref={problemsSection}>
+              <section className="mt-12 md:mt-16" ref={problemsSection}>
                 <h2 className={h2}>Problems</h2>
                 <p className="p my-5 max-w-none">
                   As with any design project, there will be challenges and
@@ -422,8 +436,11 @@ export default function Silicon() {
               onEnter={() => {
                 handleEnter(resultsLink);
               }}
+              onLeave={() => {
+                handleLeave(resultsLink);
+              }}
             >
-              <section className="mt-16" id="results" ref={resultsSection}>
+              <section className="mt-12 md:mt-16" ref={resultsSection}>
                 <h2 className={h2}>Results</h2>
                 <p className="p my-5 max-w-none">
                   Despite these challenges, the end result of a design system
@@ -441,12 +458,11 @@ export default function Silicon() {
               onEnter={() => {
                 handleEnter(improvementsLink);
               }}
+              onLeave={() => {
+                handleLeave(improvementsLink);
+              }}
             >
-              <section
-                className="mt-16"
-                id="improvements"
-                ref={improvementsSection}
-              >
+              <section className="mt-12 md:mt-16" ref={improvementsSection}>
                 <h2 className={h2}>Areas of Improvement</h2>
                 <p className="p my-5 max-w-none">
                   As the design system is being used, it&apos;s important to
