@@ -117,7 +117,7 @@ export default function Silicon() {
                 }}
               >
                 <svg
-                  className="h-6 flex-shrink-0 fill-black group-hover:fill-cyan-600 dark:fill-white dark:group-hover:fill-cyan-400"
+                  className="h-6 flex-shrink-0 fill-black dark:fill-white"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
@@ -127,7 +127,7 @@ export default function Silicon() {
                   />
                   <path d="M13.7749 15.9905C14.981 15.9122 16.1551 15.3342 17.2216 14.2674L20.2606 11.2276C22.708 8.78087 22.4479 5.9257 20.2606 3.73892C18.0742 1.55214 15.2181 1.29221 12.7716 3.73892L11.236 5.27438C10.8444 5.66578 10.8444 6.29301 11.236 6.6844C11.6277 7.07579 12.2865 7.07579 12.6782 6.6844L14.1816 5.14894C15.7825 3.54824 17.3953 3.69376 18.8506 5.14894C20.3058 6.60412 20.4514 8.21686 18.8506 9.81756L15.8116 12.8574C15.0734 13.595 14.3443 13.9402 13.6493 13.9854C12.8088 14.0406 11.927 13.6422 11.1426 12.8574L10.7038 12.4188C10.3121 12.0274 9.68543 12.0274 9.29376 12.4188C8.90208 12.8102 8.90208 13.4374 9.29376 13.8288L9.73263 14.2674C10.8946 15.4295 12.2946 16.0879 13.7749 15.9905Z" />
                 </svg>
-                <p className="grow truncate font-serif text-base font-bold italic text-cyan-600 group-hover:underline dark:text-cyan-400 lg:text-lg">
+                <p className="grow truncate font-serif text-base font-bold italic underline decoration-cyan-500 lg:text-lg">
                   figma.com/community/file/1082210150893947691
                 </p>
               </div>
@@ -309,15 +309,29 @@ export default function Silicon() {
           </div>
           <div
             ref={main}
-            className="highlight rounded-3xl bg-white/70 px-10 py-12 backdrop-blur-3xl dark:bg-slate-800/20 md:w-4/5 md:py-16 md:px-14 lg:px-16"
+            className="highlight w-full rounded-3xl bg-white/70 px-8 py-12 backdrop-blur-3xl dark:bg-slate-800/20 md:w-4/5 md:py-16 md:px-14 lg:px-16"
           >
-            <h1 className="font-heading text-3xl font-extrabold leading-normal md:leading-snug text-slate-900 dark:text-white md:text-4xl lg:text-5xl lg:leading-tight">
+            <h1 className="font-heading text-3xl font-extrabold leading-normal text-slate-900 dark:text-white md:text-4xl md:leading-snug lg:text-5xl lg:leading-tight">
               Developing a Sustainable and Comprehensive Design System for
               COMPFEST
             </h1>
-            <aside className="mt-8">
-              <p className="grow truncate font-serif text-base font-bold italic lg:text-lg">
+            <aside className="highlight mt-10 flex flex-row space-x-6 overflow-scroll rounded-xl px-6 py-4 scrollbar-hide dark:bg-slate-800/30 md:hidden">
+              <p className="whitespace-nowrap font-serif text-sm font-bold italic lg:text-base">
                 {time} minute read
+              </p>
+              <p className="whitespace-nowrap font-serif text-sm font-bold italic lg:text-base">
+                17 January, 2023
+              </p>
+              <p
+                className="cursor-pointer whitespace-nowrap font-serif text-sm font-bold italic underline decoration-cyan-500 lg:text-base"
+                onClick={() => {
+                  window.open(
+                    "https://www.figma.com/community/file/1082210150893947691",
+                    "_blank"
+                  );
+                }}
+              >
+                figma.com/community/file/1082210150893947691
               </p>
             </aside>
             <div className="my-8 h-1 w-full rounded-full bg-black/5 dark:bg-white/5 md:my-10" />
