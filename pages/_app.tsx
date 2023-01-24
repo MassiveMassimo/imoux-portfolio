@@ -4,7 +4,6 @@ import { ThemeProvider } from "next-themes";
 import { Josefin_Slab, Reem_Kufi } from "@next/font/google";
 import localFont from "@next/font/local";
 import Navbar from "../components/navbar/Navbar";
-import { AnimateSharedLayout } from "framer-motion";
 
 const inter = localFont({
   src: "./Inter.ttf",
@@ -32,9 +31,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <main
           className={`${inter.variable} ${josefin_slab.variable} ${reem_kufi.variable} font-sans`}
         >
-          <AnimateSharedLayout>
-            <Component {...pageProps} />
-          </AnimateSharedLayout>
+          <Component {...pageProps} />
         </main>
       </ThemeProvider>
     </>

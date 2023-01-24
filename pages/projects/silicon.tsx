@@ -309,14 +309,10 @@ export default function Silicon() {
             ref={main}
             className="highlight w-full rounded-3xl bg-white/70 px-8 py-12 backdrop-blur-3xl dark:bg-slate-800/20 md:w-4/5 md:py-16 md:px-14 lg:px-16"
           >
-            <h1 className="font-heading text-3xl font-extrabold leading-normal text-slate-900 dark:text-white md:text-4xl md:leading-snug lg:text-5xl lg:leading-tight">
+            <motion.h1 layoutId="title-silicon" className="font-heading text-3xl font-extrabold leading-normal text-slate-900 dark:text-white md:text-4xl md:leading-snug lg:text-5xl lg:leading-tight">
               Developing a Sustainable and Comprehensive Design System for
               COMPFEST
-            </h1>
-            <motion.h3 layoutId="title-silicon">
-              Developing a Sustainable and Comprehensive Design System for
-              COMPFEST
-            </motion.h3>
+            </motion.h1>
             <aside className="highlight mt-10 flex flex-row space-x-6 overflow-scroll rounded-xl px-6 py-4 scrollbar-hide dark:bg-slate-800/30 md:hidden">
               <p className="whitespace-nowrap font-serif text-sm font-bold italic lg:text-base">
                 {time} minute read

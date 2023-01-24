@@ -9,7 +9,7 @@ export default function Projects() {
         Featured works
       </h2>
       <div className="flex flex-row">
-        <Link href="/projects" className="group basis-1/3">
+        <Link href="/projects/silicon" className="group basis-1/3">
           <div className="relative mb-2 aspect-[18/9] w-full origin-bottom overflow-hidden rounded-lg transition-transform duration-500 group-hover:scale-105">
             <motion.figure layoutId="image-silicon">
               <Image
@@ -20,10 +20,10 @@ export default function Projects() {
               />
             </motion.figure>
           </div>
-          <motion.h3 layoutId="title-silicon">
+          <motion.h1 layoutId="title-silicon">
             Developing a Sustainable and Comprehensive Design System for
             COMPFEST
-          </motion.h3>
+          </motion.h1>
         </Link>
       </div>
     </section>
