@@ -2,8 +2,10 @@ import Head from "next/head";
 
 import Hero from "../components/landing/Hero";
 import Logos from "../components/landing/Logos";
+import Experience from "../components/landing/Experience";
 import PixelPerfect from "../components/landing/PixelPerfect";
 import Editor from "../components/landing/Editor";
+import Projects from "../components/landing/Projects";
 
 export default function Home() {
   return (
@@ -19,8 +21,10 @@ export default function Home() {
       <div className="mx-auto space-y-40 pb-40 overflow-hidden">
         <Hero />
         <Logos />
+        <Experience />
         <PixelPerfect />
         {/* <Editor /> */}
+        <Projects />
       </div>
     </div>
   );

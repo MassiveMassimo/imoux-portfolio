@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { RefObject, useEffect, useRef, useState } from "react";
 import { Waypoint } from "react-waypoint";
+import { motion } from "framer-motion";
 
 export default function Silicon() {
   let h2 =
@@ -54,18 +55,19 @@ export default function Silicon() {
           content="Welcome to my portfolio where I showcase my projects, interests, and overall taste in design!"
         />
       </Head>
-      <div className="mx-auto -space-y-32 pb-40 pt-16">
-        <header className="relative -z-10 h-[40vh] w-full">
-          <Image
-            className="pointer-events-none object-cover"
-            src="/silicon/siliconheader.webp"
-            quality={100}
-            fill
-            alt=""
-          />
+      <div className="mx-auto -space-y-40 pb-40">
+        <header className="relative -z-10 h-[50vh] w-full">
+          <motion.figure layoutId="image-silicon">
+            <Image
+              className="pointer-events-none object-cover"
+              src="/silicon/siliconheader.webp"
+              fill
+              alt=""
+            />
+          </motion.figure>
         </header>
         <article className="flex px-8 md:space-x-10 lg:px-16">
-          <div className="mt-32 hidden w-1/5 flex-col md:flex">
+          <div className="mt-40 hidden w-1/5 flex-col md:flex">
             <aside className="mt-10 flex w-full flex-col space-y-2">
               <div className="flex flex-row items-center space-x-3">
                 <svg
@@ -173,16 +175,12 @@ export default function Silicon() {
                   Team
                 </p>
               </div>
-              <div className="flex flex-wrap gap-3 pt-4">
-                <div className="flex w-fit flex-row items-center space-x-1 rounded-lg stroke-slate-800 py-1 transition-all hover:bg-slate-300 hover:px-4 hover:dark:bg-slate-700">
-                  <p className="grow truncate text-base font-semibold tracking-tight text-slate-800 dark:text-slate-400 lg:text-lg">
-                    #figma
-                  </p>
+              <div className="flex flex-wrap pt-4">
+                <div className="flex flex-row items-center space-x-1 rounded-lg py-1 px-3 transition-all hover:bg-slate-300 hover:dark:bg-slate-700">
+                  #figma
                 </div>
-                <div className="flex w-fit flex-row items-center space-x-1 rounded-lg stroke-slate-800 py-1 transition-all hover:bg-slate-300 hover:px-4 hover:dark:bg-slate-700">
-                  <p className="grow truncate text-base font-semibold tracking-tight text-slate-800 dark:text-slate-400 lg:text-lg">
-                    #compfest
-                  </p>
+                <div className="flex flex-row items-center space-x-1 rounded-lg py-1 px-3 transition-all hover:bg-slate-300 hover:dark:bg-slate-700">
+                  #compfest
                 </div>
               </div>
             </aside>
@@ -315,6 +313,10 @@ export default function Silicon() {
               Developing a Sustainable and Comprehensive Design System for
               COMPFEST
             </h1>
+            <motion.h3 layoutId="title-silicon">
+              Developing a Sustainable and Comprehensive Design System for
+              COMPFEST
+            </motion.h3>
             <aside className="highlight mt-10 flex flex-row space-x-6 overflow-scroll rounded-xl px-6 py-4 scrollbar-hide dark:bg-slate-800/30 md:hidden">
               <p className="whitespace-nowrap font-serif text-sm font-bold italic lg:text-base">
                 {time} minute read

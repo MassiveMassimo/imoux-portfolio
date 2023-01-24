@@ -1,13 +1,13 @@
 import "../styles/globals.scss";
 import type { AppProps } from "next/app";
 import { ThemeProvider } from "next-themes";
-import Navbar from "../components/navbar/Navbar";
 import { Josefin_Slab, Reem_Kufi } from "@next/font/google";
-import localFont from '@next/font/local';
-
+import localFont from "@next/font/local";
+import Navbar from "../components/navbar/Navbar";
+import { AnimateSharedLayout } from "framer-motion";
 
 const inter = localFont({
-  src: './Inter.ttf',
+  src: "./Inter.ttf",
   variable: "--font-inter",
   display: "optional",
 });
@@ -29,8 +29,12 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <ThemeProvider attribute="class">
         <Navbar />
-        <main className={`${inter.variable} ${josefin_slab.variable} ${reem_kufi.variable} font-sans`}>
-          <Component {...pageProps} />
+        <main
+          className={`${inter.variable} ${josefin_slab.variable} ${reem_kufi.variable} font-sans`}
+        >
+          <AnimateSharedLayout>
+            <Component {...pageProps} />
+          </AnimateSharedLayout>
         </main>
       </ThemeProvider>
     </>

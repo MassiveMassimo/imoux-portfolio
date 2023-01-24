@@ -121,9 +121,9 @@ export default function PixelPerfect() {
             )}
           </div>
           <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-4xl lg:text-5xl">
-            A True Pixel Perfectionist
+            A true pixel perfectionist
           </h2>
-          <p className="p">
+          <p className="p my-5">
             A single pixel can be the difference between a great design and a
             perfect one. That&apos;s why high-quality products rely on people
             who care about the most minute of details and can ensure you with

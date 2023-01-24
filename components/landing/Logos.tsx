@@ -9,7 +9,7 @@ export default function Logos() {
         Here&apos;s a cool logo section
       </h2>
       <p className="my-5 mx-auto max-w-3xl text-center text-lg text-slate-600 dark:text-slate-400">
-        The organizations and products I helped to create the branding of.
+        Let this carousel illustrate how many people trust my skills.
       </p>
       <div className="relative mt-14 overflow-x-hidden px-20">
         <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-20 bg-gradient-to-r from-slate-100 to-transparent dark:from-slate-900 dark:to-transparent lg:w-40"></div>
