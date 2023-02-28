@@ -1,8 +1,8 @@
 import "../styles/globals.scss";
 import type { AppProps } from "next/app";
 import { ThemeProvider } from "next-themes";
-import { Josefin_Slab, Reem_Kufi } from "@next/font/google";
-import localFont from "@next/font/local";
+import { Josefin_Slab, Reem_Kufi } from "next/font/google";
+import localFont from "next/font/local";
 import Navbar from "../components/navbar/Navbar";
 
 const inter = localFont({
