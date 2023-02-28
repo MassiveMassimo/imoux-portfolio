@@ -9,7 +9,7 @@ import Projects from "../components/landing/Projects";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <Head>
         <title>Imo UX</title>
         <meta
@@ -26,6 +26,6 @@ export default function Home() {
         {/* <Editor /> */}
         <Projects />
       </div>
-    </div>
+    </>
   );
 }

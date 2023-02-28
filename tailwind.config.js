@@ -22,7 +22,6 @@ module.exports = {
     },
   },
   plugins: [
-    require('tailwindcss-intersect'),
     require('tailwind-scrollbar-hide'),
   ],
   darkMode: 'class',

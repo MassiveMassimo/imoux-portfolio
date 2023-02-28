@@ -47,7 +47,7 @@ export default function Silicon() {
   }
 
   return (
-    <div>
+    <>
       <Head>
         <title>Silicon Design System | Imo UX</title>
         <meta
@@ -57,7 +57,9 @@ export default function Silicon() {
       </Head>
       <div className="mx-auto -space-y-40 pb-40">
         <header className="relative -z-10 h-[50vh] w-full">
-          <motion.figure layoutId="image-silicon">
+          <motion.figure
+          layoutId="image-silicon"
+          >
             <Image
               className="pointer-events-none object-cover"
               src="/silicon/siliconheader.webp"
@@ -309,7 +311,11 @@ export default function Silicon() {
             ref={main}
             className="highlight w-full rounded-3xl bg-white/70 px-8 py-12 backdrop-blur-3xl dark:bg-slate-800/20 md:w-4/5 md:py-16 md:px-14 lg:px-16"
           >
-            <motion.h1 layoutId="title-silicon" className="font-heading text-3xl font-extrabold leading-normal text-slate-900 dark:text-white md:text-4xl md:leading-snug lg:text-5xl lg:leading-tight">
+            <motion.h1
+              layoutId="title-silicon"
+              // transition={{ duration: 1 }}
+              className="font-heading text-3xl font-extrabold leading-normal text-slate-900 dark:text-white md:text-4xl md:leading-snug lg:text-5xl lg:leading-tight"
+            >
               Developing a Sustainable and Comprehensive Design System for
               COMPFEST
             </motion.h1>
@@ -318,7 +324,7 @@ export default function Silicon() {
                 {time} minute read
               </p>
               <p className="whitespace-nowrap font-serif text-sm font-bold italic lg:text-base">
-                17 January, 2023
+                17 January 2023
               </p>
               <p
                 className="cursor-pointer whitespace-nowrap font-serif text-sm font-bold italic underline decoration-cyan-500 lg:text-base"
@@ -362,7 +368,7 @@ export default function Silicon() {
                   enable designers to create consistent, effective interfaces by
                   implementing common UI elements and corresponding states
                   across team projects. These, among other notable Figma
-                  features, have empowered aspiring product designers like
+                  features have empowered aspiring product designers like
                   myself to develop better and more easily understandable design
                   systems, such as Silicon Design System.
                 </p>
@@ -373,7 +379,7 @@ export default function Silicon() {
                   event is the largest of its kind in Indonesia, providing
                   everything from competitions to seminars for the general
                   public. Alongside a physical event, COMPFEST also possesses a
-                  substantial digital presense whose design was under my
+                  substantial digital presence whose design was under my
                   responsibility. Considering the scope of this event and how
                   its appearance and usability could very well impact its
                   success, a functional and effective design system
@@ -490,6 +496,6 @@ export default function Silicon() {
           </div>
         </article>
       </div>
-    </div>
+    </>
   );
 }
