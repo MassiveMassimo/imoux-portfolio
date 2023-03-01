@@ -8,7 +8,6 @@ import Navbar from "../components/navbar/Navbar";
 const inter = localFont({
   src: "./Inter.ttf",
   variable: "--font-inter",
-  display: "optional",
 });
 
 const josefin_slab = Josefin_Slab({
