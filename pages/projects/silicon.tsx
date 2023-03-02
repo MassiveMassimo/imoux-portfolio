@@ -59,15 +59,15 @@ export default function Silicon() {
         />
       </Head>
       <div className="mx-auto -space-y-40 pb-40">
-        <header className="relative -z-10 h-[50vh] w-full">
+        <header className="relative h-[50vh] w-full">
           <Image
-            className="zoom object-cover"
+            className="object-cover"
             src="/silicon/siliconheader.webp"
             fill
             alt=""
           />
         </header>
-        <article className="flex px-8 md:space-x-10 lg:px-16">
+        <article className="z-10 flex px-8 md:space-x-10 lg:px-16">
           <div className="mt-40 hidden w-1/5 flex-col md:flex">
             <aside className="mt-10 flex w-full flex-col space-y-2">
               <div className="flex flex-row items-center space-x-3">
@@ -189,7 +189,7 @@ export default function Silicon() {
             <aside className="w-full grow">
               <nav className="sticky top-0 flex w-full flex-col space-y-2 pt-20">
                 <h4 className="mb-3 text-xl font-semibold text-slate-700 dark:text-slate-200">
-                  On this page
+                  Chapters
                 </h4>
                 <button
                   // href="#introduction"
@@ -300,9 +300,9 @@ export default function Silicon() {
               <h4 className="mb-5 text-xl font-semibold text-slate-700 dark:text-slate-200">
                 More by me
               </h4>
-              <Link href="/" className="group">
+              <Link href="/projects/vishwakarma" className="group">
                 <div className="mb-2 aspect-[18/9] w-full origin-bottom rounded-lg bg-cyan-400 transition-transform duration-500 group-hover:scale-105"></div>
-                <h5>Something</h5>
+                <h5>Vishwakarma Branding</h5>
               </Link>
             </div>
           </div>
@@ -348,37 +348,35 @@ export default function Silicon() {
                   The growing rise of web app services has reached the design
                   sphere; Figma has taken the design community by storm through
                   its robust features, team collaboration capabilities, and
-                  generous plans for students. In the wake of its popularity, it
-                  has left a universe of possibilities for designers to explore
-                  new workflows, engage in teamwork, and integrate powerful
+                  generous student education plans. The wake of its popularity
+                  has left a universe of possibilities where designers can
+                  explore new workflows, engage in teamwork, and integrate new
                   tools. Figma combines the best features of its competitors
                   through extensive plugin support and a vast community library
                   without the bloat of Adobe XD or the ecosystem restrictions of
                   Sketch.
                 </p>
                 <p className="p my-5 max-w-none">
-                  In the realm of UI/UX design, Figma offers a wide range of
-                  tools that allow designers to streamline the product design
-                  development process. Features such as components and variants
-                  enable designers to create consistent, effective interfaces by
-                  implementing common UI elements and corresponding states
-                  across team projects. These, among other notable Figma
-                  features have empowered aspiring product designers like myself
-                  to develop better and more easily understandable design
-                  systems, such as Silicon Design System.
+                  For all designers alike, Figma offers many valuable tools to
+                  streamline the product design development process. Features
+                  such as components and variants enable designers to create
+                  consistent, effective interfaces by implementing common UI
+                  elements and corresponding states across team projects. Among
+                  other notable Figma features, these have empowered aspiring
+                  product designers like me to develop better and more readily
+                  understandable design systems, such as Silicon Design System.
                 </p>
                 <p className="p my-5 max-w-none">
-                  In late 2021, I became the lead product designer for COMPFEST,
-                  a year-long computer science event organized by computer
-                  science students such as myself. This annual computer science
-                  event is the largest of its kind in Indonesia, providing
-                  everything from competitions to seminars for the general
-                  public. Alongside a physical event, COMPFEST also possesses a
-                  substantial digital presence whose design was under my
-                  responsibility. Considering the scope of this event and how
-                  its appearance and usability could very well impact its
-                  success, a functional and effective design system
-                  representative of the project scope was in order.
+                  In late 2021, I became the managing UI/UX lead for COMPFEST, a
+                  year-long event organized by computer science students such as
+                  myself. This annual computer science event, the largest of its
+                  kind in Indonesia, provides everything from competitions to
+                  seminars for the general public. Alongside a physical event,
+                  COMPFEST also possesses a substantial digital presence whose
+                  design was under my responsibility. Considering the scope of
+                  this event and how its appearance and usability could very
+                  well impact its success, a functional and practical design
+                  system representative of the project scope was in order.
                 </p>
               </section>
             </Waypoint>
@@ -393,21 +391,54 @@ export default function Silicon() {
               <section className="mt-12 md:mt-16" ref={ideationSection}>
                 <h2 className={h2}>Ideation</h2>
                 <p className="p my-5 max-w-none">
-                  The first step in creating a design system using Figma is to
-                  gather ideas and determine the overall goals of the system.
-                  This includes researching the needs of the users and
-                  stakeholders, as well as identifying the key components that
-                  will make up the system. This phase is crucial for ensuring
-                  that the design system is user-centered and meets the needs of
-                  the business.
+                  In 2020, COMPFEST formed its first UI/UX team for COMPFEST 12
+                  in response to the Covid-19 pandemic, which required
+                  transforming all of COMPFEST's offline experiences online.
+                  This abrupt change in our event's core operations resulted in
+                  significant changes to the management and departmental
+                  structure, bringing forth COMPFEST's first IT Development
+                  department. The digitalization of offline events necessitated
+                  the talents of this new department's Software Engineering and
+                  UI/UX divisions to work together to create novel online
+                  experiences for COMPFEST.
                 </p>
-                <Image
-                  className="zoom rounded-lg"
-                  src="/silicon/arcana.webp"
-                  alt=""
-                  width={909}
-                  height={618}
-                />
+                <p className="p my-5 max-w-none">
+                  When I became a junior UI/UX designer for COMPFEST 13, I was
+                  introduced to this year's design system created by our
+                  division, Arcana. This was the first time I was familiarized
+                  with a design system meant to be used cohesively among design
+                  files and their respective designers. During this time, Arcana
+                  consisted of essential core components such as buttons,
+                  inputs, and even navbars and modals, all the needed elements
+                  to facilitate our team's designs. This foundational system
+                  provided the functionality and guidance for COMPFEST designers
+                  and developers alike but still had room to grow in scalability
+                  and interactivity.
+                </p>
+                <figure className="space-y-4 py-8">
+                  <Image
+                    className="zoom rounded-lg"
+                    src="/silicon/arcana.webp"
+                    alt=""
+                    width={909}
+                    height={618}
+                  />
+                  <figcaption className="text-center font-serif font-bold text-slate-400 dark:text-slate-500">
+                    COMPFEST 13 Arcana design system
+                  </figcaption>
+                </figure>
+                <p className="p my-5 max-w-none">
+                  This challenge prompted the need for a cohesive design system
+                  that could be used by the team, and I was tasked with leading
+                  the effort. Through my expertise in design system development
+                  and collaboration with fellow designers and software
+                  engineers, we successfully implemented a design system that
+                  transformed the way we work. The design system allowed us to
+                  work remotely and effectively, ensuring consistency and
+                  scalability in all our digital products. I am proud of the
+                  result we achieved, and I look forward to sharing the details
+                  of our process and successes in my blog.
+                </p>
               </section>
             </Waypoint>
             <Waypoint

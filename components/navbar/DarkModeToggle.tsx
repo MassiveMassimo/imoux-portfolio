@@ -1,13 +1,10 @@
 import { memo, useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import sun from "/sun.svg";
-import moon from "/moon.svg";
 
 export default memo(function DarkModeToggle() {
   const [hydrated, setHydrated] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
   
-  // useEffect only runs on the client, so now we can safely show the UI
   useEffect(() => {
     setHydrated(true);
   }, []);
@@ -40,10 +37,6 @@ export default memo(function DarkModeToggle() {
           />
         </svg>
       ) : (
-        // <img
-        //   className="h-full p-3 hover:-translate-y-1 active:translate-y-0"
-        //   src="/sun.svg"
-        // ></img>
         <svg
           className="transition-all h-full fill-indigo-400 p-3 active:-rotate-45"
           viewBox="0 0 24 24"
@@ -55,10 +48,6 @@ export default memo(function DarkModeToggle() {
           />
           <path d="M9.00374 4C8.50433 4 8.00491 4.33266 8.00491 4.99896C8.00491 5.4465 7.45355 5.99793 7.00607 5.99793C5.67463 5.99793 5.67463 7.99586 7.00607 7.99586C7.45355 7.99586 8.00491 8.54728 8.00491 8.99482C8.00491 10.3264 10.0026 10.3264 10.0026 8.99482C10.0026 8.54728 10.5539 7.99586 11.0014 7.99586C12.3329 7.99586 12.3329 5.99793 11.0014 5.99793C10.5539 5.99793 10.0026 5.4465 10.0026 4.99896C10.0026 4.33266 9.50316 4 9.00374 4ZM5.0084 9.99378C4.67579 9.99378 4.35316 10.2056 4.35316 10.6491C4.35316 10.9478 3.96463 11.3364 3.66597 11.3364C2.77801 11.3364 2.77801 12.647 3.66597 12.647C3.96463 12.647 4.35316 13.0356 4.35316 13.3343C4.35316 14.2224 5.66364 14.2214 5.66364 13.3343C5.66364 13.0356 6.05218 12.647 6.35083 12.647C7.2388 12.647 7.2388 11.3364 6.35083 11.3364C6.05218 11.3364 5.66364 10.9478 5.66364 10.6491C5.66364 10.2056 5.34101 9.99378 5.0084 9.99378Z" />
         </svg>
-        // <img
-        //   className="h-full p-3 hover:-translate-y-1 active:translate-y-0"
-        //   src="/moon.svg"
-        // ></img>
       )}
     </button>
   );
