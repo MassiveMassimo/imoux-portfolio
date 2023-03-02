@@ -393,24 +393,24 @@ export default function Silicon() {
                 <p className="p my-5 max-w-none">
                   In 2020, COMPFEST formed its first UI/UX team for COMPFEST 12
                   in response to the Covid-19 pandemic, which required
-                  transforming all of COMPFEST's offline experiences online.
-                  This abrupt change in our event's core operations resulted in
+                  transforming all of COMPFEST&apos;s offline experiences online.
+                  This abrupt change in our event&apos;s core operations resulted in
                   significant changes to the management and departmental
-                  structure, bringing forth COMPFEST's first IT Development
+                  structure, bringing forth COMPFEST&apos;s first IT Development
                   department. The digitalization of offline events necessitated
-                  the talents of this new department's Software Engineering and
+                  the talents of this new department&apos;s Software Engineering and
                   UI/UX divisions to work together to create novel online
                   experiences for COMPFEST.
                 </p>
                 <p className="p my-5 max-w-none">
                   When I became a junior UI/UX designer for COMPFEST 13, I was
-                  introduced to this year's design system created by our
+                  introduced to this year&apos;s design system created by our
                   division, Arcana. This was the first time I was familiarized
                   with a design system meant to be used cohesively among design
                   files and their respective designers. During this time, Arcana
                   consisted of essential core components such as buttons,
                   inputs, and even navbars and modals, all the needed elements
-                  to facilitate our team's designs. This foundational system
+                  to facilitate our team&apos;s designs. This foundational system
                   provided the functionality and guidance for COMPFEST designers
                   and developers alike but still had room to grow in scalability
                   and interactivity.
