@@ -16,8 +16,6 @@ export default memo(function DarkModeToggle() {
     return null;
   }
   
-  
-  
   return (
     <button
       className="highlight h-full items-center rounded-lg shadow-sm ring-1 ring-slate-900/10 hover:shadow-xl hover:ring-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700"

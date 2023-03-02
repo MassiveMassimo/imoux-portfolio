@@ -41,6 +41,15 @@ body {
   @apply w-1 rounded-full border-4 border-solid border-white bg-slate-400 hover:w-3 hover:border-2 dark:border-slate-900 dark:bg-slate-600;
 }
 
+.medium-zoom-overlay {
+  @apply bg-slate-100 bg-gradient bg-cover bg-no-repeat dark:bg-slate-900 #{!important};
+}
+
+.medium-zoom-overlay,
+.medium-zoom-image {
+  z-index: 9999;
+}
+
 // ===================================================================== //
 
 @keyframes scroll {

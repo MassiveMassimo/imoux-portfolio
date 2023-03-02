@@ -4,6 +4,7 @@ import Link from "next/link";
 import { RefObject, useEffect, useRef, useState } from "react";
 import { Waypoint } from "react-waypoint";
 import { motion } from "framer-motion";
+import mediumZoom from "medium-zoom";
 
 export default function Silicon() {
   let h2 =
@@ -32,6 +33,8 @@ export default function Silicon() {
     const text = ref.textContent.split(" ").length;
     const time = text / 238;
     setTime(Math.round(time));
+
+    mediumZoom(".zoom", {});
   }, []);
 
   const handleClick = (section: RefObject<HTMLDivElement>) => {
@@ -57,16 +60,12 @@ export default function Silicon() {
       </Head>
       <div className="mx-auto -space-y-40 pb-40">
         <header className="relative -z-10 h-[50vh] w-full">
-          <motion.figure
-          layoutId="image-silicon"
-          >
-            <Image
-              className="pointer-events-none object-cover"
-              src="/silicon/siliconheader.webp"
-              fill
-              alt=""
-            />
-          </motion.figure>
+          <Image
+            className="zoom object-cover"
+            src="/silicon/siliconheader.webp"
+            fill
+            alt=""
+          />
         </header>
         <article className="flex px-8 md:space-x-10 lg:px-16">
           <div className="mt-40 hidden w-1/5 flex-col md:flex">
@@ -311,14 +310,10 @@ export default function Silicon() {
             ref={main}
             className="highlight w-full rounded-3xl bg-white/70 px-8 py-12 backdrop-blur-3xl dark:bg-slate-800/20 md:w-4/5 md:py-16 md:px-14 lg:px-16"
           >
-            <motion.h1
-              layoutId="title-silicon"
-              // transition={{ duration: 1 }}
-              className="font-heading text-3xl font-extrabold leading-normal text-slate-900 dark:text-white md:text-4xl md:leading-snug lg:text-5xl lg:leading-tight"
-            >
+            <h1 className="font-heading text-3xl font-extrabold leading-normal text-slate-900 dark:text-white md:text-4xl md:leading-snug lg:text-5xl lg:leading-tight">
               Developing a Sustainable and Comprehensive Design System for
               COMPFEST
-            </motion.h1>
+            </h1>
             <aside className="highlight mt-10 flex flex-row space-x-6 overflow-scroll rounded-xl px-6 py-4 scrollbar-hide dark:bg-slate-800/30 md:hidden">
               <p className="whitespace-nowrap font-serif text-sm font-bold italic lg:text-base">
                 {time} minute read
@@ -368,8 +363,8 @@ export default function Silicon() {
                   enable designers to create consistent, effective interfaces by
                   implementing common UI elements and corresponding states
                   across team projects. These, among other notable Figma
-                  features have empowered aspiring product designers like
-                  myself to develop better and more easily understandable design
+                  features have empowered aspiring product designers like myself
+                  to develop better and more easily understandable design
                   systems, such as Silicon Design System.
                 </p>
                 <p className="p my-5 max-w-none">
@@ -406,6 +401,13 @@ export default function Silicon() {
                   that the design system is user-centered and meets the needs of
                   the business.
                 </p>
+                <Image
+                  className="zoom rounded-lg"
+                  src="/silicon/arcana.webp"
+                  alt=""
+                  width={909}
+                  height={618}
+                />
               </section>
             </Waypoint>
             <Waypoint
