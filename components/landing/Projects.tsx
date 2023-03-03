@@ -33,8 +33,7 @@ export default function Projects() {
           <motion.h1
           layoutId="title-silicon"
           >
-            Developing a Sustainable and Comprehensive Design System for
-            COMPFEST
+            Crafting a Scalable and Cohesive Design System for COMPFEST
           </motion.h1>
         </Link>
       </div>

@@ -3,8 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { RefObject, useEffect, useRef, useState } from "react";
 import { Waypoint } from "react-waypoint";
-import { motion } from "framer-motion";
 import mediumZoom from "medium-zoom";
+import header from "../../public/silicon/siliconheader.png";
+import arcana from "../../public/silicon/arcana.png"
 
 export default function Silicon() {
   let h2 =
@@ -61,10 +62,12 @@ export default function Silicon() {
       <div className="mx-auto -space-y-40 pb-40">
         <header className="relative h-[50vh] w-full">
           <Image
+            alt="Silicon Design System Header"
             className="object-cover"
-            src="/silicon/siliconheader.webp"
+            src={header}
+            quality={100}
+            placeholder="blur"
             fill
-            alt=""
           />
         </header>
         <article className="z-10 flex px-8 md:space-x-10 lg:px-16">
@@ -311,8 +314,7 @@ export default function Silicon() {
             className="highlight w-full rounded-3xl bg-white/70 px-8 py-12 backdrop-blur-3xl dark:bg-slate-800/20 md:w-4/5 md:py-16 md:px-14 lg:px-16"
           >
             <h1 className="font-heading text-3xl font-extrabold leading-normal text-slate-900 dark:text-white md:text-4xl md:leading-snug lg:text-5xl lg:leading-tight">
-              Developing a Sustainable and Comprehensive Design System for
-              COMPFEST
+              Crafting a Scalable and Cohesive Design System for COMPFEST
             </h1>
             <aside className="highlight mt-10 flex flex-row space-x-6 overflow-scroll rounded-xl px-6 py-4 scrollbar-hide dark:bg-slate-800/30 md:hidden">
               <p className="whitespace-nowrap font-serif text-sm font-bold italic lg:text-base">
@@ -393,14 +395,14 @@ export default function Silicon() {
                 <p className="p my-5 max-w-none">
                   In 2020, COMPFEST formed its first UI/UX team for COMPFEST 12
                   in response to the Covid-19 pandemic, which required
-                  transforming all of COMPFEST&apos;s offline experiences online.
-                  This abrupt change in our event&apos;s core operations resulted in
-                  significant changes to the management and departmental
-                  structure, bringing forth COMPFEST&apos;s first IT Development
-                  department. The digitalization of offline events necessitated
-                  the talents of this new department&apos;s Software Engineering and
-                  UI/UX divisions to work together to create novel online
-                  experiences for COMPFEST.
+                  transforming all of COMPFEST&apos;s offline experiences
+                  online. This abrupt change in our event&apos;s core operations
+                  resulted in significant changes to the management and
+                  departmental structure, bringing forth COMPFEST&apos;s first
+                  IT Development department. The digitalization of offline
+                  events necessitated the talents of this new department&apos;s
+                  Software Engineering and UI/UX divisions to work together to
+                  create novel online experiences for COMPFEST.
                 </p>
                 <p className="p my-5 max-w-none">
                   When I became a junior UI/UX designer for COMPFEST 13, I was
@@ -410,18 +412,17 @@ export default function Silicon() {
                   files and their respective designers. During this time, Arcana
                   consisted of essential core components such as buttons,
                   inputs, and even navbars and modals, all the needed elements
-                  to facilitate our team&apos;s designs. This foundational system
-                  provided the functionality and guidance for COMPFEST designers
-                  and developers alike but still had room to grow in scalability
-                  and interactivity.
+                  to facilitate our team&apos;s designs. This foundational
+                  system provided the functionality and guidance for COMPFEST
+                  designers and developers alike but still had room to grow in
+                  scalability and interactivity.
                 </p>
                 <figure className="space-y-4 py-8">
                   <Image
+                    alt="COMPFEST 12 Arcana Design System"
                     className="zoom rounded-lg"
-                    src="/silicon/arcana.webp"
-                    alt=""
-                    width={909}
-                    height={618}
+                    src={arcana}
+                    placeholder="blur"
                   />
                   <figcaption className="text-center font-serif font-bold text-slate-400 dark:text-slate-500">
                     COMPFEST 13 Arcana design system
