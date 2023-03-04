@@ -407,13 +407,13 @@ export default function Silicon() {
                 </p>
                 <p className="p my-5 max-w-none">
                   When I became a junior UI/UX designer for COMPFEST 13, I was
-                  introduced to this year's design system created by our
+                  introduced to this year&apos;s design system created by our
                   division, Arcana. This was the first time I was familiarized
                   with a design system meant to be used cohesively among design
                   files and their respective designers. During this time, Arcana
                   consisted of essential core components such as buttons,
                   inputs, and even navbars and modals, all the needed elements
-                  to facilitate our team's designs.
+                  to facilitate our team&apos;s designs.
                 </p>
                 <figure className="space-y-4 py-8">
                   <Image
