@@ -4,8 +4,9 @@ import Link from "next/link";
 import { RefObject, useEffect, useRef, useState } from "react";
 import { Waypoint } from "react-waypoint";
 import mediumZoom from "medium-zoom";
-import header from "../../public/silicon/siliconheader.png";
-import arcana from "../../public/silicon/arcana.png"
+import header from "../../public/silicon/silicon-header.png";
+import arcana from "../../public/silicon/arcana.png";
+import atomicdesign from "../../public/silicon/atomic-design.png";
 
 export default function Silicon() {
   let h2 =
@@ -406,16 +407,13 @@ export default function Silicon() {
                 </p>
                 <p className="p my-5 max-w-none">
                   When I became a junior UI/UX designer for COMPFEST 13, I was
-                  introduced to this year&apos;s design system created by our
+                  introduced to this year's design system created by our
                   division, Arcana. This was the first time I was familiarized
                   with a design system meant to be used cohesively among design
                   files and their respective designers. During this time, Arcana
                   consisted of essential core components such as buttons,
                   inputs, and even navbars and modals, all the needed elements
-                  to facilitate our team&apos;s designs. This foundational
-                  system provided the functionality and guidance for COMPFEST
-                  designers and developers alike but still had room to grow in
-                  scalability and interactivity.
+                  to facilitate our team's designs.
                 </p>
                 <figure className="space-y-4 py-8">
                   <Image
@@ -440,6 +438,17 @@ export default function Silicon() {
                   result we achieved, and I look forward to sharing the details
                   of our process and successes in my blog.
                 </p>
+                <figure className="space-y-4 py-8">
+                  <Image
+                    alt="An example of atomic design in Silicon"
+                    className="zoom rounded-lg"
+                    src={atomicdesign}
+                    placeholder="blur"
+                  />
+                  <figcaption className="text-center font-serif font-bold text-slate-400 dark:text-slate-500">
+                    An example of atomic design in Silicon
+                  </figcaption>
+                </figure>
               </section>
             </Waypoint>
             <Waypoint

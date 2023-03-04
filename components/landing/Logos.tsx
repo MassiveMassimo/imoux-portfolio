@@ -6,10 +6,11 @@ export default function Logos() {
   return (
     <section className="relative flex w-full flex-col overflow-hidden px-8 lg:px-16">
       <h2 className="mx-auto text-center text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-4xl lg:text-5xl">
-        Here&apos;s a cool logo section
+        No Stranger to Quality
       </h2>
       <p className="my-5 mx-auto max-w-3xl text-center text-lg text-slate-600 dark:text-slate-400">
-        Let this carousel illustrate how many people trust my skills.
+        Experience and quality matters. That&apos;s why these organizations and
+        teams have collaborated with me to create groundbreaking products.
       </p>
       <div className="relative mt-14 overflow-x-hidden px-20">
         <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-20 bg-gradient-to-r from-slate-100 to-transparent dark:from-slate-900 dark:to-transparent lg:w-40"></div>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import siliconHeader from "../../public/silicon/silicon-header.png";
+import vishwakarmaThumbnail from "../../public/vishwakarma/vishwakarma-thumbnail.png";
 
 export default function Projects() {
   return (
@@ -11,30 +12,28 @@ export default function Projects() {
       <h2 className="mb-16 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-4xl lg:text-5xl">
         Featured works
       </h2>
-      <div className="flex flex-row">
-        <Link
-          href="/projects/silicon"
-          className="group basis-1/3"
-          // scroll={false}
-          passHref
-        >
-          <div className="relative mb-2 aspect-[18/9] w-full origin-bottom overflow-hidden rounded-lg transition-transform duration-500 group-hover:scale-105">
-            <motion.figure
-            layoutId="image-silicon"
-            >
-              <Image
-                className="pointer-events-none object-cover"
-                src="/silicon/siliconheader.webp"
-                fill
-                alt=""
-              />
-            </motion.figure>
-          </div>
-          <motion.h1
-          layoutId="title-silicon"
-          >
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <Link href="/projects/silicon" className="group" passHref>
+          <Image
+            className="pointer-events-none relative mb-2 aspect-[18/9] w-full origin-bottom overflow-hidden rounded-lg object-cover transition-transform duration-500 group-hover:scale-105"
+            src={siliconHeader}
+            alt="Silicon Design System"
+            placeholder="blur"
+          />
+          <h3 className="text-lg font-heading font-medium text-slate-600 dark:text-slate-400 lg:text-xl">
             Crafting a Scalable and Cohesive Design System for COMPFEST
-          </motion.h1>
+          </h3>
+        </Link>
+        <Link href="/projects/vishwakarma" className="group" passHref>
+          <Image
+            className="pointer-events-none relative mb-2 aspect-[18/9] w-full origin-bottom overflow-hidden rounded-lg object-cover transition-transform duration-500 group-hover:scale-105"
+            src={vishwakarmaThumbnail}
+            alt="Vishwakarma"
+            placeholder="blur"
+          />
+          <h3 className="text-lg font-heading font-medium text-slate-600 dark:text-slate-400 lg:text-xl">
+            Designing Vishwakarma&apos;s New Branding
+          </h3>
         </Link>
       </div>
     </section>
