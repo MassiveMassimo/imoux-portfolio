@@ -26,7 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <ThemeProvider attribute="class">
-        <Navbar />
+        <Navbar className={`${inter.variable} font-sans`} />
         <main
           className={`${inter.variable} ${josefin_slab.variable} ${reem_kufi.variable} font-sans`}
         >

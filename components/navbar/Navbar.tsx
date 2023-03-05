@@ -2,8 +2,13 @@ import DarkModeToggle from "./DarkModeToggle";
 import Link from "next/link";
 import { useRef } from "react";
 
-export default function Navbar() {
+type NavbarProps = {
+  className?: string;
+};
+
+export default function Navbar(props: NavbarProps) {
   let previousScroll = 0;
+  const { className } = props;
 
   const nav = useRef<HTMLDivElement>(null);
 
@@ -22,12 +27,12 @@ export default function Navbar() {
   return (
     <nav
       ref={nav}
-      className="fixed top-0 left-0 z-20 mx-auto flex h-16 w-full justify-between border-b border-slate-900/10 bg-white/30 px-8 backdrop-blur-2xl transition-all dark:border-slate-50/5 dark:bg-slate-900/75 lg:px-16"
+      className={`fixed top-0 left-0 z-20 mx-auto flex h-16 w-full justify-between border-b border-slate-900/10 bg-white/30 px-8 backdrop-blur-2xl transition-all dark:border-slate-50/5 dark:bg-slate-900/75 lg:px-16 ${className}`}
     >
-      <div className="flex space-x-5 py-4">
+      <div className="flex items-center space-x-10 py-3">
         <Link
           href="/"
-          className="group flex h-full w-fit cursor-pointer items-center"
+          className="group flex py-1 h-full w-fit cursor-pointer items-center"
         >
           <svg
             className="h-full overflow-visible fill-none stroke-slate-900 dark:stroke-white"
@@ -61,7 +66,19 @@ export default function Navbar() {
             />
           </svg>
         </Link>
-        <div className="h-full w-1 rounded-r-full dark:bg-slate-600" />
+        <div className="h-4/5 py-1 w-1 rounded-full bg-slate-300 dark:bg-slate-800" />
+        <Link
+          href="/#projects"
+          className="flex items-center font-medium dark:text-slate-400 dark:hover:text-slate-300 transition-colors text-sm px-4 h-full text-center rounded-md dark:hover:bg-slate-800"
+        >
+          Case Studies
+        </Link>
+        <Link
+          href="/cv"
+          className="flex items-center font-medium dark:text-slate-400 dark:hover:text-slate-300 transition-colors text-sm px-4 h-full text-center rounded-md dark:hover:bg-slate-800"
+        >
+          Resume
+        </Link>
       </div>
       <div className="flex h-full items-center space-x-2 py-2">
         <button
