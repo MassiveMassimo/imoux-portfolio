@@ -28,7 +28,7 @@ export default function Navbar(props: NavbarProps) {
   return (
     <nav
       ref={nav}
-      className={`fixed top-0 left-0 z-20 mx-auto flex w-full flex-col border-b border-slate-900/10 backdrop-blur-2xl transition-all duration-700 dark:border-slate-50/5 px-8 lg:px-16 sm:bg-slate-100/40 sm:dark:bg-slate-900/75 ${className}`}
+      className={`fixed top-0 left-0 z-20 mx-auto flex w-full flex-col border-b border-slate-900/10 backdrop-blur-2xl transition-all duration-500 dark:border-slate-50/5 px-8 lg:px-16 sm:bg-slate-100/40 sm:dark:bg-slate-900/75 ${className}`}
     >
       <div className="flex h-16 w-full justify-between">
         <div className="flex h-full items-center space-x-2 py-2 sm:hidden">
