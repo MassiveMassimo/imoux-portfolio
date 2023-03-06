@@ -20,9 +20,9 @@ export default function Projects() {
             alt="Silicon Design System"
             placeholder="blur"
           />
-          <h3 className="text-lg font-heading font-medium text-slate-600 dark:text-slate-400 lg:text-xl">
+          <h5 className="text-lg font-heading font-medium text-slate-600 dark:text-slate-400 lg:text-xl">
             Crafting a Scalable and Cohesive Design System for COMPFEST
-          </h3>
+          </h5>
         </Link>
         <Link href="/projects/vishwakarma" className="group" passHref>
           <Image
@@ -31,9 +31,9 @@ export default function Projects() {
             alt="Vishwakarma"
             placeholder="blur"
           />
-          <h3 className="text-lg font-heading font-medium text-slate-600 dark:text-slate-400 lg:text-xl">
+          <h5 className="text-lg font-heading font-medium text-slate-600 dark:text-slate-400 lg:text-xl">
             Designing Vishwakarma&apos;s New Branding
-          </h3>
+          </h5>
         </Link>
       </div>
     </section>

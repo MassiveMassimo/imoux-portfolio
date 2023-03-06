@@ -4,15 +4,15 @@ import { useTheme } from "next-themes";
 export default memo(function DarkModeToggle() {
   const [hydrated, setHydrated] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
-  
+
   useEffect(() => {
     setHydrated(true);
   }, []);
-  
+
   if (!hydrated) {
     return null;
   }
-  
+
   return (
     <button
       className="highlight h-full items-center rounded-lg shadow-sm ring-1 ring-slate-900/10 hover:shadow-xl hover:ring-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700"
@@ -22,7 +22,7 @@ export default memo(function DarkModeToggle() {
     >
       {resolvedTheme === "light" ? (
         <svg
-          className="transition-all h-full -rotate-45 fill-amber-500 p-3 active:rotate-0"
+          className="ease-spring h-full -rotate-45 fill-sky-500 p-3 transition-all duration-700 active:rotate-0"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -38,7 +38,7 @@ export default memo(function DarkModeToggle() {
         </svg>
       ) : (
         <svg
-          className="transition-all h-full fill-indigo-400 p-3 active:-rotate-45"
+          className="ease-spring h-full fill-indigo-400 p-3 transition-all duration-700 active:-rotate-45"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >

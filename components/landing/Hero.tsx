@@ -16,7 +16,7 @@ export default function Hero() {
         {/* <Loading /> */}
         <Suspense fallback={<Loading />}>
           <iframe
-            className="h-[110%] w-full"
+            className="h-[115%] w-full"
             src="https://my.spline.design/imouxhero-54a7f0c990e8c35b53953d0ec38e9f23/"
           ></iframe>
         </Suspense>

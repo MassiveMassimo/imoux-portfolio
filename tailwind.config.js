@@ -18,6 +18,9 @@ module.exports = {
         'gradient': "url('/gradient.png')",
         'pixelperfect': "url('/pixelperfect.png')",
       },
+      transitionTimingFunction: {
+        'spring': 'cubic-bezier(0.25, 0.75, 0.25, 1.4)',
+      },
     },
   },
   plugins: [
