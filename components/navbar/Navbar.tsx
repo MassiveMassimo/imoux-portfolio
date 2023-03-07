@@ -18,6 +18,7 @@ export default function Navbar(props: NavbarProps) {
       const currentScroll = window.scrollY;
       if (currentScroll > previousScroll) {
         nav.current?.classList.add("-translate-y-full");
+        mobileNav.current?.classList.add("-translate-y-full");
       } else {
         nav.current?.classList.remove("-translate-y-full");
       }
@@ -28,17 +29,17 @@ export default function Navbar(props: NavbarProps) {
   return (
     <nav
       ref={nav}
-      className={`fixed top-0 left-0 z-20 mx-auto flex w-full flex-col border-b border-slate-900/10 backdrop-blur-2xl transition-all duration-500 dark:border-slate-50/5 px-8 lg:px-16 sm:bg-slate-100/40 sm:dark:bg-slate-900/75 ${className}`}
+      className={`fixed top-0 left-0 z-20 mx-auto flex w-full flex-col transition-all duration-300 ${className}`}
     >
-      <div className="flex h-16 w-full justify-between">
+      <div className="z-30 flex h-16 w-full justify-between border-b border-slate-900/10 bg-slate-100 px-8 dark:border-slate-50/5 dark:bg-slate-900 sm:bg-slate-100/40 sm:bg-none sm:backdrop-blur-2xl sm:dark:bg-slate-900/75 lg:px-16">
         <div className="flex h-full items-center space-x-2 py-2 sm:hidden">
           <button
             className="flex h-full items-center rounded-lg hover:shadow-xl hover:ring-slate-300 dark:hover:bg-slate-700"
             onClick={() => {
-              if (mobileNav.current?.classList.contains("hidden")) {
-                mobileNav.current?.classList.remove("hidden");
+              if (mobileNav.current?.classList.contains("-translate-y-full")) {
+                mobileNav.current?.classList.remove("-translate-y-full");
               } else {
-                mobileNav.current?.classList.add("hidden");
+                mobileNav.current?.classList.add("-translate-y-full");
               }
             }}
           >
@@ -97,13 +98,13 @@ export default function Navbar(props: NavbarProps) {
           <div className="hidden h-full py-1 sm:flex">
             <Link
               href="/#projects"
-              className="flex text-slate-700 hover:text-slate-900 hover:bg-slate-300 h-full items-center rounded-md px-5 text-center text-sm font-medium transition-colors dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-300"
+              className="flex h-full items-center rounded-md px-5 text-center text-sm font-medium text-slate-700 transition-colors hover:bg-slate-400/30 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-700/30 dark:hover:text-slate-300"
             >
               Case Studies
             </Link>
             <Link
               href="/cv"
-              className="flex text-slate-700 hover:text-slate-900 hover:bg-slate-300 h-full items-center rounded-md px-5 text-center text-sm font-medium transition-colors dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-300"
+              className="flex h-full items-center rounded-md px-5 text-center text-sm font-medium text-slate-700 transition-colors hover:bg-slate-400/30 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-700/30 dark:hover:text-slate-300"
             >
               Resume
             </Link>
@@ -132,17 +133,17 @@ export default function Navbar(props: NavbarProps) {
       </div>
       <div
         ref={mobileNav}
-        className="hidden sm:hidden py-5"
+        className="absolute top-16 w-full -translate-y-full border-b border-slate-900/10 bg-slate-100/40 py-5 px-8 backdrop-blur-2xl transition-all duration-500 dark:border-slate-50/5 dark:bg-slate-900/75 sm:hidden lg:px-16"
       >
         <Link
           href="/#projects"
-          className="flex text-slate-700 hover:text-slate-900 hover:bg-slate-300 h-fit w-full items-center rounded-md px-5 py-3 text-center text-sm font-medium transition-colors dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-300"
+          className="flex h-fit w-full items-center rounded-md px-5 py-3 text-center text-sm font-medium text-slate-700 transition-colors hover:bg-slate-400/30 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-700/30 dark:hover:text-slate-300"
         >
           Case Studies
         </Link>
         <Link
           href="/cv"
-          className="flex text-slate-700 hover:text-slate-900 hover:bg-slate-300 h-fit w-full items-center rounded-md px-5 py-3 text-center text-sm font-medium transition-colors dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-300"
+          className="flex h-fit w-full items-center rounded-md px-5 py-3 text-center text-sm font-medium text-slate-700 transition-colors hover:bg-slate-400/30 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-700/30 dark:hover:text-slate-300"
         >
           Resume
         </Link>
