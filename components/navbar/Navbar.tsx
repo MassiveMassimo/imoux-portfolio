@@ -31,7 +31,7 @@ export default function Navbar(props: NavbarProps) {
       ref={nav}
       className={`fixed top-0 left-0 z-20 mx-auto flex w-full flex-col transition-all duration-300 ${className}`}
     >
-      <div className="z-30 flex h-16 w-full justify-between border-b border-slate-900/10 bg-slate-100 px-8 dark:border-slate-50/5 dark:bg-slate-900 sm:bg-slate-100/40 sm:bg-none sm:backdrop-blur-2xl sm:dark:bg-slate-900/75 lg:px-16">
+      <div className="z-30 flex h-16 w-full justify-between border-b border-slate-900/10 px-8 dark:border-slate-50/5 bg-slate-100/30 backdrop-blur-2xl dark:bg-slate-900/50 lg:px-16">
         <div className="flex h-full items-center space-x-2 py-2 sm:hidden">
           <button
             className="flex h-full items-center rounded-lg hover:shadow-xl hover:ring-slate-300 dark:hover:bg-slate-700"
@@ -131,22 +131,24 @@ export default function Navbar(props: NavbarProps) {
           <DarkModeToggle />
         </div>
       </div>
-      <div
-        ref={mobileNav}
-        className="absolute top-16 w-full -translate-y-full border-b border-slate-900/10 bg-slate-100/40 py-5 px-8 backdrop-blur-2xl transition-all duration-500 dark:border-slate-50/5 dark:bg-slate-900/75 sm:hidden lg:px-16"
-      >
-        <Link
-          href="/#projects"
-          className="flex h-fit w-full items-center rounded-md px-5 py-3 text-center text-sm font-medium text-slate-700 transition-colors hover:bg-slate-400/30 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-700/30 dark:hover:text-slate-300"
+      <div className="relative overflow-hidden">
+        <div
+          ref={mobileNav}
+          className="w-full -translate-y-full border-b border-slate-900/10 bg-slate-100/50 py-5 px-8 backdrop-blur-2xl transition-all duration-500 dark:border-slate-50/5 dark:bg-slate-900/75 sm:hidden lg:px-16"
         >
-          Case Studies
-        </Link>
-        <Link
-          href="/cv"
-          className="flex h-fit w-full items-center rounded-md px-5 py-3 text-center text-sm font-medium text-slate-700 transition-colors hover:bg-slate-400/30 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-700/30 dark:hover:text-slate-300"
-        >
-          Resume
-        </Link>
+          <Link
+            href="/#projects"
+            className="flex h-fit w-full items-center rounded-md px-5 py-3 text-center text-sm font-medium text-slate-700 transition-colors hover:bg-slate-400/30 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-700/30 dark:hover:text-slate-300"
+          >
+            Case Studies
+          </Link>
+          <Link
+            href="/cv"
+            className="flex h-fit w-full items-center rounded-md px-5 py-3 text-center text-sm font-medium text-slate-700 transition-colors hover:bg-slate-400/30 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-700/30 dark:hover:text-slate-300"
+          >
+            Resume
+          </Link>
+        </div>
       </div>
     </nav>
   );
