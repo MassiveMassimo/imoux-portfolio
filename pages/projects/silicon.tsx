@@ -16,12 +16,12 @@ export default function Silicon() {
   const [time, setTime] = useState(0);
   const main = useRef<HTMLDivElement>(null);
 
-  const introductionLink = useRef<HTMLButtonElement>(null);
-  const ideationLink = useRef<HTMLButtonElement>(null);
-  const developmentLink = useRef<HTMLButtonElement>(null);
-  const problemsLink = useRef<HTMLButtonElement>(null);
-  const resultsLink = useRef<HTMLButtonElement>(null);
-  const improvementsLink = useRef<HTMLButtonElement>(null);
+  const introductionLink = useRef<HTMLAnchorElement>(null);
+  const ideationLink = useRef<HTMLAnchorElement>(null);
+  const developmentLink = useRef<HTMLAnchorElement>(null);
+  const problemsLink = useRef<HTMLAnchorElement>(null);
+  const resultsLink = useRef<HTMLAnchorElement>(null);
+  const improvementsLink = useRef<HTMLAnchorElement>(null);
 
   const introductionSection = useRef<HTMLDivElement>(null);
   const ideationSection = useRef<HTMLDivElement>(null);
@@ -40,15 +40,11 @@ export default function Silicon() {
     mediumZoom(".zoom", {});
   }, []);
 
-  const handleClick = (section: RefObject<HTMLDivElement>) => {
-    section.current?.scrollIntoView();
-  };
-
-  function handleEnter(link: RefObject<HTMLButtonElement>) {
+  function handleEnter(link: RefObject<HTMLAnchorElement>) {
     link.current?.focus({ preventScroll: true });
   }
 
-  function handleLeave(link: RefObject<HTMLButtonElement>) {
+  function handleLeave(link: RefObject<HTMLAnchorElement>) {
     link.current?.blur();
   }
 
@@ -196,12 +192,9 @@ export default function Silicon() {
                 <h4 className="mb-3 text-xl font-semibold text-slate-700 dark:text-slate-200">
                   Chapters
                 </h4>
-                <button
-                  // href="#introduction"
+                <Link
                   ref={introductionLink}
-                  onClick={() => {
-                    handleClick(introductionSection);
-                  }}
+                  href="#introduction"
                   className="group flex cursor-pointer items-center text-left text-slate-500 outline-none transition-all hover:text-black focus:pl-2 focus:text-black dark:hover:text-white dark:focus:text-white"
                 >
                   Introduction
@@ -212,13 +205,10 @@ export default function Silicon() {
                   >
                     <path d="M10.1662 5.02188C9.91618 4.97088 9.64718 4.99288 9.41818 5.14688C8.96119 5.45288 8.83319 6.09288 9.13819 6.55288L12.7502 11.9899L9.13819 17.4279C8.83319 17.8869 8.96119 18.5279 9.41818 18.8339C9.87618 19.1399 10.5142 19.0118 10.8192 18.5528L14.8052 12.5529C15.0282 12.2169 15.0282 11.7639 14.8052 11.4279L10.8192 5.42788C10.6672 5.19789 10.4162 5.07188 10.1662 5.02188Z" />
                   </svg>
-                </button>
-                <button
-                  // href="#ideation"
+                </Link>
+                <Link
                   ref={ideationLink}
-                  onClick={() => {
-                    handleClick(ideationSection);
-                  }}
+                  href="#ideation"
                   className="group flex cursor-pointer items-center text-left text-slate-500 outline-none transition-all hover:text-black focus:pl-2 focus:text-black dark:hover:text-white dark:focus:text-white"
                 >
                   Ideation
@@ -229,13 +219,10 @@ export default function Silicon() {
                   >
                     <path d="M10.1662 5.02188C9.91618 4.97088 9.64718 4.99288 9.41818 5.14688C8.96119 5.45288 8.83319 6.09288 9.13819 6.55288L12.7502 11.9899L9.13819 17.4279C8.83319 17.8869 8.96119 18.5279 9.41818 18.8339C9.87618 19.1399 10.5142 19.0118 10.8192 18.5528L14.8052 12.5529C15.0282 12.2169 15.0282 11.7639 14.8052 11.4279L10.8192 5.42788C10.6672 5.19789 10.4162 5.07188 10.1662 5.02188Z" />
                   </svg>
-                </button>
-                <button
-                  // href="#development"
+                </Link>
+                <Link
                   ref={developmentLink}
-                  onClick={() => {
-                    handleClick(developmentSection);
-                  }}
+                  href="#development"
                   className="group flex cursor-pointer items-center text-left text-slate-500 outline-none transition-all hover:text-black focus:pl-2 focus:text-black dark:hover:text-white dark:focus:text-white"
                 >
                   Development
@@ -246,13 +233,10 @@ export default function Silicon() {
                   >
                     <path d="M10.1662 5.02188C9.91618 4.97088 9.64718 4.99288 9.41818 5.14688C8.96119 5.45288 8.83319 6.09288 9.13819 6.55288L12.7502 11.9899L9.13819 17.4279C8.83319 17.8869 8.96119 18.5279 9.41818 18.8339C9.87618 19.1399 10.5142 19.0118 10.8192 18.5528L14.8052 12.5529C15.0282 12.2169 15.0282 11.7639 14.8052 11.4279L10.8192 5.42788C10.6672 5.19789 10.4162 5.07188 10.1662 5.02188Z" />
                   </svg>
-                </button>
-                <button
-                  // href="#problems"
+                </Link>
+                <Link
                   ref={problemsLink}
-                  onClick={() => {
-                    handleClick(problemsSection);
-                  }}
+                  href="#problems"
                   className="group flex cursor-pointer items-center text-left text-slate-500 outline-none transition-all hover:text-black focus:pl-2 focus:text-black dark:hover:text-white dark:focus:text-white"
                 >
                   Problems
@@ -263,13 +247,10 @@ export default function Silicon() {
                   >
                     <path d="M10.1662 5.02188C9.91618 4.97088 9.64718 4.99288 9.41818 5.14688C8.96119 5.45288 8.83319 6.09288 9.13819 6.55288L12.7502 11.9899L9.13819 17.4279C8.83319 17.8869 8.96119 18.5279 9.41818 18.8339C9.87618 19.1399 10.5142 19.0118 10.8192 18.5528L14.8052 12.5529C15.0282 12.2169 15.0282 11.7639 14.8052 11.4279L10.8192 5.42788C10.6672 5.19789 10.4162 5.07188 10.1662 5.02188Z" />
                   </svg>
-                </button>
-                <button
-                  // href="#results"
+                </Link>
+                <Link
                   ref={resultsLink}
-                  onClick={() => {
-                    handleClick(resultsSection);
-                  }}
+                  href="#results"
                   className="group flex cursor-pointer items-center text-left text-slate-500 outline-none transition-all hover:text-black focus:pl-2 focus:text-black dark:hover:text-white dark:focus:text-white"
                 >
                   Results
@@ -280,13 +261,10 @@ export default function Silicon() {
                   >
                     <path d="M10.1662 5.02188C9.91618 4.97088 9.64718 4.99288 9.41818 5.14688C8.96119 5.45288 8.83319 6.09288 9.13819 6.55288L12.7502 11.9899L9.13819 17.4279C8.83319 17.8869 8.96119 18.5279 9.41818 18.8339C9.87618 19.1399 10.5142 19.0118 10.8192 18.5528L14.8052 12.5529C15.0282 12.2169 15.0282 11.7639 14.8052 11.4279L10.8192 5.42788C10.6672 5.19789 10.4162 5.07188 10.1662 5.02188Z" />
                   </svg>
-                </button>
-                <button
-                  // href="#improvements"
+                </Link>
+                <Link
                   ref={improvementsLink}
-                  onClick={() => {
-                    handleClick(improvementsSection);
-                  }}
+                  href="#improvements"
                   className="group flex cursor-pointer items-center text-left text-slate-500 outline-none transition-all hover:text-black focus:pl-2 focus:text-black dark:hover:text-white dark:focus:text-white"
                 >
                   Areas of Improvement
@@ -297,7 +275,7 @@ export default function Silicon() {
                   >
                     <path d="M10.1662 5.02188C9.91618 4.97088 9.64718 4.99288 9.41818 5.14688C8.96119 5.45288 8.83319 6.09288 9.13819 6.55288L12.7502 11.9899L9.13819 17.4279C8.83319 17.8869 8.96119 18.5279 9.41818 18.8339C9.87618 19.1399 10.5142 19.0118 10.8192 18.5528L14.8052 12.5529C15.0282 12.2169 15.0282 11.7639 14.8052 11.4279L10.8192 5.42788C10.6672 5.19789 10.4162 5.07188 10.1662 5.02188Z" />
                   </svg>
-                </button>
+                </Link>
               </nav>
             </aside>
             <div className="my-10 h-1 w-full rounded-full bg-black/5 dark:bg-white/5" />
@@ -312,7 +290,7 @@ export default function Silicon() {
                   alt="Vishwakarma"
                   placeholder="blur"
                 />
-                <h5 className="text-lg font-heading font-medium text-slate-600 dark:text-slate-400">
+                <h5 className="font-heading text-lg font-medium text-slate-600 dark:text-slate-400">
                   Designing Vishwakarma&apos;s New Branding
                 </h5>
               </Link>
@@ -353,7 +331,11 @@ export default function Silicon() {
                 handleLeave(introductionLink);
               }}
             >
-              <section className="mt-12 md:mt-16" ref={introductionSection}>
+              <section
+                id="introduction"
+                ref={introductionSection}
+                className="mt-12 md:mt-16"
+              >
                 <h2 className={h2}>Introduction</h2>
                 <p className="p my-5 max-w-none">
                   The growing rise of web app services has reached the design
@@ -399,7 +381,11 @@ export default function Silicon() {
                 handleLeave(ideationLink);
               }}
             >
-              <section className="mt-12 md:mt-16" ref={ideationSection}>
+              <section
+                id="ideation"
+                ref={ideationSection}
+                className="mt-12 md:mt-16"
+              >
                 <h2 className={h2}>Ideation</h2>
                 <p className="p my-5 max-w-none">
                   In 2020, COMPFEST formed its first UI/UX team for COMPFEST 12
@@ -467,7 +453,11 @@ export default function Silicon() {
                 handleLeave(developmentLink);
               }}
             >
-              <section className="mt-12 md:mt-16" ref={developmentSection}>
+              <section
+                id="development"
+                ref={developmentSection}
+                className="mt-12 md:mt-16"
+              >
                 <h2 className={h2}>Development</h2>
                 <p className="p my-5 max-w-none">
                   Once the ideation phase is complete, the next step is to begin
@@ -488,7 +478,11 @@ export default function Silicon() {
                 handleLeave(problemsLink);
               }}
             >
-              <section className="mt-12 md:mt-16" ref={problemsSection}>
+              <section
+                id="problems"
+                ref={problemsSection}
+                className="mt-12 md:mt-16"
+              >
                 <h2 className={h2}>Problems</h2>
                 <p className="p my-5 max-w-none">
                   As with any design project, there will be challenges and
@@ -509,7 +503,11 @@ export default function Silicon() {
                 handleLeave(resultsLink);
               }}
             >
-              <section className="mt-12 md:mt-16" ref={resultsSection}>
+              <section
+                id="results"
+                ref={resultsSection}
+                className="mt-12 md:mt-16"
+              >
                 <h2 className={h2}>Results</h2>
                 <p className="p my-5 max-w-none">
                   Despite these challenges, the end result of a design system
@@ -531,7 +529,11 @@ export default function Silicon() {
                 handleLeave(improvementsLink);
               }}
             >
-              <section className="mt-12 md:mt-16" ref={improvementsSection}>
+              <section
+                id="improvements"
+                ref={improvementsSection}
+                className="mt-12 md:mt-16"
+              >
                 <h2 className={h2}>Areas of Improvement</h2>
                 <p className="p my-5 max-w-none">
                   As the design system is being used, it&apos;s important to
