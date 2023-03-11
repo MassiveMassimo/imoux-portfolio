@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import siliconHeader from "../../public/silicon/silicon-header.png";
+import fungibleThumbnail from "../../public/fungible/fungible-thumbnail.png";
 import vishwakarmaThumbnail from "../../public/vishwakarma/vishwakarma-thumbnail.png";
 
 export default function Projects() {
@@ -33,6 +34,17 @@ export default function Projects() {
           />
           <h5 className="text-lg font-heading font-medium text-slate-600 dark:text-slate-400 lg:text-xl">
             Designing Vishwakarma&apos;s New Branding
+          </h5>
+        </Link>
+        <Link href="/projects/fungible" className="group" passHref>
+          <Image
+            className="pointer-events-none relative mb-2 aspect-[18/9] w-full origin-bottom overflow-hidden rounded-lg object-cover transition-transform duration-500 group-hover:scale-105"
+            src={fungibleThumbnail}
+            alt="Fungible"
+            placeholder="blur"
+          />
+          <h5 className="text-lg font-heading font-medium text-slate-600 dark:text-slate-400 lg:text-xl">
+            FUNgible: An Intuitive Design Platform for Artists
           </h5>
         </Link>
       </div>
