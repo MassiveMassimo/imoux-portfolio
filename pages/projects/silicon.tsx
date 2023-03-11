@@ -300,7 +300,7 @@ export default function Silicon() {
             ref={main}
             className="highlight w-full rounded-3xl bg-white/70 px-8 py-12 backdrop-blur-3xl dark:bg-slate-800/20 md:w-4/5 md:py-16 md:px-14 lg:px-16"
           >
-            <h1 className="font-heading text-3xl font-extrabold leading-normal text-slate-900 dark:text-white md:text-4xl md:leading-snug lg:text-5xl lg:leading-tight">
+            <h1 className="font-heading text-3xl font-extrabold leading-normal text-transparent bg-clip-text bg-gradient-to-b from-slate-900 to-slate-900/70 dark:from-white dark:to-white/40 md:text-4xl md:leading-snug lg:text-5xl lg:leading-tight">
               Crafting a Scalable and Cohesive Design System for COMPFEST
             </h1>
             <aside className="highlight mt-10 flex flex-row space-x-6 overflow-scroll rounded-xl px-6 py-4 scrollbar-hide dark:bg-slate-800/30 md:hidden">
