@@ -2,7 +2,7 @@ import Head from "next/head";
 
 import Hero from "../components/landing/Hero";
 import Logos from "../components/landing/Logos";
-import Experience from "../components/landing/Experience";
+import Experience from "../components/landing/experience/Experience";
 import PixelPerfect from "../components/landing/PixelPerfect";
 import Editor from "../components/landing/Editor";
 import Projects from "../components/landing/Projects";

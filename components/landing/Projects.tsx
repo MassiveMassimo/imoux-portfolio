@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import siliconHeader from "../../public/silicon/silicon-header.png";
+import siliconThumbnail from "../../public/silicon/silicon-thumbnail.png";
 import fungibleThumbnail from "../../public/fungible/fungible-thumbnail.png";
 import vishwakarmaThumbnail from "../../public/vishwakarma/vishwakarma-thumbnail.png";
 
@@ -17,7 +17,7 @@ export default function Projects() {
         <Link href="/projects/silicon" className="group" passHref>
           <Image
             className="pointer-events-none relative mb-2 aspect-[18/9] w-full origin-bottom overflow-hidden rounded-lg object-cover transition-transform duration-500 group-hover:scale-105"
-            src={siliconHeader}
+            src={siliconThumbnail}
             alt="Silicon Design System"
             placeholder="blur"
           />
