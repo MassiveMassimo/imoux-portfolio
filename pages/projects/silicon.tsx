@@ -7,7 +7,6 @@ import mediumZoom from "medium-zoom";
 import thumbnail from "../../public/silicon/silicon-thumbnail.png";
 import arcana from "../../public/silicon/arcana.png";
 import atomicdesign from "../../public/silicon/atomic-design.png";
-import vishwakarmaThumbnail from "../../public/vishwakarma/vishwakarma-thumbnail.png";
 import ReadMore from "../../components/projects/ReadMore";
 
 export default function Silicon() {

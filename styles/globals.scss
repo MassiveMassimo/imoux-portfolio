@@ -34,7 +34,7 @@ body {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  @apply bg-white dark:bg-slate-900;
+  @apply bg-transparent;
 }
 
 /* Handle */
