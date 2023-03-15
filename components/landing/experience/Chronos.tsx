@@ -41,18 +41,18 @@ export default function Chronos() {
           </li>
         </ul>
         <div className="relative flex grow snap-x snap-mandatory flex-row space-x-10 overflow-y-clip overflow-x-scroll">
-          <figure className="relative aspect-video snap-start">
+        <figure className="relative aspect-[13/9] snap-start">
             <Image
-              alt="Chronos Tutoring Certificate"
+              alt="Chronos Karya Angkatan Website"
               className="zoom rounded-lg object-contain"
               fill
-              src={chronosCertificate}
+              src={chronosWeb}
               placeholder="blur"
             />
           </figure>
           <figure className="relative aspect-square snap-start">
             <Image
-              alt="RISTEK 2023 Open Recruitment Form"
+              alt="Chronos Karya Angkatan Mobile"
               className="zoom rounded-lg object-contain"
               fill
               src={chronosMobile}
@@ -86,12 +86,12 @@ export default function Chronos() {
               placeholder="blur"
             />
           </figure>
-          <figure className="relative aspect-[13/9] snap-start">
+          <figure className="relative aspect-video snap-start">
             <Image
-              alt="Chronos Karya Angkatan Website"
+              alt="Chronos Tutoring Certificate"
               className="zoom rounded-lg object-contain"
               fill
-              src={chronosWeb}
+              src={chronosCertificate}
               placeholder="blur"
             />
           </figure>
