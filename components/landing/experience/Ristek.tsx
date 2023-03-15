@@ -1,6 +1,7 @@
 import Image from "next/image";
 import mediumZoom from "medium-zoom";
-import ristekform from "/public/ristek/ristek-form.png";
+import ristekForm from "/public/ristek/ristek-form.png";
+import ristekMug from "/public/ristek/ristek-mug.png";
 import { useEffect } from "react";
 
 export default function Ristek() {
@@ -31,7 +32,7 @@ export default function Ristek() {
             legibility.
           </li>
         </ul>
-        <div className="relative flex grow snap-x snap-mandatory flex-row space-x-6 overflow-x-scroll overflow-y-clip">
+        <div className="relative flex grow snap-x snap-mandatory flex-row space-x-10 overflow-x-scroll overflow-y-clip">
           <figure className="h-full aspect-video snap-start">
             <div className="h-full w-full rounded-lg overflow-hidden">
               <iframe
@@ -45,7 +46,16 @@ export default function Ristek() {
               alt="RISTEK 2023 Open Recruitment Form"
               className="zoom rounded-lg object-contain"
               fill
-              src={ristekform}
+              src={ristekForm}
+              placeholder="blur"
+            />
+          </figure>
+          <figure className="relative aspect-[4/3] snap-start">
+            <Image
+              alt="RISTEK 2023 Open Recruitment Form"
+              className="zoom rounded-lg object-contain"
+              fill
+              src={ristekMug}
               placeholder="blur"
             />
           </figure>
