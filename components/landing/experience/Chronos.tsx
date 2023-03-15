@@ -6,11 +6,22 @@ import chronosPost from "/public/chronos/chronos-post.png";
 import chronosShirtBlack from "/public/chronos/chronos-shirt-black.png";
 import chronosShirtWhite from "/public/chronos/chronos-shirt-white.png";
 import chronosWeb from "/public/chronos/chronos-web.png";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Chronos() {
+  const carousel = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     mediumZoom(".zoom", {});
+
+    carousel.current?.addEventListener("wheel", (event) => {
+      event.preventDefault();
+
+      carousel.current?.scrollBy({
+        left: event.deltaY < 0 ? -10 : 10,
+        behavior: "smooth",
+      });
+    });
   }, []);
 
   return (
@@ -40,8 +51,11 @@ export default function Chronos() {
             creation of social media posts and other creative projects.
           </li>
         </ul>
-        <div className="relative flex grow snap-x snap-mandatory flex-row space-x-10 overflow-y-clip overflow-x-scroll">
-        <figure className="relative aspect-[13/9] snap-start">
+        <div
+          ref={carousel}
+          className="relative flex grow snap-x snap-mandatory flex-row space-x-10 overflow-y-clip overflow-x-scroll"
+        >
+          <figure className="relative aspect-[13/9] snap-start">
             <Image
               alt="Chronos Karya Angkatan Website"
               className="zoom rounded-lg object-contain"

@@ -2,11 +2,22 @@ import Image from "next/image";
 import mediumZoom from "medium-zoom";
 import ristekForm from "/public/ristek/ristek-form.png";
 import ristekMug from "/public/ristek/ristek-mug.png";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Ristek() {
+  const carousel = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     mediumZoom(".zoom", {});
+
+    carousel.current?.addEventListener("wheel", (event) => {
+      event.preventDefault();
+
+      carousel.current?.scrollBy({
+        left: event.deltaY < 0 ? -10 : 10,
+        behavior: "smooth",
+      });
+    });
   }, []);
 
   return (
@@ -32,12 +43,15 @@ export default function Ristek() {
             legibility.
           </li>
         </ul>
-        <div className="relative flex grow snap-x snap-mandatory flex-row space-x-10 overflow-x-scroll overflow-y-clip">
-          <figure className="h-full aspect-video snap-start">
-            <div className="h-full w-full rounded-lg overflow-hidden">
+        <div
+          ref={carousel}
+          className="relative flex grow snap-x snap-mandatory flex-row space-x-10 overflow-y-clip overflow-x-scroll"
+        >
+          <figure className="aspect-video h-full snap-start">
+            <div className="h-full w-full overflow-hidden rounded-lg">
               <iframe
                 src="https://my.spline.design/untitled-eee72585edaa0cdd3c65313be3403e0e/"
-                className="h-[125%] w-full border-none"
+                className="h-[125%] w-full border-none pointer-events-none"
               ></iframe>
             </div>
           </figure>
