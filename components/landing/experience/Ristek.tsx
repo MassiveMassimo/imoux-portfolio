@@ -52,7 +52,7 @@ export default function Ristek() {
           </figure>
           <figure className="relative aspect-[4/3] snap-start">
             <Image
-              alt="RISTEK 2023 Open Recruitment Form"
+              alt="RISTEK Official Mug Merchandise"
               className="zoom rounded-lg object-contain"
               fill
               src={ristekMug}
