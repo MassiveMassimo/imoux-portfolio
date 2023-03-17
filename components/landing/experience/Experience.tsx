@@ -39,7 +39,7 @@ export default function Experience() {
   };
 
   return (
-    <section className="relative flex h-[90vh] w-full flex-row gap-10 px-8 lg:px-16">
+    <section className="relative flex h-screen w-full flex-row gap-10 px-8 lg:px-16">
       <nav className="highlight flex basis-1/4 flex-col overflow-hidden py-10 rounded-xl bg-slate-200 ring-1 ring-slate-900/10 dark:bg-slate-800/50">
         <button
           className="group flex items-center space-x-2 px-8 py-3 text-left hover:bg-slate-300 dark:hover:bg-slate-700"

@@ -18,23 +18,25 @@ export default function Chronos() {
       event.preventDefault();
 
       carousel.current?.scrollBy({
-        left: event.deltaY < 0 ? -10 : 10,
+        left: event.deltaY < 0 ? -50 : 50,
         behavior: "smooth",
       });
     });
   }, []);
 
   return (
-    <div className="flex h-full basis-3/4 flex-col overflow-hidden">
+    <div className="flex h-full basis-3/4 flex-col gap-3">
       <h1 className="bg-gradient-to-b from-slate-900 to-slate-900/60 bg-clip-text pb-4 text-3xl font-extrabold tracking-tight text-transparent dark:from-white dark:to-white/40 md:text-4xl lg:text-5xl">
         Chief Creative Officer
       </h1>
-      <h3 className="text-base font-medium text-slate-600 dark:text-slate-400 lg:text-lg">
-        at Chronos <span className="italic">(10/2020 - 01/2021)</span>
-      </h3>
-      <div className="my-4 h-1 w-full rounded-full bg-black/5 dark:bg-white/5" />
-      <div className="flex grow flex-col gap-5">
-        <ul className="flex max-h-[20vh] list-disc flex-col overflow-y-scroll pl-5">
+
+      {/* <div className="my-4 h-1 w-full rounded-full bg-black/5 dark:bg-white/5" /> */}
+
+      <div className="relative m-1 flex grow flex-col gap-5 rounded-xl px-4 pt-6 pb-2 outline outline-slate-200 dark:outline-slate-800/50">
+        <h3 className="absolute -top-4 bg-slate-100 px-5 text-base font-medium text-slate-600 dark:bg-slate-900 dark:text-slate-400 lg:text-lg">
+          at Chronos <span className="italic">(10/2020 - 01/2021)</span>
+        </h3>
+        <ul className="flex max-h-[30%] list-disc flex-col overflow-y-scroll pl-5">
           <li className="text-base text-slate-600 dark:text-slate-400">
             Conducted extensive research and developed a vibrant color palette
             and recognizable logo for the class of 2020 branding which was used
@@ -53,7 +55,7 @@ export default function Chronos() {
         </ul>
         <div
           ref={carousel}
-          className="relative flex grow snap-x snap-mandatory flex-row space-x-10 overflow-y-clip overflow-x-scroll"
+          className="relative flex grow snap-x snap-mandatory flex-row space-x-10 overflow-y-clip overflow-x-scroll rounded-lg"
         >
           <figure className="relative aspect-[13/9] snap-start">
             <Image
