@@ -32,7 +32,7 @@ export default function Chronos() {
 
       {/* <div className="my-4 h-1 w-full rounded-full bg-black/5 dark:bg-white/5" /> */}
 
-      <div className="relative m-1 flex grow flex-col gap-5 rounded-xl px-4 pt-6 pb-2 outline outline-slate-200 dark:outline-slate-800/50">
+      <div className="relative m-1 flex grow flex-col gap-5 rounded-xl px-4 pt-6 pb-2 outline outline-slate-200 dark:outline-slate-800/60">
         <h3 className="absolute -top-4 bg-slate-100 px-5 text-base font-medium text-slate-600 dark:bg-slate-900 dark:text-slate-400 lg:text-lg">
           at Chronos <span className="italic">(10/2020 - 01/2021)</span>
         </h3>

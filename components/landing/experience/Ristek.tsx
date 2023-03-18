@@ -28,7 +28,7 @@ export default function Ristek() {
 
       {/* <div className="my-4 h-1 w-full rounded-full bg-black/5 dark:bg-white/5" /> */}
 
-      <div className="relative m-1 flex grow flex-col gap-5 rounded-xl px-4 pt-6 pb-2 outline dark:outline-slate-800/50 outline-slate-200">
+      <div className="relative m-1 flex grow flex-col gap-5 rounded-xl px-4 pt-6 pb-2 outline dark:outline-slate-800/60 outline-slate-200">
         <h3 className="absolute bg-slate-100 dark:bg-slate-900 -top-4 px-5 text-base font-medium text-slate-600 dark:text-slate-400 lg:text-lg">
           at RISTEK Fasilkom UI{" "}
           <span className="italic">(1/2023 - Present)</span>
