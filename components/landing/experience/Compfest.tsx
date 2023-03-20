@@ -4,22 +4,48 @@ import siliconCover from "/public/compfest/silicon-cover.png";
 import uiuxMeet from "/public/compfest/uiux-meet.jpg";
 import techmeet from "/public/compfest/techmeet.jpg";
 import itdev from "/public/compfest/itdev.jpg";
-import { useEffect, useRef } from "react";
+import { RefObject, useEffect, useRef } from "react";
 
 export default function Compfest() {
-  const carousel = useRef<HTMLDivElement>(null);
+  const carouselTop = useRef<HTMLDivElement>(null);
+  const carouselBottom = useRef<HTMLDivElement>(null);
+
+  const horizontalScrolling = (
+    carouselRef: RefObject<HTMLDivElement>
+  ) => {
+    let scrolling = false;
+
+    const handleWheel = (event: WheelEvent) => {
+      event.preventDefault();
+      if (!scrolling) {
+        scrolling = true;
+
+        carouselRef.current?.scrollBy({
+          left: event.deltaY < 0 ? -10 : 10,
+          behavior: "smooth",
+        });
+
+        setTimeout(() => {
+          scrolling = false;
+        }, 150);
+      }
+    };
+
+    carouselRef.current?.addEventListener("wheel", handleWheel);
+    return () => {
+      carouselRef.current?.removeEventListener("wheel", handleWheel);
+    };
+  };
 
   useEffect(() => {
     mediumZoom(".zoom", {});
 
-    carousel.current?.addEventListener("wheel", (event) => {
-      event.preventDefault();
-
-      carousel.current?.scrollBy({
-        left: event.deltaY < 0 ? -50 : 50,
-        behavior: "smooth",
-      });
-    });
+    const unsubscribeTop = horizontalScrolling(carouselTop);
+    const unsubscribeBottom = horizontalScrolling(carouselBottom);
+    return () => {
+      unsubscribeTop();
+      unsubscribeBottom();
+    };
   }, []);
 
   return (
@@ -34,7 +60,10 @@ export default function Compfest() {
         <h3 className="absolute -top-4 bg-slate-100 px-5 text-base font-medium text-slate-600 dark:bg-slate-900 dark:text-slate-400 lg:text-lg">
           at COMPFEST <span className="italic">(12/2021 - 11/2022)</span>
         </h3>
-        <div className="mx-5 mt-5 flex snap-x snap-mandatory flex-row gap-5 overflow-x-scroll">
+        <div
+          ref={carouselTop}
+          className="mx-5 mt-3 flex snap-x snap-mandatory flex-row gap-5 overflow-x-scroll pb-2"
+        >
           <div className="shrink-0 basis-2/5 snap-start text-base text-slate-600 dark:text-slate-400">
             <svg
               className="mr-1 inline-flex h-5 flex-shrink-0"
@@ -116,7 +145,7 @@ export default function Compfest() {
           </div>
         </div>
         <div
-          ref={carousel}
+          ref={carouselBottom}
           className="relative flex grow snap-x snap-mandatory flex-row space-x-10 overflow-y-clip overflow-x-scroll"
         >
           <figure className="relative aspect-[2/1] snap-start">
