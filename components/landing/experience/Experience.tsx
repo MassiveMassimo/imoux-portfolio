@@ -1,88 +1,80 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Ristek from "./Ristek";
-import Compfest from "./Compfest";
-import Chronos from "./Chronos";
-import RistekLogo from "../../logos/RistekLogo";
-import CompfestLogo from "../../logos/CompfestLogo";
-import ChronosLogo from "../../logos/ChronosLogo";
+import mediumZoom from "medium-zoom";
+import { RefObject, useEffect, useRef } from "react";
+import { experiences } from "./data";
 
-const containerVariants = {
-  hidden: {
-    opacity: 0,
-    y: "-40",
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "spring",
-    },
-  },
-  exit: {
-    opacity: 0,
-    y: "20vh",
-    transition: {
-      ease: "easeInOut",
-      duration: 0.2,
-    },
-  },
-};
+export default function Experience({ experienceId }: { experienceId: string }) {
+  const experience = experiences[experienceId];
 
-export default function Experience() {
-  const [selectedComponent, setSelectedComponent] = useState<JSX.Element>();
-  const [selectedComponentKey, setSelectedComponentKey] = useState<string>();
+  const carouselTop = useRef<HTMLDivElement>(null);
+  const carouselBottom = useRef<HTMLDivElement>(null);
 
-  const handleButtonClick = (component: JSX.Element) => {
-    setSelectedComponent(component);
-    setSelectedComponentKey(component.type.toString());
+  const horizontalScrolling = (carouselRef: RefObject<HTMLDivElement>) => {
+    let scrolling = false;
+
+    const handleWheel = (event: WheelEvent) => {
+      event.preventDefault();
+      if (!scrolling) {
+        scrolling = true;
+
+        carouselRef.current?.scrollBy({
+          left: event.deltaY < 0 || event.deltaX < 0 ? -10 : 10,
+          behavior: "smooth",
+        });
+
+        setTimeout(() => {
+          scrolling = false;
+        }, 150);
+      }
+    };
+
+    carouselRef.current?.addEventListener("wheel", handleWheel);
+    return () => {
+      carouselRef.current?.removeEventListener("wheel", handleWheel);
+    };
   };
 
+  useEffect(() => {
+    mediumZoom(".zoom", {});
+
+    const unsubscribeTop = horizontalScrolling(carouselTop);
+    const unsubscribeBottom = horizontalScrolling(carouselBottom);
+    return () => {
+      unsubscribeTop();
+      unsubscribeBottom();
+    };
+  }, []);
+
   return (
-    <section className="relative flex h-screen w-full flex-row gap-5 px-8 lg:px-16">
-      <nav className="highlight flex basis-1/4 flex-col overflow-hidden py-10 rounded-xl bg-slate-200 ring-1 ring-slate-900/10 dark:bg-slate-800/50">
+    <div className="flex h-full basis-3/4 flex-col gap-3">
+      <h1 className="bg-gradient-to-b from-slate-900 to-slate-900/60 bg-clip-text pb-4 text-3xl font-extrabold tracking-tight text-transparent dark:from-white dark:to-white/40 md:text-4xl lg:text-5xl">
+        {experience.title}
+      </h1>
+      <div className="relative m-1 flex grow flex-col gap-5 rounded-xl px-4 pt-6 pb-2 outline outline-slate-200 dark:outline-slate-800/60">
+        <h3 className="absolute -top-4 bg-slate-100 px-5 text-base font-medium text-slate-600 dark:bg-slate-900 dark:text-slate-400 lg:text-lg">
+          {experience.organization}{" "}
+          <span className="italic">{experience.duration}</span>
+        </h3>
         <div
-          className="group cursor-pointer flex items-center space-x-2 px-8 py-3 text-left hover:bg-slate-300 dark:hover:bg-slate-700"
-          onClick={() => handleButtonClick(<Ristek />)}
+          ref={carouselTop}
+          className="mx-5 mt-3 flex snap-x snap-mandatory flex-row gap-5 overflow-x-scroll pb-2"
         >
-          <RistekLogo />
-          <p className="font-medium text-slate-600  dark:text-slate-400">
-            RISTEK Fasilkom UI
-          </p>
+          {experience.descriptions.map((description, index) => (
+            <div
+              key={description}
+              className="shrink-0 basis-2/5 snap-start text-base text-slate-600 dark:text-slate-400"
+            >
+              {experience.icons[index]}
+              {description}
+            </div>
+          ))}
         </div>
         <div
-          className="group cursor-pointer flex items-center space-x-2 px-8 py-3 text-left hover:bg-slate-300 dark:hover:bg-slate-700"
-          onClick={() => handleButtonClick(<Compfest />)}
+          ref={carouselBottom}
+          className="relative flex grow snap-x snap-mandatory flex-row space-x-10 overflow-y-clip overflow-x-scroll"
         >
-          <CompfestLogo />
-          <p className="font-medium text-slate-600  dark:text-slate-400">
-            COMPFEST
-          </p>
+          {experience.images.map((image) => image)}
         </div>
-        <div
-          className="group cursor-pointer flex items-center space-x-2 px-8 py-3 text-left hover:bg-slate-300 dark:hover:bg-slate-700"
-          onClick={() => handleButtonClick(<Chronos />)}
-        >
-          <ChronosLogo />
-          <p className="font-medium text-slate-600  dark:text-slate-400">
-            Chronos
-          </p>
-        </div>
-      </nav>
-      <AnimatePresence mode="wait">
-        {selectedComponent && (
-          <motion.div
-            key={selectedComponentKey}
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className="flex-1 overflow-y-auto"
-          >
-            {selectedComponent}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </section>
+      </div>
+    </div>
   );
 }
