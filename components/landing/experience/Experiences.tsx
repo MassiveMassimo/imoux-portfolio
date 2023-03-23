@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Experience from "./Experience";
 import RistekLogo from "../../logos/RistekLogo";
 import CompfestLogo from "../../logos/CompfestLogo";
+import DN35Logo from "../../logos/DN35Logo";
 import ChronosLogo from "../../logos/ChronosLogo";
 
 const containerVariants = {
@@ -55,6 +56,15 @@ export default function Experiences() {
           <CompfestLogo />
           <p className="font-medium text-slate-600  dark:text-slate-400">
             COMPFEST
+          </p>
+        </div>
+        <div
+          className="group cursor-pointer flex items-center space-x-2 px-8 py-3 text-left hover:bg-slate-300 dark:hover:bg-slate-700"
+          onClick={() => handleButtonClick("dn35")}
+        >
+          <DN35Logo />
+          <p className="font-medium text-slate-600  dark:text-slate-400">
+            Dies Natalis Fasilkom UI
           </p>
         </div>
         <div

@@ -25,7 +25,7 @@ export default function Document() {
           media="(prefers-color-scheme: dark)"
         />
       </Head>
-      <body className="bg-slate-100 bg-gradient bg-contain bg-no-repeat dark:bg-slate-900 selection:bg-cyan-300/30 selection:underline selection:decoration-cyan-500">
+      <body className="bg-slate-100 bg-gradient bg-contain bg-no-repeat selection:bg-cyan-300/30 selection:underline selection:decoration-cyan-500 dark:bg-slate-900">
         <Main />
         <NextScript />
       </body>

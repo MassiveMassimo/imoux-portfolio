@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Lightbulb from "../../../public/icons/Lightbulb";
+import Cube from "../../../public/icons/Cube";
 import TextInput from "../../../public/icons/TextInput";
 import Figma from "../../../public/icons/Figma";
 import People from "../../../public/icons/People";
@@ -8,6 +8,10 @@ import Handshake from "../../../public/icons/Handshake";
 import Palette from "../../../public/icons/Palette";
 import PersonLines from "../../../public/icons/PersonLines";
 import PlusSquare from "../../../public/icons/PlusSquare";
+import Lightbulb from "../../../public/icons/Lightbulb";
+import Pencil from "../../../public/icons/Pencil";
+import Camera from "../../../public/icons/Camera";
+import Megaphone from "../../../public/icons/Megaphone";
 
 type Experiences = {
   [key: string]: {
@@ -25,18 +29,10 @@ export const experiences: Experiences = {
     title: "Vice Director of Digital Product Design",
     organization: "at RISTEK Fasilkom UI",
     duration: "(1/2023 - Present)",
-    icons: [
-      <Lightbulb key="lightbulb-icon" />,
-      <TextInput key="text-input-icon" />,
-    ],
+    icons: [<Cube key="cube-icon" />, <TextInput key="text-input-icon" />],
     descriptions: [
-      `Revamped the recruitment page for new RISTEK members by improving
-    the user experience and increasing the number of applications
-    received by implementing a new form layout and more engaging 3D hero
-    section.`,
-      `Increased the number of new registrations by 25% by implementing a
-    new form design that streamlined the selection process and improved
-    legibility.`,
+      "Revamped the recruitment page for new RISTEK members by improving the user experience and increasing the number of applications received by implementing a new form layout and more engaging 3D hero section.",
+      "Increased the number of new registrations by 25% by implementing a new form design that streamlined the selection process and improved legibility.",
     ],
     images: [
       <figure key="3d-hero" className="aspect-video h-full snap-start">
@@ -60,7 +56,7 @@ export const experiences: Experiences = {
           alt="RISTEK Official Mug Merchandise"
           className="zoom rounded-lg object-contain"
           fill
-          src={"/ristek/ristek-mug.png"}
+          src={"/ristek/ristek-mug.webp"}
         />
       </figure>,
     ],
@@ -76,21 +72,23 @@ export const experiences: Experiences = {
       <Handshake key="handshake-icon" />,
     ],
     descriptions: [
-      `Designed and developed an extensive design system with over 100
-      components and styles complete with states and interactions that was
-      used by over 6000 people on Figma.`,
-      `Led a team of designers in collaborating with software engineers to
-      research, design, and test more than 20 web pages for compfest.id,
-      resulting in successful deplopment to real users.`,
-      `Curated and presented engaging internal workshops for members,
-      providing comprehensive onboarding and introducing essential design
-      principles to improve collaboration and streamline project
-      workflows.`,
-      `Collaborated with project owners and developers to ensure adherence
-      to required specifications and measure feasibility, ensuring
-      high-quality product delivery.`,
+      "Designed and developed an extensive design system with over 100 components and styles complete with states and interactions that was used by over 6000 people on Figma.",
+      "Led a team of designers in collaborating with software engineers to research, design, and test more than 20 web pages for compfest.id, resulting in successful deplopment to real users.",
+      "Curated and presented engaging internal workshops for members, providing comprehensive onboarding and introducing essential design principles to improve collaboration and streamline project workflows.",
+      "Collaborated with project owners and developers to ensure adherence to required specifications and measure feasibility, ensuring high-quality product delivery.",
     ],
     images: [
+      <figure
+        key="compfest-onboarding"
+        className="relative aspect-[12/7] snap-start"
+      >
+        <Image
+          alt="COMPFEST Onbaording"
+          className="zoom rounded-lg object-contain"
+          fill
+          src={"/compfest/onboarding.webp"}
+        />
+      </figure>,
       <figure
         key="compfest-silicon"
         className="relative aspect-[2/1] snap-start"
@@ -99,7 +97,7 @@ export const experiences: Experiences = {
           alt="Silicon Design System"
           className="zoom rounded-lg object-contain"
           fill
-          src={"/compfest/silicon-cover.png"}
+          src={"/compfest/silicon-cover.webp"}
         />
       </figure>,
       <figure
@@ -144,12 +142,28 @@ export const experiences: Experiences = {
     icons: [
       <Palette key="palette-icon" />,
       <PersonLines key="person-lines-icon" />,
-      <PlusSquare key="plus-square-icon" />,
+      <svg
+        key="plus-square-icon"
+        className="mr-1 inline-flex h-5 flex-shrink-0"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M7 3C4.791 3 3 4.791 3 7V17C3 19.209 4.791 21 7 21H17C19.209 21 21 19.209 21 17V7C21 4.791 19.209 3 17 3H7Z"
+          className="fill-slate-900/40 dark:fill-slate-100/40"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M13 8C13 7.44772 12.5523 7 12 7C11.4477 7 11 7.44772 11 8V11H8C7.44772 11 7 11.4477 7 12C7 12.5523 7.44772 13 8 13H11V16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16V13H16C16.5523 13 17 12.5523 17 12C17 11.4477 16.5523 11 16 11H13V8Z"
+          className="fill-slate-900 dark:fill-slate-100"
+        />
+      </svg>,
     ],
     descriptions: [
-      `Conducted extensive research and developed a vibrant color palette and recognizable logo for the class of 2020 branding which was used across multiple platforms to increase awareness of our class in various online platforms.`,
-      `Collaborated with developers to produce a digital catalogue/yearbook for the class of 2020, featuring hundreds of students and facilitating easier online socialization during online learning.`,
-      `Managed a team of aspiring student designers, overseeing the creation of social media posts and other creative projects.`,
+      "Conducted extensive research and developed a vibrant color palette and recognizable logo for the class of 2020 branding which was used across multiple platforms to increase awareness of our class in various online platforms.",
+      "Collaborated with developers to produce a digital catalogue/yearbook for the class of 2020, featuring hundreds of students and facilitating easier online socialization during online learning.",
+      "Managed a team of aspiring student designers, overseeing the creation of social media posts and other creative projects.",
     ],
     images: [
       <figure key="chronos-web" className="relative aspect-[13/9] snap-start">
@@ -157,7 +171,7 @@ export const experiences: Experiences = {
           alt="Chronos Karya Angkatan Website"
           className="zoom rounded-lg object-contain"
           fill
-          src={"/chronos/chronos-web.png"}
+          src={"/chronos/chronos-web.webp"}
         />
       </figure>,
       <figure
@@ -168,7 +182,7 @@ export const experiences: Experiences = {
           alt="Chronos Karya Angkatan Mobile"
           className="zoom rounded-lg object-contain"
           fill
-          src={"/chronos/chronos-mobile.png"}
+          src={"/chronos/chronos-mobile.webp"}
         />
       </figure>,
       <figure key="chronos-post" className="relative aspect-square snap-start">
@@ -176,7 +190,7 @@ export const experiences: Experiences = {
           alt="Chronos Instagram Post"
           className="zoom rounded-lg object-contain"
           fill
-          src={"/chronos/chronos-post.png"}
+          src={"/chronos/chronos-post.webp"}
         />
       </figure>,
       <figure
@@ -187,7 +201,7 @@ export const experiences: Experiences = {
           alt="Chronos Black Shirt"
           className="zoom rounded-lg object-contain"
           fill
-          src={"/chronos/chronos-shirt-black.png"}
+          src={"/chronos/chronos-shirt-black.webp"}
         />
       </figure>,
       <figure
@@ -198,7 +212,7 @@ export const experiences: Experiences = {
           alt="Chronos White Shirt"
           className="zoom rounded-lg object-contain"
           fill
-          src={"/chronos/chronos-shirt-white.png"}
+          src={"/chronos/chronos-shirt-white.webp"}
         />
       </figure>,
       <figure
@@ -209,7 +223,135 @@ export const experiences: Experiences = {
           alt="Chronos Tutoring Certificate"
           className="zoom rounded-lg object-contain"
           fill
-          src={"/chronos/chronos-certificate.png"}
+          src={"/chronos/chronos-certificate.webp"}
+        />
+      </figure>,
+    ],
+  },
+  dn35: {
+    title: "Graphic Designer",
+    organization: "at Dies Natalis 35 Fasilkom UI",
+    duration: "(02/2021 - 09/2021)",
+    icons: [
+      <Lightbulb key="lightbulb-icon" />,
+      <Pencil key="pencil-icon" />,
+      <Camera key="camera-icon" />,
+      <Megaphone key="megaphone-icon" />,
+    ],
+    descriptions: [
+      "Created event branding and logos for Dies Natalis KE 35 Fasilkom UI, as well as logos for extracurriculars, to increase awareness and recognition of the event.",
+      "Independently designed posters, tickets, video trailers, and social media posts using software such as Photoshop, Illustrator, and Figma, resulting in high-quality, engaging visual content.",
+      "Collaborated with photographers to use their photos in designs and integrated paintings made by artists into posters and other designs.",
+      "Showcased designs on Fasilkom UI's and the University of Indonesia's Instagram pages, reaching hundreds of thousands of people and receiving thousands of positive reactions.",
+    ],
+    images: [
+      <figure key="dn35-logo" className="relative aspect-[3/2] snap-start">
+        <Image
+          alt="DN35 Logo Wordmark"
+          className="zoom rounded-lg object-contain"
+          fill
+          src={"/dn35/wordmark.webp"}
+        />
+      </figure>,
+      <figure
+        key="dn35-sangkuriang"
+        className="relative aspect-[4/5] snap-start"
+      >
+        <Image
+          alt="Sangkuriang Poster"
+          className="zoom rounded-lg object-contain"
+          fill
+          src={"/dn35/sangkuriang.webp"}
+        />
+      </figure>,
+      <figure
+        key="dn35-sangkuriang-long"
+        className="relative aspect-video snap-start"
+      >
+        <Image
+          alt="Sangkuriang Poster Long"
+          className="zoom rounded-lg object-contain"
+          fill
+          src={"/dn35/sangkuriang-panjang.webp"}
+        />
+      </figure>,
+      <figure
+        key="dn35-sangkuriang-illustration"
+        className="relative aspect-[17/22] snap-start"
+      >
+        <Image
+          alt="Sangkuriang Illustration Poster"
+          className="zoom rounded-lg object-contain"
+          fill
+          src={"/dn35/sangkuriang-illustration.webp"}
+        />
+      </figure>,
+      <figure
+        key="dn35-meet-the-cast"
+        className="relative aspect-[4/5] snap-start"
+      >
+        <Image
+          alt="Meet the Cast"
+          className="zoom rounded-lg object-contain"
+          fill
+          src={"/dn35/meet-the-cast.webp"}
+        />
+      </figure>,
+      <figure key="dn35-ticket" className="relative aspect-[97/110] snap-start">
+        <Image
+          alt="DN35 Ticket"
+          className="zoom rounded-lg object-contain"
+          fill
+          src={"/dn35/ticket.webp"}
+        />
+      </figure>,
+      <figure
+        key="dn35-cinta-putih"
+        className="relative aspect-video snap-start"
+      >
+        <Image
+          alt="Cinta Putih"
+          className="zoom rounded-lg object-contain"
+          fill
+          src={"/dn35/cinta-putih.webp"}
+        />
+      </figure>,
+      <figure key="dn35-utuh" className="relative aspect-[4/5] snap-start">
+        <Image
+          alt="Utuh"
+          className="zoom rounded-lg object-contain"
+          fill
+          src={"/dn35/utuh.webp"}
+        />
+      </figure>,
+      <figure
+        key="dn35-merah-putih"
+        className="relative aspect-video snap-start"
+      >
+        <Image
+          alt="Merah Putih"
+          className="zoom rounded-lg object-contain"
+          fill
+          src={"/dn35/merah-putih.webp"}
+        />
+      </figure>,
+      <figure key="dn35-twibbon" className="relative aspect-[4/5] snap-start">
+        <Image
+          alt="DN35 Twibbon"
+          className="zoom rounded-lg object-contain"
+          fill
+          src={"/dn35/twibbon.webp"}
+        />
+      </figure>,
+      <figure
+        key="dn35-poster-lukisan"
+        className="relative aspect-video snap-start"
+      >
+        <Image
+          alt="DN35 Poster Lukisan"
+          className="zoom rounded-lg object-contain"
+          fill
+          src={"/dn35/poster-lukisan.webp"}
         />
       </figure>,
     ],

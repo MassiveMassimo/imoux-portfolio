@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import siliconThumbnail from "../../public/silicon/silicon-thumbnail.png";
-import fungibleThumbnail from "../../public/fungible/fungible-thumbnail.png";
-import vishwakarmaThumbnail from "../../public/vishwakarma/vishwakarma-thumbnail.png";
+import siliconThumbnail from "../../public/silicon/silicon-thumbnail.webp";
+import fungibleThumbnail from "../../public/fungible/fungible-thumbnail.webp";
+import vishwakarmaThumbnail from "../../public/vishwakarma/vishwakarma-thumbnail.webp";
 
 export default function Projects() {
   return (

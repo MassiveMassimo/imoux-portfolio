@@ -31,7 +31,7 @@ export default memo(function ReadMore({
       <Link href={`/projects/${recommendedProject}`} className="group">
         <Image
           className="pointer-events-none relative mb-2 aspect-[18/9] w-full origin-bottom overflow-hidden rounded-lg object-cover transition-transform duration-500 group-hover:scale-105"
-          src={`/${recommendedProject}/${recommendedProject}-thumbnail.png`}
+          src={`/${recommendedProject}/${recommendedProject}-thumbnail.webp`}
           alt={recommendedProjectTitle}
           width={960}
           height={480}

@@ -15,8 +15,8 @@ module.exports = {
         heading: ['var(--font-reem-kufi)', defaultTheme.fontFamily.sans],
       },
       backgroundImage: {
-        'gradient': "url('/gradient.png')",
-        'pixelperfect': "url('/pixelperfect.png')",
+        'gradient': "url('/gradient.webp')",
+        'pixelperfect': "url('/pixelperfect.webp')",
       },
       transitionTimingFunction: {
         'spring': 'cubic-bezier(0.25, 0.75, 0.25, 1.4)',

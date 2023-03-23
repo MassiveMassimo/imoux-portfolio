@@ -4,9 +4,9 @@ import Link from "next/link";
 import { RefObject, useEffect, useRef, useState } from "react";
 import { Waypoint } from "react-waypoint";
 import mediumZoom from "medium-zoom";
-import thumbnail from "../../public/silicon/silicon-thumbnail.png";
-import arcana from "../../public/silicon/arcana.png";
-import atomicdesign from "../../public/silicon/atomic-design.png";
+import thumbnail from "../../public/silicon/silicon-thumbnail.webp";
+import arcana from "../../public/silicon/arcana.webp";
+import atomicdesign from "../../public/silicon/atomic-design.webp";
 import ReadMore from "../../components/projects/ReadMore";
 
 export default function Silicon() {
