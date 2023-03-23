@@ -12,6 +12,10 @@ import Lightbulb from "../../../public/icons/Lightbulb";
 import Pencil from "../../../public/icons/Pencil";
 import Camera from "../../../public/icons/Camera";
 import Megaphone from "../../../public/icons/Megaphone";
+import Drone from "../../../public/icons/Drone";
+import Journal from "../../../public/icons/Journal";
+import Chat from "../../../public/icons/Chat";
+import Hexagon from "../../../public/icons/Hexagon";
 
 type Experiences = {
   [key: string]: {
@@ -59,6 +63,22 @@ export const experiences: Experiences = {
           src={"/ristek/ristek-mug.webp"}
         />
       </figure>,
+      <figure key="ristek-dpd" className="relative aspect-[4/3] snap-start">
+        <Image
+          alt="DPD"
+          className="zoom rounded-lg object-contain"
+          fill
+          src={"/ristek/dpd.jpg"}
+        />
+      </figure>,
+      <figure key="ristek-kickoff" className="relative aspect-[4/3] snap-start">
+        <Image
+          alt="RISTEK kickoff"
+          className="zoom rounded-lg object-contain"
+          fill
+          src={"/ristek/ristek.jpg"}
+        />
+      </figure>,
     ],
   },
   compfest: {
@@ -79,17 +99,6 @@ export const experiences: Experiences = {
     ],
     images: [
       <figure
-        key="compfest-onboarding"
-        className="relative aspect-[12/7] snap-start"
-      >
-        <Image
-          alt="COMPFEST Onbaording"
-          className="zoom rounded-lg object-contain"
-          fill
-          src={"/compfest/onboarding.webp"}
-        />
-      </figure>,
-      <figure
         key="compfest-silicon"
         className="relative aspect-[2/1] snap-start"
       >
@@ -98,6 +107,17 @@ export const experiences: Experiences = {
           className="zoom rounded-lg object-contain"
           fill
           src={"/compfest/silicon-cover.webp"}
+        />
+      </figure>,
+      <figure
+        key="compfest-onboarding"
+        className="relative aspect-[12/7] snap-start"
+      >
+        <Image
+          alt="COMPFEST Onbaording"
+          className="zoom rounded-lg object-contain"
+          fill
+          src={"/compfest/onboarding.webp"}
         />
       </figure>,
       <figure
@@ -227,6 +247,89 @@ export const experiences: Experiences = {
         />
       </figure>,
     ],
+  },
+  vishwakarma: {
+    title: "Brand Designer",
+    organization: "for AUAV Universitas Indonesia",
+    duration: "(05/2021 - 06/2021)",
+    icons: [
+      <Drone key="drone-icon" />,
+      <Journal key="journal-icon" />,
+      <Chat key="chat-icon" />,
+      <Hexagon key="hexagon-icon" />,
+    ],
+    descriptions: [
+      "Worked alongside cients to develop a brand identity for AUAV Universitas Indonesia, a student-run drone racing team in need of a new, strong logo to represent their team for competitions and social media.",
+      "Constructed a comprehensive branding guideline for the team in a 6 page guidebook complete with informative color palettes, use cases, and logo variations.",
+      "Communicated closely with the team to ensure maximum adherence to client goals and conducted thorough research to verify accessibility and usability.",
+      "Provided a variety of logo variations such as dark, light, single tone, and dual tone variants alongside multiple file formats to give clients maximum flexibility of use of their new branding."
+    ],
+    images: [
+      <figure key="vishwakarma-logo1-light" className="relative aspect-square snap-start">
+        <Image
+          alt="Vishwakarma Logo 1 Light"
+          className="zoom rounded-lg object-contain"
+          fill
+          src={"/vishwakarma/logo1-light.webp"}
+        />
+      </figure>,
+      <figure key="vishwakarma-logo1-dark" className="relative aspect-square snap-start">
+        <Image
+          alt="Vishwakarma Logo 1 Dark"
+          className="zoom rounded-lg object-contain"
+          fill
+          src={"/vishwakarma/logo1-dark.webp"}
+        />
+      </figure>,
+      <figure key="vishwakarma-drone" className="relative aspect-[3/2] snap-start">
+        <Image
+          alt="Vishwakarma Drone"
+          className="zoom rounded-lg object-contain"
+          fill
+          src={"/vishwakarma/drone.webp"}
+        />
+      </figure>,
+      <figure key="vishwakarma-stationary" className="relative aspect-[4/3] snap-start">
+        <Image
+          alt="Vishwakarma Stationary"
+          className="zoom rounded-lg object-contain"
+          fill
+          src={"/vishwakarma/stationary.webp"}
+        />
+      </figure>,
+      <figure key="vishwakarma-tote" className="relative aspect-[3/2] snap-start">
+        <Image
+          alt="Vishwakarma Tote"
+          className="zoom rounded-lg object-contain"
+          fill
+          src={"/vishwakarma/tote.webp"}
+        />
+      </figure>,
+      <figure key="vishwakarma-badge" className="relative aspect-[1823/1202] snap-start">
+        <Image
+          alt="Vishwakarma Badge"
+          className="zoom rounded-lg object-contain"
+          fill
+          src={"/vishwakarma/badge.webp"}
+        />
+      </figure>,
+      <figure key="vishwakarma-logo2-light" className="relative aspect-square snap-start">
+      <Image
+        alt="Vishwakarma Logo 2 Light"
+        className="zoom rounded-lg object-contain"
+        fill
+        src={"/vishwakarma/logo2-light.webp"}
+      />
+    </figure>,
+    <figure key="vishwakarma-logo2-dark" className="relative aspect-square snap-start">
+      <Image
+        alt="Vishwakarma Logo 2 Dark"
+        className="zoom rounded-lg object-contain"
+        fill
+        src={"/vishwakarma/logo2-dark.webp"}
+      />
+    </figure>,
+    ]
   },
   dn35: {
     title: "Graphic Designer",
