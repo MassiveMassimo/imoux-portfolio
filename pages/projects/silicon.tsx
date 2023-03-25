@@ -63,7 +63,6 @@ export default function Silicon() {
             alt="Silicon Design System Header"
             className="object-cover"
             src={thumbnail}
-            quality={100}
             placeholder="blur"
             fill
           />

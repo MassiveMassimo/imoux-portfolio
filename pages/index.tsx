@@ -1,6 +1,5 @@
 import Head from "next/head";
-
-import Hero from "../components/landing/Hero";
+import Hero from "../components/landing/hero/Hero";
 import Logos from "../components/landing/Logos";
 import Experiences from "../components/landing/experience/Experiences";
 import PixelPerfect from "../components/landing/PixelPerfect";

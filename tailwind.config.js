@@ -21,10 +21,20 @@ module.exports = {
       transitionTimingFunction: {
         'spring': 'cubic-bezier(0.25, 0.75, 0.25, 1.4)',
       },
+      transitionProperty: {
+        'spacing': 'margin, padding',
+        'text': 'font-size, line-height',
+        'size': 'width, height',
+      },
+      containers: {
+        // 'collapsed': { 'raw': '(max-height: 30%)' },
+        '2xs': '16rem',
+      }, 
     },
   },
   plugins: [
     require('tailwind-scrollbar-hide'),
+    require('@tailwindcss/container-queries'),
   ],
   darkMode: 'class',
 }

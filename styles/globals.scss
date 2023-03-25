@@ -27,6 +27,12 @@ body {
   scroll-behavior: smooth!important;
 }
 
+@container (max-height: 24rem) {
+  .collapsible {
+    display: none;
+  }
+}
+
 /* width */
 ::-webkit-scrollbar {
   @apply w-3 h-3;
