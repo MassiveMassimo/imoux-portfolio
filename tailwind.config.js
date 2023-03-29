@@ -26,10 +26,6 @@ module.exports = {
         'text': 'font-size, line-height',
         'size': 'width, height',
       },
-      containers: {
-        // 'collapsed': { 'raw': '(max-height: 30%)' },
-        '2xs': '16rem',
-      }, 
     },
   },
   plugins: [

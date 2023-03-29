@@ -17,7 +17,7 @@ export default function Experience({ experienceId }: { experienceId: string }) {
         scrolling = true;
 
         carouselRef.current?.scrollBy({
-          left: event.deltaY < 0 || event.deltaX < 0 ? -10 : 10,
+          left: event.deltaY < 0 || event.deltaX < 0 ? -100 : 100,
           behavior: "smooth",
         });
 

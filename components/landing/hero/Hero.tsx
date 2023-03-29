@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import TopLeft from "./TopLeft";
 import TopRight from "./TopRight";
 import BottomLeft from "./BottomLeft";
@@ -12,6 +12,10 @@ export default function Hero() {
   const tr = useRef<HTMLDivElement>(null);
   const bl = useRef<HTMLDivElement>(null);
   const br = useRef<HTMLDivElement>(null);
+  const [tlCollapse, setTlCollapse] = useState<boolean>(false);
+  const [trCollapse, setTrCollapse] = useState<boolean>(false);
+  const [blCollapse, setBlCollapse] = useState<boolean>(false);
+  const [brCollapse, setBrCollapse] = useState<boolean>(false);
 
   useEffect(() => {
     function handleMouseMove(event: MouseEvent) {
@@ -35,6 +39,27 @@ export default function Hero() {
         br.current.style.width = `${100 - width}%`;
         toprow.current.style.height = `${height}%`;
         bottomrow.current.style.height = `${100 - height}%`;
+
+        if (width == 20 && height == 30) {
+          setTlCollapse(true);
+        } else {
+          setTlCollapse(false);
+        }
+        if (width == 80 && height == 30) {
+          setTrCollapse(true);
+        } else {
+          setTrCollapse(false);
+        }
+        if (width == 20 && height == 70) {
+          setBlCollapse(true);
+        } else {
+          setBlCollapse(false);
+        }
+        if (width == 80 && height == 70) {
+          setBrCollapse(true);
+        } else {
+          setBrCollapse(false);
+        }
       }
     }
 
@@ -53,12 +78,12 @@ export default function Hero() {
         >
           <TopLeft />
         </div>
-        <div ref={tr} className="flex grow bg-gradient-to-b from-slate-50 to-slate-200 @container">
-          <TopRight />
+        <div ref={tr} className="flex grow @container">
+          <TopRight collapse={trCollapse} />
         </div>
       </div>
       <div ref={bottomrow} className="flex grow flex-row">
-        <div ref={bl} className="flex grow bg-gradient-to-b from-slate-50 to-slate-200 @container">
+        <div ref={bl} className="flex grow @container">
           <BottomLeft />
         </div>
         <div ref={br} className="flex grow @container">
