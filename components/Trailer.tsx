@@ -2,6 +2,7 @@ import { memo, useRef, useEffect, useState } from "react";
 import ArrowTopRight from "../public/icons/ArrowTopRight";
 import Zoom from "../public/icons/Zoom";
 import Grab from "../public/icons/Grab";
+import ArrowRight from "../public/icons/ArrorRight";
 import { AnimatePresence, motion } from "framer-motion";
 
 const iconVariants = {
@@ -62,7 +63,7 @@ export default memo(function Trailer() {
     const handleMouseOver = (event: MouseEvent) => {
       if (!trailer.current) return;
       const target = event.target as HTMLElement;
-    
+
       switch (true) {
         case target.matches("a, button"):
           setIcon(<ArrowTopRight />);
@@ -72,6 +73,9 @@ export default memo(function Trailer() {
           break;
         case target.classList.contains("grabbable"):
           setIcon(<Grab />);
+          break;
+        case target.classList.contains("trailer-right"):
+          setIcon(<ArrowRight />);
           break;
         default:
           return;
@@ -99,7 +103,7 @@ export default memo(function Trailer() {
     <>
       <motion.div
         ref={trailer}
-        className={`highlight pointer-events-none fixed top-0 left-0 z-50 h-5 w-5 overflow-hidden rounded-full bg-slate-900/5 p-4 backdrop-blur transition-transform duration-500 dark:bg-slate-100/5 ${
+        className={`highlight pointer-events-none fixed top-0 left-0 z-50 h-5 w-5 overflow-hidden rounded-full bg-slate-500/20 p-4 backdrop-blur transition-transform duration-500 ${
           interacting ? "scale-[3.0]" : ""
         }`}
       >
