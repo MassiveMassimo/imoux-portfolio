@@ -25,12 +25,11 @@ body {
   font-feature-settings: "cv02", "cv03", "cv04", "cv11"!important;
   --scroll-behavior: smooth!important;
   scroll-behavior: smooth!important;
-  cursor: none!important;
 }
 
-a, button, .zoom {
-  cursor: none!important;
-}
+// a, button, .zoom {
+//   cursor: none!important;
+// }
 
 
 /* width */
@@ -53,7 +52,7 @@ a, button, .zoom {
 }
 
 .medium-zoom-image {
-  @apply z-30;
+  @apply z-30 cursor-none #{!important};
 }
 
 // ===================================================================== //

@@ -80,10 +80,14 @@ export default memo(function Trailer() {
         default:
           return;
       }
+      target.classList.add("cursor-none");
       setInteracting(true);
     };
 
-    const handleMouseOut = () => {
+    const handleMouseOut = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      target.classList.remove("cursor-none");
+
       setIcon(<div />);
       setInteracting(false);
     };
@@ -103,7 +107,7 @@ export default memo(function Trailer() {
     <>
       <motion.div
         ref={trailer}
-        className={`highlight pointer-events-none fixed top-0 left-0 z-50 h-5 w-5 overflow-hidden rounded-full bg-slate-500/20 p-4 backdrop-blur transition-transform duration-500 ${
+        className={`highlight pointer-events-none fixed top-1/2 left-1/2 z-50 h-5 w-5 overflow-hidden rounded-full bg-slate-500/20 p-4 backdrop-blur transition-transform duration-500 ${
           interacting ? "scale-[3.0]" : ""
         }`}
       >
