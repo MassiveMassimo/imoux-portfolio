@@ -25,7 +25,13 @@ body {
   font-feature-settings: "cv02", "cv03", "cv04", "cv11"!important;
   --scroll-behavior: smooth!important;
   scroll-behavior: smooth!important;
+  cursor: none!important;
 }
+
+a, button {
+  cursor: none!important;
+}
+
 
 /* width */
 ::-webkit-scrollbar {

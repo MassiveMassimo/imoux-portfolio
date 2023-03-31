@@ -51,8 +51,7 @@ export default function PixelPerfect() {
   return (
     <section className="relative w-full rounded-md bg-slate-200 bg-pixelperfect bg-cover dark:bg-slate-800/40">
       <motion.div
-        className="z-10 w-full cursor-grab rounded-md bg-slate-100 px-8 py-8 dark:bg-slate-900 lg:px-16"
-        whileTap={{ cursor: "grabbing" }}
+        className="grabbable z-10 w-full rounded-md bg-slate-100 px-8 py-8 dark:bg-slate-900 lg:px-16"
         initial={{ x: initialX, y: initialY }}
         style={{ x, y }}
         drag
@@ -95,7 +94,7 @@ export default function PixelPerfect() {
           }
         }}
       >
-        <div className="h-20">
+        <div className="pointer-events-none h-20">
           <Image
             className="pointer-events-none"
             src="/illustration-pixelperfect.png"
@@ -104,7 +103,7 @@ export default function PixelPerfect() {
             alt=""
           />
         </div>
-        <div className="z-10">
+        <div className="pointer-events-none z-10">
           <div className="mb-4 inline-flex flex-row items-center space-x-2">
             <AnimatePresence>
               {Math.round(stateX) === 0 ? null : (

@@ -33,7 +33,10 @@ const containerVariants = {
 };
 
 export default function Experiences() {
-  const [selectedComponent, setSelectedComponent] = useState<JSX.Element>();
+  const [selectedComponent, setSelectedComponent] = useState<JSX.Element>(
+    <Experience experienceId="ristek" />
+  );
+
   const [selectedComponentKey, setSelectedComponentKey] = useState<string>();
 
   const handleButtonClick = (experienceId: string) => {
@@ -48,7 +51,7 @@ export default function Experiences() {
     >
       <nav className="highlight flex basis-1/4 flex-col overflow-hidden rounded-xl bg-slate-200 py-10 ring-1 ring-slate-900/10 dark:bg-slate-800/50">
         <div
-          className="group flex cursor-pointer items-center space-x-2 px-8 py-4 text-left hover:bg-slate-300 dark:hover:bg-slate-700"
+          className="group flex items-center space-x-2 px-8 py-4 text-left hover:bg-slate-300 dark:hover:bg-slate-700"
           onClick={() => handleButtonClick("ristek")}
         >
           <RistekLogo />
@@ -57,7 +60,7 @@ export default function Experiences() {
           </p>
         </div>
         <div
-          className="group flex cursor-pointer items-center space-x-2 px-8 py-4 text-left hover:bg-slate-300 dark:hover:bg-slate-700"
+          className="group flex items-center space-x-2 px-8 py-4 text-left hover:bg-slate-300 dark:hover:bg-slate-700"
           onClick={() => handleButtonClick("compfest")}
         >
           <CompfestLogo />
@@ -66,7 +69,7 @@ export default function Experiences() {
           </p>
         </div>
         <div
-          className="group flex cursor-pointer items-center space-x-2 px-8 py-4 text-left hover:bg-slate-300 dark:hover:bg-slate-700"
+          className="group flex items-center space-x-2 px-8 py-4 text-left hover:bg-slate-300 dark:hover:bg-slate-700"
           onClick={() => handleButtonClick("vishwakarma")}
         >
           <VishwakarmaLogo />
@@ -75,7 +78,7 @@ export default function Experiences() {
           </p>
         </div>
         <div
-          className="group flex cursor-pointer items-center space-x-2 px-8 py-4 text-left hover:bg-slate-300 dark:hover:bg-slate-700"
+          className="group flex items-center space-x-2 px-8 py-4 text-left hover:bg-slate-300 dark:hover:bg-slate-700"
           onClick={() => handleButtonClick("dn35")}
         >
           <DN35Logo />
@@ -84,7 +87,7 @@ export default function Experiences() {
           </p>
         </div>
         <div
-          className="group flex cursor-pointer items-center space-x-2 px-8 py-4 text-left hover:bg-slate-300 dark:hover:bg-slate-700"
+          className="group flex items-center space-x-2 px-8 py-4 text-left hover:bg-slate-300 dark:hover:bg-slate-700"
           onClick={() => handleButtonClick("chronos")}
         >
           <ChronosLogo />

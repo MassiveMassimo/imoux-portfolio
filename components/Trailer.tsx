@@ -1,6 +1,8 @@
 import { memo, useRef, useEffect, useState } from "react";
-import ExternalLink from "../public/icons/ExternalLink";
-import { AnimatePresence, motion, useAnimationControls } from "framer-motion";
+import ArrowTopRight from "../public/icons/ArrowTopRight";
+import Zoom from "../public/icons/Zoom";
+import Grab from "../public/icons/Grab";
+import { AnimatePresence, motion } from "framer-motion";
 
 const iconVariants = {
   hidden: {
@@ -32,7 +34,7 @@ export default memo(function Trailer() {
   const [interacting, setInteracting] = useState(false);
   const [icon, setIcon] = useState(
     <svg
-      className="absolute top-1/2 left-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 stroke-slate-900 dark:stroke-white"
+      className="absolute top-1/2 left-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 stroke-slate-900 dark:stroke-slate-100"
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -44,7 +46,6 @@ export default memo(function Trailer() {
       />
     </svg>
   );
-  const [isScaled, setIsScaled] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
@@ -60,28 +61,27 @@ export default memo(function Trailer() {
 
     const handleMouseOver = (event: MouseEvent) => {
       if (!trailer.current) return;
-
       const target = event.target as HTMLElement;
-      if (target.matches("a, button")) {
-        setIcon(<ExternalLink />);
-        setInteracting(true);
-        setIsScaled(true);
+    
+      switch (true) {
+        case target.matches("a, button"):
+          setIcon(<ArrowTopRight />);
+          break;
+        case target.classList.contains("zoom"):
+          setIcon(<Zoom />);
+          break;
+        case target.classList.contains("grabbable"):
+          setIcon(<Grab />);
+          break;
+        default:
+          return;
       }
-      if (target.classList.contains("zoom")) {
-        setIcon(<ZoomIcon />);
-        setInteracting(true);
-        setIsScaled(true);
-      }
+      setInteracting(true);
     };
 
-    const handleMouseOut = (event: MouseEvent) => {
-      if (!trailer.current) return;
-
-      const target = event.target as HTMLElement;
-      if (target.matches("a, button")) {
-        setInteracting(false);
-        setIsScaled(false);
-      }
+    const handleMouseOut = () => {
+      setIcon(<div />);
+      setInteracting(false);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -100,7 +100,7 @@ export default memo(function Trailer() {
       <motion.div
         ref={trailer}
         className={`highlight pointer-events-none fixed top-0 left-0 z-50 h-5 w-5 overflow-hidden rounded-full bg-slate-900/5 p-4 backdrop-blur transition-transform duration-500 dark:bg-slate-100/5 ${
-          isScaled ? "scale-[3.0]" : ""
+          interacting ? "scale-[3.0]" : ""
         }`}
       >
         <AnimatePresence>
