@@ -43,12 +43,11 @@ body {
 }
 
 .medium-zoom-overlay {
-  @apply bg-slate-100 bg-gradient bg-cover bg-no-repeat dark:bg-slate-900 #{!important};
+  @apply bg-slate-100 bg-gradient bg-cover z-30 bg-no-repeat dark:bg-slate-900 #{!important};
 }
 
-.medium-zoom-overlay,
 .medium-zoom-image {
-  z-index: 9999;
+  @apply z-30;
 }
 
 // ===================================================================== //

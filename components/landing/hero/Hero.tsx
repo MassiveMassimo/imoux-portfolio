@@ -63,9 +63,9 @@ export default function Hero() {
       }
     }
 
-    document.addEventListener("mousemove", handleMouseMove);
+    hero.current?.addEventListener("mousemove", handleMouseMove);
     return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
+      hero.current?.removeEventListener("mousemove", handleMouseMove);
     };
   }, [hero]);
 

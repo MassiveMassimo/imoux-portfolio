@@ -22,7 +22,7 @@ export default memo(function DarkModeToggle() {
     >
       {resolvedTheme === "light" ? (
         <svg
-          className="ease-spring h-full -rotate-45 fill-sky-500 p-3 transition-all duration-700 active:rotate-0"
+          className="h-full -rotate-45 fill-sky-500 p-3 duration-700 ease-spring active:rotate-0"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -38,7 +38,7 @@ export default memo(function DarkModeToggle() {
         </svg>
       ) : (
         <svg
-          className="ease-spring h-full fill-indigo-400 p-3 transition-all duration-700 active:-rotate-45"
+          className="h-full fill-indigo-400 p-3 duration-700 ease-spring active:-rotate-45"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >

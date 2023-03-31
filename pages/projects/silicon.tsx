@@ -37,7 +37,7 @@ export default function Silicon() {
     const time = text / 238;
     setTime(Math.round(time));
 
-    mediumZoom(".zoom", {});
+    mediumZoom(".zoom", { margin: 64 });
   }, []);
 
   function handleEnter(link: RefObject<HTMLAnchorElement>) {
@@ -111,7 +111,7 @@ export default function Silicon() {
                 </p>
               </div>
               <div
-                className="group z-10 flex cursor-pointer flex-row items-center space-x-3 rounded-lg hover:backdrop-blur-xl transition-all hover:w-fit hover:bg-cyan-500/10 hover:py-2 hover:px-4"
+                className="group z-10 flex cursor-pointer flex-row items-center space-x-3 rounded-lg transition-all hover:w-fit hover:bg-cyan-500/10 hover:py-2 hover:px-4 hover:backdrop-blur-xl"
                 onClick={() => {
                   window.open(
                     "https://www.figma.com/community/file/1082210150893947691",
@@ -137,7 +137,7 @@ export default function Silicon() {
             </aside>
             <div className="my-10 h-1 w-full rounded-full bg-black/5 dark:bg-white/5" />
             <aside className="flex flex-col space-y-2">
-              <div className="group z-10 flex w-fit flex-row items-center space-x-3 rounded-lg hover:backdrop-blur-xl transition-all hover:bg-white/70 hover:py-2 hover:px-4 dark:hover:bg-white/5">
+              <div className="group z-10 flex w-fit flex-row items-center space-x-3 rounded-lg transition-all hover:bg-white/70 hover:py-2 hover:px-4 hover:backdrop-blur-xl dark:hover:bg-white/5">
                 <svg
                   className="h-6 flex-shrink-0 fill-black dark:fill-white"
                   viewBox="0 0 24 24"
@@ -284,7 +284,7 @@ export default function Silicon() {
             ref={main}
             className="highlight w-full rounded-3xl bg-white/70 px-8 py-12 backdrop-blur-3xl dark:bg-slate-800/20 md:w-4/5 md:py-16 md:px-14 lg:px-16"
           >
-            <h1 className="font-heading text-3xl font-extrabold leading-normal text-transparent bg-clip-text bg-gradient-to-b from-slate-900 to-slate-900/60 dark:from-white dark:to-white/40 md:text-4xl md:leading-snug lg:text-5xl lg:leading-tight">
+            <h1 className="bg-gradient-to-b from-slate-900 to-slate-900/60 bg-clip-text font-heading text-3xl font-extrabold leading-normal text-transparent dark:from-white dark:to-white/40 md:text-4xl md:leading-snug lg:text-5xl lg:leading-tight">
               Crafting a Scalable and Cohesive Design System for COMPFEST
             </h1>
             <aside className="highlight mt-10 flex flex-row space-x-6 overflow-scroll rounded-xl px-6 py-4 scrollbar-hide dark:bg-slate-800/30 md:hidden">

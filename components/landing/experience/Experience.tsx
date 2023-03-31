@@ -34,7 +34,7 @@ export default function Experience({ experienceId }: { experienceId: string }) {
   };
 
   useEffect(() => {
-    mediumZoom(".zoom", {});
+    mediumZoom(".zoom", { margin: 64 });
 
     const unsubscribeTop = horizontalScrolling(carouselTop);
     const unsubscribeBottom = horizontalScrolling(carouselBottom);
