@@ -2,7 +2,7 @@ import "./globals.scss";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Space_Mono } from "next/font/google";
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from "@vercel/analytics/react";
 
 import Navbar from "./components/Navbar";
 
@@ -64,17 +64,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-        <body
-          className={`${satoshi.variable} ${satoshi_italic.variable} ${satoshi_italic.variable} ${space_mono.variable} font-sans bg-base-100 text-slate-900 dark:text-slate-100`}
-        >
-          <header>
-            <Navbar />
-          </header>
-          <main>{children}</main>
-      <Analytics />
-
-        </body>
+    <html lang="en" className="">
+      <body
+        className={`${satoshi.variable} ${satoshi_italic.variable} ${satoshi_italic.variable} ${space_mono.variable} font-sans bg-base-100 text-slate-900 dark:text-slate-100 transition-colors`}
+      >
+        <header>
+          <Navbar />
+        </header>
+        <main>{children}</main>
+        <Analytics />
+      </body>
     </html>
   );
 }

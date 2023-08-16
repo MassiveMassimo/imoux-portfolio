@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer component {
-  
+@layer components {
+  .btn {
+    @apply rounded-full normal-case #{!important};
+  }
+}
+
+.highlight {
+  @apply shadow-[0_-1px_0_0_rgba(255,255,255,0.15)];
 }
