@@ -66,7 +66,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="">
       <body
-        className={`${satoshi.variable} ${satoshi_italic.variable} ${satoshi_italic.variable} ${space_mono.variable} font-sans bg-base-100 text-slate-900 dark:text-slate-100 transition-colors`}
+        className={`${satoshi.variable} ${satoshi_italic.variable} ${satoshi_italic.variable} ${space_mono.variable} bg-base-100 font-sans text-slate-900 transition-colors dark:text-slate-100`}
       >
         <header>
           <Navbar />

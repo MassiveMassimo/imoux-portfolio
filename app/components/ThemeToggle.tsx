@@ -11,7 +11,7 @@ export default function ThemeToggle() {
       const currentTheme = getCurrentTheme();
       htmlElement.setAttribute(
         "data-theme",
-        theme === "system" ? currentTheme : theme
+        theme === "system" ? currentTheme : theme,
       );
 
       if (htmlElement.getAttribute("data-theme") === "dark") {
@@ -26,7 +26,7 @@ export default function ThemeToggle() {
     if (typeof window !== "undefined" && window.matchMedia) {
       // Check if the browser prefers dark mode
       const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
+        "(prefers-color-scheme: dark)",
       ).matches;
 
       // Return "dark" if the browser prefers dark mode, otherwise return "light"
@@ -38,12 +38,19 @@ export default function ThemeToggle() {
   }
 
   return (
-    <div className="tabs tabs-boxed bg-base-50 rounded-full outline outline-1 outline-offset-0 outline-slate-300 dark:outline-none highlight">
+    <div className="highlight tabs-boxed tabs relative rounded-full bg-[var(--base-50)] outline outline-1 outline-offset-0 outline-slate-300 dark:outline-none">
+      <div
+        className={`tab-active absolute left-1/2 top-1/2 aspect-square h-10 -translate-y-1/2 rounded-full duration-1000 ease-elastic ${
+          theme === "light"
+            ? "-translate-x-[150%]"
+            : theme === "dark"
+            ? "translate-x-1/2"
+            : "-translate-x-1/2"
+        }`}
+      />
       <a
         onClick={() => setTheme("light")}
-        className={`tab tab-lg h-10 !px-0 !rounded-full ${
-          theme === "light" && "tab-active"
-        }`}
+        className="tab tab-lg h-10 !rounded-full !px-0"
       >
         <svg
           className={`h-full p-2.5 ${
@@ -65,9 +72,7 @@ export default function ThemeToggle() {
       </a>
       <a
         onClick={() => setTheme("system")}
-        className={`tab tab-lg h-10 !px-0 !rounded-full ${
-          theme === "system" && "tab-active"
-        }`}
+        className="tab tab-lg h-10 !rounded-full !px-0"
       >
         <svg
           className={`h-full p-2.5 ${
@@ -87,9 +92,7 @@ export default function ThemeToggle() {
       </a>
       <a
         onClick={() => setTheme("dark")}
-        className={`tab tab-lg h-10 !px-0 !rounded-full ${
-          theme === "dark" && "tab-active"
-        }`}
+        className="tab tab-lg h-10 !rounded-full !px-0"
       >
         <svg
           className={`h-full p-2.5 ${

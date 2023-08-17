@@ -1,9 +1,10 @@
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
+import Button from "./Button";
 
 export default function Navbar() {
   return (
-    <nav className="navbar bg-base-100 transition-colors fixed px-10">
+    <nav className="navbar fixed border-b border-slate-900/10 bg-base-100 px-10 transition-colors dark:border-white/5">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -24,7 +25,7 @@ export default function Navbar() {
           </label>
           <ul
             tabIndex={0}
-            className="menu dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu dropdown-content rounded-box z-[1] mt-3 w-52 bg-base-100 p-2 shadow"
           >
             <li>
               <a>Item 1</a>
@@ -48,7 +49,7 @@ export default function Navbar() {
             </li>
           </ul>
         </div>
-        <Link href="/" className="btn btn-ghost group">
+        <Link href="/" className="group btn btn-ghost">
           <svg
             className="h-6 overflow-visible fill-none stroke-slate-900 dark:stroke-white"
             viewBox="0 0 320 144"
@@ -61,7 +62,7 @@ export default function Navbar() {
               height="128"
               rx="32"
               strokeWidth="16"
-              className="group-hover:-translate-y-3 duration-500 ease-elastic"
+              className="duration-500 ease-elastic group-hover:-translate-y-3"
             />
             <rect
               x="72"
@@ -70,19 +71,19 @@ export default function Navbar() {
               height="128"
               rx="32"
               strokeWidth="16"
-              className="group-hover:-translate-y-3 delay-100 duration-500 ease-elastic"
+              className="delay-100 duration-500 ease-elastic group-hover:-translate-y-3"
             />
             <circle
               cx="248"
               cy="72"
               r="64"
               strokeWidth="16"
-              className="group-hover:-translate-y-3 delay-200 duration-500 ease-elastic"
+              className="delay-200 duration-500 ease-elastic group-hover:-translate-y-3"
             />
           </svg>
         </Link>
 
-        <ul className="menu menu-horizontal px-1 hidden lg:flex">
+        <ul className="menu menu-horizontal hidden px-1 lg:flex">
           <li>
             <a>Item 1</a>
           </li>
@@ -106,14 +107,12 @@ export default function Navbar() {
       </div>
 
       <div className="navbar-end gap-3">
-        <Link
+        <Button
           href="https://mail.google.com/mail/u/0/?source=mailto&to=mhmmadjid@gmail.com&fs=1&tf=cm"
-          className="btn btn-primary"
-          target="_blank"
-          rel="noopener noreferrer"
+          type="primary"
         >
           Get in touch!
-        </Link>
+        </Button>
         <div className="hidden lg:flex">
           <ThemeToggle />
         </div>

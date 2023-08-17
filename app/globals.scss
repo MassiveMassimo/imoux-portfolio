@@ -2,10 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  @apply box-border;
+}
+
 @layer components {
-  .btn {
-    @apply rounded-full normal-case #{!important};
-  }
+  
 }
 
 .highlight {
