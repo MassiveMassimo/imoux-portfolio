@@ -4,8 +4,10 @@ import Button from "./Button";
 
 export default function Navbar() {
   return (
-    <nav className="navbar fixed border-b border-slate-900/10 bg-base-100 px-10 transition-colors dark:border-white/5">
-      <div className="navbar-start">
+    <nav className="min-h-16 fixed flex w-full items-center justify-between border-b border-slate-900/10 bg-base-100 px-10 transition-colors dark:border-white/5">
+      {/* links */}
+      <div className="flex justify-start">
+        {/* mobile links */}
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
@@ -44,11 +46,13 @@ export default function Navbar() {
             <li>
               <a>Item 3</a>
             </li>
-            <li className="hover:none lg:hidden">
+            <li className="lg:hidden">
               <ThemeToggle />
             </li>
           </ul>
         </div>
+
+        {/* logo */}
         <Link href="/" className="group btn btn-ghost">
           <svg
             className="h-6 overflow-visible fill-none stroke-slate-900 dark:stroke-white"
@@ -83,6 +87,9 @@ export default function Navbar() {
           </svg>
         </Link>
 
+        <div className="mx-4 my-2 w-1 rounded-full bg-base-200" />
+
+        {/* desktop links */}
         <ul className="menu menu-horizontal hidden px-1 lg:flex">
           <li>
             <a>Item 1</a>
@@ -106,7 +113,8 @@ export default function Navbar() {
         </ul>
       </div>
 
-      <div className="navbar-end gap-3">
+      {/* CTAs */}
+      <div className="flex justify-end gap-3">
         <Button
           href="https://mail.google.com/mail/u/0/?source=mailto&to=mhmmadjid@gmail.com&fs=1&tf=cm"
           type="primary"

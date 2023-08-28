@@ -22,9 +22,11 @@ export default function Button({
       className[2] = "from-indigo-700 to-indigo-600 text-indigo-200";
       break;
     case "secondary":
-      className[0] = "from-slate-200 to-slate-200/0";
-      className[1] = "border-slate-300 from-slate-100 to-slate-200 ";
-      className[2] = "from-slate-200 to-slate-100 text-slate-600";
+      className[0] = "from-base-200/50 to-base-200/0";
+      className[1] =
+        "dark:bg-gradient-to-t border-slate-300 dark:border-slate-950/40 from-base-100 to-base-200";
+      className[2] =
+        "dark:bg-gradient-to-t from-base-200 to-base-100 text-[var(--base-content-300)]";
       break;
   }
 
@@ -49,7 +51,7 @@ export default function Button({
       className={`${className[0]} h-12 rounded-full bg-gradient-to-b p-1`}
     >
       <div
-        className={`${className[1]} h-full rounded-full border  bg-gradient-to-b p-1 shadow-md transition-transform hover:scale-105 active:scale-90`}
+        className={`${className[1]} h-full rounded-full border bg-gradient-to-b p-1 shadow-md transition-transform hover:scale-105 active:scale-90`}
       >
         <div
           className={`${className[2]} inline-flex h-full items-center justify-center rounded-full bg-gradient-to-b px-4 font-medium normal-case`}
