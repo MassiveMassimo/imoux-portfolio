@@ -26,6 +26,9 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
+    "@iconify-icon/react": "^1.0.8",
+    "@iconify/icons-solar": "^1.2.0",
+    "@iconify/react": "^4.1.1",
     "daisyui": "^3.6.3",
     "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.4"

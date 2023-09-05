@@ -25,7 +25,7 @@ const space_mono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Imo UX Portfolio",
+  title: "Imo UX",
   description:
     "Welcome to my product design portfolio where I showcase my work, projects, and overall taste in design.",
   icons: {

@@ -1,6 +1,6 @@
 import Link from "next/link";
-import ThemeToggle from "./ThemeToggle";
-import Button from "./Button";
+import ThemeToggle from "@/components/ThemeToggle";
+import Button from "@/components/Button";
 
 export default function Navbar() {
   return (
@@ -118,6 +118,7 @@ export default function Navbar() {
         <Button
           href="https://mail.google.com/mail/u/0/?source=mailto&to=mhmmadjid@gmail.com&fs=1&tf=cm"
           type="primary"
+          className="text-lg"
         >
           Get in touch!
         </Button>
