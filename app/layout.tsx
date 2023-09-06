@@ -1,7 +1,7 @@
 import "./globals.scss";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Space_Mono } from "next/font/google";
+import { Martian_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 
 import Navbar from "./components/Navbar";
@@ -16,12 +16,10 @@ const satoshi_italic = localFont({
   variable: "--font-satoshi-italic",
 });
 
-const space_mono = Space_Mono({
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
+const martian_mono = Martian_Mono({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-space-mono",
+  variable: "--font-martian-mono",
 });
 
 export const metadata: Metadata = {
@@ -66,7 +64,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="">
       <body
-        className={`${satoshi.variable} ${satoshi_italic.variable} ${satoshi_italic.variable} ${space_mono.variable} bg-base-100 font-sans text-slate-900 transition-colors dark:text-slate-100`}
+        className={`${satoshi.variable} ${satoshi_italic.variable} ${satoshi_italic.variable} ${martian_mono.variable} bg-base-100 font-sans text-slate-900 transition-colors dark:text-slate-100`}
       >
         <header>
           <Navbar />

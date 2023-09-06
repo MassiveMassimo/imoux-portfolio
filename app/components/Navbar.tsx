@@ -118,7 +118,6 @@ export default function Navbar() {
         <Button
           href="https://mail.google.com/mail/u/0/?source=mailto&to=mhmmadjid@gmail.com&fs=1&tf=cm"
           type="primary"
-          className="text-lg"
         >
           Get in touch!
         </Button>
