@@ -4,7 +4,7 @@ import Button from "@/components/Button";
 
 export default function Navbar() {
   return (
-    <nav className="min-h-16 fixed flex w-full items-center justify-between border-b border-slate-900/10 bg-base-100 px-10 transition-colors dark:border-white/5">
+    <nav className="min-h-16 fixed z-20 flex w-full items-center justify-between border-b border-slate-900/10 bg-base-100 px-5 transition-colors dark:border-white/5 md:px-10 lg:px-20">
       {/* links */}
       <div className="flex justify-start">
         {/* mobile links */}

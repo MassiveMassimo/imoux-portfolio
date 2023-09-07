@@ -12,14 +12,14 @@ export default function DesignSystemPage() {
   return (
     <>
       <main className="">
-        <section className="flex h-screen flex-col items-center justify-center gap-4">
-          <p className="font-mono text-[var(--base-content-500)]">
+        <section className="flex h-screen flex-col items-center justify-center gap-4 px-5 text-center md:px-10 lg:px-20">
+          <p className="p3 font-mono text-[var(--base-content-500)]">
             Oh hey, you found my
           </p>
-          <h1 className="font-mono text-7xl/[150%] font-semibold text-[var(--base-content-100)]">
+          <h1 className="font-semibold text-[var(--base-content-100)]">
             Design System
           </h1>
-          <p className="max-w-2xl text-center font-mono text-[var(--base-content-500)]">
+          <p className="p3 max-w-2xl font-mono text-[var(--base-content-500)]">
             This is the space where I experiment and test the UI components I
             develop. Feel free to play around and explore!
           </p>

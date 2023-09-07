@@ -7,6 +7,27 @@
 }
 
 @layer components {
+  h1 {
+    @apply text-5xl md:text-6xl lg:text-7xl/normal;
+  }
+  h2 {
+    @apply text-4xl md:text-5xl lg:text-6xl/normal;
+  }
+  h3 {
+    @apply text-3xl md:text-4xl lg:text-5xl/normal;
+  }
+  p {
+    @apply leading-relaxed;
+  }
+  .p1 {
+    @apply text-base md:text-lg lg:text-xl;
+  }
+  .p2 {
+    @apply text-sm md:text-base lg:text-lg;
+  }
+  .p3 {
+    @apply text-xs md:text-sm lg:text-base;
+  }
 }
 
 .magicpattern {
