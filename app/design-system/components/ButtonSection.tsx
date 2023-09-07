@@ -9,9 +9,9 @@ export default function ButtonSection() {
   const code = `
 <Button 
   href=""
-  type="primary" {/* try changing to "secondary" */}
+  type="primary" // try changing to "secondary"
   scroll={false}
-  className="" {/* try changing to "text-2xl px-4 py-2" */}
+  className="" // try changing to "text-2xl px-4 py-2"
 >
   <Iconify icon="" />  {/* try changing to "solar:bolt-bold" */}
   Button
