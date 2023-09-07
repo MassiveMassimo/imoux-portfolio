@@ -44,7 +44,7 @@ export default function Navbar() {
               </ul>
             </li>
             <li>
-              <a>Item 3</a>
+              <Link href="/design-system">Design System</Link>
             </li>
             <li className="lg:hidden">
               <ThemeToggle />
@@ -108,7 +108,7 @@ export default function Navbar() {
             </details>
           </li>
           <li>
-            <a>Item 3</a>
+            <Link href="/design-system">Design System</Link>
           </li>
         </ul>
       </div>
