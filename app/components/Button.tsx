@@ -46,7 +46,7 @@ export default function Button({
         href,
       };
 
-  return (
+  return href !== "" ? (
     <Link
       {...linkProps}
       className={`${buttonTypeClasses[0]} flex w-fit rounded-full bg-gradient-to-b p-1`}
@@ -61,5 +61,19 @@ export default function Button({
         </div>
       </div>
     </Link>
+  ) : (
+    <button
+      className={`${buttonTypeClasses[0]} flex w-fit rounded-full bg-gradient-to-b p-1`}
+    >
+      <div
+        className={`${buttonTypeClasses[1]} flex rounded-full bg-gradient-to-b p-1 shadow-md transition-transform hover:scale-105 active:scale-90`}
+      >
+        <div
+          className={`${buttonTypeClasses[2]} inline-flex items-center justify-center gap-1 rounded-full bg-gradient-to-b px-4 font-medium ${className}`}
+        >
+          {children}
+        </div>
+      </div>
+    </button>
   );
 }
