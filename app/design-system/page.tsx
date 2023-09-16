@@ -20,13 +20,13 @@ export default function DesignSystemPage() {
             color3="#a78bfa"
             color4="#bd7de8"
           /> */}
-          <p className="p3 font-mono text-[var(--base-content-500)]">
+          <p className="p3 font-mono text-base-content-500">
             Oh hey, you found my
           </p>
-          <h1 className="font-semibold text-[var(--base-content-100)]">
+          <h1 className="font-semibold text-base-content-100">
             Design System
           </h1>
-          <p className="p3 max-w-2xl font-mono text-[var(--base-content-500)]">
+          <p className="p3 max-w-2xl font-mono text-base-content-500">
             This is the space where I experiment and test the UI components I
             develop. Feel free to play around and explore!
           </p>
