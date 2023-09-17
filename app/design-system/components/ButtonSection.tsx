@@ -27,7 +27,7 @@ export default function ButtonSection() {
             <LiveEditor className="mx-4 font-mono text-sm/6 font-light" />
           </div>
           <div className="flex basis-1/2">
-            <div className="magicpattern flex aspect-video w-full items-center justify-center rounded-2xl border border-base-200 bg-base-200/30">
+            <div className="bg-pattern-grid-1 flex aspect-video w-full items-center justify-center rounded-2xl border border-base-200 bg-base-200/30">
               <LiveError />
               <LivePreview />
             </div>

@@ -13,7 +13,7 @@ export default function DesignSystemPage() {
   return (
     <>
       <main className="">
-        <section className="flex h-screen flex-col items-center justify-center gap-4 px-5 text-center md:px-10 lg:px-20">
+        <section className="bg-pattern-grid-2 flex h-screen flex-col items-center justify-center gap-4 px-5 text-center md:px-10 lg:px-20">
           {/* <MeshGradient
             color1="#3b82f6"
             color2="#a5f3fc"

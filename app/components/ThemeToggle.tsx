@@ -40,40 +40,38 @@ export default function ThemeToggle() {
   }
 
   return (
-    <div className="highlight relative flex rounded-full bg-base-50 p-1 outline outline-1 outline-offset-0 outline-slate-300 dark:outline-none">
+    <div className="relative flex rounded-full bg-gradient-to-b from-base-200 to-base-100 p-1 dark:from-base-50/60">
       <div
-        className={`absolute left-1/2 top-1/2 aspect-square h-10 -translate-y-1/2 rounded-full bg-indigo-500 duration-1000 ease-elastic ${
+        className={`absolute left-1/2 top-1/2 h-10 w-10 -translate-y-1/2 rounded-full bg-gradient-to-b from-indigo-500 to-indigo-600 p-1 shadow-md duration-1000 ease-elastic ${
           theme === "light"
             ? "-translate-x-[150%]"
             : theme === "dark"
             ? "translate-x-1/2"
             : "-translate-x-1/2"
         }`}
-      />
+      >
+        <div className="h-full w-full rounded-full bg-gradient-to-b from-indigo-600 to-indigo-500" />
+      </div>
       <Iconify
         icon="solar:sun-bold-duotone"
-        className={`z-10 h-10 w-10 cursor-pointer rounded-full p-2.5 ${
-          theme === "light"
-            ? "text-white"
-            : "text-sky-500 hover:bg-base-200 dark:hover:bg-base-100"
+        className={`z-10 h-10 w-10 cursor-pointer overflow-visible rounded-full p-2.5 ${
+          theme === "light" ? "text-white" : "text-sky-500 hover:bg-base-300"
         }`}
         onClick={() => setTheme("light")}
       />
       <Iconify
-        icon="solar:laptop-minimalistic-bold-duotone"
-        className={`z-10 h-10 w-10 cursor-pointer rounded-full p-2.5 ${
+        icon="solar:display-bold-duotone"
+        className={`z-10 h-10 w-10 cursor-pointer overflow-visible rounded-full p-2.5 ${
           theme === "system"
             ? "text-white"
-            : "text-base-content-100 hover:bg-base-200 dark:hover:bg-base-100"
+            : "text-base-content-300 hover:bg-base-300"
         }`}
         onClick={() => setTheme("system")}
       />
       <Iconify
         icon="solar:moon-stars-bold-duotone"
-        className={`z-10 h-10 w-10 cursor-pointer rounded-full p-2.5 ${
-          theme === "dark"
-            ? "text-white"
-            : "text-indigo-400 hover:bg-base-200 dark:hover:bg-base-100"
+        className={`z-10 h-10 w-10 cursor-pointer overflow-visible rounded-full p-2.5 ${
+          theme === "dark" ? "text-white" : "text-indigo-500 hover:bg-base-300"
         }`}
         onClick={() => setTheme("dark")}
       />

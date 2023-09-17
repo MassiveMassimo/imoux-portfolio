@@ -55,7 +55,7 @@ export default function Navbar() {
         {/* logo */}
         <Link href="/" className="group btn btn-ghost">
           <svg
-            className="h-6 overflow-visible fill-none stroke-slate-900 dark:stroke-white"
+            className="h-6 overflow-visible fill-none stroke-base-content-100"
             viewBox="0 0 320 144"
             xmlns="http://www.w3.org/2000/svg"
           >
