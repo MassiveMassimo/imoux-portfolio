@@ -66,7 +66,7 @@ export default function Navbar() {
               height="128"
               rx="32"
               strokeWidth="16"
-              className="duration-500 ease-elastic group-hover:-translate-y-3"
+              className="duration-300 ease-out-expo group-hover:-translate-y-3"
             />
             <rect
               x="72"
@@ -75,14 +75,14 @@ export default function Navbar() {
               height="128"
               rx="32"
               strokeWidth="16"
-              className="delay-100 duration-500 ease-elastic group-hover:-translate-y-3"
+              className="delay-100 duration-300 ease-out-expo group-hover:-translate-y-3"
             />
             <circle
               cx="248"
               cy="72"
               r="64"
               strokeWidth="16"
-              className="delay-200 duration-500 ease-elastic group-hover:-translate-y-3"
+              className="delay-200 duration-300 ease-out-expo group-hover:-translate-y-3"
             />
           </svg>
         </Link>

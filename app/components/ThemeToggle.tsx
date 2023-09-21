@@ -42,7 +42,7 @@ export default function ThemeToggle() {
   return (
     <div className="relative flex rounded-full bg-gradient-to-b from-base-200 to-base-100 p-1 dark:from-base-50/60">
       <div
-        className={`absolute left-1/2 top-1/2 h-10 w-10 -translate-y-1/2 rounded-full bg-gradient-to-b from-indigo-500 to-indigo-600 p-1 shadow-md duration-1000 ease-elastic ${
+        className={`absolute left-1/2 top-1/2 h-10 w-10 -translate-y-1/2 rounded-full bg-gradient-to-b from-indigo-500 to-indigo-600 p-1 shadow-md duration-500 ease-out-expo ${
           theme === "light"
             ? "-translate-x-[150%]"
             : theme === "dark"

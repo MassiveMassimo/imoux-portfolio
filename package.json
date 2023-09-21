@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@floating-ui/react": "^0.25.4",
     "@headlessui/react": "^1.7.16",
     "@headlessui/tailwindcss": "^0.2.0",
     "@splinetool/react-spline": "^2.2.6",

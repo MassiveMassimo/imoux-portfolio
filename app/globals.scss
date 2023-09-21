@@ -63,17 +63,10 @@
   @apply shadow-[0_-1px_0_0_rgba(255,255,255,0.15)];
 }
 
-/* width */
 ::-webkit-scrollbar {
-  @apply w-3;
+  @apply w-4 bg-base-100;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-  @apply bg-transparent;
-}
-
-/* Handle */
 ::-webkit-scrollbar-thumb {
-  @apply rounded-full border-2 border-base-100 bg-base-200 hover:w-3 hover:bg-base-300;
+  @apply w-1 rounded-full border-[5px] border-solid border-transparent bg-base-300 hover:bg-base-400 hover:w-3 hover:border-4 bg-clip-content;
 }
