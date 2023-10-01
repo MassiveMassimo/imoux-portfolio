@@ -3,9 +3,12 @@
 import { useEffect, useState } from "react";
 
 import Iconify from "./Iconify";
+import Tooltip from "./Tooltip";
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState("system");
+  const [tooltipVisibility, setTooltipVisibility] = useState(false);
+  const [tooltip, setTooltip] = useState("");
 
   useEffect(() => {
     let htmlElement = document.querySelector("html");
@@ -40,41 +43,61 @@ export default function ThemeToggle() {
   }
 
   return (
-    <div className="relative flex rounded-full bg-gradient-to-b from-base-200 to-base-100 p-1 dark:from-base-50/60">
-      <div
-        className={`absolute left-1/2 top-1/2 h-10 w-10 -translate-y-1/2 rounded-full bg-gradient-to-b from-indigo-500 to-indigo-600 p-1 shadow-md duration-500 ease-out-expo ${
-          theme === "light"
-            ? "-translate-x-[150%]"
-            : theme === "dark"
-            ? "translate-x-1/2"
-            : "-translate-x-1/2"
-        }`}
-      >
-        <div className="h-full w-full rounded-full bg-gradient-to-b from-indigo-600 to-indigo-500" />
+    <>
+      <Tooltip visible={tooltipVisibility} text={tooltip} />
+      <div className="relative flex rounded-full bg-gradient-to-b from-base-200 to-base-100 p-1 dark:from-base-50/60">
+        <div
+          className={`absolute left-1/2 top-1/2 h-10 w-10 -translate-y-1/2 rounded-full bg-gradient-to-b from-indigo-500 to-indigo-600 p-1 shadow-md duration-500 ease-out-expo ${
+            theme === "light"
+              ? "-translate-x-[150%]"
+              : theme === "dark"
+              ? "translate-x-1/2"
+              : "-translate-x-1/2"
+          }`}
+        >
+          <div className="h-full w-full rounded-full bg-gradient-to-b from-indigo-600 to-indigo-500" />
+        </div>
+        <Iconify
+          icon="solar:sun-bold-duotone"
+          className={`z-10 h-10 w-10 cursor-pointer overflow-visible rounded-full p-2.5 ${
+            theme === "light" ? "text-white" : "text-sky-500 hover:bg-base-300"
+          }`}
+          onClick={() => setTheme("light")}
+          onMouseEnter={() => {
+            setTooltipVisibility(true);
+            setTooltip("Light Theme");
+          }}
+          onMouseLeave={() => setTooltipVisibility(false)}
+        />
+        <Iconify
+          icon="solar:display-bold-duotone"
+          className={`z-10 h-10 w-10 cursor-pointer overflow-visible rounded-full p-2.5 ${
+            theme === "system"
+              ? "text-white"
+              : "text-base-content-300 hover:bg-base-300"
+          }`}
+          onClick={() => setTheme("system")}
+          onMouseEnter={() => {
+            setTooltipVisibility(true);
+            setTooltip("System Theme");
+          }}
+          onMouseLeave={() => setTooltipVisibility(false)}
+        />
+        <Iconify
+          icon="solar:moon-stars-bold-duotone"
+          className={`z-10 h-10 w-10 cursor-pointer overflow-visible rounded-full p-2.5 ${
+            theme === "dark"
+              ? "text-white"
+              : "text-indigo-500 hover:bg-base-300"
+          }`}
+          onClick={() => setTheme("dark")}
+          onMouseEnter={() => {
+            setTooltipVisibility(true);
+            setTooltip("Dark Theme");
+          }}
+          onMouseLeave={() => setTooltipVisibility(false)}
+        />
       </div>
-      <Iconify
-        icon="solar:sun-bold-duotone"
-        className={`z-10 h-10 w-10 cursor-pointer overflow-visible rounded-full p-2.5 ${
-          theme === "light" ? "text-white" : "text-sky-500 hover:bg-base-300"
-        }`}
-        onClick={() => setTheme("light")}
-      />
-      <Iconify
-        icon="solar:display-bold-duotone"
-        className={`z-10 h-10 w-10 cursor-pointer overflow-visible rounded-full p-2.5 ${
-          theme === "system"
-            ? "text-white"
-            : "text-base-content-300 hover:bg-base-300"
-        }`}
-        onClick={() => setTheme("system")}
-      />
-      <Iconify
-        icon="solar:moon-stars-bold-duotone"
-        className={`z-10 h-10 w-10 cursor-pointer overflow-visible rounded-full p-2.5 ${
-          theme === "dark" ? "text-white" : "text-indigo-500 hover:bg-base-300"
-        }`}
-        onClick={() => setTheme("dark")}
-      />
-    </div>
+    </>
   );
 }

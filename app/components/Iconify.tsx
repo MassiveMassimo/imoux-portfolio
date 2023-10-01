@@ -3,10 +3,10 @@
 import { Icon as BaseIcon, IconProps } from "@iconify/react";
 import React from "react";
 
-const Iconify: React.FunctionComponent<IconProps & { className?: string }> = ({
+export default function Iconify({
   className,
   ...props
-}) => {
+}: IconProps & { className?: string }) {
   return (
     <BaseIcon
       {...props}
@@ -14,6 +14,4 @@ const Iconify: React.FunctionComponent<IconProps & { className?: string }> = ({
       aria-hidden="true"
     />
   );
-};
-
-export default Iconify;
+}

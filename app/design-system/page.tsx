@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 
 import ButtonSection from "./components/ButtonSection";
-import MeshGradient from "@/components/MeshGradient";
 
 export const metadata: Metadata = {
   title: "Design System - Imo UX",

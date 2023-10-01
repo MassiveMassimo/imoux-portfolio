@@ -1,6 +1,6 @@
 "use client";
 
-import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
+import { LiveEditor, LiveError, LivePreview, LiveProvider } from "react-live";
 
 import Button from "@/components/Button";
 import Iconify from "@/components/Iconify";
