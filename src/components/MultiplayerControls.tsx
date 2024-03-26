@@ -61,7 +61,7 @@ export default function MultiplayerControls() {
 
           room
             .on("broadcast", { event: "test" }, (payload) =>
-              messageReceived(payload),
+              messageReceived(payload)
             )
             .subscribe();
 
@@ -113,13 +113,13 @@ export default function MultiplayerControls() {
         ease: "back.out(2)",
       });
     },
-    { scope: controlsScope, dependencies: [joined] },
+    { scope: controlsScope, dependencies: [joined] }
   );
 
   return (
     <>
       {joined &&
-        Object.entries(cursors).map(([id, { x, y }]) => {
+        Object.entries(cursors).map(([id, { username, x, y }]) => {
           if (id !== UUID.toString()) {
             return (
               <MultiplayerCursor key={id} username={username} x={x} y={y} />
