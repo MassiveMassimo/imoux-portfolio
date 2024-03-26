@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  min-width: 0;
+  /* cursor: none; */
+}
+
+a {
+  cursor: pointer;
+}
