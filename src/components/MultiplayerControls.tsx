@@ -48,7 +48,8 @@ export default function MultiplayerControls() {
     const newRoom = supabase.channel(pathname);
     setRoom(newRoom);
     const userStatus = {
-      user: "user-1",
+      id: UUID,
+      username: username,
       online_at: new Date().toISOString(),
     };
 
@@ -60,7 +61,12 @@ export default function MultiplayerControls() {
       const presenceTrackStatus = await newRoom.track(userStatus);
       console.log(presenceTrackStatus);
     });
-  }, [pathname, joined]);
+  }, [pathname, joined, UUID, username]);
+
+  room.on("presence", { event: "sync" }, () => {
+    const newState = room.presenceState();
+    console.log("sync", newState);
+  });
 
   function messageReceived(payload: any) {
     setCursors((prevCursors) => ({
@@ -164,12 +170,6 @@ export default function MultiplayerControls() {
             </div>
           )}
         </div>
-        {/* <div className="*:animate-pulse-slow relative *:rounded-full *:mix-blend-luminosity">
-        <div className="absolute size-[280px] translate-x-[-20px] translate-y-[-70px] bg-indigo-400 blur-3xl" />
-        <div className="absolute size-[320px] translate-x-[-260px] translate-y-[-40px] bg-emerald-400 blur-3xl delay-100" />
-        <div className="absolute size-[160px] translate-x-[-120px] translate-y-[-80px] bg-rose-400 blur-3xl delay-75" />
-        <div className="delay absolute size-[120px] translate-x-[0px] translate-y-[-50px] bg-green-400 blur-3xl" />
-      </div> */}
       </div>
     </>
   );
