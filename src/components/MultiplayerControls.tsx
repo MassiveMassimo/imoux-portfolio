@@ -21,6 +21,13 @@ import { useForm, FieldValues } from "react-hook-form";
 gsap.registerPlugin(useGSAP);
 const supabase = createClient();
 
+interface UserInfo {
+  id: string;
+  online_at: string;
+  username: string;
+  presence_ref: string;
+}
+
 export default function MultiplayerControls() {
   const UUID = useAtomValue(UUIDAtom);
 
@@ -66,6 +73,29 @@ export default function MultiplayerControls() {
   room.on("presence", { event: "sync" }, () => {
     const newState = room.presenceState();
     console.log("sync", newState);
+
+    // Update cursors state with the new presence state
+    setCursors((prevCursors) => {
+      const newCursors = { ...prevCursors };
+
+      // Remove cursors that are no longer present
+      Object.keys(prevCursors).forEach((cursorId) => {
+        if (!newState[cursorId]) {
+          delete newCursors[cursorId];
+        }
+      });
+
+      // Add or update cursors with new presence state data
+      Object.entries(newState).forEach(([userId, userInfoArray]) => {
+        const userInfo = userInfoArray[0] as UserInfo | undefined;
+        const { id, username } = userInfo || {};
+        if (id && username) {
+          newCursors[userId] = { username, x: 0, y: 0 };
+        }
+      });
+
+      return newCursors;
+    });
   });
 
   function messageReceived(payload: any) {
