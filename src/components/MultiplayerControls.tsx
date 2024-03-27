@@ -8,34 +8,59 @@ import { Input } from "./ui/input";
 import { UUIDAtom } from "@/app/atoms";
 import { createClient } from "@/utils/supabase/client";
 import { useGSAP } from "@gsap/react";
+import { RealtimeChannel } from "@supabase/supabase-js";
 import gsap from "gsap";
 import { useAtomValue } from "jotai";
 import { usePathname } from "next/navigation";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm, FieldValues } from "react-hook-form";
 
+// Multiplayer Cursor Flow
+// Click join -> Join channel -> Send local cursor broadcast -> Listen to other cursor broadcasts ->
+
 gsap.registerPlugin(useGSAP);
+const supabase = createClient();
 
 export default function MultiplayerControls() {
   const UUID = useAtomValue(UUIDAtom);
+
+  const pathname = usePathname();
 
   const [joined, setJoined] = useState(false);
   const [username, setUsername] = useState("");
   const [cursors, setCursors] = useState<{
     [key: string]: { username: string; x: number; y: number };
   }>({});
+  const [room, setRoom] = useState<RealtimeChannel>(supabase.channel(pathname));
 
   const controlsScope = useRef(null);
   const controlsRef = useRef(null);
-
-  const pathname = usePathname();
 
   const form = useForm();
 
   const { contextSafe } = useGSAP({ scope: controlsScope });
 
-  const supabase = createClient();
-  const room = supabase.channel(pathname);
+  useEffect(() => {
+    if (!joined) {
+      return;
+    }
+
+    const newRoom = supabase.channel(pathname);
+    setRoom(newRoom);
+    const userStatus = {
+      user: "user-1",
+      online_at: new Date().toISOString(),
+    };
+
+    newRoom.subscribe(async (status) => {
+      if (status !== "SUBSCRIBED") {
+        return;
+      }
+
+      const presenceTrackStatus = await newRoom.track(userStatus);
+      console.log(presenceTrackStatus);
+    });
+  }, [pathname, joined]);
 
   function messageReceived(payload: any) {
     setCursors((prevCursors) => ({
@@ -58,42 +83,11 @@ export default function MultiplayerControls() {
         setJoined(!joined);
         if (!joined) {
           setUsername(formData?.username);
-
-          room
-            .on("broadcast", { event: "test" }, (payload) =>
-              messageReceived(payload)
-            )
-            .subscribe();
-
-          room
-            .on("presence", { event: "sync" }, () => {
-              const newState = room.presenceState();
-              console.log("sync", newState);
-            })
-            .on("presence", { event: "join" }, ({ key, newPresences }) => {
-              console.log("join", key, newPresences);
-            })
-            .on("presence", { event: "leave" }, ({ key, leftPresences }) => {
-              console.log("leave", key, leftPresences);
-            })
-            .subscribe();
-
-          const userStatus = {
-            // user: "user-1",
-            online_at: new Date().toISOString(),
-          };
-
-          room.subscribe(async (status) => {
-            if (status !== "SUBSCRIBED") {
-              return;
-            }
-
-            const presenceTrackStatus = await room.track(userStatus);
-            console.log(presenceTrackStatus);
-          });
+          room.on("broadcast", { event: "test" }, (payload) =>
+            messageReceived(payload)
+          );
         } else {
           setUsername("");
-          room.unsubscribe();
           const untrackPresence = async () => {
             const presenceUntrackStatus = await room.untrack();
             console.log(presenceUntrackStatus);

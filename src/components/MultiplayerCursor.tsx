@@ -34,7 +34,7 @@ export default function MultiplayerCursor({
 
     elm.style.setProperty(
       "transform",
-      `translate(${point[0] - 12}px, ${point[1] - 4}px)`,
+      `translate(${point[0] - 12}px, ${point[1] - 4}px)`
     );
   }, []);
 
@@ -100,7 +100,7 @@ export default function MultiplayerCursor({
         </svg>
         <div>
           {username && (
-            <div className="username relative max-w-40 -translate-x-3 translate-y-4 truncate rounded-full border-2 border-rose-600 bg-rose-500 px-3 py-2 text-sm font-500 text-white shadow-lg before:absolute before:inset-0 before:rounded-full before:shadow-inner before:shadow-white/30">
+            <div className="username capitalize relative max-w-40 -translate-x-3 translate-y-4 truncate rounded-full border-2 border-rose-600 bg-rose-500 px-3 py-2 text-sm font-500 text-white shadow-lg before:absolute before:inset-0 before:rounded-full before:shadow-inner before:shadow-white/30">
               {username}
             </div>
           )}
