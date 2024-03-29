@@ -21,11 +21,19 @@ import { useForm, FieldValues } from "react-hook-form";
 gsap.registerPlugin(useGSAP);
 const supabase = createClient();
 
-interface UserInfo {
-  id: string;
-  online_at: string;
+interface CursorInfo {
+  location: string;
   username: string;
+  x: number;
+  y: number;
+}
+
+interface UserInfo {
+  id?: string;
+  location?: string;
+  username?: string;
   presence_ref: string;
+  [key: string]: any; // Allow additional properties
 }
 
 export default function MultiplayerControls() {
@@ -35,9 +43,7 @@ export default function MultiplayerControls() {
 
   const [joined, setJoined] = useState(false);
   const [username, setUsername] = useState("");
-  const [cursors, setCursors] = useState<{
-    [key: string]: { username: string; x: number; y: number };
-  }>({});
+  const [cursors, setCursors] = useState<{ [key: string]: CursorInfo }>({});
   const [room, setRoom] = useState<RealtimeChannel>(supabase.channel(pathname));
 
   const controlsScope = useRef(null);
@@ -51,24 +57,26 @@ export default function MultiplayerControls() {
     if (!joined) {
       return;
     }
-
     const newRoom = supabase.channel(pathname);
     setRoom(newRoom);
     const userStatus = {
       id: UUID,
       username: username,
-      online_at: new Date().toISOString(),
+      location: pathname,
     };
+
+    console.log("rerendered");
 
     newRoom.subscribe(async (status) => {
       if (status !== "SUBSCRIBED") {
         return;
       }
-
       const presenceTrackStatus = await newRoom.track(userStatus);
       console.log(presenceTrackStatus);
     });
   }, [pathname, joined, UUID, username]);
+
+  console.log("rerendered");
 
   room.on("presence", { event: "sync" }, () => {
     const newState = room.presenceState();
@@ -76,37 +84,35 @@ export default function MultiplayerControls() {
 
     // Update cursors state with the new presence state
     setCursors((prevCursors) => {
-      const newCursors = { ...prevCursors };
+      const newCursors: { [key: string]: CursorInfo } = {};
 
-      // Remove cursors that are no longer present
-      Object.keys(prevCursors).forEach((cursorId) => {
-        if (!newState[cursorId]) {
-          delete newCursors[cursorId];
-        }
-      });
-
-      // Add or update cursors with new presence state data
       Object.entries(newState).forEach(([userId, userInfoArray]) => {
-        const userInfo = userInfoArray[0] as UserInfo | undefined;
-        const { id, username } = userInfo || {};
-        if (id && username) {
-          newCursors[userId] = { username, x: 0, y: 0 };
+        const userInfo = userInfoArray[0] as UserInfo;
+        const { id, location, username } = userInfo;
+        if (id) {
+          newCursors[id] = {
+            location: location ?? "/",
+            username: username ?? "Unknown",
+            x: 0,
+            y: 0,
+          };
         }
       });
-
       return newCursors;
     });
+    console.log(cursors);
   });
 
   function messageReceived(payload: any) {
-    setCursors((prevCursors) => ({
-      ...prevCursors,
-      [payload.payload.id]: {
-        username: payload.payload.username,
-        x: payload.payload.x,
-        y: payload.payload.y,
-      },
-    }));
+    console.log(cursors);
+    // setCursors((prevCursors) => ({
+    //   ...prevCursors,
+    //   [payload.payload.id]: {
+    //     username: payload.payload.username,
+    //     x: payload.payload.x,
+    //     y: payload.payload.y,
+    //   },
+    // }));
   }
 
   const onSubmit = contextSafe((formData?: FieldValues) => {
