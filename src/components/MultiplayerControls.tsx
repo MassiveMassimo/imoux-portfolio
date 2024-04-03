@@ -89,20 +89,48 @@ export default function MultiplayerControls() {
             })
             .on("presence", { event: "join" }, ({ key, newPresences }) => {
               console.log("presence", key, newPresences);
-              personalId = key;
+              !personalId && (personalId = key);
+              console.log(personalId);
+
+              if (key !== personalId) {
+                setCursors((prevCursors) => {
+                  const updatedCursors = { ...prevCursors };
+
+                  updatedCursors[key] = [
+                    {
+                      location: newPresences[0].location,
+                      username: newPresences[0].username,
+                      x: newPresences[0].x,
+                      y: newPresences[0].y,
+                      presence_ref: newPresences[0].presence_ref,
+                    },
+                  ];
+                  console.log(updatedCursors);
+                  return updatedCursors;
+                });
+              }
               setUUID(key);
+            })
+            .on("presence", { event: "leave" }, ({ key, leftPresences }) => {
+              console.log("leave", key, leftPresences);
+              setCursors((prevCursors) => {
+                const updatedCursors = { ...prevCursors };
+                delete updatedCursors[key];
+                return updatedCursors;
+              });
             })
             .on("presence", { event: "sync" }, () => {
               const newState = newRoom.presenceState() as PresenceObject;
-              // console.log(newState);
+              delete newState[personalId];
+              console.log(newState);
               setCursors(newState);
             })
             .on("broadcast", { event: "test" }, (payload) => {
-              console.log("broadcast", payload);
+              // console.log(payload);
               setCursors((prevCursors) => {
                 const updatedCursors = { ...prevCursors };
 
-                if (updatedCursors[personalId] && payload.payload.id !== personalId) {
+                if (updatedCursors[personalId]) {
                   // Update the cursor data
                   updatedCursors[personalId] = [
                     {
