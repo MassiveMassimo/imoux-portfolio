@@ -126,20 +126,26 @@ export default function MultiplayerControls() {
               setCursors(newState);
             })
             .on("broadcast", { event: "test" }, (payload) => {
-              // console.log(payload);
+              console.log(payload);
               setCursors((prevCursors) => {
                 const updatedCursors = { ...prevCursors };
 
-                if (updatedCursors[personalId]) {
+                console.log(updatedCursors);
+                console.log(payload.payload.id);
+
+                if (updatedCursors[payload.payload.id]) {
                   // Update the cursor data
                   updatedCursors[personalId] = [
                     {
-                      ...updatedCursors[personalId][0],
+                      location: payload.payload.location,
+                      username: payload.payload.username,
                       x: payload.payload.x,
                       y: payload.payload.y,
+                      presence_ref: personalId,
                     },
                   ];
                 }
+                console.log(updatedCursors);
                 return updatedCursors;
               });
             });
