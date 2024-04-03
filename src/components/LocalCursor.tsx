@@ -1,31 +1,54 @@
 "use client";
 
-import { UUIDAtom } from "@/app/atoms";
 import { useGSAP } from "@gsap/react";
 import type { RealtimeChannel } from "@supabase/supabase-js";
 import gsap from "gsap";
-import { useAtomValue } from "jotai";
 import { throttle } from "lodash";
-import { useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 gsap.registerPlugin(useGSAP);
 
 export default function LocalCursor({
   username,
   room,
+  joined,
+  UUID,
 }: Readonly<{
   username: string;
   room: RealtimeChannel;
+  joined?: boolean;
+  UUID: string;
 }>) {
   const cursorRef = useRef(null);
   const xTo = useRef<Function>();
   const yTo = useRef<Function>();
-
-  const UUID = useAtomValue(UUIDAtom);
+  const UUIDRef = useRef(UUID);
 
   // Check if it's a touch device
   const isTouchDevice =
     typeof window !== "undefined" && "ontouchstart" in window;
+
+  const throttledSendRef = useRef<ReturnType<typeof throttle> | null>(null);
+
+  const throttledSend = useCallback(
+    (payload: any) => {
+      joined &&
+        room.send({
+          type: "broadcast",
+          event: "test",
+          payload,
+        });
+    },
+    [joined, room]
+  );
+
+  useEffect(() => {
+    UUIDRef.current = UUID;
+  }, [UUID]);
+
+  useEffect(() => {
+    throttledSendRef.current = throttle(throttledSend, 100);
+  }, [throttledSend]);
 
   const { contextSafe } = useGSAP(
     () => {
@@ -37,22 +60,15 @@ export default function LocalCursor({
           xTo.current(e.clientX - 12);
           yTo.current(e.clientY - 4);
 
-          throttledSend({
-            id: UUID,
-            username: username,
-            x: e.clientX,
-            y: e.clientY,
-          });
+          throttledSendRef.current &&
+            throttledSendRef.current({
+              id: UUIDRef.current,
+              username: username,
+              x: e.clientX,
+              y: e.clientY,
+            });
         }
       });
-
-      const throttledSend = throttle((payload: any) => {
-        room.send({
-          type: "broadcast",
-          event: "test",
-          payload: payload,
-        });
-      }, 100);
 
       const hideCursor = contextSafe(() => {
         gsap.to(".cursor", {
@@ -83,7 +99,7 @@ export default function LocalCursor({
         document.removeEventListener("mouseenter", showCursor);
       };
     },
-    { scope: cursorRef, dependencies: [username] }
+    { scope: cursorRef, dependencies: [username, joined] }
   );
 
   if (isTouchDevice) {
