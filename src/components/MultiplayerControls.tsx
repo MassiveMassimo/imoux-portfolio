@@ -123,12 +123,11 @@ export default function MultiplayerControls() {
               const newState = newRoom.presenceState() as PresenceObject;
               console.log(newState);
               console.log(personalId);
-              // delete newState[personalId];
+              delete newState[personalId];
               console.log(newState);
               setCursors(newState);
             })
             .on("broadcast", { event: "test" }, (payload) => {
-              if (payload.payload.id === personalId) return;
               console.log(payload);
               setCursors((prevCursors) => {
                 const updatedCursors = { ...prevCursors };
