@@ -59,6 +59,7 @@ export default function MultiplayerControls() {
   }, [pathname]);
 
   const onSubmit = contextSafe((formData?: FieldValues) => {
+    const newRoom = supabase.channel(pathname);
     gsap.to(controlsRef.current, {
       opacity: 0,
       yPercent: 200,
@@ -68,7 +69,6 @@ export default function MultiplayerControls() {
         setJoined(!joined);
         if (!joined) {
           setUsername(formData?.username);
-          const newRoom = supabase.channel(pathname);
 
           const userStatus = {
             username: formData?.username,
@@ -123,11 +123,12 @@ export default function MultiplayerControls() {
               const newState = newRoom.presenceState() as PresenceObject;
               console.log(newState);
               console.log(personalId);
-              delete newState[personalId];
+              // delete newState[personalId];
               console.log(newState);
               setCursors(newState);
             })
             .on("broadcast", { event: "test" }, (payload) => {
+              if (payload.payload.id === personalId) return;
               console.log(payload);
               setCursors((prevCursors) => {
                 const updatedCursors = { ...prevCursors };
@@ -154,6 +155,13 @@ export default function MultiplayerControls() {
             });
         } else {
           setUsername("");
+
+          const untrackPresence = async () => {
+            const presenceUntrackStatus = await newRoom.untrack();
+            console.log(presenceUntrackStatus);
+          };
+
+          untrackPresence();
         }
       },
     });
