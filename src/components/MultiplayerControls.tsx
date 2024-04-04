@@ -90,6 +90,7 @@ export default function MultiplayerControls() {
             .on("presence", { event: "join" }, ({ key, newPresences }) => {
               console.log("presence", key, newPresences);
               !personalId && (personalId = key);
+              !UUID && setUUID(key);
               console.log(personalId);
 
               if (key !== personalId) {
@@ -109,7 +110,6 @@ export default function MultiplayerControls() {
                   return updatedCursors;
                 });
               }
-              setUUID(key);
             })
             .on("presence", { event: "leave" }, ({ key, leftPresences }) => {
               console.log("leave", key, leftPresences);
@@ -121,6 +121,8 @@ export default function MultiplayerControls() {
             })
             .on("presence", { event: "sync" }, () => {
               const newState = newRoom.presenceState() as PresenceObject;
+              console.log(newState);
+              console.log(personalId);
               delete newState[personalId];
               console.log(newState);
               setCursors(newState);
@@ -134,14 +136,15 @@ export default function MultiplayerControls() {
                 console.log(payload.payload.id);
 
                 if (updatedCursors[payload.payload.id]) {
+                  console.log(updatedCursors[payload.payload.id]);
                   // Update the cursor data
-                  updatedCursors[personalId] = [
+                  updatedCursors[payload.payload.id] = [
                     {
                       location: payload.payload.location,
                       username: payload.payload.username,
                       x: payload.payload.x,
                       y: payload.payload.y,
-                      presence_ref: personalId,
+                      presence_ref: payload.payload.presence_ref,
                     },
                   ];
                 }
