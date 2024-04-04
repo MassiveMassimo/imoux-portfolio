@@ -93,31 +93,23 @@ export default function MultiplayerControls() {
               !UUID && setUUID(key);
               console.log(personalId);
 
-              if (key !== personalId) {
-                setCursors((prevCursors) => {
-                  const updatedCursors = { ...prevCursors };
+              // if (key !== personalId) {
+              //   setCursors((prevCursors) => {
+              //     const updatedCursors = { ...prevCursors };
 
-                  updatedCursors[key] = [
-                    {
-                      location: newPresences[0].location,
-                      username: newPresences[0].username,
-                      x: newPresences[0].x,
-                      y: newPresences[0].y,
-                      presence_ref: newPresences[0].presence_ref,
-                    },
-                  ];
-                  console.log(updatedCursors);
-                  return updatedCursors;
-                });
-              }
-            })
-            .on("presence", { event: "leave" }, ({ key, leftPresences }) => {
-              console.log("leave", key, leftPresences);
-              setCursors((prevCursors) => {
-                const updatedCursors = { ...prevCursors };
-                delete updatedCursors[key];
-                return updatedCursors;
-              });
+              //     updatedCursors[key] = [
+              //       {
+              //         location: newPresences[0].location,
+              //         username: newPresences[0].username,
+              //         x: newPresences[0].x,
+              //         y: newPresences[0].y,
+              //         presence_ref: newPresences[0].presence_ref,
+              //       },
+              //     ];
+              //     console.log(updatedCursors);
+              //     return updatedCursors;
+              //   });
+              // }
             })
             .on("presence", { event: "sync" }, () => {
               const newState = newRoom.presenceState() as PresenceObject;
@@ -129,28 +121,31 @@ export default function MultiplayerControls() {
             })
             .on("broadcast", { event: "test" }, (payload) => {
               console.log(payload);
-              setCursors((prevCursors) => {
-                const updatedCursors = { ...prevCursors };
+              console.log(personalId);
+              if (payload.payload.id !== personalId) {
+                setCursors((prevCursors) => {
+                  const updatedCursors = { ...prevCursors };
 
-                console.log(updatedCursors);
-                console.log(payload.payload.id);
+                  console.log(updatedCursors);
+                  console.log(payload.payload.id);
 
-                if (updatedCursors[payload.payload.id]) {
-                  console.log(updatedCursors[payload.payload.id]);
-                  // Update the cursor data
-                  updatedCursors[payload.payload.id] = [
-                    {
-                      location: payload.payload.location,
-                      username: payload.payload.username,
-                      x: payload.payload.x,
-                      y: payload.payload.y,
-                      presence_ref: payload.payload.presence_ref,
-                    },
-                  ];
-                }
-                console.log(updatedCursors);
-                return updatedCursors;
-              });
+                  if (updatedCursors[payload.payload.id]) {
+                    console.log(updatedCursors[payload.payload.id]);
+                    // Update the cursor data
+                    updatedCursors[payload.payload.id] = [
+                      {
+                        location: payload.payload.location,
+                        username: payload.payload.username,
+                        x: payload.payload.x,
+                        y: payload.payload.y,
+                        presence_ref: payload.payload.presence_ref,
+                      },
+                    ];
+                  }
+                  console.log(updatedCursors);
+                  return updatedCursors;
+                });
+              }
             });
         } else {
           setUsername("");
