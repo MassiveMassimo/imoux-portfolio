@@ -9,8 +9,10 @@ import {
 } from "react";
 
 import gsap from "gsap";
+import { throttle } from "lodash";
 import { PerfectCursor } from "perfect-cursors";
 
+import { usePerfectCursor } from "@/app/hooks/usePerfectCursor";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(useGSAP);
@@ -24,33 +26,30 @@ export default function MultiplayerCursor({
   x: number;
   y: number;
 }>) {
-
-  console.log(x, y);
   const cursorRef = useRef<HTMLDivElement>(null);
 
   const animateCursor = useCallback((point: number[]) => {
     const elm = cursorRef.current;
     if (!elm) return;
 
-    // Convert relative coordinates to absolute
-    const absoluteX = point[0] * window.innerWidth;
-    const absoluteY = point[1] * window.innerHeight;
+    // Normalized coordinates
+    const [normalizedX, normalizedY] = point;
 
+    // Translate the cursor based on normalized coordinates (0 to 1)
     elm.style.setProperty(
       "transform",
-      `translate(${absoluteX - 12}px, ${absoluteY - 4}px)`,
+      `translate(${normalizedX * window.innerWidth}px, ${normalizedY * window.innerHeight}px)`,
     );
   }, []);
 
   const onPointMove = usePerfectCursor(animateCursor);
 
   useEffect(() => {
-    const handleResize = () => onPointMove([x, y]);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    // Normalize x and y coordinates before passing them to onPointMove
+    const normalizedX = x / window.innerWidth;
+    const normalizedY = y / window.innerHeight;
+    onPointMove([normalizedX, normalizedY]);
   }, [onPointMove, x, y]);
-
-  useEffect(() => onPointMove([x, y]), [onPointMove, x, y]);
 
   return (
     <div
@@ -110,20 +109,4 @@ export default function MultiplayerCursor({
       </div>
     </div>
   );
-
-  function usePerfectCursor(cb: (point: number[]) => void, point?: number[]) {
-    const useIsomorphicLayoutEffect =
-      typeof window !== "undefined" ? useLayoutEffect : useEffect;
-
-    const [pc, setPc] = useState(() => new PerfectCursor(cb));
-
-    useIsomorphicLayoutEffect(() => {
-      if (point) {
-        pc.addPoint(point);
-      }
-      return () => pc.dispose();
-    }, [pc, point]);
-
-    return useCallback((point: number[]) => pc.addPoint(point), [pc]);
-  }
 }

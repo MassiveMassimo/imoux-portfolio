@@ -8,6 +8,7 @@ import type {
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { useAtomValue } from "jotai";
+import { throttle } from "lodash";
 import { usePathname } from "next/navigation";
 
 import { joinedAtom, usernameAtom, UUIDAtom } from "@/app/atoms";
@@ -142,20 +143,27 @@ export default function Multiplayer() {
     return null;
   }
 
+  const renderThrottledCursors = useCallback(
+    throttle(() => {
+      console.log(cursorsRef.current);
+      return Object.entries(cursorsRef.current).map(
+        ([userId, cursor]) =>
+          userId !== id && (
+            <MultiplayerCursor
+              key={userId}
+              x={cursor.x ?? 0}
+              y={cursor.y ?? -80}
+              username={cursor.username}
+            />
+          ),
+      );
+    }, 200), // Throttle to 5 times per second (200ms)
+    [id],
+  );
+
   const renderedCursors = useMemo(() => {
-    console.log(cursorsRef.current);
-    return Object.entries(cursorsRef.current).map(
-      ([userId, cursor]) =>
-        userId !== id && (
-          <MultiplayerCursor
-            key={userId}
-            x={cursor.x ?? 0}
-            y={cursor.y ?? -80}
-            username={cursor.username}
-          />
-        ),
-    );
-  }, [cursorsVersion, id]);
+    return renderThrottledCursors();
+  }, [cursorsVersion, id, renderThrottledCursors]);
 
   return (
     <>
