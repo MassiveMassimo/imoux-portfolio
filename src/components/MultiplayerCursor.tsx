@@ -38,7 +38,7 @@ export default function MultiplayerCursor({
     // Translate the cursor based on normalized coordinates (0 to 1)
     elm.style.setProperty(
       "transform",
-      `translate(${normalizedX * window.innerWidth}px, ${normalizedY * window.innerHeight}px)`,
+      `translate(${normalizedX * window.innerWidth - 12}px, ${normalizedY * window.innerHeight - 4}px)`,
     );
   }, []);
 
@@ -46,8 +46,8 @@ export default function MultiplayerCursor({
 
   useEffect(() => {
     // Normalize x and y coordinates before passing them to onPointMove
-    const normalizedX = x / window.innerWidth;
-    const normalizedY = y / window.innerHeight;
+    const normalizedX = x * window.innerWidth;
+    const normalizedY = y * window.innerHeight;
     onPointMove([normalizedX, normalizedY]);
   }, [onPointMove, x, y]);
 
