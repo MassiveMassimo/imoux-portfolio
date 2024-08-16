@@ -29,8 +29,22 @@ const config = {
           "repeating-linear-gradient(45deg, #ffffff30, #ffffff30 12px, #00000000 12px, #00000000 24px)",
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
       },
+      boxShadow: {
+        "inner-sm": "inset 0 1px 0 0 rgba(0, 0, 0, 0.05)",
+      },
       fontFamily: {
         sans: ["var(--font-marlin)"],
+      },
+      fontWeight: {
+        100: "100",
+        200: "200",
+        300: "300",
+        400: "400",
+        500: "500",
+        600: "600",
+        700: "700",
+        800: "800",
+        900: "900",
       },
       keyframes: {
         "accordion-down": {
@@ -45,17 +59,6 @@ const config = {
           "0%": { transform: "translateX(-240px)" },
           "100%": { transform: "translateX(0px)" },
         },
-      },
-      fontWeight: {
-        100: "100",
-        200: "200",
-        300: "300",
-        400: "400",
-        500: "500",
-        600: "600",
-        700: "700",
-        800: "800",
-        900: "900",
       },
     },
   },

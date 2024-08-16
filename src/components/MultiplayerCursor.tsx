@@ -1,8 +1,5 @@
 "use client";
 
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { PerfectCursor } from "perfect-cursors";
 import {
   useCallback,
   useEffect,
@@ -10,6 +7,11 @@ import {
   useRef,
   useState,
 } from "react";
+
+import gsap from "gsap";
+import { PerfectCursor } from "perfect-cursors";
+
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(useGSAP);
 
@@ -22,29 +24,33 @@ export default function MultiplayerCursor({
   x: number;
   y: number;
 }>) {
-  const cursorRef = useRef<HTMLDivElement>(null);
 
-  // Check if it's a touch device
-  const isTouchDevice =
-    typeof window !== "undefined" && "ontouchstart" in window;
+  console.log(x, y);
+  const cursorRef = useRef<HTMLDivElement>(null);
 
   const animateCursor = useCallback((point: number[]) => {
     const elm = cursorRef.current;
     if (!elm) return;
 
+    // Convert relative coordinates to absolute
+    const absoluteX = point[0] * window.innerWidth;
+    const absoluteY = point[1] * window.innerHeight;
+
     elm.style.setProperty(
       "transform",
-      `translate(${point[0] - 12}px, ${point[1] - 4}px)`
+      `translate(${absoluteX - 12}px, ${absoluteY - 4}px)`,
     );
   }, []);
 
   const onPointMove = usePerfectCursor(animateCursor);
 
-  useEffect(() => onPointMove([x, y]), [onPointMove, x, y]);
+  useEffect(() => {
+    const handleResize = () => onPointMove([x, y]);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [onPointMove, x, y]);
 
-  if (isTouchDevice) {
-    return null;
-  }
+  useEffect(() => onPointMove([x, y]), [onPointMove, x, y]);
 
   return (
     <div
@@ -98,12 +104,8 @@ export default function MultiplayerCursor({
             </filter>
           </defs>
         </svg>
-        <div>
-          {username && (
-            <div className="username capitalize relative max-w-40 -translate-x-3 translate-y-4 truncate rounded-full border-2 border-rose-600 bg-rose-500 px-3 py-2 text-sm font-500 text-white shadow-lg before:absolute before:inset-0 before:rounded-full before:shadow-inner before:shadow-white/30">
-              {username}
-            </div>
-          )}
+        <div className="username relative max-w-40 -translate-x-3 translate-y-4 truncate rounded-full border-2 border-rose-600 bg-rose-500 px-3 py-2 text-sm font-500 capitalize text-white shadow-lg before:absolute before:inset-0 before:rounded-full before:shadow-inner before:shadow-white/30">
+          {username}
         </div>
       </div>
     </div>

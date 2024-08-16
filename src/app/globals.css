@@ -2,10 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+.reset-input {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 * {
   box-sizing: border-box;
   min-width: 0;
-  /* cursor: none; */
 }
 
 a {

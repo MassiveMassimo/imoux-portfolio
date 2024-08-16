@@ -1,11 +1,14 @@
 import "./globals.css";
-import Providers from "./providers";
-import MultiplayerControls from "@/components/MultiplayerControls";
+
+import type { Metadata } from "next";
+
+import localFont from "next/font/local";
+
+import Multiplayer from "@/components/Multiplayer";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
-import type { Metadata } from "next";
-import localFont from "next/font/local";
+import Providers from "./providers";
 
 const marlin = localFont({
   src: [
@@ -131,7 +134,7 @@ export default function RootLayout({
           >
             <Navbar />
             {children}
-            <MultiplayerControls />
+            <Multiplayer />
           </ThemeProvider>
         </Providers>
       </body>
