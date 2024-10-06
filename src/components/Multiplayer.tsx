@@ -167,8 +167,10 @@ export default function Multiplayer() {
 
   return (
     <>
-      <LocalCursor channel={channelRef.current} />
-      {joined && renderedCursors}
+      <div className="pointer-events-none absolute inset-0 select-none overflow-hidden">
+        <LocalCursor channel={channelRef.current} />
+        {joined && renderedCursors}
+      </div>
       <MultiplayerControls />
     </>
   );

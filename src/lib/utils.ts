@@ -11,11 +11,6 @@ export const colors = [
   "indigo",
   "purple",
   "pink",
-  "gray",
-  "slate",
-  "zinc",
-  "neutral",
-  "stone",
   "amber",
   "orange",
   "lime",
@@ -35,4 +30,14 @@ export function cn(...inputs: ClassValue[]) {
 export function getRandomColor() {
   const randomIndex = Math.floor(Math.random() * colors.length);
   return colors[randomIndex];
+}
+
+export function getColor(id: string) {
+  let hash = 0;
+  for (let i = 0; i < id.length; i++) {
+    hash = id.charCodeAt(i) + ((hash << 5) - hash);
+  }
+
+  const index = Math.abs(hash) % colors.length;
+  return colors[index];
 }
