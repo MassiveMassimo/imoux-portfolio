@@ -67,6 +67,12 @@ const config = {
     require("@tailwindcss/container-queries"),
     require("tailwind-gradient-mask-image"),
   ],
+  safelist: [
+    {
+      pattern:
+        /(border|bg|fill)-(red|green|blue|yellow|indigo|purple|pink|gray|slate|zinc|neutral|stone|amber|orange|lime|emerald|teal|cyan|sky|violet|fuchsia|rose)-(500|600)/,
+    },
+  ],
 } satisfies Config;
 
 export default config;

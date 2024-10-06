@@ -23,33 +23,98 @@ export default function MultiplayerCursor({
   y,
 }: Readonly<{
   username: string;
-  x: number;
-  y: number;
+  x: number; // Relative position (0-1) of cursor in document
+  y: number; // Relative position (0-1) of cursor in document
 }>) {
   const cursorRef = useRef<HTMLDivElement>(null);
+  const [documentDimensions, setDocumentDimensions] = useState({
+    width: 0,
+    height: 0,
+  });
+
+  // Update document dimensions when they change
+  useLayoutEffect(() => {
+    const updateDimensions = () => {
+      const docElement = document.documentElement;
+      setDocumentDimensions({
+        width: Math.max(
+          docElement.scrollWidth,
+          docElement.offsetWidth,
+          docElement.clientWidth,
+        ),
+        height: Math.max(
+          docElement.scrollHeight,
+          docElement.offsetHeight,
+          docElement.clientHeight,
+        ),
+      });
+    };
+
+    updateDimensions();
+
+    // Use ResizeObserver to detect document size changes
+    const resizeObserver = new ResizeObserver(throttle(updateDimensions, 100));
+    resizeObserver.observe(document.documentElement);
+
+    return () => resizeObserver.disconnect();
+  }, []);
 
   const animateCursor = useCallback((point: number[]) => {
     const elm = cursorRef.current;
     if (!elm) return;
 
-    // Normalized coordinates
-    const [normalizedX, normalizedY] = point;
+    const [absoluteX, absoluteY] = point;
 
-    // Translate the cursor based on normalized coordinates (0 to 1)
+    // Calculate position relative to viewport
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const viewportX = absoluteX - scrollX;
+    const viewportY = absoluteY - scrollY;
+
+    // Only show cursor if it's within or near the viewport
+    const padding = 100; // Show cursors slightly outside viewport
+    const isNearViewport =
+      viewportX >= -padding &&
+      viewportX <= window.innerWidth + padding &&
+      viewportY >= -padding &&
+      viewportY <= window.innerHeight + padding;
+
+    // Update visibility and position
+    elm.style.visibility = isNearViewport ? "visible" : "hidden";
     elm.style.setProperty(
       "transform",
-      `translate(${normalizedX * window.innerWidth - 12}px, ${normalizedY * window.innerHeight - 4}px)`,
+      `translate(${viewportX - 12}px, ${viewportY - 4}px)`,
     );
   }, []);
 
   const onPointMove = usePerfectCursor(animateCursor);
 
   useEffect(() => {
-    // Normalize x and y coordinates before passing them to onPointMove
-    const normalizedX = x * window.innerWidth;
-    const normalizedY = y * window.innerHeight;
-    onPointMove([normalizedX, normalizedY]);
-  }, [onPointMove, x, y]);
+    if (documentDimensions.width === 0 || documentDimensions.height === 0)
+      return;
+
+    // Convert relative coordinates to absolute document coordinates
+    const absoluteX = x * documentDimensions.width;
+    const absoluteY = y * documentDimensions.height;
+    onPointMove([absoluteX, absoluteY]);
+  }, [onPointMove, x, y, documentDimensions]);
+
+  // Update cursor position on scroll
+  useEffect(() => {
+    const handleScroll = throttle(() => {
+      if (documentDimensions.width === 0 || documentDimensions.height === 0)
+        return;
+      const absoluteX = x * documentDimensions.width;
+      const absoluteY = y * documentDimensions.height;
+      onPointMove([absoluteX, absoluteY]);
+    }, 16); // ~60fps
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      handleScroll.cancel();
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [x, y, documentDimensions, onPointMove]);
 
   return (
     <div

@@ -89,7 +89,7 @@ export default function Multiplayer() {
       const newState =
         channelRef.current.presenceState() as RealtimePresenceState;
 
-      console.log(newState);
+      console.log("newState: ", newState);
       cursorsRef.current = Object.entries(newState).reduce(
         (acc, [userId, userList]) => {
           if (userList.length > 0) {
@@ -110,7 +110,7 @@ export default function Multiplayer() {
       event: string;
       payload: BroadcastPayload;
     }) => {
-      console.log(payload);
+      console.log("payload: ", payload);
       const { id: userId, username, x, y } = payload.payload;
       if (cursorsRef.current[userId]) {
         cursorsRef.current[userId] = {
@@ -129,23 +129,16 @@ export default function Multiplayer() {
     if (channelRef.current) {
       try {
         const presenceUntrackStatus = await channelRef.current.untrack();
-        console.log(presenceUntrackStatus);
+        console.log("presenceUntrackStatus", presenceUntrackStatus);
       } catch (error) {
         console.error("Error untracking presence:", error);
       }
     }
   };
 
-  if (
-    typeof window !== "undefined" &&
-    window.matchMedia("(pointer: coarse)").matches
-  ) {
-    return null;
-  }
-
   const renderThrottledCursors = useCallback(
     throttle(() => {
-      console.log(cursorsRef.current);
+      console.log("cursorsRef.current", cursorsRef.current);
       return Object.entries(cursorsRef.current).map(
         ([userId, cursor]) =>
           userId !== id && (
@@ -157,13 +150,20 @@ export default function Multiplayer() {
             />
           ),
       );
-    }, 200), // Throttle to 5 times per second (200ms)
+    }, 50),
     [id],
   );
 
   const renderedCursors = useMemo(() => {
     return renderThrottledCursors();
   }, [cursorsVersion, id, renderThrottledCursors]);
+
+  if (
+    typeof window !== "undefined" &&
+    window.matchMedia("(pointer: coarse)").matches
+  ) {
+    return null;
+  }
 
   return (
     <>
