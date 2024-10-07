@@ -76,20 +76,33 @@ export default function LocalCursor({
           xToUsername.current &&
           yToUsername.current
         ) {
+          // Viewport-relative positioning for the cursor
           const absoluteX = e.clientX;
           const absoluteY = e.clientY;
 
-          const relativeX = absoluteX / window.innerWidth;
-          const relativeY = absoluteY / window.innerHeight;
+          // Adjust for the webpage (document) relative positioning
+          const pageX = e.clientX + window.scrollX;
+          const pageY = e.clientY + window.scrollY;
 
+          const documentWidth = document.documentElement.scrollWidth;
+          const documentHeight = document.documentElement.scrollHeight;
+
+          // Calculate relative position based on the entire webpage (not just viewport)
+          const relativeX = pageX / documentWidth;
+          const relativeY = pageY / documentHeight;
+
+          // Update cursor position relative to the viewport
           xToCursor.current(absoluteX - 12);
           yToCursor.current(absoluteY - 12);
+
+          // Update username position relative to the viewport
           xToUsername.current(absoluteX + 12);
           yToUsername.current(absoluteY + 4);
 
+          // Store the relative position for broadcast
           lastPosition.current = { x: relativeX, y: relativeY };
 
-          // [FIX] send relative to webpage, not viewport
+          // Throttled and debounced sending of relative position (for the entire webpage)
           throttledSend.current?.(relativeX, relativeY);
           debouncedSend.current?.(relativeX, relativeY);
         }

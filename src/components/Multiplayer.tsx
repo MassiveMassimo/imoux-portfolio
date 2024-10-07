@@ -23,10 +23,11 @@ interface CursorData {
   username: string;
   x?: number;
   y?: number;
+  location?: string;
   presence_ref?: string;
 }
 
-interface CursorsState {
+export interface CursorsState {
   [userId: string]: CursorData;
 }
 
@@ -63,7 +64,12 @@ export default function Multiplayer() {
             .on("presence", { event: "sync" }, presenceChanged)
             .subscribe();
 
-          await channel.track({ username: username, x: 0, y: 0 });
+          await channel.track({
+            username: username,
+            x: 0,
+            y: 0,
+            location: pathname,
+          });
         } catch (error) {
           console.error("Error setting up channel:", error);
         }
@@ -89,7 +95,6 @@ export default function Multiplayer() {
       const newState =
         channelRef.current.presenceState() as RealtimePresenceState;
 
-      console.log("newState: ", newState);
       cursorsRef.current = Object.entries(newState).reduce(
         (acc, [userId, userList]) => {
           if (userList.length > 0) {
@@ -110,7 +115,6 @@ export default function Multiplayer() {
       event: string;
       payload: BroadcastPayload;
     }) => {
-      console.log("payload: ", payload);
       const { id: userId, username, x, y } = payload.payload;
       if (cursorsRef.current[userId]) {
         cursorsRef.current[userId] = {
@@ -129,7 +133,6 @@ export default function Multiplayer() {
     if (channelRef.current) {
       try {
         const presenceUntrackStatus = await channelRef.current.untrack();
-        console.log("presenceUntrackStatus", presenceUntrackStatus);
       } catch (error) {
         console.error("Error untracking presence:", error);
       }
@@ -138,7 +141,6 @@ export default function Multiplayer() {
 
   const renderThrottledCursors = useCallback(
     throttle(() => {
-      console.log("cursorsRef.current", cursorsRef.current);
       return Object.entries(cursorsRef.current).map(
         ([userId, cursor]) =>
           userId !== id && (
@@ -171,7 +173,7 @@ export default function Multiplayer() {
         <LocalCursor channel={channelRef.current} />
         {joined && renderedCursors}
       </div>
-      <MultiplayerControls />
+      <MultiplayerControls cursors={cursorsRef} />
     </>
   );
 }

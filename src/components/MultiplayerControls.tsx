@@ -1,18 +1,28 @@
 "use client";
 
+import type { MutableRefObject } from "react";
+
 import { useCallback, useRef, useState } from "react";
 
 import gsap from "gsap";
 import { useAtom } from "jotai";
+import { LogOut } from "lucide-react";
 
 import { joinedAtom, usernameAtom } from "@/app/atoms";
 import { useGSAP } from "@gsap/react";
+import { CursorsState } from "./Multiplayer";
+import { AnimatedTooltip } from "./ui/animated-tooltip";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
 gsap.registerPlugin(useGSAP);
 
-export default function MultiplayerControls() {
+export default function MultiplayerControls({
+  cursors,
+}: {
+  cursors: MutableRefObject<CursorsState>;
+}) {
+  console.log(cursors);
   const [joined, setJoined] = useAtom(joinedAtom);
   const [username, setUsername] = useAtom(usernameAtom);
   const [inputValue, setInputValue] = useState(username || ""); // Manage input state
@@ -20,7 +30,7 @@ export default function MultiplayerControls() {
   const controlsScope = useRef(null);
   const inputRef = useRef(null);
   const joinButtonRef = useRef(null);
-  const leaveButtonRef = useRef(null);
+  const controlsRef = useRef(null);
 
   const { contextSafe } = useGSAP({ scope: controlsScope });
 
@@ -35,13 +45,21 @@ export default function MultiplayerControls() {
           ease: "back.out(1)",
         });
       } else {
-        gsap.from(leaveButtonRef.current, {
-          width: 0,
-          opacity: 0,
-          filter: "blur(20px)",
-          duration: 0.6,
-          ease: "back.out(1)",
-        });
+        gsap.fromTo(
+          controlsRef.current,
+          {
+            width: 0,
+            opacity: 0,
+            filter: "blur(20px)",
+          },
+          {
+            width: "auto",
+            opacity: 1,
+            filter: "blur(0px)",
+            duration: 0.6,
+            ease: "back.out(1)",
+          },
+        );
       }
     },
     { scope: controlsScope, dependencies: [joined] },
@@ -58,7 +76,7 @@ export default function MultiplayerControls() {
         onComplete: () => join(),
       });
     } else {
-      gsap.to(leaveButtonRef.current, {
+      gsap.to(controlsRef.current, {
         width: 0,
         opacity: 0,
         filter: "blur(20px)",
@@ -105,9 +123,12 @@ export default function MultiplayerControls() {
             </Button>
           </form>
         ) : (
-          <Button ref={leaveButtonRef} variant="outline" onClick={onSubmit}>
-            Leave
-          </Button>
+          <div ref={controlsRef} className="flex gap-2">
+            <AnimatedTooltip cursors={cursors.current} />
+            <Button variant="outline" size="icon" onClick={onSubmit}>
+              <LogOut className="size-4" />
+            </Button>
+          </div>
         )}
       </div>
     </div>
