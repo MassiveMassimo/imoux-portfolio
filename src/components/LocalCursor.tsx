@@ -4,6 +4,7 @@ import type { RealtimeChannel } from "@supabase/supabase-js";
 
 import { useEffect, useMemo, useRef } from "react";
 
+import { motion } from "framer-motion";
 import gsap from "gsap";
 import { useAtomValue } from "jotai";
 import { debounce, throttle } from "lodash";
@@ -11,6 +12,7 @@ import { debounce, throttle } from "lodash";
 import { joinedAtom, usernameAtom, UUIDAtom } from "@/app/atoms";
 import { cn, getColor, getRandomColor } from "@/lib/utils";
 import { useGSAP } from "@gsap/react";
+import CursorBubble from "./CursorBubble";
 
 gsap.registerPlugin(useGSAP);
 
@@ -60,7 +62,6 @@ export default function LocalCursor({
               username: username,
               x: relX,
               y: relY,
-              color: getColor(username),
             },
           });
         }
@@ -199,17 +200,7 @@ export default function LocalCursor({
           </filter>
         </defs>
       </svg>
-      {username && (
-        <div
-          className={cn(
-            "username fixed left-0 top-0 z-50 max-w-40 -translate-x-[calc(50%-80px)] -translate-y-[calc(50%-40px)] truncate rounded-full px-3 py-2 text-sm font-500 capitalize text-white shadow-lg",
-            `border-2 border-${getColor(username)}-600 bg-${getColor(username)}-500 `,
-            "before:absolute before:inset-0 before:rounded-full before:shadow-inner before:shadow-white/30",
-          )}
-        >
-          {username}
-        </div>
-      )}
+      {username && <CursorBubble username={username} channel={channel} />}
     </div>
   );
 }

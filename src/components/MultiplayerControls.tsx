@@ -10,8 +10,8 @@ import { LogOut } from "lucide-react";
 
 import { joinedAtom, usernameAtom } from "@/app/atoms";
 import { useGSAP } from "@gsap/react";
+import { Presences } from "./Presences";
 import { CursorsState } from "./Multiplayer";
-import { AnimatedTooltip } from "./ui/animated-tooltip";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
@@ -124,7 +124,7 @@ export default function MultiplayerControls({
           </form>
         ) : (
           <div ref={controlsRef} className="flex gap-2">
-            <AnimatedTooltip cursors={cursors.current} />
+            <Presences cursors={cursors.current} />
             <Button variant="outline" size="icon" onClick={onSubmit}>
               <LogOut className="size-4" />
             </Button>
