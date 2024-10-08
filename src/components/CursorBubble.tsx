@@ -38,6 +38,14 @@ export default function CursorBubble({
       } else if (event.key === "Escape") {
         setChatting(false);
         setMessage("");
+        channel?.send({
+          type: "broadcast",
+          event: "message",
+          payload: {
+            id: id,
+            message: "",
+          },
+        });
       }
     };
 
@@ -45,6 +53,14 @@ export default function CursorBubble({
       if (chatting) {
         setChatting(false);
         setMessage("");
+        channel?.send({
+          type: "broadcast",
+          event: "message",
+          payload: {
+            id: id,
+            message: "",
+          },
+        });
       }
     };
 
@@ -106,6 +122,7 @@ export default function CursorBubble({
           >
             <Input
               placeholder="Send a message"
+              value={message}
               className="m-0 rounded-none border-0 bg-transparent p-0 font-400 ring-0 ring-offset-transparent placeholder:text-white/70 focus-visible:ring-0 focus-visible:ring-transparent dark:bg-transparent dark:ring-offset-transparent dark:placeholder:text-white/70 dark:focus-visible:ring-transparent"
               style={{ width: inputWidth, maxWidth: "420px" }} // Set dynamic width
               autoFocus
