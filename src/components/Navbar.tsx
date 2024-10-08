@@ -1,7 +1,8 @@
+import Link from "next/link";
+
 import Logo from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
 import { buttonVariants } from "./ui/button";
-import Link from "next/link";
 
 export default function Navbar() {
   return (
@@ -13,6 +14,8 @@ export default function Navbar() {
         <ThemeToggle />
         <Link
           href="https://mail.google.com/mail/u/0/?source=mailto&to=mhmmadjid@gmail.com&fs=1&tf=cm"
+          target="_blank"
+          rel="noopener noreferrer"
           className={buttonVariants({ variant: "default" })}
         >
           Get in touch
