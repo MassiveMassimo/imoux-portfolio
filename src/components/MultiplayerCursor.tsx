@@ -8,9 +8,9 @@ import {
   useState,
 } from "react";
 
+import { AnimatePresence, motion } from "framer-motion";
 import gsap from "gsap";
 import { throttle } from "lodash";
-import { PerfectCursor } from "perfect-cursors";
 
 import { usePerfectCursor } from "@/app/hooks/usePerfectCursor";
 import { cn, getColor } from "@/lib/utils";
@@ -22,10 +22,12 @@ export default function MultiplayerCursor({
   username,
   x,
   y,
+  message,
 }: Readonly<{
   username: string;
   x: number; // Relative position (0-1) of cursor in document
   y: number; // Relative position (0-1) of cursor in document
+  message?: string;
 }>) {
   const cursorRef = useRef<HTMLDivElement>(null);
   const [documentDimensions, setDocumentDimensions] = useState({
@@ -171,12 +173,26 @@ export default function MultiplayerCursor({
         </svg>
         <div
           className={cn(
-            "pointer-events-none z-50 max-w-40 -translate-x-2 translate-y-3 truncate rounded-full px-3 py-2 text-sm font-500 capitalize text-white shadow-lg",
+            "pointer-events-none z-50 max-w-md -translate-x-2 translate-y-3 truncate rounded-[20px] px-3 py-2 text-sm font-500 capitalize text-white shadow-lg transition-[border-top-left-radius] before:transition-[border-top-left-radius]",
             `border-2 border-${getColor(username)}-600 bg-${getColor(username)}-500`,
-            "before:absolute before:inset-0 before:rounded-full before:shadow-inner before:shadow-white/30",
+            "before:absolute before:inset-0 before:rounded-[18px] before:shadow-inner before:shadow-white/30",
+            message && "rounded-tl-md before:rounded-tl",
           )}
         >
           {username}
+          <AnimatePresence>
+            {message && (
+              <motion.div
+                key="chat-box"
+                initial={{ width: 0, height: 0, filter: "blur(20px)" }} // Start hidden
+                animate={{ width: "auto", height: "auto", filter: "blur(0px)" }} // Animate in
+                exit={{ width: 0, height: 0, filter: "blur(20px)" }} // Animate out
+                className="font-400 normal-case text-white"
+              >
+                {message}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </div>

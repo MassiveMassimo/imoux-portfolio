@@ -76,10 +76,10 @@ export default function CursorBubble({
   return (
     <motion.div
       className={cn(
-        "username fixed left-0 top-0 z-50 max-w-md -translate-x-[calc(50%-80px)] -translate-y-[calc(50%-40px)] truncate rounded-[20px] px-3 py-2 text-sm font-500 capitalize text-white shadow-lg transition-[border-top-left-radius]",
+        "username fixed left-0 top-0 z-50 max-w-md -translate-x-[calc(50%-80px)] -translate-y-[calc(50%-40px)] truncate rounded-[20px] px-3 py-2 text-sm font-500 capitalize text-white shadow-lg transition-[border-top-left-radius] before:transition-[border-top-left-radius]",
         `border-2 border-${getColor(username)}-600 bg-${getColor(username)}-500 `,
-        "before:absolute before:inset-0 before:rounded-[20px] before:shadow-inner before:shadow-white/30",
-        chatting && "rounded-tl-md before:rounded-tl-md",
+        "before:absolute before:inset-0 before:rounded-[18px] before:shadow-inner before:shadow-white/30",
+        chatting && "rounded-tl-md before:rounded-tl",
       )}
       onClick={(e) => e.stopPropagation()} // Prevent clicks on the bubble from closing
     >
@@ -106,7 +106,7 @@ export default function CursorBubble({
           >
             <Input
               placeholder="Send a message"
-              className="rounded-none border-0 bg-transparent p-0 font-400 ring-0 ring-offset-transparent placeholder:text-slate-700 focus-visible:ring-0 focus-visible:ring-transparent dark:bg-transparent dark:ring-offset-transparent dark:placeholder:text-white/70 dark:focus-visible:ring-transparent"
+              className="m-0 rounded-none border-0 bg-transparent p-0 font-400 ring-0 ring-offset-transparent placeholder:text-white/70 focus-visible:ring-0 focus-visible:ring-transparent dark:bg-transparent dark:ring-offset-transparent dark:placeholder:text-white/70 dark:focus-visible:ring-transparent"
               style={{ width: inputWidth, maxWidth: "420px" }} // Set dynamic width
               autoFocus
               autoComplete="off"

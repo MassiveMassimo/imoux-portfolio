@@ -24,6 +24,7 @@ interface CursorData {
   x?: number;
   y?: number;
   location?: string;
+  message?: string;
   presence_ref?: string;
 }
 
@@ -31,11 +32,16 @@ export interface CursorsState {
   [userId: string]: CursorData;
 }
 
-interface BroadcastPayload {
+interface CursorPayload {
   id: string;
   username: string;
   x: number;
   y: number;
+}
+
+interface MessagePayload {
+  id: string;
+  message: string;
 }
 
 export default function Multiplayer() {
@@ -60,7 +66,8 @@ export default function Multiplayer() {
 
         try {
           channel
-            .on("broadcast", { event: "cursor" }, messageReceived)
+            .on("broadcast", { event: "cursor" }, cursorMoved)
+            .on("broadcast", { event: "message" }, messageReceived)
             .on("presence", { event: "sync" }, presenceChanged)
             .subscribe();
 
@@ -109,12 +116,8 @@ export default function Multiplayer() {
     }
   }, []);
 
-  const messageReceived = useCallback(
-    (payload: {
-      type: "broadcast";
-      event: string;
-      payload: BroadcastPayload;
-    }) => {
+  const cursorMoved = useCallback(
+    (payload: { type: "broadcast"; event: string; payload: CursorPayload }) => {
       const { id: userId, username, x, y } = payload.payload;
       if (cursorsRef.current[userId]) {
         cursorsRef.current[userId] = {
@@ -122,6 +125,25 @@ export default function Multiplayer() {
           username,
           x,
           y,
+        };
+        setCursorsVersion((prev) => prev + 1); // Trigger re-render
+      }
+    },
+    [],
+  );
+
+  const messageReceived = useCallback(
+    (payload: {
+      type: "broadcast";
+      event: string;
+      payload: MessagePayload;
+    }) => {
+      const { id: userId, message } = payload.payload;
+      console.log("Message received from", userId, ":", message);
+      if (cursorsRef.current[userId]) {
+        cursorsRef.current[userId] = {
+          ...cursorsRef.current[userId],
+          message,
         };
         setCursorsVersion((prev) => prev + 1); // Trigger re-render
       }
@@ -149,6 +171,7 @@ export default function Multiplayer() {
               x={cursor.x ?? 0}
               y={cursor.y ?? -80}
               username={cursor.username}
+              message={cursor.message}
             />
           ),
       );
