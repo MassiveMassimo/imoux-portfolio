@@ -10,8 +10,8 @@ import { LogOut } from "lucide-react";
 
 import { joinedAtom, usernameAtom } from "@/app/atoms";
 import { useGSAP } from "@gsap/react";
-import { Presences } from "./Presences";
 import { CursorsState } from "./Multiplayer";
+import { Presences } from "./Presences";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 

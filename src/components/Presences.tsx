@@ -2,7 +2,7 @@
 
 import type { CursorsState } from "./Multiplayer";
 
-import React, { useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 
 import {
   AnimatePresence,
@@ -35,6 +35,43 @@ export const Presences = ({ cursors }: { cursors: CursorsState }) => {
     x.set(event.nativeEvent.offsetX - halfWidth); // set the x value, which is then used in transform and rotate
   };
 
+  const handleMouseEnter = useCallback((userId: string) => {
+    setHoveredIndex(userId);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setHoveredIndex(null);
+  }, []);
+
+  const handleClick = useCallback(
+    (location: string | undefined) => {
+      if (location) {
+        router.push(location);
+      }
+    },
+    [router],
+  );
+
+  const initialAnimation = useMemo(() => ({ y: 56, opacity: 0 }), []);
+  const animateAnimation = useMemo(
+    () => ({
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+      },
+    }),
+    [],
+  );
+  const exitAnimation = useMemo(
+    () => ({
+      y: 30,
+      opacity: 0,
+      transition: { ease: "easeIn", duration: 0.3 },
+    }),
+    [],
+  );
+
   return (
     <div className="flex -space-x-3">
       <AnimatePresence mode="popLayout">
@@ -42,21 +79,11 @@ export const Presences = ({ cursors }: { cursors: CursorsState }) => {
           <motion.div
             className="group relative"
             key={userId}
-            onMouseEnter={() => setHoveredIndex(userId)}
-            onMouseLeave={() => setHoveredIndex(null)}
-            initial={{ y: 56, opacity: 0 }} // Start outside the view
-            animate={{
-              y: 0,
-              opacity: 1,
-              transition: {
-                type: "spring",
-              },
-            }}
-            exit={{
-              y: 30,
-              opacity: 0,
-              transition: { ease: "easeIn", duration: 0.3 },
-            }} // Slight upward movement and opacity fade
+            onMouseEnter={() => handleMouseEnter(userId)}
+            onMouseLeave={handleMouseLeave}
+            initial={initialAnimation} // Start outside the view
+            animate={animateAnimation}
+            exit={exitAnimation} // Slight upward movement and opacity fade
             layout
           >
             <AnimatePresence mode="popLayout">
@@ -93,7 +120,7 @@ export const Presences = ({ cursors }: { cursors: CursorsState }) => {
             </AnimatePresence>
             <div
               onMouseMove={handleMouseMove}
-              onClick={() => cursor.location && router.push(cursor.location)}
+              onClick={() => handleClick(cursor.location)}
               className={cn(
                 "relative !m-0 size-10 shrink-0 cursor-pointer rounded-full border-2 object-cover object-top !p-0 shadow-lg transition duration-500 group-hover:z-30 group-hover:scale-105",
                 `bg-${getColor(cursor.username)}-500 border-${getColor(cursor.username)}-600`,

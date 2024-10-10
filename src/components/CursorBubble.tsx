@@ -2,7 +2,7 @@
 
 import type { RealtimeChannel } from "@supabase/supabase-js";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useAtomValue } from "jotai";
@@ -25,10 +25,12 @@ export default function CursorBubble({
   // Measure the width of the input based on the message content
   useEffect(() => {
     if (measureRef.current) {
-      const width = Math.max(60, measureRef.current.offsetWidth + 20); // Minimum width of 60px
-      setInputWidth(width);
+      const newWidth = Math.max(60, measureRef.current.offsetWidth + 20); // Minimum width of 60px
+      if (newWidth !== inputWidth) {
+        setInputWidth(newWidth);
+      }
     }
-  }, [message]);
+  }, [message, inputWidth]);
 
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
@@ -71,23 +73,47 @@ export default function CursorBubble({
       window.removeEventListener("keydown", handleKeyPress);
       window.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [chatting]);
+  }, [chatting, channel, id]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setMessage(e.target.value);
-    channel?.send({
-      type: "broadcast",
-      event: "message",
-      payload: {
-        id: id,
-        message: e.target.value,
-      },
-    });
-  };
+  const handleInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setMessage(e.target.value);
+      channel?.send({
+        type: "broadcast",
+        event: "message",
+        payload: {
+          id: id,
+          message: e.target.value,
+        },
+      });
+    },
+    [channel, id],
+  );
 
-  const handleInputClick = (e: React.MouseEvent) => {
+  const handleInputClick = useCallback((e: React.MouseEvent) => {
     e.stopPropagation(); // Prevent click from bubbling up and triggering the close
-  };
+  }, []);
+
+  const handleBubbleClick = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent clicks on the bubble from closing
+  }, []);
+
+  const motionProps = useMemo(
+    () => ({
+      initial: { width: 0, height: 0, filter: "blur(20px)" },
+      animate: { width: "auto", height: "auto", filter: "blur(0px)" },
+      exit: { width: 0, height: 0, filter: "blur(20px)" },
+    }),
+    [],
+  );
+
+  const inputStyle = useMemo(
+    () => ({
+      width: inputWidth,
+      maxWidth: "420px",
+    }),
+    [inputWidth],
+  );
 
   return (
     <motion.div
@@ -97,7 +123,7 @@ export default function CursorBubble({
         "before:absolute before:inset-0 before:rounded-[18px] before:shadow-inner before:shadow-white/30",
         chatting && "rounded-tl-md before:rounded-tl",
       )}
-      onClick={(e) => e.stopPropagation()} // Prevent clicks on the bubble from closing
+      onClick={handleBubbleClick} // Prevent clicks on the bubble from closing
     >
       {username}
       {/* Hidden span to measure text width */}
@@ -114,17 +140,12 @@ export default function CursorBubble({
       </span>
       <AnimatePresence>
         {chatting && (
-          <motion.div
-            key="chat-box"
-            initial={{ width: 0, height: 0, filter: "blur(20px)" }} // Start hidden
-            animate={{ width: "auto", height: "auto", filter: "blur(0px)" }} // Animate in
-            exit={{ width: 0, height: 0, filter: "blur(20px)" }} // Animate out
-          >
+          <motion.div key="chat-box" {...motionProps}>
             <Input
               placeholder="Send a message"
               value={message}
               className="m-0 rounded-none border-0 bg-transparent p-0 font-400 ring-0 ring-offset-transparent placeholder:text-white/70 focus-visible:ring-0 focus-visible:ring-transparent dark:bg-transparent dark:ring-offset-transparent dark:placeholder:text-white/70 dark:focus-visible:ring-transparent"
-              style={{ width: inputWidth, maxWidth: "420px" }} // Set dynamic width
+              style={inputStyle} // Set dynamic width
               autoFocus
               autoComplete="off"
               onChange={handleInputChange}

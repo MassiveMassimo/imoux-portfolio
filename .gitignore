@@ -35,3 +35,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .million/store.json
+.vscode/settings.json
+/.vscode
+/.vscode
