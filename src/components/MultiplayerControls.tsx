@@ -2,7 +2,7 @@
 
 import type { MutableRefObject } from "react";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 
 import gsap from "gsap";
 import { useAtom } from "jotai";
@@ -18,11 +18,11 @@ import { Input } from "./ui/input";
 gsap.registerPlugin(useGSAP);
 
 export default function MultiplayerControls({
-  cursors,
+  cursors: { current: cursorsCurrent },
 }: {
   cursors: MutableRefObject<CursorsState>;
 }) {
-  console.log(cursors);
+  console.log(cursorsCurrent);
   const [joined, setJoined] = useAtom(joinedAtom);
   const [username, setUsername] = useAtom(usernameAtom);
   const [inputValue, setInputValue] = useState(username || ""); // Manage input state
@@ -65,35 +65,49 @@ export default function MultiplayerControls({
     { scope: controlsScope, dependencies: [joined] },
   );
 
-  const onSubmit = contextSafe(() => {
-    if (!joined) {
-      gsap.to([inputRef.current, joinButtonRef.current], {
-        width: 0,
-        opacity: 1,
-        filter: "blur(20px)",
-        duration: 0.6,
-        ease: "circ.in",
-        onComplete: () => join(),
-      });
-    } else {
-      gsap.to(controlsRef.current, {
-        width: 0,
-        opacity: 0,
-        filter: "blur(20px)",
-        duration: 0.6,
-        ease: "back.in(1)",
-        onComplete: () => {
-          setJoined(false);
-          setUsername("");
-        },
-      });
-    }
-  });
-
   const join = useCallback(() => {
     setJoined(true);
     setUsername(inputValue);
   }, [inputValue, setJoined, setUsername]);
+
+  const onSubmit = useCallback(
+    contextSafe(() => {
+      if (!joined) {
+        gsap.to([inputRef.current, joinButtonRef.current], {
+          width: 0,
+          opacity: 1,
+          filter: "blur(20px)",
+          duration: 0.6,
+          ease: "circ.in",
+          onComplete: () => join(),
+        });
+      } else {
+        gsap.to(controlsRef.current, {
+          width: 0,
+          opacity: 0,
+          filter: "blur(20px)",
+          duration: 0.6,
+          ease: "back.in(1)",
+          onComplete: () => {
+            setJoined(false);
+            setUsername("");
+          },
+        });
+      }
+    }),
+    [contextSafe, join, joined, setJoined, setUsername],
+  );
+
+  const handleLogOutClick = useMemo(
+    () => contextSafe(() => onSubmit()),
+    [contextSafe, onSubmit],
+  );
+
+  // Memoize the cursorsCurrent to ensure stable props for Presences
+  const memoizedCursors = useMemo(
+    () => ({ ...cursorsCurrent }),
+    [cursorsCurrent],
+  );
 
   return (
     <div
@@ -124,8 +138,8 @@ export default function MultiplayerControls({
           </form>
         ) : (
           <div ref={controlsRef} className="flex gap-2">
-            <Presences cursors={cursors.current} />
-            <Button variant="outline" size="icon" onClick={onSubmit}>
+            <Presences cursors={memoizedCursors} />
+            <Button variant="outline" size="icon" onClick={handleLogOutClick}>
               <LogOut className="size-4" />
             </Button>
           </div>

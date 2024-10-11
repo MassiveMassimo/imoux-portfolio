@@ -120,7 +120,7 @@ export default function MultiplayerCursor({
   }, [x, y, documentDimensions, onPointMove]);
 
   return (
-    <div
+    <motion.div
       ref={cursorRef}
       className="pointer-events-none absolute left-0 top-0 z-50 select-none"
     >
@@ -195,6 +195,6 @@ export default function MultiplayerCursor({
           </AnimatePresence>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
