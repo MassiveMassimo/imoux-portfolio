@@ -16,6 +16,7 @@ import { createClient } from "@/utils/supabase/client";
 import LocalCursor from "./LocalCursor";
 import MultiplayerControls from "./MultiplayerControls";
 import MultiplayerCursor from "./MultiplayerCursor";
+import { AnimatePresence } from "framer-motion";
 
 const client = createClient();
 
@@ -46,13 +47,18 @@ interface MessagePayload {
 
 export default function Multiplayer() {
   const [cursorsVersion, setCursorsVersion] = useState(0);
-  const [isWindowFocused, setIsWindowFocused] = useState(document.hasFocus());
+  const [isWindowFocused, setIsWindowFocused] = useState(false);
   const cursorsRef = useRef<CursorsState>({});
   const joined = useAtomValue(joinedAtom);
   const id = useAtomValue(UUIDAtom);
   const username = useAtomValue(usernameAtom);
   const pathname = usePathname();
   const channelRef = useRef<RealtimeChannel | null>(null);
+
+  // Initialize window focus state after mount
+  useEffect(() => {
+    setIsWindowFocused(document.hasFocus());
+  }, []);
 
   const untrackPresence = async () => {
     if (channelRef.current) {
@@ -203,25 +209,26 @@ export default function Multiplayer() {
 
   const renderThrottledCursors = useCallback(
     throttle(() => {
-      return Object.entries(cursorsRef.current)
-        .filter(([userId, cursor]) =>
-          // Only show cursors that:
-          // 1. Aren't the current user's cursor
-          // 2. Have a location property
-          // 3. Are on the same pathname as the current user
-          userId !== id &&
-          cursor.location !== undefined &&
-          cursor.location === pathname
-        )
-        .map(([userId, cursor]) => (
-          <MultiplayerCursor
-            key={userId}
-            x={cursor.x ?? 0}
-            y={cursor.y ?? -80}
-            username={cursor.username}
-            message={cursor.message}
-          />
-        ));
+      return (
+        <AnimatePresence>
+          {Object.entries(cursorsRef.current)
+            .filter(
+              ([userId, cursor]) =>
+                userId !== id &&
+                cursor.location !== undefined &&
+                cursor.location === pathname,
+            )
+            .map(([userId, cursor]) => (
+              <MultiplayerCursor
+                key={userId}
+                x={cursor.x ?? 0}
+                y={cursor.y ?? -80}
+                username={cursor.username}
+                message={cursor.message}
+              />
+            ))}
+        </AnimatePresence>
+      );
     }, 50),
     [id, pathname], // Added pathname to dependencies since we're using it in the filter
   );
@@ -231,6 +238,11 @@ export default function Multiplayer() {
   }, [cursorsVersion, id, renderThrottledCursors]);
 
   const stableCursors = useMemo(() => cursorsRef, [cursorsVersion]);
+
+  const memoizedChannel = useMemo(
+    () => channelRef.current,
+    [channelRef.current],
+  );
 
   if (
     typeof window !== "undefined" &&
@@ -242,7 +254,7 @@ export default function Multiplayer() {
   return (
     <>
       <div className="pointer-events-none absolute inset-0 select-none overflow-hidden">
-        <LocalCursor channel={channelRef.current} />
+        <LocalCursor channel={memoizedChannel} />
         {joined && renderedCursors}
       </div>
       <MultiplayerControls cursors={stableCursors} />
