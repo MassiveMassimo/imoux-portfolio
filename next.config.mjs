@@ -11,8 +11,8 @@ const nextConfig = {
   },
 };
 
-// export default nextConfig;
+export default nextConfig;
 
-export default MillionCompiler.next({
-  rsc: true, // if used in the app router mode
-})(nextConfig);
+// export default MillionCompiler.next({
+//   rsc: true, // if used in the app router mode
+// })(nextConfig);

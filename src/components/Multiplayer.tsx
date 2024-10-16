@@ -7,6 +7,7 @@ import type {
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
+import { AnimatePresence } from "framer-motion";
 import { useAtomValue } from "jotai";
 import { throttle } from "lodash";
 import { usePathname } from "next/navigation";
@@ -16,14 +17,13 @@ import { createClient } from "@/utils/supabase/client";
 import LocalCursor from "./LocalCursor";
 import MultiplayerControls from "./MultiplayerControls";
 import MultiplayerCursor from "./MultiplayerCursor";
-import { AnimatePresence } from "framer-motion";
 
 const client = createClient();
 
 interface CursorData {
   username: string;
-  x?: number;
-  y?: number;
+  x: number;
+  y: number;
   location?: string;
   message?: string;
   presence_ref?: string;
@@ -75,8 +75,6 @@ export default function Multiplayer() {
       try {
         await channelRef.current.track({
           username: username,
-          x: 0,
-          y: 0,
           location: pathname,
         });
       } catch (error) {
@@ -126,12 +124,7 @@ export default function Multiplayer() {
 
           // Only track presence if window is focused
           if (isWindowFocused) {
-            await channel.track({
-              username: username,
-              x: 0,
-              y: 0,
-              location: pathname,
-            });
+            await trackPresence();
           }
         } catch (error) {
           console.error("Error setting up channel:", error);
@@ -195,7 +188,6 @@ export default function Multiplayer() {
       payload: MessagePayload;
     }) => {
       const { id: userId, message } = payload.payload;
-      console.log("Message received from", userId, ":", message);
       if (cursorsRef.current[userId]) {
         cursorsRef.current[userId] = {
           ...cursorsRef.current[userId],
@@ -221,8 +213,8 @@ export default function Multiplayer() {
             .map(([userId, cursor]) => (
               <MultiplayerCursor
                 key={userId}
-                x={cursor.x ?? 0}
-                y={cursor.y ?? -80}
+                x={cursor.x}
+                y={cursor.y}
                 username={cursor.username}
                 message={cursor.message}
               />

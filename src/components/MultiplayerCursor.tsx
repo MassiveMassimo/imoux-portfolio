@@ -134,88 +134,89 @@ export default function MultiplayerCursor({
   );
 
   return (
-      <motion.div
-        initial={initialAnimation}
-        animate={animateAnimation}
-        exit={exitAnimation}
-        ref={cursorRef}
-        className="pointer-events-none absolute left-0 top-0 z-50 select-none"
-      >
-        <div className="flex">
-          <svg
-            width="33"
-            height="33"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g filter="url(#filter0_d)" opacity="1">
-              <path
-                d="M9.63 6.9a1 1 0 011.27-1.27l11.25 3.75a1 1 0 010 1.9l-4.68 1.56a1 1 0 00-.63.63l-1.56 4.68a1 1 0 01-1.9 0L9.63 6.9z"
-                className={`fill-${getColor(username)}-500`}
-              ></path>
-              <path
-                d="M11.13 4.92a1.75 1.75 0 00-2.2 2.21l3.74 11.26a1.75 1.75 0 003.32 0l1.56-4.68a.25.25 0 01.16-.16L22.4 12a1.75 1.75 0 000-3.32L11.13 4.92z"
-                stroke="#fff"
-                strokeWidth="1.5"
-              ></path>
-            </g>
-            <defs>
-              <filter
-                id="filter0_d"
-                x=".08"
-                y=".08"
-                width="32.26"
-                height="32.26"
-                filterUnits="userSpaceOnUse"
+    <motion.div
+      initial={initialAnimation}
+      animate={animateAnimation}
+      exit={exitAnimation}
+      ref={cursorRef}
+      className="pointer-events-none absolute left-0 top-0 z-50 select-none"
+    >
+      <div className="flex">
+        <svg
+          width="33"
+          height="33"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="-translate-y-2"
+        >
+          <g filter="url(#filter0_d)" opacity="1">
+            <path
+              d="M9.63 6.9a1 1 0 011.27-1.27l11.25 3.75a1 1 0 010 1.9l-4.68 1.56a1 1 0 00-.63.63l-1.56 4.68a1 1 0 01-1.9 0L9.63 6.9z"
+              className={`fill-${getColor(username)}-500`}
+            ></path>
+            <path
+              d="M11.13 4.92a1.75 1.75 0 00-2.2 2.21l3.74 11.26a1.75 1.75 0 003.32 0l1.56-4.68a.25.25 0 01.16-.16L22.4 12a1.75 1.75 0 000-3.32L11.13 4.92z"
+              stroke="#fff"
+              strokeWidth="1.5"
+            ></path>
+          </g>
+          <defs>
+            <filter
+              id="filter0_d"
+              x=".08"
+              y=".08"
+              width="32.26"
+              height="32.26"
+              filterUnits="userSpaceOnUse"
+            >
+              <feFlood floodOpacity="0" result="BackgroundImageFix"></feFlood>
+              <feColorMatrix
+                in="SourceAlpha"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+              ></feColorMatrix>
+              <feOffset dy="4"></feOffset>
+              <feGaussianBlur stdDeviation="4"></feGaussianBlur>
+              <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0"></feColorMatrix>
+              <feBlend
+                in2="BackgroundImageFix"
+                result="effect1_dropShadow"
+              ></feBlend>
+              <feBlend
+                in="SourceGraphic"
+                in2="effect1_dropShadow"
+                result="shape"
+              ></feBlend>
+            </filter>
+          </defs>
+        </svg>
+        <div
+          className={cn(
+            "pointer-events-none z-50 max-w-md -translate-x-2 translate-y-3 truncate rounded-[20px] px-3 py-2 text-sm font-500 capitalize text-white shadow-lg transition-[border-top-left-radius] before:transition-[border-top-left-radius]",
+            `border-2 border-${getColor(username)}-600 bg-${getColor(username)}-500`,
+            "before:absolute before:inset-0 before:rounded-[18px] before:shadow-inner before:shadow-white/30",
+            message && "rounded-tl-md before:rounded-tl",
+          )}
+        >
+          {username}
+          <AnimatePresence>
+            {message && (
+              <motion.div
+                key="chat-box"
+                initial={{ width: 0, height: 0, filter: "blur(20px)" }} // Start hidden
+                animate={{
+                  width: "auto",
+                  height: "auto",
+                  filter: "blur(0px)",
+                }} // Animate in
+                exit={{ width: 0, height: 0, filter: "blur(20px)" }} // Animate out
+                className="font-400 normal-case text-white"
               >
-                <feFlood floodOpacity="0" result="BackgroundImageFix"></feFlood>
-                <feColorMatrix
-                  in="SourceAlpha"
-                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                ></feColorMatrix>
-                <feOffset dy="4"></feOffset>
-                <feGaussianBlur stdDeviation="4"></feGaussianBlur>
-                <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0"></feColorMatrix>
-                <feBlend
-                  in2="BackgroundImageFix"
-                  result="effect1_dropShadow"
-                ></feBlend>
-                <feBlend
-                  in="SourceGraphic"
-                  in2="effect1_dropShadow"
-                  result="shape"
-                ></feBlend>
-              </filter>
-            </defs>
-          </svg>
-          <div
-            className={cn(
-              "pointer-events-none z-50 max-w-md -translate-x-2 translate-y-3 truncate rounded-[20px] px-3 py-2 text-sm font-500 capitalize text-white shadow-lg transition-[border-top-left-radius] before:transition-[border-top-left-radius]",
-              `border-2 border-${getColor(username)}-600 bg-${getColor(username)}-500`,
-              "before:absolute before:inset-0 before:rounded-[18px] before:shadow-inner before:shadow-white/30",
-              message && "rounded-tl-md before:rounded-tl",
+                {message}
+              </motion.div>
             )}
-          >
-            {username}
-            <AnimatePresence>
-              {message && (
-                <motion.div
-                  key="chat-box"
-                  initial={{ width: 0, height: 0, filter: "blur(20px)" }} // Start hidden
-                  animate={{
-                    width: "auto",
-                    height: "auto",
-                    filter: "blur(0px)",
-                  }} // Animate in
-                  exit={{ width: 0, height: 0, filter: "blur(20px)" }} // Animate out
-                  className="font-400 normal-case text-white"
-                >
-                  {message}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+          </AnimatePresence>
         </div>
-      </motion.div>
+      </div>
+    </motion.div>
   );
 }

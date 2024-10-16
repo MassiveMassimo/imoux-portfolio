@@ -4,6 +4,7 @@ import type { MutableRefObject } from "react";
 
 import { useCallback, useMemo, useRef, useState } from "react";
 
+import { motion } from "framer-motion";
 import gsap from "gsap";
 import { useAtom } from "jotai";
 import { LogOut } from "lucide-react";
@@ -22,7 +23,6 @@ export default function MultiplayerControls({
 }: {
   cursors: MutableRefObject<CursorsState>;
 }) {
-  console.log(cursorsCurrent);
   const [joined, setJoined] = useAtom(joinedAtom);
   const [username, setUsername] = useAtom(usernameAtom);
   const [inputValue, setInputValue] = useState(username || ""); // Manage input state
@@ -121,7 +121,7 @@ export default function MultiplayerControls({
               e.preventDefault();
               onSubmit();
             }}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2" 
           >
             <Input
               ref={inputRef}
@@ -139,9 +139,11 @@ export default function MultiplayerControls({
         ) : (
           <div ref={controlsRef} className="flex gap-2">
             <Presences cursors={memoizedCursors} />
-            <Button variant="outline" size="icon" onClick={handleLogOutClick}>
-              <LogOut className="size-4" />
-            </Button>
+            <motion.div layout>
+              <Button variant="outline" size="icon" onClick={handleLogOutClick}>
+                <LogOut className="size-4" />
+              </Button>
+            </motion.div>
           </div>
         )}
       </div>

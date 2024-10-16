@@ -118,7 +118,7 @@ export default function CursorBubble({
   return (
     <motion.div
       className={cn(
-        "username fixed left-0 top-0 z-50 max-w-md -translate-x-[calc(50%-80px)] -translate-y-[calc(50%-40px)] truncate rounded-[20px] px-3 py-2 text-sm font-500 capitalize text-white shadow-lg transition-[border-top-left-radius] before:transition-[border-top-left-radius]",
+        "username fixed z-50 max-w-md -translate-x-80 truncate rounded-[20px] px-3 py-2 text-sm font-500 capitalize text-white shadow-lg transition-[border-top-left-radius] before:transition-[border-top-left-radius]",
         `border-2 border-${getColor(username)}-600 bg-${getColor(username)}-500 `,
         "before:absolute before:inset-0 before:rounded-[18px] before:shadow-inner before:shadow-white/30",
         chatting && "rounded-tl-md before:rounded-tl",

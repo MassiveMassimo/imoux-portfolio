@@ -2,25 +2,18 @@
 
 import type { RealtimeChannel } from "@supabase/supabase-js";
 
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useRef } from "react";
 
-import { motion } from "framer-motion";
 import gsap from "gsap";
 import { useAtomValue } from "jotai";
 import { debounce, throttle } from "lodash";
 
 import { joinedAtom, usernameAtom, UUIDAtom } from "@/app/atoms";
-import { cn, getColor, getRandomColor } from "@/lib/utils";
+import { getColor } from "@/lib/utils";
 import { useGSAP } from "@gsap/react";
 import CursorBubble from "./CursorBubble";
 
 gsap.registerPlugin(useGSAP);
-
-// Define the type for the throttled/debounced function
-type ThrottledFunction = {
-  (relX: number, relY: number): void;
-  cancel(): void;
-};
 
 export default function LocalCursor({
   channel,
@@ -37,23 +30,12 @@ export default function LocalCursor({
   const xToUsername = useRef<Function>();
   const yToUsername = useRef<Function>();
   const lastPosition = useRef({ x: 0, y: 0 });
-  const throttledSend = useRef<ThrottledFunction | null>(null);
-  const debouncedSend = useRef<ThrottledFunction | null>(null);
-
-  useEffect(() => {
-    if (joined && channel && lastPosition.current) {
-      channel.send({
-        type: "broadcast",
-        event: "cursor",
-        payload: {
-          id: id,
-          username: username,
-          x: lastPosition.current.x,
-          y: lastPosition.current.y,
-        },
-      });
-    }
-  }, [joined, channel, id, username]);
+  const throttledSend = useRef<((relX: number, relY: number) => void) | null>(
+    null,
+  );
+  const debouncedSend = useRef<((relX: number, relY: number) => void) | null>(
+    null,
+  );
 
   const { contextSafe } = useGSAP(
     () => {
@@ -70,11 +52,7 @@ export default function LocalCursor({
       });
 
       const sendPosition = (relX: number, relY: number) => {
-        if (
-          joined &&
-          channel &&
-          (lastPosition.current.x !== relX || lastPosition.current.y !== relY)
-        ) {
+        if (joined && channel) {
           channel.send({
             type: "broadcast",
             event: "cursor",
@@ -85,13 +63,11 @@ export default function LocalCursor({
               y: relY,
             },
           });
-          lastPosition.current = { x: relX, y: relY };
         }
       };
 
-      // Explicitly type the throttle and debounce return values
-      throttledSend.current = throttle(sendPosition, 200) as ThrottledFunction;
-      debouncedSend.current = debounce(sendPosition, 250) as ThrottledFunction;
+      throttledSend.current = throttle(sendPosition, 200);
+      debouncedSend.current = debounce(sendPosition, 250);
 
       const moveCursor = contextSafe((e: MouseEvent) => {
         if (
@@ -100,28 +76,35 @@ export default function LocalCursor({
           xToUsername.current &&
           yToUsername.current
         ) {
+          // Viewport-relative positioning for the cursor
           const absoluteX = e.clientX;
           const absoluteY = e.clientY;
+
+          // Adjust for the webpage (document) relative positioning
           const pageX = e.clientX + window.scrollX;
           const pageY = e.clientY + window.scrollY;
+
           const documentWidth = document.documentElement.scrollWidth;
           const documentHeight = document.documentElement.scrollHeight;
+
+          // Calculate relative position based on the entire webpage (not just viewport)
           const relativeX = pageX / documentWidth;
           const relativeY = pageY / documentHeight;
 
+          // Update cursor position relative to the viewport
           xToCursor.current(absoluteX - 12);
           yToCursor.current(absoluteY - 12);
+
+          // Update username position relative to the viewport
           xToUsername.current(absoluteX + 12);
           yToUsername.current(absoluteY + 4);
 
-          const hasMovedSignificantly =
-            Math.abs(lastPosition.current.x - relativeX) > 0.001 ||
-            Math.abs(lastPosition.current.y - relativeY) > 0.001;
+          // Store the relative position for broadcast
+          lastPosition.current = { x: relativeX, y: relativeY };
 
-          if (hasMovedSignificantly) {
-            throttledSend.current?.(relativeX, relativeY);
-            debouncedSend.current?.(relativeX, relativeY);
-          }
+          // Throttled and debounced sending of relative position (for the entire webpage)
+          throttledSend.current?.(relativeX, relativeY);
+          debouncedSend.current?.(relativeX, relativeY);
         }
       });
 
@@ -151,12 +134,21 @@ export default function LocalCursor({
         document.removeEventListener("mousemove", moveCursor);
         document.removeEventListener("mouseleave", hideCursor);
         document.removeEventListener("mouseenter", showCursor);
-        throttledSend.current?.cancel();
-        debouncedSend.current?.cancel();
       };
     },
     { scope: cursorRef, dependencies: [username, channel, joined] },
   );
+
+  // Effect to handle channel changes
+  useEffect(() => {
+    if (channel) {
+      // Channel is available, you can set up any necessary listeners here
+      console.log("Channel is available in LocalCursor");
+    } else {
+      // Channel is null, perform any cleanup if necessary
+      console.log("Channel is not available in LocalCursor");
+    }
+  }, [channel]);
 
   return (
     <div ref={cursorRef} className="pointer-events-none select-none">
