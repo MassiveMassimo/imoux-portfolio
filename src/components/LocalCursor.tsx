@@ -109,7 +109,7 @@ export default function LocalCursor({
       });
 
       const hideCursor = contextSafe(() => {
-        gsap.to([".cursor", ".username"], {
+        gsap.to([cursorRef.current, ".username"], {
           scale: 0.8,
           filter: "blur(20px)",
           opacity: 0,
@@ -118,7 +118,7 @@ export default function LocalCursor({
       });
 
       const showCursor = contextSafe(() => {
-        gsap.to([".cursor", ".username"], {
+        gsap.to([cursorRef.current, ".username"], {
           scale: 1,
           filter: "blur(0px)",
           opacity: 1,
@@ -153,7 +153,7 @@ export default function LocalCursor({
   return (
     <div ref={cursorRef} className="pointer-events-none select-none">
       <svg
-        className="cursor fixed left-0 top-0 z-50"
+        className="fixed left-0 top-0 z-50"
         width="33"
         height="33"
         fill="none"
