@@ -112,7 +112,7 @@ export default function MultiplayerControls({
   return (
     <div
       ref={controlsScope}
-      className="fixed inset-x-0 bottom-0 z-10 flex flex-col items-center py-4"
+      className="fixed inset-x-0 bottom-0 flex flex-col items-center bg-gradient-to-t from-white via-20% py-4 dark:from-slate-900"
     >
       <div className="z-10 flex gap-2">
         {!joined ? (
@@ -121,7 +121,7 @@ export default function MultiplayerControls({
               e.preventDefault();
               onSubmit();
             }}
-            className="flex items-center gap-2" 
+            className="flex items-center gap-2"
           >
             <Input
               ref={inputRef}

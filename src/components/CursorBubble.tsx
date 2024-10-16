@@ -118,7 +118,7 @@ export default function CursorBubble({
   return (
     <motion.div
       className={cn(
-        "username fixed z-50 max-w-md -translate-x-80 truncate rounded-[20px] px-3 py-2 text-sm font-500 capitalize text-white shadow-lg transition-[border-top-left-radius] before:transition-[border-top-left-radius]",
+        "username fixed z-50 max-w-md translate-x-[50vw] translate-y-[110svh] truncate rounded-[20px] px-3 py-2 text-sm font-500 capitalize text-white shadow-lg transition-[border-top-left-radius] before:transition-[border-top-left-radius]",
         `border-2 border-${getColor(username)}-600 bg-${getColor(username)}-500 `,
         "before:absolute before:inset-0 before:rounded-[18px] before:shadow-inner before:shadow-white/30",
         chatting && "rounded-tl-md before:rounded-tl",
@@ -129,11 +129,7 @@ export default function CursorBubble({
       {/* Hidden span to measure text width */}
       <span
         ref={measureRef}
-        className="absolute -left-[9999px] whitespace-pre"
-        style={{
-          font: "inherit",
-          fontSize: "0.875rem", // text-sm
-        }}
+        className="absolute -left-[9999px] whitespace-pre text-sm text-inherit"
       >
         {message || "Send a message"}{" "}
         {/* Use placeholder text if message is empty */}

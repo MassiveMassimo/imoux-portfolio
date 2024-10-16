@@ -4,6 +4,7 @@ import type { RealtimeChannel } from "@supabase/supabase-js";
 
 import { useEffect, useRef } from "react";
 
+import { AnimatePresence, motion } from "framer-motion";
 import gsap from "gsap";
 import { useAtomValue } from "jotai";
 import { debounce, throttle } from "lodash";
@@ -93,11 +94,11 @@ export default function LocalCursor({
 
           // Update cursor position relative to the viewport
           xToCursor.current(absoluteX - 12);
-          yToCursor.current(absoluteY - 12);
+          yToCursor.current(absoluteY - 6);
 
           // Update username position relative to the viewport
           xToUsername.current(absoluteX + 12);
-          yToUsername.current(absoluteY + 4);
+          yToUsername.current(absoluteY + 10);
 
           // Store the relative position for broadcast
           lastPosition.current = { x: relativeX, y: relativeY };
@@ -109,7 +110,7 @@ export default function LocalCursor({
       });
 
       const hideCursor = contextSafe(() => {
-        gsap.to([cursorRef.current, ".username"], {
+        gsap.to([".cursor", ".username"], {
           scale: 0.8,
           filter: "blur(20px)",
           opacity: 0,
@@ -118,7 +119,7 @@ export default function LocalCursor({
       });
 
       const showCursor = contextSafe(() => {
-        gsap.to([cursorRef.current, ".username"], {
+        gsap.to([".cursor", ".username"], {
           scale: 1,
           filter: "blur(0px)",
           opacity: 1,
@@ -153,7 +154,7 @@ export default function LocalCursor({
   return (
     <div ref={cursorRef} className="pointer-events-none select-none">
       <svg
-        className="fixed left-0 top-0 z-50"
+        className="cursor fixed left-0 top-0 z-50"
         width="33"
         height="33"
         fill="none"
@@ -162,7 +163,7 @@ export default function LocalCursor({
         <g filter="url(#filter0_d)" opacity="1">
           <path
             d="M9.63 6.9a1 1 0 011.27-1.27l11.25 3.75a1 1 0 010 1.9l-4.68 1.56a1 1 0 00-.63.63l-1.56 4.68a1 1 0 01-1.9 0L9.63 6.9z"
-            className={`fill-${getColor(username)}-500`}
+            className={`transition-colors fill-${getColor(username)}-500`}
           ></path>
           <path
             d="M11.13 4.92a1.75 1.75 0 00-2.2 2.21l3.74 11.26a1.75 1.75 0 003.32 0l1.56-4.68a.25.25 0 01.16-.16L22.4 12a1.75 1.75 0 000-3.32L11.13 4.92z"
@@ -199,7 +200,17 @@ export default function LocalCursor({
           </filter>
         </defs>
       </svg>
-      {username && <CursorBubble username={username} channel={channel} />}
+      <AnimatePresence>
+        {username && (
+          <motion.div
+            initial={{ filter: "blur(20px)", opacity: 0 }}
+            animate={{ filter: "blur(0px)", opacity: 1 }}
+            exit={{ filter: "blur(20px)", opacity: 0 }}
+          >
+            <CursorBubble username={username} channel={channel} />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
