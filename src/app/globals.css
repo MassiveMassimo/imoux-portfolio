@@ -16,3 +16,18 @@
 a {
   cursor: pointer;
 }
+
+/* width */
+::-webkit-scrollbar {
+  @apply h-3 w-3;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply h-3 bg-transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply h-3 w-1 rounded-full border-4 border-solid border-slate-100 bg-slate-300 hover:w-3 hover:border-2 hover:bg-slate-400 dark:border-slate-900 dark:bg-slate-700 dark:hover:bg-slate-600;
+}

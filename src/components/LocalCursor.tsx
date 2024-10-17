@@ -206,6 +206,7 @@ export default function LocalCursor({
             initial={{ filter: "blur(20px)", opacity: 0 }}
             animate={{ filter: "blur(0px)", opacity: 1 }}
             exit={{ filter: "blur(20px)", opacity: 0 }}
+            className="fixed"
           >
             <CursorBubble username={username} channel={channel} />
           </motion.div>

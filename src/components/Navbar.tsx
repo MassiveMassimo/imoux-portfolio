@@ -1,26 +1,41 @@
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
+import { cn } from "@/lib/utils";
 import Logo from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
 import { buttonVariants } from "./ui/button";
 
 export default function Navbar() {
   return (
-    <nav className="group fixed inset-x-0 top-0 z-20 mx-20 flex h-16 origin-top items-center justify-between rounded-b-2xl border border-t-0 border-slate-300 bg-white/30 px-10 py-4 backdrop-blur-xl transition-[height] duration-300 hover:h-20 dark:border-slate-700 dark:bg-slate-900/50">
-      <Link href="/">
-        <Logo className="h-7" />
-      </Link>
-      <div className="flex items-center gap-2">
-        <ThemeToggle />
-        <Link
-          href="https://mail.google.com/mail/u/0/?source=mailto&to=mhmmadjid@gmail.com&fs=1&tf=cm"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={buttonVariants({ variant: "default" })}
-        >
-          Get in touch
+    <>
+      <>
+        <div className="fixed inset-x-0 top-0 z-20 h-24 backdrop-blur-[1px] gradient-mask-b-90" />
+        <div className="fixed inset-x-0 top-0 z-20 h-24 backdrop-blur-sm gradient-mask-b-70" />
+        <div className="fixed inset-x-0 top-0 z-20 h-24 backdrop-blur-sm gradient-mask-b-50" />
+        <div className="fixed inset-x-0 top-0 z-20 h-24 backdrop-blur-md gradient-mask-b-30" />
+        <div className="fixed inset-x-0 top-0 z-20 h-24 backdrop-blur-lg gradient-mask-b-10" />
+      </>
+      <nav className="group fixed inset-x-0 top-0 z-20 flex h-16 origin-top items-center justify-between bg-gradient-to-b from-white px-20 dark:from-slate-900">
+        <Link href="/">
+          <Logo className="h-7" />
         </Link>
-      </div>
-    </nav>
+        <div className="flex items-center gap-2">
+          {/* <ThemeToggle /> */}
+          <Link
+            href="https://mail.google.com/mail/u/0/?source=mailto&to=mhmmadjid@gmail.com&fs=1&tf=cm"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(
+              buttonVariants({ variant: "link" }),
+              "group/button gap-1",
+            )}
+          >
+            Get in touch
+            <ArrowUpRight className="size-4 w-0 stroke-[3px] blur transition-all duration-300 group-hover/button:w-4 group-hover/button:blur-none" />
+          </Link>
+        </div>
+      </nav>
+    </>
   );
 }

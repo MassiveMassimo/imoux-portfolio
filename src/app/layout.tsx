@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 
 import localFont from "next/font/local";
 
+import Footer from "@/components/Footer";
 import Multiplayer from "@/components/Multiplayer";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -121,7 +122,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "relative cursor-none overflow-x-hidden font-sans",
+          "relative cursor-none overflow-x-hidden bg-white font-sans dark:bg-slate-900",
           `${marlin.variable}`,
         )}
       >
@@ -134,6 +135,7 @@ export default function RootLayout({
           >
             <Navbar />
             {children}
+            <Footer />
             <Multiplayer />
           </ThemeProvider>
         </Providers>
