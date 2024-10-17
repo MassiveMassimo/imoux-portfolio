@@ -205,11 +205,11 @@ export default function MultiplayerCursor({
                 initial={{ width: 0, height: 0, filter: "blur(20px)" }} // Start hidden
                 animate={{
                   width: "auto",
-                  height: "auto",
+                  height: "32px",
                   filter: "blur(0px)",
                 }} // Animate in
                 exit={{ width: 0, height: 0, filter: "blur(20px)" }} // Animate out
-                className="font-400 normal-case text-white"
+                className="flex items-center font-400 normal-case text-white"
               >
                 {message}
               </motion.div>

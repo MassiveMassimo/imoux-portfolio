@@ -17,15 +17,16 @@ export default function CursorBubble({
 }: Readonly<{ username: string; channel: RealtimeChannel | null }>) {
   const [chatting, setChatting] = useState(false);
   const [message, setMessage] = useState("");
-  const [inputWidth, setInputWidth] = useState(60); // Minimum width
+  const [inputWidth, setInputWidth] = useState(140); // Minimum width
   const measureRef = useRef<HTMLSpanElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const id = useAtomValue(UUIDAtom);
 
   // Measure the width of the input based on the message content
   useEffect(() => {
     if (measureRef.current) {
-      const newWidth = Math.max(60, measureRef.current.offsetWidth + 20); // Minimum width of 60px
+      const newWidth = Math.max(140, measureRef.current.offsetWidth + 20);
       if (newWidth !== inputWidth) {
         setInputWidth(newWidth);
       }
@@ -34,9 +35,11 @@ export default function CursorBubble({
 
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
-      if (event.key === "/") {
+      if (event.key === "/" && !chatting) {
         event.preventDefault();
         setChatting(true);
+        // Focus the input after a short delay to ensure it's rendered
+        setTimeout(() => inputRef.current?.focus(), 0);
       } else if (event.key === "Escape") {
         setChatting(false);
         setMessage("");
@@ -109,7 +112,7 @@ export default function CursorBubble({
 
   const inputStyle = useMemo(
     () => ({
-      width: inputWidth,
+      width: inputWidth - 28,
       maxWidth: "420px",
     }),
     [inputWidth],
@@ -136,11 +139,13 @@ export default function CursorBubble({
       </span>
       <AnimatePresence>
         {chatting && (
-          <motion.div key="chat-box" {...motionProps}>
+          <motion.div key="chat-box" {...motionProps} className="h-8">
             <Input
+              ref={inputRef}
               placeholder="Send a message"
+              maxLength={48}
               value={message}
-              className="m-0 rounded-none border-0 bg-transparent p-0 font-400 ring-0 ring-offset-transparent placeholder:text-white/70 focus-visible:ring-0 focus-visible:ring-transparent dark:bg-transparent dark:ring-offset-transparent dark:placeholder:text-white/70 dark:focus-visible:ring-transparent"
+              className="m-0 !h-8 rounded-none border-0 bg-transparent p-0 font-400 ring-0 ring-offset-transparent placeholder:text-white/70 focus-visible:ring-0 focus-visible:ring-transparent dark:bg-transparent dark:ring-offset-transparent dark:placeholder:text-white/70 dark:focus-visible:ring-transparent"
               style={inputStyle} // Set dynamic width
               autoFocus
               autoComplete="off"
