@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 import Logo from "./Logo";
-import { ThemeToggle } from "./ThemeToggle";
 import { buttonVariants } from "./ui/button";
 
 export default function Navbar() {
