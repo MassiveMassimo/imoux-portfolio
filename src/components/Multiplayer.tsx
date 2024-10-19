@@ -236,11 +236,22 @@ export default function Multiplayer() {
     [channelRef.current],
   );
 
-  if (
-    typeof window !== "undefined" &&
-    window.matchMedia("(pointer: coarse)").matches
-  ) {
-    return null;
+  if (typeof window !== 'undefined') {
+    const userAgent = navigator.userAgent.toLowerCase();
+
+    // Check for touch support
+    const hasTouchSupport = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    // Check for mobile-specific strings in user agent
+    const mobileKeywords = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i;
+
+    // Check screen size (typical mobile threshold)
+    const isSmallScreen = window.innerWidth <= 800 && window.innerHeight <= 600;
+
+    // Combine checks
+    if (hasTouchSupport || mobileKeywords.test(userAgent) || isSmallScreen) {
+      return null;
+    }
   }
 
   return (
