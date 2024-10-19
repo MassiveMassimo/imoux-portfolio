@@ -22,7 +22,7 @@ const buttonVariants = cva(
           "bg-slate-100 text-slate-900 hover:bg-slate-100/80 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80",
         ghost:
           "hover:bg-slate-100 hover:text-slate-900 active:shadow-inner-sm dark:hover:bg-slate-800 dark:hover:text-slate-50",
-        link: "text-slate-900 decoration-indigo-500 decoration-wavy decoration-[1.5px] underline-offset-4 hover:underline hover:decoration-indigo-500 hover:shadow-none dark:text-slate-50",
+        link: "rounded-none text-slate-900 decoration-indigo-500 decoration-wavy decoration-[1.5px] underline-offset-4 hover:underline hover:decoration-indigo-500 hover:shadow-none dark:text-slate-50",
       },
       size: {
         default: "h-10 px-4 py-2",

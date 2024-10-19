@@ -15,9 +15,9 @@ export default function Navbar() {
         <div className="fixed inset-x-0 top-0 z-20 h-24 backdrop-blur-md gradient-mask-b-30" />
         <div className="fixed inset-x-0 top-0 z-20 h-24 backdrop-blur-lg gradient-mask-b-10" />
       </>
-      <nav className="group fixed inset-x-0 top-0 z-20 flex h-16 origin-top items-center justify-between bg-gradient-to-b from-white px-20 dark:from-slate-900">
+      <nav className="group fixed inset-x-0 top-0 z-20 flex h-16 origin-top items-center justify-between bg-gradient-to-b from-white ~px-5/20 dark:from-slate-900">
         <Link href="/">
-          <Logo className="h-7" />
+          <Logo className="~h-5/7" />
         </Link>
         <div className="flex items-center gap-2">
           {/* <ThemeToggle /> */}

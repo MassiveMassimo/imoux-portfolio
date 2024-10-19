@@ -1,13 +1,18 @@
 import type { Config } from "tailwindcss";
 
+import fluid, { extract, fontSize, screens } from "fluid-tailwind";
+
 const config = {
   darkMode: ["class"],
-  content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
-  ],
+  content: {
+    files: [
+      "./pages/**/*.{ts,tsx}",
+      "./components/**/*.{ts,tsx}",
+      "./app/**/*.{ts,tsx}",
+      "./src/**/*.{ts,tsx}",
+    ],
+    extract,
+  },
   prefix: "",
   theme: {
     container: {
@@ -34,6 +39,12 @@ const config = {
       },
       fontFamily: {
         sans: ["var(--font-marlin)"],
+        serif: [
+          "var(--font-fraunces)",
+          {
+            fontVariationSettings: '"WONK" 1',
+          },
+        ],
       },
       fontWeight: {
         100: "100",
@@ -61,8 +72,11 @@ const config = {
         },
       },
     },
+    screens,
+    fontSize,
   },
   plugins: [
+    fluid,
     require("tailwindcss-animate"),
     require("@tailwindcss/container-queries"),
     require("tailwind-gradient-mask-image"),

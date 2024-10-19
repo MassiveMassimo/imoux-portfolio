@@ -2,6 +2,7 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 
+import { Fraunces } from "next/font/google";
 import localFont from "next/font/local";
 
 import Footer from "@/components/Footer";
@@ -107,6 +108,27 @@ const marlin = localFont({
   variable: "--font-marlin",
 });
 
+const fraunces = localFont({
+  src: [
+    {
+      path: "./fonts/Fraunces-VariableFont_SOFT,WONK,opsz,wght.ttf",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Fraunces-Italic-VariableFont_SOFT,WONK,opsz,wght.ttf",
+      style: "italic",
+    },
+  ],
+  variable: "--font-fraunces",
+});
+
+// const fraunces = Fraunces({
+//   subsets: ["latin"],
+//   display: "swap",
+//   axes: ["WONK"],
+//   variable: "--font-fraunces",
+// });
+
 export const metadata: Metadata = {
   title: "Imo UX",
   description:
@@ -122,8 +144,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "relative cursor-none overflow-x-hidden bg-white font-sans dark:bg-slate-900",
+          "relative cursor-none overflow-x-hidden bg-white font-sans selection:bg-indigo-100 selection:underline selection:decoration-indigo-500 dark:bg-slate-900 dark:selection:bg-indigo-800 dark:selection:decoration-indigo-400",
           `${marlin.variable}`,
+          `${fraunces.variable}`,
         )}
       >
         <Providers>
