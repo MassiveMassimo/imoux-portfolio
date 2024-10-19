@@ -236,22 +236,29 @@ export default function Multiplayer() {
     [channelRef.current],
   );
 
-  if (typeof window !== 'undefined') {
-    const userAgent = navigator.userAgent.toLowerCase();
+  const isMobileOrTouchDevice = (): boolean => {
+    if (typeof window === "undefined") {
+      return false; // We're not in a browser environment
+    }
 
-    // Check for touch support
-    const hasTouchSupport = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    // Check for touch capability
+    const hasTouch =
+      "ontouchstart" in window ||
+      navigator.maxTouchPoints > 0 ||
+      // @ts-ignore
+      (window.DocumentTouch && document instanceof DocumentTouch);
 
-    // Check for mobile-specific strings in user agent
-    const mobileKeywords = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i;
+    // Check for mobile-specific events
+    const hasMobileEvents = "onorientationchange" in window;
 
-    // Check screen size (typical mobile threshold)
+    // Check for screen size typical of mobile devices
     const isSmallScreen = window.innerWidth <= 800 && window.innerHeight <= 600;
 
-    // Combine checks
-    if (hasTouchSupport || mobileKeywords.test(userAgent) || isSmallScreen) {
-      return null;
-    }
+    return hasTouch || hasMobileEvents || isSmallScreen;
+  };
+
+  if (isMobileOrTouchDevice()) {
+    return null;
   }
 
   return (
