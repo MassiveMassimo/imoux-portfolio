@@ -163,6 +163,13 @@ export default async function RootLayout({
             {children}
             <Footer />
             {!isMobile && <Multiplayer />}
+            <>
+              <div className="fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-[1px] gradient-mask-t-90" />
+              <div className="fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-sm gradient-mask-t-70" />
+              <div className="fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-sm gradient-mask-t-50" />
+              <div className="fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-md gradient-mask-t-30" />
+              <div className="fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-lg gradient-mask-t-10" />
+            </>
           </ThemeProvider>
         </Providers>
       </body>

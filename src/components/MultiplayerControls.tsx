@@ -111,13 +111,6 @@ export default function MultiplayerControls({
 
   return (
     <>
-      <>
-        <div className="fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-[1px] gradient-mask-t-90" />
-        <div className="fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-sm gradient-mask-t-70" />
-        <div className="fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-sm gradient-mask-t-50" />
-        <div className="fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-md gradient-mask-t-30" />
-        <div className="fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-lg gradient-mask-t-10" />
-      </>
       <div
         ref={controlsScope}
         className="fixed inset-x-0 bottom-0 z-30 flex flex-col items-center bg-gradient-to-t from-slate-200 via-60% py-4 dark:from-slate-950"
