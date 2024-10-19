@@ -4,6 +4,7 @@ import type {
   RealtimeChannel,
   RealtimePresenceState,
 } from "@supabase/supabase-js";
+import {isMobile} from 'react-device-detect';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
@@ -236,28 +237,7 @@ export default function Multiplayer() {
     [channelRef.current],
   );
 
-  const isMobileOrTouchDevice = (): boolean => {
-    if (typeof window === "undefined") {
-      return false; // We're not in a browser environment
-    }
-
-    // Check for touch capability
-    const hasTouch =
-      "ontouchstart" in window ||
-      navigator.maxTouchPoints > 0 ||
-      // @ts-ignore
-      (window.DocumentTouch && document instanceof DocumentTouch);
-
-    // Check for mobile-specific events
-    const hasMobileEvents = "onorientationchange" in window;
-
-    // Check for screen size typical of mobile devices
-    const isSmallScreen = window.innerWidth <= 800 && window.innerHeight <= 600;
-
-    return hasTouch || hasMobileEvents || isSmallScreen;
-  };
-
-  if (isMobileOrTouchDevice()) {
+  if (isMobile) {
     return null;
   }
 
