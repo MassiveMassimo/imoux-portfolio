@@ -236,10 +236,6 @@ export default function Multiplayer() {
     [channelRef.current],
   );
 
-  if (typeof window !== "undefined" && window.innerWidth < 640) {
-    // 640px is the default sm breakpoint in Tailwind
-    return null; // Return null for mobile/touch devices (below the sm breakpoint)
-  }
   return (
     <>
       <div className="pointer-events-none absolute inset-0 select-none overflow-hidden">

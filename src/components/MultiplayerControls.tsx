@@ -20,9 +20,9 @@ gsap.registerPlugin(useGSAP);
 
 export default function MultiplayerControls({
   cursors: { current: cursorsCurrent },
-}: {
+}: Readonly<{
   cursors: MutableRefObject<CursorsState>;
-}) {
+}>) {
   const [joined, setJoined] = useAtom(joinedAtom);
   const [username, setUsername] = useAtom(usernameAtom);
   const [inputValue, setInputValue] = useState(username || ""); // Manage input state

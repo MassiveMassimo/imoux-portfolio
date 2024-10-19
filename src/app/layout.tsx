@@ -10,6 +10,7 @@ import Multiplayer from "@/components/Multiplayer";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
+import { isMobileDevice } from "./actions";
 import Providers from "./providers";
 
 const marlin = localFont({
@@ -135,11 +136,13 @@ export const metadata: Metadata = {
     "Portfolio website of Imo Madjid; a designer who can engineer and an engineer who can design.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isMobile = await isMobileDevice();
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -159,7 +162,7 @@ export default function RootLayout({
             <Navbar />
             {children}
             <Footer />
-            <Multiplayer />
+            {!isMobile && <Multiplayer />}
           </ThemeProvider>
         </Providers>
       </body>

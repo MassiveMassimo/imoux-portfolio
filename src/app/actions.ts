@@ -1,15 +1,19 @@
 "use server";
 
-import { cookies } from "next/headers";
+import { headers } from "next/headers";
+import { UAParser } from "ua-parser-js";
 
-export async function getUsername() {
-    return cookies().get("username")?.value;
-}
+export const isMobileDevice = async () => {
+  if (typeof process === "undefined") {
+    throw new Error(
+      "[Server method] you are importing a server-only module outside of server",
+    );
+  }
 
-export async function setUsername(formData: FormData) {
-    const rawFormData = {
-        username: formData.get("username"),
-    };
+  const { get } = headers();
+  const ua = get("user-agent");
 
-    cookies().set("username", String(rawFormData.username));
-}
+  const device = new UAParser(ua ?? "").getDevice();
+
+  return device.type === "mobile";
+};
