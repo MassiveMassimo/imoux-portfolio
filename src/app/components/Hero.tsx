@@ -6,7 +6,7 @@ import Spline from "@splinetool/react-spline/next";
 
 export default function Hero() {
   return (
-    <section className="flex flex-col justify-center gap-2 self-center py-20 ~px-5/96">
+    <section className="flex flex-col justify-center gap-2 py-20 px-5">
       {/* <motion.div
         className="w-20 overflow-clip"
         initial={{ filter: "blur(20px)", scale: 1.1, y: 80, opacity: 0 }}

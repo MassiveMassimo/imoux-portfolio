@@ -7,8 +7,8 @@ import { buttonVariants } from "./ui/button";
 export default function Footer() {
   return (
     <footer className="border-t border-slate-200 pb-28 pt-10 ~px-5/20 dark:border-slate-800">
-      <div className="flex flex-col justify-between sm:flex-row gap-10">
-        <div className="flex flex-col gap-1">
+      <div className="flex flex-col justify-between gap-10 sm:flex-row">
+        <div className="flex flex-col gap-1 font-300">
           <p className="text-slate-500 dark:text-slate-400">
             Designed and developed by Imo.
           </p>
@@ -20,7 +20,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className={cn(
                 buttonVariants({ variant: "link" }),
-                "h-6 overflow-visible p-0 text-base",
+                "h-6 overflow-visible p-0 text-base !font-400",
               )}
             >
               Next.js
@@ -32,7 +32,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className={cn(
                 buttonVariants({ variant: "link" }),
-                "h-6 overflow-visible p-0 text-base",
+                "h-6 overflow-visible p-0 text-base !font-400",
               )}
             >
               Tailwind CSS
@@ -44,7 +44,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className={cn(
                 buttonVariants({ variant: "link" }),
-                "h-6 overflow-visible p-0 text-base",
+                "h-6 overflow-visible p-0 text-base !font-400",
               )}
             >
               Vercel
@@ -59,7 +59,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className={cn(
                 buttonVariants({ variant: "link" }),
-                "h-6 overflow-visible p-0 text-base",
+                "h-6 overflow-visible p-0 text-base !font-400",
               )}
             >
               Supabase Realtime

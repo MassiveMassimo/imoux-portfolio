@@ -13,10 +13,10 @@ export default function Navbar() {
     <>
       <>
         <div className="fixed inset-x-0 top-0 z-20 h-24 backdrop-blur-[1px] gradient-mask-b-90" />
-        <div className="fixed inset-x-0 top-0 z-20 h-24 backdrop-blur-sm gradient-mask-b-70" />
-        <div className="fixed inset-x-0 top-0 z-20 h-24 backdrop-blur-sm gradient-mask-b-50" />
-        <div className="fixed inset-x-0 top-0 z-20 h-24 backdrop-blur-md gradient-mask-b-30" />
-        <div className="fixed inset-x-0 top-0 z-20 h-24 backdrop-blur-lg gradient-mask-b-10" />
+        <div className="fixed inset-x-0 top-0 z-20 h-24 backdrop-blur-[1px] gradient-mask-b-70" />
+        <div className="fixed inset-x-0 top-0 z-20 h-24 backdrop-blur-[1px] gradient-mask-b-50" />
+        <div className="fixed inset-x-0 top-0 z-20 h-24 backdrop-blur-sm gradient-mask-b-30" />
+        <div className="fixed inset-x-0 top-0 z-20 h-24 backdrop-blur-md gradient-mask-b-10" />
       </>
       <motion.nav
         className="group fixed inset-x-0 top-0 z-20 flex h-16 origin-top items-center justify-between bg-gradient-to-b from-white ~px-5/20 dark:from-slate-900"

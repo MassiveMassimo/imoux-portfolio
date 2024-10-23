@@ -49,16 +49,16 @@ export default function ThemeToggle() {
               "data-[state=active]:text-white data-[state=inactive]:hover:bg-gradient-to-b data-[state=inactive]:hover:from-slate-200 data-[state=inactive]:hover:to-slate-300/60 data-[state=inactive]:dark:hover:from-slate-800 data-[state=inactive]:dark:hover:to-slate-900",
             )}
           >
-            <Icon className="z-10 size-4 flex-none" />
-            <p className="absolute -bottom-2.5 z-10 text-xs opacity-0 transition-[bottom,opacity] duration-300 group-hover/toggle:bottom-2 group-hover/toggle:opacity-80">
-              {label}
-            </p>
             {theme === value && (
               <motion.div
                 layoutId="toggleActive"
                 className="absolute top-0 aspect-square h-full rounded-full border border-indigo-700 bg-gradient-to-b from-indigo-500 to-indigo-600 shadow"
               ></motion.div>
             )}
+            <Icon className="size-4 flex-none z-10" />
+            <p className="absolute -bottom-2.5 text-xs opacity-0 transition-[bottom,opacity] duration-300 group-hover/toggle:bottom-2 group-hover/toggle:opacity-80">
+              {label}
+            </p>
           </TabsPrimitive.Trigger>
         ))}
       </TabsPrimitive.List>

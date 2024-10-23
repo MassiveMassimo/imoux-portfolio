@@ -2,7 +2,6 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 
-import { Fraunces } from "next/font/google";
 import localFont from "next/font/local";
 
 import Footer from "@/components/Footer";
@@ -164,11 +163,12 @@ export default async function RootLayout({
             <Footer />
             {!isMobile && <Multiplayer />}
             <>
+              <div className="fixed inset-x-0 bottom-0 z-20 h-24 bg-gradient-to-t from-white dark:from-slate-900 sm:hidden" />
               <div className="fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-[1px] gradient-mask-t-90" />
-              <div className="fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-sm gradient-mask-t-70" />
-              <div className="fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-sm gradient-mask-t-50" />
-              <div className="fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-md gradient-mask-t-30" />
-              <div className="fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-lg gradient-mask-t-10" />
+              <div className="fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-[1px] gradient-mask-t-70" />
+              <div className="fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-[1px] gradient-mask-t-50" />
+              <div className="fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-sm gradient-mask-t-30" />
+              <div className="fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-md gradient-mask-t-10" />
             </>
           </ThemeProvider>
         </Providers>
