@@ -47,7 +47,7 @@ export default function About() {
           rel="noopener noreferrer"
           className={cn(buttonVariants({ variant: "secondary" }), "")}
         >
-          Let's connect!
+          Let&apos;s connect!
         </Link>
         <AnimatePresence>
           {joined && (
@@ -58,7 +58,9 @@ export default function About() {
               exit={{ filter: "blur(8px)", opacity: 0 }}
             >
               <Key label="/" />
-              <p className="self-center text-slate-400 dark:text-slate-500">to chat</p>
+              <p className="self-center text-slate-400 dark:text-slate-500">
+                to chat
+              </p>
             </motion.div>
           )}
         </AnimatePresence>
