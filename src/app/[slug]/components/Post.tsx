@@ -19,15 +19,7 @@ export default function Post({
 
   return (
     <main className="container flex min-h-screen max-w-3xl flex-col gap-4 p-8 py-40">
-      <Link
-        href="/"
-        scroll={false}
-        onClick={(e) => {
-          e.preventDefault();
-          router.back();
-        }}
-        className="hover:underline"
-      >
+      <Link href="/" className="hover:underline">
         ← Back to posts
       </Link>
       {postImageUrl && (
@@ -37,9 +29,13 @@ export default function Post({
           className="aspect-video rounded-xl"
           width="550"
           height="310"
+          style={{ viewTransitionName: `image-${post._id}` }}
         />
       )}
-      <h1 className="mb-8 text-4xl font-bold [view-transition-name:title]">
+      <h1
+        className="mb-8 text-4xl font-bold"
+        style={{ viewTransitionName: `title-${post._id}` }}
+      >
         {post.title}
       </h1>
       <div className="prose">

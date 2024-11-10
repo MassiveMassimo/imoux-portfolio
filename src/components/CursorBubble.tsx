@@ -145,7 +145,7 @@ export default function CursorBubble({
               placeholder="Send a message"
               maxLength={48}
               value={message}
-              className="m-0 !h-8 rounded-none border-0 bg-transparent p-0 font-400 ring-0 ring-offset-transparent placeholder:text-white/70 focus-visible:ring-0 focus-visible:ring-transparent dark:bg-transparent dark:ring-offset-transparent dark:placeholder:text-white/70 dark:focus-visible:ring-transparent"
+              className="m-0 !h-8 rounded-none border-0 bg-transparent p-0 font-400 ring-0 ring-offset-transparent selection:bg-white/30 selection:no-underline placeholder:text-white/70 focus-visible:ring-0 focus-visible:ring-transparent dark:bg-transparent dark:ring-offset-transparent dark:selection:bg-white/30 dark:placeholder:text-white/70 dark:focus-visible:ring-transparent"
               style={inputStyle} // Set dynamic width
               autoFocus
               autoComplete="off"

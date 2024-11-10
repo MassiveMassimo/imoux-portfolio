@@ -17,6 +17,36 @@ a {
   cursor: pointer;
 }
 
+::view-transition-old(timeline) {
+  animation: 0.5s ease-out both shrink;
+}
+
+::view-transition-new(timeline) {
+  animation: 0.5s ease-out both grow;
+}
+
+@keyframes shrink {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+}
+
+@keyframes grow {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 /* width */
 ::-webkit-scrollbar {
   @apply h-3 w-3;

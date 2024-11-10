@@ -1,11 +1,6 @@
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import type { SanityDocument } from "next-sanity";
 
-import { PortableText } from "next-sanity";
-import { useTransitionRouter } from "next-view-transitions";
-import Image from "next/image";
-import Link from "next/link";
-
 import { client } from "@/sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 import Post from "./components/Post";
@@ -20,11 +15,12 @@ const urlFor = (source: SanityImageSource) =>
 
 const options = { next: { revalidate: 30 } };
 
-export default async function PostPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export default async function PostPage(
+  props: Readonly<{
+    params: Promise<{ slug: string }>;
+  }>,
+) {
+  const params = await props.params;
   const post = await client.fetch<SanityDocument>(POST_QUERY, params, options);
   const postImageUrl = post.image
     ? urlFor(post.image)?.width(550).height(310).url()

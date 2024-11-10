@@ -25,15 +25,17 @@ export default function ThemeToggle() {
 
   return (
     <TabsPrimitive.Root
-      defaultValue={theme || "system"}
+      className="h-full p-1"
+      defaultValue={theme ?? "system"}
+      orientation="vertical"
       onValueChange={(value: string) => {
         setTheme(value);
       }}
     >
       <TabsPrimitive.List
         className={cn(
-          "inline-flex h-10 items-center justify-center rounded-md bg-gradient-to-b from-slate-200 to-slate-200/0 p-1 text-slate-500 dark:from-slate-950 dark:to-slate-950/0 dark:text-slate-400",
-          "group/toggle w-full overflow-hidden rounded-full p-0.5 transition-[height] duration-300 *:*:pointer-events-none *:aspect-square *:h-full *:flex-col *:justify-start *:rounded-full *:p-2.5 hover:h-14",
+          "inline-flex flex-col items-center justify-center text-slate-500 dark:text-slate-400",
+          "group/toggle size-full self-stretch overflow-hidden transition-[width] duration-300",
         )}
       >
         {[
@@ -45,20 +47,28 @@ export default function ThemeToggle() {
             key={value}
             value={value}
             className={cn(
-              "relative inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
-              "data-[state=active]:text-white data-[state=inactive]:hover:bg-gradient-to-b data-[state=inactive]:hover:from-slate-200 data-[state=inactive]:hover:to-slate-300/60 data-[state=inactive]:dark:hover:from-slate-800 data-[state=inactive]:dark:hover:to-slate-900",
+              "relative inline-flex w-full grow flex-col items-center justify-center whitespace-nowrap rounded-xl px-3 py-1.5 text-sm font-medium ring-offset-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+              "data-[state=active]:text-white data-[state=inactive]:hover:bg-gradient-to-b data-[state=inactive]:hover:from-slate-200/0 data-[state=inactive]:hover:to-slate-300/60 data-[state=inactive]:dark:hover:from-slate-800 data-[state=inactive]:dark:hover:to-slate-900",
+              value === "light" && "rounded-t-[calc(7.5svh-4px)]",
+              value === "system" && "",
+              value === "dark" && "rounded-b-[calc(7.5svh-4px)]",
             )}
           >
             {theme === value && (
               <motion.div
                 layoutId="toggleActive"
-                className="absolute top-0 aspect-square h-full rounded-full border border-indigo-700 bg-gradient-to-b from-indigo-500 to-indigo-600 shadow"
+                className={cn(
+                  "absolute inset-0 top-0 rounded-xl border border-indigo-700 bg-gradient-to-b from-indigo-500 to-indigo-600 shadow transition-[border-radius]",
+                  value === "light" && "rounded-t-[calc(7.5svh-4px)]",
+                  value === "system" && "",
+                  value === "dark" && "rounded-b-[calc(7.5svh-4px)]",
+                )}
               ></motion.div>
             )}
-            <Icon className="size-4 flex-none z-10" />
-            <p className="absolute -bottom-2.5 text-xs opacity-0 transition-[bottom,opacity] duration-300 group-hover/toggle:bottom-2 group-hover/toggle:opacity-80">
-              {label}
-            </p>
+            <Icon className="z-10 size-4 flex-none" />
+            <div className="flex h-0 items-end text-xs opacity-0 transition-[height,opacity] duration-300 group-hover/toggle:h-5 group-hover/toggle:opacity-80">
+              <p>{label}</p>
+            </div>
           </TabsPrimitive.Trigger>
         ))}
       </TabsPrimitive.List>

@@ -10,7 +10,7 @@ export const isMobileDevice = async () => {
     );
   }
 
-  const { get } = headers();
+  const { get } = await headers();
   const ua = get("user-agent");
 
   const device = new UAParser(ua ?? "").getDevice();
