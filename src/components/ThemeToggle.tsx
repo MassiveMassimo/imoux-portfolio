@@ -34,7 +34,7 @@ export default function ThemeToggle() {
     >
       <TabsPrimitive.List
         className={cn(
-          "inline-flex flex-col items-center justify-center text-slate-500 dark:text-slate-400",
+          "inline-flex flex-col items-center justify-center gap-1 text-slate-500 dark:text-slate-400",
           "group/toggle size-full self-stretch overflow-hidden transition-[width] duration-300",
         )}
       >
