@@ -7,9 +7,9 @@ import type {
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-import { AnimatePresence } from "framer-motion";
 import { useAtomValue } from "jotai/react";
 import { throttle } from "lodash";
+import { AnimatePresence } from "motion/react";
 import { usePathname } from "next/navigation";
 
 import { joinedAtom, usernameAtom, UUIDAtom } from "@/app/atoms";

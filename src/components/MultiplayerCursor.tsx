@@ -9,9 +9,9 @@ import {
   useState,
 } from "react";
 
-import { AnimatePresence, motion } from "framer-motion";
 import gsap from "gsap";
 import { throttle } from "lodash";
+import { AnimatePresence, motion } from "motion/react";
 
 import { usePerfectCursor } from "@/app/hooks/usePerfectCursor";
 import { cn, getColor } from "@/lib/utils";

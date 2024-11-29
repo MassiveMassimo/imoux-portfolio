@@ -4,10 +4,10 @@ import type { MutableRefObject } from "react";
 
 import { useCallback, useMemo, useRef, useState } from "react";
 
-import { motion } from "framer-motion";
 import gsap from "gsap";
 import { useAtom } from "jotai";
 import { LogOut } from "lucide-react";
+import { motion } from "motion/react";
 
 import { joinedAtom, usernameAtom } from "@/app/atoms";
 import { useGSAP } from "@gsap/react";
@@ -110,49 +110,43 @@ export default function MultiplayerControls({
   );
 
   return (
-    <>
-      <div
-        ref={controlsScope}
-        className="fixed inset-x-0 bottom-0 z-30 flex flex-col items-center bg-gradient-to-t from-slate-200 via-60% py-4 dark:from-slate-950"
-      >
-        <div className="z-10 flex gap-2">
-          {!joined ? (
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                onSubmit();
-              }}
-              className="flex items-center gap-2"
-            >
-              <Input
-                ref={inputRef}
-                placeholder="Cursor display name"
-                className="w-80 capitalize placeholder:normal-case"
-                autoComplete="off"
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)} // Update input value
-                required
-              />
-              <Button ref={joinButtonRef} type="submit">
-                Join
+    <div
+      ref={controlsScope}
+      className="fixed inset-x-0 bottom-0 z-30 flex flex-col items-center bg-gradient-to-t from-slate-200 via-60% py-4 dark:from-slate-950"
+    >
+      <div className="z-10 flex gap-2">
+        {!joined ? (
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              onSubmit();
+            }}
+            className="flex items-center gap-2"
+          >
+            <Input
+              ref={inputRef}
+              placeholder="Cursor display name"
+              className="w-80 capitalize placeholder:normal-case"
+              autoComplete="off"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)} // Update input value
+              required
+            />
+            <Button ref={joinButtonRef} type="submit">
+              Join
+            </Button>
+          </form>
+        ) : (
+          <div ref={controlsRef} className="flex gap-2">
+            <Presences cursors={memoizedCursors} />
+            <motion.div layout>
+              <Button variant="outline" size="icon" onClick={handleLogOutClick}>
+                <LogOut className="size-4" />
               </Button>
-            </form>
-          ) : (
-            <div ref={controlsRef} className="flex gap-2">
-              <Presences cursors={memoizedCursors} />
-              <motion.div layout>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  onClick={handleLogOutClick}
-                >
-                  <LogOut className="size-4" />
-                </Button>
-              </motion.div>
-            </div>
-          )}
-        </div>
+            </motion.div>
+          </div>
+        )}
       </div>
-    </>
+    </div>
   );
 }

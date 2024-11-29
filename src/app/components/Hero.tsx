@@ -1,12 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 import Spline from "@splinetool/react-spline/next";
 
 export default function Hero() {
   return (
-    <section className="flex flex-col justify-center gap-2 py-20 px-5">
+    <section className="flex flex-col justify-center gap-2 px-5 py-20">
       {/* <motion.div
         className="w-20 overflow-clip"
         initial={{ filter: "blur(20px)", scale: 1.1, y: 80, opacity: 0 }}

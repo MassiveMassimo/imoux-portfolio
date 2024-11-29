@@ -1,7 +1,7 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
 import { useAtomValue } from "jotai/react";
+import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 
 import { buttonVariants } from "@/components/ui/button";

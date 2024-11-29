@@ -10,7 +10,7 @@ import {
   useMotionValue,
   useSpring,
   useTransform,
-} from "framer-motion";
+} from "motion/react";
 import { useRouter } from "next/navigation";
 
 import { cn, getColor } from "@/lib/utils";

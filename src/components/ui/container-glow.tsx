@@ -60,22 +60,22 @@ export default function ContainerGlow({
     <svg
       ref={glowRef}
       className="pointer-events-none absolute left-0 top-0 z-10 -translate-y-full !opacity-100"
-      width="500"
-      height="500"
-      viewBox="0 0 500 500"
+      width="1200"
+      height="1200"
+      viewBox="0 0 1200 1200"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <g filter="url(#filter0_f_70_2)">
-        <circle cx="250" cy="250" r="50" className={className} />
+        <circle cx="600" cy="600" r="50" className={className} />
       </g>
       <defs>
         <filter
           id="filter0_f_70_2"
           x="0"
           y="0"
-          width="500"
-          height="500"
+          width="1200"
+          height="1200"
           filterUnits="userSpaceOnUse"
           colorInterpolationFilters="sRGB"
         >

@@ -1,9 +1,9 @@
 "use client";
 
-import * as React from "react";
+import { useEffect, useState } from "react";
 
-import { motion } from "framer-motion";
 import { Monitor, Moon, Sun } from "lucide-react";
+import { motion } from "motion/react";
 import { useTheme } from "next-themes";
 
 import { cn } from "@/lib/utils";
@@ -11,10 +11,10 @@ import * as TabsPrimitive from "@radix-ui/react-tabs";
 
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
+  const [mounted, setMounted] = useState(false);
 
   // Prevent hydration mismatch by mounting after first render
-  React.useEffect(() => {
+  useEffect(() => {
     setMounted(true);
   }, []);
 
@@ -25,7 +25,7 @@ export default function ThemeToggle() {
 
   return (
     <TabsPrimitive.Root
-      className="h-full p-1"
+      className="relative h-full p-1"
       defaultValue={theme ?? "system"}
       orientation="vertical"
       onValueChange={(value: string) => {
@@ -35,7 +35,7 @@ export default function ThemeToggle() {
       <TabsPrimitive.List
         className={cn(
           "inline-flex flex-col items-center justify-center gap-1 text-slate-500 dark:text-slate-400",
-          "group/toggle size-full self-stretch overflow-hidden transition-[width] duration-300",
+          "group/toggle size-full self-stretch overflow-clip transition-[width] duration-300",
         )}
       >
         {[
@@ -47,23 +47,33 @@ export default function ThemeToggle() {
             key={value}
             value={value}
             className={cn(
-              "relative inline-flex w-full grow flex-col items-center justify-center whitespace-nowrap rounded-xl px-3 py-1.5 text-sm font-medium ring-offset-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+              "relative inline-flex w-full grow flex-col items-center justify-center whitespace-nowrap rounded-xl px-3 py-1.5 text-sm font-medium ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
               "data-[state=active]:text-white data-[state=inactive]:hover:bg-gradient-to-b data-[state=inactive]:hover:from-slate-200/0 data-[state=inactive]:hover:to-slate-300/60 data-[state=inactive]:dark:hover:from-slate-800 data-[state=inactive]:dark:hover:to-slate-900",
-              value === "light" && "rounded-t-[calc(7.5svh-4px)]",
+              value === "light" && "rounded-t-[76px]",
               value === "system" && "",
-              value === "dark" && "rounded-b-[calc(7.5svh-4px)]",
+              value === "dark" && "rounded-b-[76px]",
             )}
           >
             {theme === value && (
               <motion.div
                 layoutId="toggleActive"
                 className={cn(
-                  "absolute inset-0 top-0 rounded-xl border border-indigo-700 bg-gradient-to-b from-indigo-500 to-indigo-600 shadow transition-[border-radius]",
-                  value === "light" && "rounded-t-[calc(7.5svh-4px)]",
-                  value === "system" && "",
-                  value === "dark" && "rounded-b-[calc(7.5svh-4px)]",
+                  "motion-indicatorr absolute inset-0 top-0 rounded-xl border border-indigo-700 bg-gradient-to-b from-indigo-500 to-indigo-600 shadow",
+                  // value === "light" && "rounded-t-[76px]",
+                  // value === "system" && "",
+                  // value === "dark" && "rounded-b-[76px]",
                 )}
-              ></motion.div>
+                animate={{
+                  borderTopLeftRadius:
+                    value === "light" ? "76px" : value === "dark" ? "12px" : "12px",
+                  borderTopRightRadius:
+                    value === "light" ? "76px" : value === "dark" ? "12px" : "12px",
+                  borderBottomRightRadius:
+                    value === "dark" ? "76px" : value === "light" ? "12px" : "12px",
+                  borderBottomLeftRadius:
+                    value === "dark" ? "76px" : value === "light" ? "12px" : "12px",
+                }}
+              />
             )}
             <Icon className="z-10 size-4 flex-none" />
             <div className="flex h-0 items-end text-xs opacity-0 transition-[height,opacity] duration-300 group-hover/toggle:h-5 group-hover/toggle:opacity-80">

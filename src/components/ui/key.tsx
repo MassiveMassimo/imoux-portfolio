@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { useAnimate } from "framer-motion";
+import { useAnimate } from "motion/react";
 
 export default function Key({ label }: Readonly<{ label: string }>) {
   const [scope, animate] = useAnimate();

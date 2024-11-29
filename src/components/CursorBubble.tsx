@@ -4,8 +4,8 @@ import type { RealtimeChannel } from "@supabase/supabase-js";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-import { AnimatePresence, motion } from "framer-motion";
 import { useAtomValue } from "jotai/react";
+import { AnimatePresence, motion } from "motion/react";
 
 import { UUIDAtom } from "@/app/atoms";
 import { cn, getColor } from "@/lib/utils";
