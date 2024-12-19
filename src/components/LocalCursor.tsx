@@ -26,10 +26,10 @@ export default function LocalCursor({
   const id = useAtomValue(UUIDAtom);
 
   const cursorRef = useRef(null);
-  const xToCursor = useRef<Function>();
-  const yToCursor = useRef<Function>();
-  const xToUsername = useRef<Function>();
-  const yToUsername = useRef<Function>();
+  const xToCursor = useRef<Function | null>(null);
+  const yToCursor = useRef<Function | null>(null);
+  const xToUsername = useRef<Function | null>(null);
+  const yToUsername = useRef<Function | null>(null);
   const lastPosition = useRef({ x: 0, y: 0 });
   const throttledSend = useRef<((relX: number, relY: number) => void) | null>(
     null,
