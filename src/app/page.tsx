@@ -7,7 +7,7 @@ export default function Home() {
     <main className="flex min-h-svh flex-col items-center py-40 *:max-w-3xl">
       <Hero />
       <About />
-      {/* <Timeline /> */}
+      <Timeline />
     </main>
   );
 }

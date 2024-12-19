@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 
 import gsap from "gsap";
 import { Github, Linkedin, Mail } from "lucide-react";
+import { useInView } from "motion/react";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
@@ -15,6 +16,9 @@ import ContainerGlow from "./ui/container-glow";
 
 export default function Footer() {
   const growTo = useRef<gsap.QuickToFunc | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
+
+  const isInView = useInView(ref);
 
   const { contextSafe } = useGSAP(() => {
     growTo.current = gsap.quickTo(".gsap-growing", "width", {
@@ -50,6 +54,8 @@ export default function Footer() {
   });
 
   useEffect(() => {
+    if (!isInView) return; // Early return if not in view
+
     document.addEventListener("mousemove", moveCursor);
 
     const handleResize = () => {
@@ -61,10 +67,13 @@ export default function Footer() {
       document.removeEventListener("mousemove", moveCursor);
       window.removeEventListener("resize", handleResize);
     };
-  }, [moveCursor]);
+  }, [moveCursor, isInView]); // Add isInView to dependencies
 
   return (
-    <footer className="group mb-28 flex h-[320px] *:relative *:overflow-clip *:bg-gradient-to-b *:from-slate-100 *:*:opacity-0 *:*:transition-opacity *:*:duration-500 *:dark:from-slate-950">
+    <footer
+      ref={ref}
+      className="group mb-28 flex h-[320px] *:relative *:overflow-clip *:bg-gradient-to-b *:from-slate-100 *:*:opacity-0 *:*:transition-opacity *:*:duration-500 *:dark:from-slate-950"
+    >
       <div className="gsap-growing min-w-[160px] rounded-[80px] @container *:group-hover:opacity-100">
         <ContainerGlow className="fill-slate-600 dark:fill-white/50" />
         <ThemeToggle />
