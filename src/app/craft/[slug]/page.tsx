@@ -8,7 +8,7 @@ export default async function CraftPage({
   const slug = (await params).slug;
   return (
     <main className="flex min-h-svh flex-col">
-      <section className="flex h-[50svh] flex-col items-center justify-center bg-gradient-to-t from-slate-100">
+      <section className="flex h-[50svh] flex-col items-center justify-center bg-gradient-to-t from-slate-100 dark:from-slate-950">
         <LogoCarousel />
       </section>
 
