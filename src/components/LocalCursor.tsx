@@ -154,7 +154,7 @@ export default function LocalCursor({
   return (
     <div ref={cursorRef} className="pointer-events-none select-none">
       <svg
-        className="cursor fixed left-0 top-0 z-50"
+        className="cursor fixed top-0 left-0 z-50"
         width="33"
         height="33"
         fill="none"
@@ -163,7 +163,9 @@ export default function LocalCursor({
         <g filter="url(#filter0_d)" opacity="1">
           <path
             d="M9.63 6.9a1 1 0 011.27-1.27l11.25 3.75a1 1 0 010 1.9l-4.68 1.56a1 1 0 00-.63.63l-1.56 4.68a1 1 0 01-1.9 0L9.63 6.9z"
-            className={`transition-colors fill-${getColor(username)}-500`}
+            style={{
+              fill: `var(--color-${getColor(username)}-500)`,
+            }}
           ></path>
           <path
             d="M11.13 4.92a1.75 1.75 0 00-2.2 2.21l3.74 11.26a1.75 1.75 0 003.32 0l1.56-4.68a.25.25 0 01.16-.16L22.4 12a1.75 1.75 0 000-3.32L11.13 4.92z"

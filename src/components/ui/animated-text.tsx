@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 
 import { motion, useAnimation, useInView, Variant } from "motion/react";
 
-type AnimatedTextProps = {
+export type AnimatedTextProps = {
   text: string | string[];
   el?: keyof JSX.IntrinsicElements;
   className?: string;
@@ -14,6 +14,8 @@ type AnimatedTextProps = {
     hidden: Variant;
     visible: Variant;
   };
+  staggerChildren?: number;
+  viewAmount?: number;
 };
 
 const defaultAnimations = {
@@ -36,18 +38,20 @@ const defaultAnimations = {
   },
 };
 
-const AnimatedText = ({
+export const AnimatedText = ({
   text,
   el: Wrapper = "p",
   className,
   once = true,
   repeatDelay,
   animation = defaultAnimations,
+  staggerChildren = 0.02,
+  viewAmount = 0.5,
 }: AnimatedTextProps) => {
   const controls = useAnimation();
   const textArray = Array.isArray(text) ? text : [text];
   const ref = useRef(null);
-  const isInView = useInView(ref, { amount: 0.5, once });
+  const isInView = useInView(ref, { amount: viewAmount, once });
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;
@@ -78,7 +82,7 @@ const AnimatedText = ({
         initial="hidden"
         animate={controls}
         variants={{
-          visible: { transition: { staggerChildren: 0.02 } },
+          visible: { transition: { staggerChildren } },
           hidden: {},
         }}
         aria-hidden
@@ -106,19 +110,4 @@ const AnimatedText = ({
   );
 };
 
-export default function Hero() {
-  return (
-    <section className="flex flex-col justify-center gap-2 px-5 py-20">
-      <AnimatedText
-        text="Hello there!"
-        el="p"
-        className="font-serif text-3xl font-300 italic text-indigo-500 dark:text-indigo-400"
-      />
-      <AnimatedText
-        text="I'm Imo. I craft experiences that impact millions through thoughtful design and engineering."
-        el="p"
-        className="text-balance text-3xl/relaxed"
-      />
-    </section>
-  );
-}
+export default AnimatedText;

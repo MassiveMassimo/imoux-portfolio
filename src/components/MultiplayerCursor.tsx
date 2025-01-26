@@ -139,7 +139,7 @@ export default function MultiplayerCursor({
       animate={animateAnimation}
       exit={exitAnimation}
       ref={cursorRef}
-      className="pointer-events-none absolute left-0 top-0 z-50 select-none"
+      className="pointer-events-none absolute top-0 left-0 z-50 select-none"
     >
       <div className="flex">
         <svg
@@ -152,7 +152,9 @@ export default function MultiplayerCursor({
           <g filter="url(#filter0_d)" opacity="1">
             <path
               d="M9.63 6.9a1 1 0 011.27-1.27l11.25 3.75a1 1 0 010 1.9l-4.68 1.56a1 1 0 00-.63.63l-1.56 4.68a1 1 0 01-1.9 0L9.63 6.9z"
-              className={`fill-${getColor(username)}-500`}
+              style={{
+                fill: `var(--color-${getColor(username)}-500)`,
+              }}
             ></path>
             <path
               d="M11.13 4.92a1.75 1.75 0 00-2.2 2.21l3.74 11.26a1.75 1.75 0 003.32 0l1.56-4.68a.25.25 0 01.16-.16L22.4 12a1.75 1.75 0 000-3.32L11.13 4.92z"
@@ -191,11 +193,14 @@ export default function MultiplayerCursor({
         </svg>
         <div
           className={cn(
-            "pointer-events-none z-50 max-w-md -translate-x-2 translate-y-3 truncate rounded-[20px] px-3 py-2 text-sm font-500 capitalize text-white shadow-lg transition-[border-top-left-radius] before:transition-[border-top-left-radius]",
-            `border-2 border-${getColor(username)}-600 bg-${getColor(username)}-500`,
+            "font-500 pointer-events-none z-50 max-w-md -translate-x-2 translate-y-3 truncate rounded-[20px] border-2 px-3 py-2 text-sm text-white capitalize shadow-lg transition-[border-top-left-radius] before:transition-[border-top-left-radius]",
             "before:absolute before:inset-0 before:rounded-[18px] before:shadow-inner before:shadow-white/30",
             message && "rounded-tl-md before:rounded-tl",
           )}
+          style={{
+            borderColor: `var(--color-${getColor(username)}-600)`,
+            backgroundColor: `var(--color-${getColor(username)}-500)`,
+          }}
         >
           {username}
           <AnimatePresence>
@@ -209,7 +214,7 @@ export default function MultiplayerCursor({
                   filter: "blur(0px)",
                 }} // Animate in
                 exit={{ width: 0, height: 0, filter: "blur(20px)" }} // Animate out
-                className="flex items-center font-400 normal-case text-white"
+                className="font-400 flex items-center text-white normal-case"
               >
                 {message}
               </motion.div>

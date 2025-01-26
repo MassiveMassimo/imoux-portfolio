@@ -96,11 +96,11 @@ export default function Multiplayer() {
     };
 
     window.addEventListener("focus", handleFocus);
-    window.addEventListener("blur", handleBlur);
+    window.addEventListener("blur-xs", handleBlur);
 
     return () => {
       window.removeEventListener("focus", handleFocus);
-      window.removeEventListener("blur", handleBlur);
+      window.removeEventListener("blur-xs", handleBlur);
     };
   }, [joined, pathname, username]);
 

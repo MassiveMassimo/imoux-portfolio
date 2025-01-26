@@ -4,10 +4,10 @@ import MillionCompiler from "@million/lint";
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
-    //   swcPlugins: [
-    //     ["@swc-jotai/debug-label", {}],
-    //     ["@swc-jotai/react-refresh", {}],
-    //   ],
+    swcPlugins: [
+      ["@swc-jotai/debug-label", {}],
+      ["@swc-jotai/react-refresh", {}],
+    ],
   },
   images: {
     remotePatterns: [

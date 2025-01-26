@@ -59,7 +59,7 @@ export default function FooterLinks() {
           <Icon className="z-10 size-5" />
           {hoveredLink === index && (
             <motion.div
-              className="absolute inset-0 border border-indigo-700 bg-gradient-to-b from-indigo-500 to-indigo-600 shadow"
+              className="absolute inset-0 border border-indigo-700 bg-linear-to-b from-indigo-500 to-indigo-600 shadow-2xs"
               layoutId="link-highlight"
               animate={{
                 borderTopLeftRadius: index === 0 ? "156px" : "12px",

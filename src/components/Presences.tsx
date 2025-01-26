@@ -86,47 +86,62 @@ export const Presences = ({ cursors }: { cursors: CursorsState }) => {
             exit={exitAnimation} // Slight upward movement and opacity fade
             layout
           >
-            <AnimatePresence mode="popLayout">
-              {hoveredIndex === userId && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20, scale: 0.6 }}
-                  animate={{
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    transition: {
-                      type: "spring",
-                      stiffness: 260,
-                      damping: 10,
-                    },
-                  }}
-                  exit={{ opacity: 0, y: 20, scale: 0.6 }}
-                  style={{
-                    translateX: translateX, // Controls horizontal movement of the tooltip
-                    rotate: rotate, // Controls the tilt based on x value
-                    whiteSpace: "nowrap",
-                  }}
-                  className="absolute -left-1/2 -top-16 z-50 flex translate-x-1/2 flex-col items-center justify-center rounded-md bg-black px-4 py-2 text-xs shadow-xl"
-                >
-                  <div
-                    className={`absolute inset-x-0 -bottom-px z-30 h-px w-full bg-gradient-to-r from-transparent via-${getColor(cursor.username)}-500 to-transparent`}
-                  />
-                  <div className="relative z-30 text-base font-bold capitalize text-white">
-                    {cursor.username}
-                  </div>
-                  <div className="text-xs text-white/70">{cursor.location}</div>
-                </motion.div>
-              )}
-            </AnimatePresence>
             <div
               onMouseMove={handleMouseMove}
               onClick={() => handleClick(cursor.location)}
               className={cn(
-                "relative !m-0 size-10 shrink-0 cursor-pointer rounded-full border-2 object-cover object-top !p-0 shadow-lg transition duration-500 group-hover:z-30 group-hover:scale-105",
-                `bg-${getColor(cursor.username)}-500 border-${getColor(cursor.username)}-600`,
+                "relative m-0! size-10 shrink-0 cursor-pointer rounded-full border-2 object-cover object-top p-0! shadow-lg transition duration-500 group-hover:z-30 group-hover:scale-105",
                 "before:absolute before:inset-0 before:rounded-full before:shadow-inner before:shadow-white/30",
               )}
-            />
+              style={{
+                backgroundColor: `var(--color-${getColor(cursor.username)}-500)`,
+                borderColor: `var(--color-${getColor(cursor.username)}-600)`,
+              }}
+            >
+              <AnimatePresence mode="popLayout">
+                {hoveredIndex === userId && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20, scale: 0.6 }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                      scale: 1,
+                      transition: {
+                        type: "spring",
+                        stiffness: 260,
+                        damping: 10,
+                      },
+                    }}
+                    exit={{ opacity: 0, y: 20, scale: 0.6 }}
+                    style={{
+                      translateX: translateX, // Controls horizontal movement of the tooltip
+                      rotate: rotate, // Controls the tilt based on x value
+                      whiteSpace: "nowrap",
+                    }}
+                    className="absolute -top-16 -left-full z-50 flex flex-col items-center justify-center rounded-md bg-black px-4 py-2 text-xs shadow-xl"
+                  >
+                    <div
+                      className={`absolute inset-x-0 -bottom-px z-30 h-px w-full bg-linear-to-r from-transparent to-transparent`}
+                      style={{
+                        ["--tw-gradient-via" as string]: `var(--color-${getColor(cursor.username)}-500)`,
+                        ["--tw-gradient-via-stops" as string]:
+                          "var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position)",
+                        ["--tw-gradient-stops" as string]:
+                          "var(--tw-gradient-via-stops)",
+                        backgroundImage:
+                          "linear-gradient(to right, var(--tw-gradient-stops))",
+                      }}
+                    />
+                    <div className="relative z-30 text-base font-bold text-white capitalize">
+                      {cursor.username}
+                    </div>
+                    <div className="text-xs text-white/70">
+                      {cursor.location}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </motion.div>
         ))}
       </AnimatePresence>

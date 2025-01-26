@@ -8,20 +8,20 @@ import { cn } from "@/lib/utils";
 import { Slot } from "@radix-ui/react-slot";
 
 const buttonVariants = cva(
-  "relative inline-flex flex-none grow-0 items-center justify-center overflow-hidden whitespace-nowrap rounded-full text-sm font-medium ring-offset-white transition before:absolute before:rounded-[inherit] hover:scale-105 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 active:scale-95 active:shadow-none disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-slate-950 dark:focus-visible:ring-slate-300",
+  "relative inline-flex flex-none grow-0 cursor-pointer items-center justify-center overflow-hidden rounded-full text-sm font-medium whitespace-nowrap ring-offset-white transition before:absolute before:rounded-[inherit] hover:scale-105 hover:shadow-lg focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 focus-visible:outline-hidden active:scale-95 active:shadow-none disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-slate-950 dark:focus-visible:ring-slate-300",
   {
     variants: {
       variant: {
         default:
-          "border border-indigo-700 bg-gradient-to-b from-indigo-500 to-indigo-600 text-white shadow before:inset-0 before:shadow-inner-sm before:shadow-white/20 hover:scale-105 hover:shadow-lg active:scale-95",
+          "before:shadow-inner-sm border border-indigo-700 bg-linear-to-b from-indigo-500 to-indigo-600 text-white shadow-2xs before:inset-0 before:shadow-white/20 hover:scale-105 hover:shadow-lg active:scale-95",
         destructive:
-          "border border-red-700 bg-red-500 text-white shadow before:inset-0 before:right-0 before:w-[500px] before:bg-striped hover:before:animate-translate-x",
+          "before:bg-striped hover:before:animate-translate-x border border-red-700 bg-red-500 text-white shadow-2xs before:inset-0 before:right-0 before:w-[500px]",
         outline:
           "border border-slate-200 bg-white hover:bg-slate-100 hover:text-slate-900 dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-800 dark:hover:text-slate-50",
         secondary:
           "bg-slate-100 text-slate-900 hover:bg-slate-100/80 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80",
         ghost:
-          "hover:bg-slate-100 hover:text-slate-900 active:shadow-inner-sm dark:hover:bg-slate-800 dark:hover:text-slate-50",
+          "active:shadow-inner-sm hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-slate-50",
         link: "rounded-none text-slate-900 decoration-indigo-500 decoration-wavy decoration-[1.5px] underline-offset-4 hover:underline hover:decoration-indigo-500 hover:shadow-none dark:text-slate-50",
       },
       size: {

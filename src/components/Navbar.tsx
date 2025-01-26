@@ -15,11 +15,11 @@ export default function Navbar() {
         <div className="fixed inset-x-0 top-0 z-20 h-24 backdrop-blur-[1px] gradient-mask-b-90" />
         <div className="fixed inset-x-0 top-0 z-20 h-24 backdrop-blur-[1px] gradient-mask-b-70" />
         <div className="fixed inset-x-0 top-0 z-20 h-24 backdrop-blur-[1px] gradient-mask-b-50" />
-        <div className="fixed inset-x-0 top-0 z-20 h-24 backdrop-blur-sm gradient-mask-b-30" />
+        <div className="fixed inset-x-0 top-0 z-20 h-24 backdrop-blur-xs gradient-mask-b-30" />
         <div className="fixed inset-x-0 top-0 z-20 h-24 backdrop-blur-md gradient-mask-b-10" />
       </>
       <motion.nav
-        className="group fixed inset-x-0 top-0 z-20 flex h-16 origin-top items-center justify-between bg-gradient-to-b from-white ~px-5/20 dark:from-slate-900"
+        className="group fixed inset-x-0 top-0 z-20 flex h-16 origin-top items-center justify-between bg-linear-to-b from-white ~px-5/20 dark:from-slate-900"
         initial={{ filter: "blur(20px)", scale: 1.1, y: -80, opacity: 0 }}
         animate={{ filter: "blur(0px)", scale: 1, y: 0, opacity: 1 }}
         transition={{ duration: 1, ease: [0.5, 0, 0.2, 1] }}
@@ -39,7 +39,7 @@ export default function Navbar() {
             )}
           >
             Get in touch
-            <ArrowUpRight className="size-4 w-0 stroke-[3px] blur transition-all duration-300 group-hover/button:w-4 group-hover/button:blur-none" />
+            <ArrowUpRight className="size-4 w-0 stroke-[3px] blur-xs transition-all duration-300 group-hover/button:w-4 group-hover/button:blur-none" />
           </Link>
         </div>
       </motion.nav>

@@ -121,18 +121,21 @@ export default function CursorBubble({
   return (
     <motion.div
       className={cn(
-        "username fixed z-50 max-w-md translate-x-[50vw] translate-y-[110svh] truncate rounded-[20px] px-3 py-2 text-sm font-500 capitalize text-white shadow-lg transition-[border-top-left-radius] before:transition-[border-top-left-radius]",
-        `border-2 border-${getColor(username)}-600 bg-${getColor(username)}-500 `,
+        "username font-500 fixed z-50 max-w-md translate-x-[50vw] translate-y-[110svh] truncate rounded-[20px] border-2 px-3 py-2 text-sm text-white capitalize shadow-lg transition-[border-top-left-radius] before:transition-[border-top-left-radius]",
         "before:absolute before:inset-0 before:rounded-[18px] before:shadow-inner before:shadow-white/30",
         chatting && "rounded-tl-md before:rounded-tl",
       )}
+      style={{
+        borderColor: `var(--color-${getColor(username)}-600)`,
+        backgroundColor: `var(--color-${getColor(username)}-500)`,
+      }}
       onClick={handleBubbleClick} // Prevent clicks on the bubble from closing
     >
       {username}
       {/* Hidden span to measure text width */}
       <span
         ref={measureRef}
-        className="absolute -left-[9999px] whitespace-pre text-sm text-inherit"
+        className="absolute -left-[9999px] text-sm whitespace-pre text-inherit"
       >
         {message || "Send a message"}{" "}
         {/* Use placeholder text if message is empty */}
@@ -145,7 +148,7 @@ export default function CursorBubble({
               placeholder="Send a message"
               maxLength={48}
               value={message}
-              className="m-0 !h-8 rounded-none border-0 bg-transparent p-0 font-400 ring-0 ring-offset-transparent selection:bg-white/30 selection:no-underline placeholder:text-white/70 focus-visible:ring-0 focus-visible:ring-transparent dark:bg-transparent dark:ring-offset-transparent dark:selection:bg-white/30 dark:placeholder:text-white/70 dark:focus-visible:ring-transparent"
+              className="font-400 m-0 h-8! rounded-none border-0 bg-transparent p-0 ring-0 ring-offset-transparent selection:bg-white/30 selection:no-underline placeholder:text-white/70 focus-visible:ring-0 focus-visible:ring-transparent dark:bg-transparent dark:ring-offset-transparent dark:selection:bg-white/30 dark:placeholder:text-white/70 dark:focus-visible:ring-transparent"
               style={inputStyle} // Set dynamic width
               autoFocus
               autoComplete="off"

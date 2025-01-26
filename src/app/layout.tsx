@@ -8,7 +8,6 @@ import Footer from "@/components/Footer";
 import Multiplayer from "@/components/Multiplayer";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/theme-provider";
-import { cn } from "@/lib/utils";
 import { isMobileDevice } from "./actions";
 import Providers from "./providers";
 
@@ -105,7 +104,6 @@ const marlin = localFont({
       style: "italic",
     },
   ],
-  variable: "--font-marlin",
 });
 
 const fraunces = localFont({
@@ -119,15 +117,7 @@ const fraunces = localFont({
       style: "italic",
     },
   ],
-  variable: "--font-fraunces",
 });
-
-// const fraunces = Fraunces({
-//   subsets: ["latin"],
-//   display: "swap",
-//   axes: ["WONK"],
-//   variable: "--font-fraunces",
-// });
 
 export const metadata: Metadata = {
   title: "Imo UX",
@@ -144,13 +134,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          "relative cursor-none overflow-x-hidden bg-white font-sans selection:bg-indigo-100 selection:underline selection:decoration-indigo-500 dark:bg-slate-900 dark:selection:bg-indigo-800 dark:selection:decoration-indigo-400",
-          `${marlin.variable}`,
-          `${fraunces.variable}`,
-        )}
-      >
+      <body className="relative cursor-none overflow-x-hidden bg-white selection:bg-indigo-100 selection:underline selection:decoration-indigo-500 dark:bg-slate-900 dark:selection:bg-indigo-800 dark:selection:decoration-indigo-400">
         <Providers>
           <ThemeProvider
             attribute="class"
@@ -160,15 +144,15 @@ export default async function RootLayout({
           >
             <Navbar />
             {children}
-            <Footer />
             {!isMobile && <Multiplayer />}
+            <Footer />
             <>
-              <div className="pointer-events-none fixed inset-x-0 bottom-0 z-20 h-24 bg-gradient-to-t from-white dark:from-slate-900 sm:hidden" />
-              <div className="pointer-events-none fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-[1px] gradient-mask-t-90" />
-              <div className="pointer-events-none fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-[1px] gradient-mask-t-70" />
-              <div className="pointer-events-none fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-[1px] gradient-mask-t-50" />
-              <div className="pointer-events-none fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-sm gradient-mask-t-30" />
-              <div className="pointer-events-none fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-md gradient-mask-t-10" />
+              <div className="pointer-events-none fixed inset-x-0 bottom-0 z-20 h-24 bg-linear-to-t from-slate-200 via-60% dark:from-slate-950" />
+              <div className="gradient-mask-t-90 pointer-events-none fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-[1px]" />
+              <div className="gradient-mask-t-70 pointer-events-none fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-[1px]" />
+              <div className="gradient-mask-t-50 pointer-events-none fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-[1px]" />
+              <div className="gradient-mask-t-30 pointer-events-none fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-xs" />
+              <div className="gradient-mask-t-10 pointer-events-none fixed inset-x-0 bottom-0 z-20 h-24 backdrop-blur-md" />
             </>
           </ThemeProvider>
         </Providers>

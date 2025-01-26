@@ -35,7 +35,7 @@ export default function Components() {
         <div className="h-20 basis-1/2 border-r border-slate-200 bg-white text-slate-900 shadow-xl dark:border-slate-700 dark:bg-slate-900">
           Components
         </div>
-        <div className="h-20 basis-1/2 bg-gradient-to-r from-slate-100 via-white to-white py-10 dark:from-slate-950 dark:via-slate-900 dark:to-slate-900"></div>
+        <div className="h-20 basis-1/2 bg-linear-to-r from-slate-100 via-white to-white py-10 dark:from-slate-950 dark:via-slate-900 dark:to-slate-900"></div>
       </div>
       {components.map(({ title, variants, sizes, component: Component }) =>
         variants.map((variant) =>
@@ -44,7 +44,7 @@ export default function Components() {
               <div className="basis-1/2 border-r border-slate-200 bg-white shadow-xl dark:border-slate-700 dark:bg-slate-900">
                 {title} - {variant} - {size}
               </div>
-              <div className="flex basis-1/2 items-center justify-center bg-gradient-to-r from-slate-100 via-white to-white py-10 dark:from-slate-950 dark:via-slate-900 dark:to-slate-900">
+              <div className="flex basis-1/2 items-center justify-center bg-linear-to-r from-slate-100 via-white to-white py-10 dark:from-slate-950 dark:via-slate-900 dark:to-slate-900">
                 <Component variant={variant} size={size}>
                   {size === "icon" ? (
                     <PartyPopper size={20} />

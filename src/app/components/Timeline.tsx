@@ -30,7 +30,7 @@ export default async function Timeline() {
   // const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options);
 
   return (
-    <section className="flex h-[50svh] w-full !max-w-none flex-col items-stretch bg-gradient-to-b from-slate-200 dark:from-slate-950">
+    <section className="flex h-[50svh] w-full max-w-none! flex-col items-stretch bg-linear-to-b from-slate-200 dark:from-slate-950">
       <div className="h-10 rounded-b-full bg-white dark:bg-slate-900" />
       <div className="grow flex flex-col items-stretch justify-center p-20">
 

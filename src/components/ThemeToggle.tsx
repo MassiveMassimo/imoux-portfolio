@@ -47,8 +47,8 @@ export default function ThemeToggle() {
             key={value}
             value={value}
             className={cn(
-              "relative inline-flex w-full grow flex-col items-center justify-center whitespace-nowrap rounded-xl px-3 py-1.5 text-sm font-medium ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
-              "data-[state=active]:text-white data-[state=inactive]:hover:bg-gradient-to-b data-[state=inactive]:hover:from-slate-200/0 data-[state=inactive]:hover:to-slate-300/60 data-[state=inactive]:dark:hover:from-slate-800 data-[state=inactive]:dark:hover:to-slate-900",
+              "relative inline-flex w-full grow flex-col items-center justify-center whitespace-nowrap rounded-xl px-3 py-1.5 text-sm font-medium ring-offset-white focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+              "data-[state=active]:text-white data-[state=inactive]:hover:bg-linear-to-b data-[state=inactive]:hover:from-slate-200/0 data-[state=inactive]:hover:to-slate-300/60 dark:data-[state=inactive]:hover:from-slate-800 dark:data-[state=inactive]:hover:to-slate-900",
               value === "light" && "rounded-t-[76px]",
               value === "system" && "",
               value === "dark" && "rounded-b-[76px]",
@@ -58,7 +58,7 @@ export default function ThemeToggle() {
               <motion.div
                 layoutId="toggleActive"
                 className={cn(
-                  "motion-indicatorr absolute inset-0 top-0 rounded-xl border border-indigo-700 bg-gradient-to-b from-indigo-500 to-indigo-600 shadow",
+                  "motion-indicatorr absolute inset-0 top-0 rounded-xl border border-indigo-700 bg-linear-to-b from-indigo-500 to-indigo-600 shadow-2xs",
                   // value === "light" && "rounded-t-[76px]",
                   // value === "system" && "",
                   // value === "dark" && "rounded-b-[76px]",

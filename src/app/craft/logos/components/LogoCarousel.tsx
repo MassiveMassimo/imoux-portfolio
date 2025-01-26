@@ -6,15 +6,15 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 
 // Import all logos
-import logo1 from "/public/logos/1.svg";
-import logo2 from "/public/logos/2.svg";
-import logo3 from "/public/logos/3.svg";
-import logo4 from "/public/logos/4.svg";
-import logo5 from "/public/logos/5.svg";
-import logo6 from "/public/logos/6.svg";
-import logo7 from "/public/logos/7.svg";
-import logo8 from "/public/logos/8.svg";
-import logo9 from "/public/logos/9.svg";
+import logo1 from "../../../../../public/logos/1.svg";
+import logo2 from "../../../../../public/logos/2.svg";
+import logo3 from "../../../../../public/logos/3.svg";
+import logo4 from "../../../../../public/logos/4.svg";
+import logo5 from "../../../../../public/logos/5.svg";
+import logo6 from "../../../../../public/logos/6.svg";
+import logo7 from "../../../../../public/logos/7.svg";
+import logo8 from "../../../../../public/logos/8.svg";
+import logo9 from "../../../../../public/logos/9.svg";
 
 const logos = [logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9];
 
@@ -42,7 +42,7 @@ export default function LogoCarousel() {
           (index, groupIndex) => (index + 1) % companyGroups[groupIndex].length,
         ),
       );
-    }, 3000);
+    }, 4000);
 
     return () => clearInterval(timer);
   }, []);
@@ -55,14 +55,13 @@ export default function LogoCarousel() {
             <motion.div
               key={companyGroups[groupIndex][currentIndices[groupIndex]]}
               className="absolute h-full w-full"
-              initial={{ opacity: 0, y: "50%", filter: "blur(10px)" }}
+              initial={{ opacity: 0, y: "50%", filter: "blur(8px)" }}
               animate={{ opacity: 1, y: "0%", filter: "blur(0px)" }}
-              exit={{ opacity: 0, y: "-50%", filter: "blur(10px)" }}
+              exit={{ opacity: 0, y: "-50%", filter: "blur(8px)" }}
               transition={{
-                type: "spring",
-                bounce: 0.25,
-                duration: 1.2,
-                delay: groupIndex * 0.15,
+                ease: [0.5, 0, 0.2, 1],
+                duration: 1,
+                delay: groupIndex * 0.125,
               }}
             >
               <Image

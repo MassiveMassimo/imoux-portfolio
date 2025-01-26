@@ -59,7 +59,7 @@ export default function ContainerGlow({
   return (
     <svg
       ref={glowRef}
-      className="pointer-events-none absolute left-0 top-0 z-10 -translate-y-full !opacity-100"
+      className="pointer-events-none absolute left-0 top-0 z-10 -translate-y-full opacity-100!"
       width="1200"
       height="1200"
       viewBox="0 0 1200 1200"
