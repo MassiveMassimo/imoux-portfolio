@@ -54,7 +54,7 @@ export default function CursorBubble({
       }
     };
 
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = () => {
       if (chatting) {
         setChatting(false);
         setMessage("");

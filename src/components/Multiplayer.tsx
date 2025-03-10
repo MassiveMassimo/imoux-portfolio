@@ -238,7 +238,7 @@ export default function Multiplayer() {
 
   return (
     <>
-      <div className="pointer-events-none absolute inset-0 select-none overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden select-none">
         <LocalCursor channel={memoizedChannel} />
         {joined && renderedCursors}
       </div>

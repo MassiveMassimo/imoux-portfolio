@@ -13,7 +13,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "before:shadow-inner-sm border border-indigo-700 bg-linear-to-b from-indigo-500 to-indigo-600 text-white shadow-2xs before:inset-0 before:shadow-white/20 hover:scale-105 hover:shadow-lg active:scale-95",
+          "border border-indigo-700 bg-linear-to-b from-indigo-500 to-indigo-600 text-white shadow-2xs before:inset-0 before:inset-shadow-2xs before:inset-shadow-white/20 hover:scale-105 hover:shadow-lg active:scale-95",
         destructive:
           "before:bg-striped hover:before:animate-translate-x border border-red-700 bg-red-500 text-white shadow-2xs before:inset-0 before:right-0 before:w-[500px]",
         outline:

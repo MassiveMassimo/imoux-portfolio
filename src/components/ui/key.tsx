@@ -29,7 +29,7 @@ export default function Key({ label }: Readonly<{ label: string }>) {
 
   return (
     <div ref={scope} className="rounded-md bg-slate-300 pb-1 dark:bg-slate-800">
-      <div className="flex size-7 items-center justify-center rounded-md border border-slate-300 bg-slate-100 shadow-inner-sm shadow-white dark:border-slate-800 dark:bg-slate-700 dark:shadow-slate-500">
+      <div className="flex size-7 items-center justify-center rounded-md border border-slate-300 bg-slate-100 inset-shadow-2xs inset-shadow-white dark:border-slate-800 dark:bg-slate-700 dark:inset-shadow-slate-500">
         {label}
       </div>
     </div>
